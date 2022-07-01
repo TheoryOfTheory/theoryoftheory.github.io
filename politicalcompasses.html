@@ -1,3 +1,18 @@
+<!-- // change favicon -->
+<script>
+window.addEventListener('load', function() { changeFavIcon(); }, false )
+function changeFavIcon() {
+	var link = document.querySelector("link[rel~='icon']");
+	if (!link) {
+		link = document.createElement('link');
+		link.rel = 'icon';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	}
+	link.href = 'https://earlyinvesting.com/wp-content/themes/earlyinvesting-redesign/templates/components/svgs/inc-icon-logo.svg';
+}
+</script>
+
+
 <script>
 // add target _blank to all a links
 function externalLinks() {   for(var c = document.getElementsByTagName("a"), a = 0;a < c.length;a++) {     var b = c[a];     b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank")   } } ; externalLinks(); 
