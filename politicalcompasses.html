@@ -2,13 +2,16 @@
 <script>
 window.addEventListener('load', function() { changeFavIcon(); }, false )
 function changeFavIcon() {
-	var link = document.querySelector("link[rel~='icon']");
-	if (!link) {
-		link = document.createElement('link');
-		link.rel = 'icon';
-		document.getElementsByTagName('head')[0].appendChild(link);
-	}
-	link.href = 'https://earlyinvesting.com/wp-content/themes/earlyinvesting-redesign/templates/components/svgs/inc-icon-logo.svg';
+        var link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+                link = document.createElement('link');
+                link.rel = 'icon';
+                document.getElementsByTagName('head')[0].appendChild(link);
+        }
+        link.href = 'https://earlyinvesting.com/wp-content/themes/earlyinvesting-redesign/templates/components/svgs/inc-icon-logo.svg';
+
+        document.title = "AGI Compasses"; // vs window.top.document.title?
+
 }
 </script>
 
