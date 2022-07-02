@@ -1,17 +1,17 @@
 <!-- // GITHUB.io hack - change favicon/title -->
 <script>
 function changeFavIcon(sURL) { // refactor to make href a parameter
-	// window.addEventListener('load', function() { changeFavIcon(); }, false )
-	sURL = 'https://earlyinvesting.com/wp-content/themes/earlyinvesting-redesign/templates/components/svgs/inc-icon-logo.svg';
-	var link = document.querySelector("link[rel~='icon']");
-	if (!link) {
-			link = document.createElement('link');
-			link.rel = 'icon';
-			document.getElementsByTagName('head')[0].appendChild(link);
-	}
-	link.href = sURL;
+        // window.addEventListener('load', function() { changeFavIcon(); }, false )
+        sURL = 'https://earlyinvesting.com/wp-content/themes/earlyinvesting-redesign/templates/components/svgs/inc-icon-logo.svg';
+        var link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+                        link = document.createElement('link');
+                        link.rel = 'icon';
+                        document.getElementsByTagName('head')[0].appendChild(link);
+        }
+        link.href = sURL;
 
-	document.title = "AGI Compasses"; // vs window.top.document.title?
+        document.title = "AGI Compasses"; // vs window.top.document.title?
 
 }
 window.addEventListener('load', function() { changeFavIcon(); }, false )
@@ -20,22 +20,22 @@ window.addEventListener('load', function() { changeFavIcon(); }, false )
 <script>
 // function to refactor into domscripts
 function dom_addImageTags(oElement, sURL, aaTags, iHeight, iWidth, ) {
-		// undo - 
-		// document.querySelectorAll(".tags").forEach(o=>o.remove())
-		oElement.style.backgroundImage = "url(" + sURL + ")"
-		oElement.style.height = iHeight;
-		oElement.style.width = iWidth;
-		oElement.style.backgroundSize = "100% 100%";
+                // undo - 
+                // document.querySelectorAll(".tags").forEach(o=>o.remove())
+                oElement.style.backgroundImage = "url(" + sURL + ")"
+                oElement.style.height = iHeight;
+                oElement.style.width = iWidth;
+                oElement.style.backgroundSize = "100% 100%";
 
-		aaTags.forEach((a)=>{
-				oNewElement = document.createElement("div");
-				oNewElement.classList = ["tags"];
-				oNewElement.innerHTML = a[0];
-				oNewElement.style.position = "absolute";
-				oNewElement.style.left = oElement.getBoundingClientRect().x + a[1];
-				oNewElement.style.top = oElement.getBoundingClientRect().y + a[2];
-				document.body.appendChild(oNewElement);
-		})
+                aaTags.forEach((a)=>{
+                                oNewElement = document.createElement("div");
+                                oNewElement.classList = ["tags"];
+                                oNewElement.innerHTML = a[0];
+                                oNewElement.style.position = "absolute";
+                                oNewElement.style.left = oElement.getBoundingClientRect().x + a[1];
+                                oNewElement.style.top = oElement.getBoundingClientRect().y + a[2];
+                                document.body.appendChild(oNewElement);
+                })
 
 }
 </script>
@@ -49,7 +49,8 @@ window.addEventListener('load', function() {
         //document.querySelectorAll(".tags").forEach(o=>o.remove())
 
         // generated from // https://docs.google.com/spreadsheets/d/1QtdWMxs7QlL2Q1czk07uGEBmldwplOFB064-Z6z1BAc/edit#gid=373060173
-        var aaTags = [["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/fchollet\">fchollet</a></div>",50,50],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/raphaelmilliere\">raphaelmilliere</a></div>",140,70],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/GaryMarcus\">GaryMarcus</a></div>",50,140],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tyrell_turing\">tyrell_turing</a></div>",135,160],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ylecun\">ylecun</a></div>",250,130],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/rohinmshah\">rohinmshah</a></div>",220,220],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/sama\">sama</a></div>",430,50],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/soniajoseph_\">soniajoseph_</a></div>",280,80],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ID_AA_Carmack\">ID_AA_Carmack</a></div>",330,115],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tszzl\">tszzl</a></div>",420,120],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/demishassabis\">demishassabis</a></div>",270,170],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/michael_nielsen\">michael_nielsen</a></div>",330,200],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/sea_snell\">sea_snell</a></div>",460,170],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robinhanson\">robinhanson</a></div>",60,320],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tamaybes\">tamaybes</a></div>",140,340],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/MatthewJBar\">MatthewJBar</a></div>",110,410],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robertwiblin\">robertwiblin</a></div>",200,420],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/elonmusk\">elonmusk</a></div>",310,280],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/paulfchristiano\">paulfchristiano</a></div>",250,310],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/VitalikButerin\">VitalikButerin</a></div>",375,325],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ethanCaballero\">ethanCaballero</a></div>",440,280],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/nickcammarata\">nickcammarata</a></div>",450,340],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/Plinz\">Plinz</a></div>",420,380],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/gwern\">gwern</a></div>",460,400],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/deepfates\">deepfates</a></div>",280,420],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robertskmiles\">robertskmiles</a></div>",340,400],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/jackclarkSF\">jackclarkSF</a></div>",380,410],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/slatestarcodex\">slatestarcodex</a></div>",340,450],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/NPCollapse\">NPCollapse</a></div>",400,460],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ESYudkowsky\">ESYudkowsky</a></div>",440,430]];
+        var aaTags = [["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/fchollet\">fchollet</a></div>",62.5,62.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/raphaelmilliere\">raphaelmilliere</a></div>",175,87.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/GaryMarcus\">GaryMarcus</a></div>",62.5,175],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tyrell_turing\">tyrell_turing</a></div>",168.75,200],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ylecun\">ylecun</a></div>",312.5,162.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/rohinmshah\">rohinmshah</a></div>",275,275],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/sama\">sama</a></div>",537.5,62.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/soniajoseph_\">soniajoseph_</a></div>",350,100],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ID_AA_Carmack\">ID_AA_Carmack</a></div>",412.5,143.75],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tszzl\">tszzl</a></div>",525,150],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/demishassabis\">demishassabis</a></div>",337.5,212.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/michael_nielsen\">michael_nielsen</a></div>",412.5,250],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/sea_snell\">sea_snell</a></div>",575,212.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robinhanson\">robinhanson</a></div>",75,400],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tamaybes\">tamaybes</a></div>",175,425],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/MatthewJBar\">MatthewJBar</a></div>",137.5,512.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robertwiblin\">robertwiblin</a></div>",250,525],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/elonmusk\">elonmusk</a></div>",387.5,350],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/paulfchristiano\">paulfchristiano</a></div>",312.5,387.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/VitalikButerin\">VitalikButerin</a></div>",468.75,406.25],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ethanCaballero\">ethanCaballero</a></div>",550,350],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/nickcammarata\">nickcammarata</a></div>",562.5,425],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/Plinz\">Plinz</a></div>",525,475],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/gwern\">gwern</a></div>",575,500],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/deepfates\">deepfates</a></div>",350,525],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robertskmiles\">robertskmiles</a></div>",425,500],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/jackclarkSF\">jackclarkSF</a></div>",475,512.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/slatestarcodex\">slatestarcodex</a></div>",425,562.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/NPCollapse\">NPCollapse</a></div>",500,575],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ESYudkowsky\">ESYudkowsky</a></div>",550,537.5]];
+;
 ;
 
         var oElement = document.querySelectorAll(".Trazzi")[0];
@@ -58,7 +59,7 @@ window.addEventListener('load', function() {
                 oElement,
                 "https://i.imgur.com/kvc11ly.jpg",
                 aaTags,
-                499, 504
+                499*1.5, 504*1.5
         );
 
 }, false )
