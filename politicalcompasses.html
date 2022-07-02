@@ -22,7 +22,7 @@ window.addEventListener('load', function() { changeFavIcon(); }, false )
 function dom_addImageTags(oElement, sURL, aaTags, iHeight, iWidth, ) {
 		// undo - 
 		// document.querySelectorAll(".tags").forEach(o=>o.remove())
-		oElement.style.backgroundImage = "url(https://i.imgur.com/NTL6S2y.jpg)"
+		oElement.style.backgroundImage = "url(" + sURL + ")"
 		oElement.style.height = iHeight;
 		oElement.style.width = iWidth;
 		oElement.style.backgroundSize = "100% 100%";
