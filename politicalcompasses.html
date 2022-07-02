@@ -1,21 +1,5 @@
-<!-- // GITHUB.io hack - change favicon/title -->
 <script>
-function changeFavIcon(sURL) { // refactor to make href a parameter
-        // window.addEventListener('load', function() { changeFavIcon(); }, false )
-        sURL = 'https://earlyinvesting.com/wp-content/themes/earlyinvesting-redesign/templates/components/svgs/inc-icon-logo.svg';
-        var link = document.querySelector("link[rel~='icon']");
-        if (!link) {
-                        link = document.createElement('link');
-                        link.rel = 'icon';
-                        document.getElementsByTagName('head')[0].appendChild(link);
-        }
-        link.href = sURL;
-
-        document.title = "AGI Compasses"; // vs window.top.document.title?
-
-}
-window.addEventListener('load', function() { changeFavIcon(); }, false )
-
+window.addEventListener('load', function() { changeFavIconAndTitle(); }, false )
 </script>
 <script>
 // function to refactor into domscripts
