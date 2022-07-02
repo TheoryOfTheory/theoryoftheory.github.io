@@ -44,9 +44,25 @@ function dom_addImageTags(oElement, sURL, aaTags, iHeight, iWidth, ) {
 
 
 <script> // Trazzi AGI Political Compass
-/*
+window.addEventListener('load', function() { 
+        // BEGIN - clear tags
+        document.querySelectorAll(".tags").forEach(o=>o.remove())
 
-        <img src="https://i.imgur.com/kvc11ly.jpg" />
+        // generated from // https://docs.google.com/spreadsheets/d/1QtdWMxs7QlL2Q1czk07uGEBmldwplOFB064-Z6z1BAc/edit#gid=373060173
+        var aaTags = [["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/RichardSSutton\">RichardSSutton</a></div>",50,50],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/q_larrypage\">Larry</a></div>",140,70],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://kurzweilai.net\">Kurzweil</a></div>",50,140],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://frc.ri.cmu.edu/~hpm/\">moravec</a></div>",135,160],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/AndrewYNg\">AndrewYNg</a></div>",250,130],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/sama\">sama</a></div>",220,220],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ESYudkowsky\">ESYudkowsky</a></div>",430,50],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://frc.ri.cmu.edu/~hpm/\">Hans Moravec</a></div>",280,80],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/rodneyabrooks\">Rodney Brooks</a></div>",330,115],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/hansonrobotics\">hanson</a></div>",420,120],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ylecun\">Yann LeCun</a></div>",270,170],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/???\">shah</a></div>",330,200],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"http://jmc.stanford.edu/\">John McCarthy</a></div>",460,170],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/metaculus?\">metaculus</a></div>",60,320],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/???\">taylor?</a></div>",140,340],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/test\">marcus?</a></div>",110,410],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/test\">russell?</a></div>",200,420],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tobyordoxford\">Toby Ord</a></div>",310,280],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/paulfchristiano\">Paul Christiano</a></div>",250,310],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/stuhlmueller\">Andreas Stuhlm?ller</a></div>",375,325],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/citations?user=HVJjWlEAAAAJ&hl=en\">Laurent Orseau</a></div>",440,280],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/danieldennett\">Daniel Dennett</a></div>",450,340],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?q=%22artificial+general+intelligence%22+thiel&hl=en&as_sdt=0,34\">Peter Thiel</a></div>",420,380],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/test\">barnett??</a></div>",460,400],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/hifrommichaelv\">Michael Vassar</a></div>",280,420],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/test\">?Richard Ngo?</a></div>",340,400],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?hl=en&as_sdt=0%2C22&q=Solomonoffian\">Ray Solomonoff</a></div>",380,410],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/VitalikButerin\">Vitalik Buterin</a></div>",340,450],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"\"></a></div>",400,460],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"\"></a></div>",440,430]];
+
+        var oElement = document.querySelectorAll(".Trazzi")[0];
+
+        dom_addImageTags (
+                oElement,
+                "https://i.imgur.com/kvc11ly.jpg",
+                aaTags,
+                1000, 1000
+        );
+
+}, false )
+/*
+// OLD - WHAT IS RENDERED!
                   <!-- top left -->
           <div style="position: absolute; top: 050px; left: 050px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/fchollet">@fchollet</a></div>
           <div style="position: absolute; top: 070px; left: 140px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/raphaelmilliere">@raphaelmilliere</a></div>
@@ -84,25 +100,6 @@ function dom_addImageTags(oElement, sURL, aaTags, iHeight, iWidth, ) {
           <div style="position: absolute; top: 450px; left: 340px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/slatestarcodex">@slatestarcodex</a></div>
           <div style="position: absolute; top: 460px; left: 400px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/NPCollapse">@NPCollapse</a></div>
           <div style="position: absolute; top: 430px; left: 440px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/ESYudkowsky">@ESYudkowsky</a></div>
-    
-	
-window.addEventListener('load', function() { 
-        // BEGIN - clear tags
-        document.querySelectorAll(".tags").forEach(o=>o.remove())
-
-        // generated from // https://docs.google.com/spreadsheets/d/1QtdWMxs7QlL2Q1czk07uGEBmldwplOFB064-Z6z1BAc/edit#gid=373060173
-        var aaTags = [["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/RichardSSutton\">RichardSSutton</a></div>",420,100],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/q_larrypage\">Larry Page</a></div>",500,120],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://kurzweilai.net\">Ray Kurzweil</a></div>",550,110],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://frc.ri.cmu.edu/~hpm/\">Hans Moravec</a></div>",810,130],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/rodneyabrooks\">Rodney Brooks</a></div>",144,249],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/hansonrobotics\">Hanson Robotics</a></div>",172,186],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/AndrewYNg\">Andrew Y Ng</a></div>",200,250],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ylecun\">Yann LeCun</a></div>",244,220],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/rohinmshah\">Rohin Shah</a></div>",331,240],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"http://jmc.stanford.edu/\">John McCarthy</a></div>",412,260],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/metaculus?\">metaculus</a></div>",453,236],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/jessi_cata\">Jessica Taylor</a></div>",141,306],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/GaryMarcus\">Gary Marcus</a></div>",215,310],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?hl=en&as_sdt=0%2C34&q=%22artificial+general+intelligence%22+Stuart J. Russell\">Stuart J. Russell</a></div>",258,320],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tobyordoxford\">Toby Ord</a></div>",330,374],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/paulfchristiano\">Paul Christiano</a></div>",374,374],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/stuhlmueller\">Andreas Stuhlm?ller</a></div>",440,369],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/sama\">Sam Altman</a></div>",600,420],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/citations?user=HVJjWlEAAAAJ&hl=en\">Laurent Orseau</a></div>",739,336],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/danieldennett\">Daniel Dennett</a></div>",153,475],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?q=%22artificial+general+intelligence%22+thiel&hl=en&as_sdt=0,34\">Peter Thiel</a></div>",152,394],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/matthewjbar\">Matthew Barnett</a></div>",237,430],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/hifrommichaelv\">Michael Vassar</a></div>",290,508],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/richardmcngo\">Richard Ngo</a></div>",376,480],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?hl=en&as_sdt=0%2C22&q=Solomonoffian\">Ray Solomonoff</a></div>",821,491],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/VitalikButerin\">Vitalik Buterin</a></div>",309,564],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/demishassabis\">Demis Hassabis</a></div>",577,577],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/search?q=Vernor%20Vinge&src=typd&f=live&vertical=news\">Vernor Vinge</a></div>",825,564],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/jackclarkSF\">Jack Clark</a></div>",568,630],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/elonmusk\">Elon Musk</a></div>",820,650],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?hl=en&as_sdt=0%2C34&q=%22artificial+general+intelligence%22+Zvi Mowshowitz\">Zvi Mowshowitz</a></div>",310,826],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"http://www.weidai.com/\">Wei Dai</a></div>",407,756],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?hl=en&as_sdt=0%2C34&q=%22artificial+general+intelligence%22+???scott???\">???scott???</a></div>",463,708],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/annawsalamon\">Anna Salamon</a></div>",610,807],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/so8res\">Nate Soares</a></div>",655,864],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?hl=en&as_sdt=0%2C34&q=%22artificial+general+intelligence%22+Connor Leahy\">Connor Leahy</a></div>",678,811],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"gwern.net\">Gwern Branwen</a></div>",728,822],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://scholar.google.com/scholar?hl=en&as_sdt=0%2C34&q=%22artificial+general+intelligence%22+Shane Legg\">Shane Legg</a></div>",758,785],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ESYudkowsky\">Eliezer Yudkowsky</a></div>",800,910],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://www.lesswrong.com/users/daniel-kokotajlo\">Daniel Kokotajlo</a></div>",832,843]];
-
-        var oElement = document.querySelectorAll(".Bensinger")[0];
-
-        dom_addImageTags (
-                oElement,
-                "https://i.imgur.com/NTL6S2y.jpg",
-                aaTags,
-                1000, 1000
-        );
-
-}, false )
 */
 </script>
 
@@ -128,10 +125,9 @@ window.addEventListener('load', function() {
 }, false )
 </script>
 
-
 <script>
-// add target _blank to all a links
-function externalLinks() {   for(var c = document.getElementsByTagName("a"), a = 0;a < c.length;a++) {     var b = c[a];     b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank")   } } ; externalLinks(); 
+// LAZY - EXTRANEOUS add target _blank to all a links
+// function externalLinks() {   for(var c = document.getElementsByTagName("a"), a = 0;a < c.length;a++) {     var b = c[a];     b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank")   } } ; externalLinks(); 
 </script>
 
 <!-- Trazzi AGI graphic -->
