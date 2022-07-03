@@ -2,18 +2,9 @@
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 
-<script>
-window.addEventListener('load', function() {
+<style>
+.tags a { font-size: 8px; background-color: white; color: black; }
 
-dom_changeTitleAndFavicon("AGI Compasses", String.fromCodePoint("0x"+"1f9ed") );
-
-
-
-
-// temphack
-domLoadStyles_CSS(".tags a { font-size: 8px; background-color: white; color: black; }")
-
-domLoadStyles_CSS(`
 .tags a::before {
   content: '';
   position: absolute;
@@ -25,8 +16,13 @@ domLoadStyles_CSS(`
   transform: translate(-50%, -50%);
   z-index:-1;
   /* border:1px solid green; for demo purposes */
-}
-`)
+</style>
+
+<script>
+window.addEventListener('load', function() {
+
+dom_changeTitleAndFavicon("AGI Compasses", String.fromCodePoint("0x"+"1f9ed") );
+
 
 document.querySelectorAll(".tags a").forEach(o=>{
    o.onmouseover=function() { this.style.color='#000'; this.style.fontSize = 50; };
