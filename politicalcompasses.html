@@ -4,32 +4,6 @@
 <script>
 window.addEventListener('load', function() { dom_changeTitleAndFavicon("AGI Compasses", "?"); }, false )
 </script>
-<script>
-// function to refactor into domscripts
-function dom_addImageTags(oElement, sURL, aaTags, iHeight, iWidth, ) {
-                // undo - 
-                // document.querySelectorAll(".tags").forEach(o=>o.remove())
-                oElement.style.backgroundImage = "url(" + sURL + ")"
-                oElement.style.height = iHeight;
-                oElement.style.width = iWidth;
-                oElement.style.backgroundSize = "100% 100%";
-
-                aaTags.forEach((a)=>{
-                                oNewElement = document.createElement("div");
-                                oNewElement.classList = ["tags"];
-                                oNewElement.innerHTML = a[0];
-                                oNewElement.style.position = "absolute";
-                                oNewElement.style.left = oElement.getBoundingClientRect().x + a[1];
-                                oNewElement.style.top = oElement.getBoundingClientRect().y + a[2];
-                                document.body.appendChild(oNewElement);
-                })
-
-}
-</script>
-
-
-
-
 <script> // Trazzi AGI Political Compass
 window.addEventListener('load', function() { 
         // BEGIN - clear tags
@@ -38,12 +12,9 @@ window.addEventListener('load', function() {
         // generated from // https://docs.google.com/spreadsheets/d/1QtdWMxs7QlL2Q1czk07uGEBmldwplOFB064-Z6z1BAc/edit#gid=373060173
         var aaTags = [["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/fchollet\">fchollet</a></div>",75,75],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/raphaelmilliere\">raphaelmilliere</a></div>",210,105],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/GaryMarcus\">GaryMarcus</a></div>",75,210],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tyrell_turing\">tyrell_turing</a></div>",202.5,240],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ylecun\">ylecun</a></div>",375,195],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/rohinmshah\">rohinmshah</a></div>",330,330],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/sama\">sama</a></div>",645,75],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/soniajoseph_\">soniajoseph_</a></div>",420,120],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ID_AA_Carmack\">ID_AA_Carmack</a></div>",495,172.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tszzl\">tszzl</a></div>",630,180],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/demishassabis\">demishassabis</a></div>",405,255],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/michael_nielsen\">michael_nielsen</a></div>",495,300],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/sea_snell\">sea_snell</a></div>",690,255],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robinhanson\">robinhanson</a></div>",90,480],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/tamaybes\">tamaybes</a></div>",210,510],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/MatthewJBar\">MatthewJBar</a></div>",165,615],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robertwiblin\">robertwiblin</a></div>",300,630],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/elonmusk\">elonmusk</a></div>",465,420],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/paulfchristiano\">paulfchristiano</a></div>",375,465],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/VitalikButerin\">VitalikButerin</a></div>",562.5,487.5],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ethanCaballero\">ethanCaballero</a></div>",660,420],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/nickcammarata\">nickcammarata</a></div>",675,510],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/Plinz\">Plinz</a></div>",630,570],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/gwern\">gwern</a></div>",690,600],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/deepfates\">deepfates</a></div>",420,630],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/robertskmiles\">robertskmiles</a></div>",510,600],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/jackclarkSF\">jackclarkSF</a></div>",570,615],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/slatestarcodex\">slatestarcodex</a></div>",510,675],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/NPCollapse\">NPCollapse</a></div>",600,690],["<div style=\"font-size:8px; color:black;\"><a target=\"_blank\" href=\"https://twitter.com/ESYudkowsky\">ESYudkowsky</a></div>",660,645]];
 
-
-
-
         var oElement = document.querySelectorAll(".Trazzi")[0];
 
-        dom_addImageTags (
+        dom_addImageOverlays (
                 oElement,
                 "https://i.imgur.com/kvc11ly.jpg",
                 aaTags,
@@ -51,46 +22,6 @@ window.addEventListener('load', function() {
         );
 
 }, false )
-/*
-// OLD - WHAT IS RENDERED!
-                  <!-- top left -->
-          <div style="position: absolute; top: 050px; left: 050px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/fchollet">@fchollet</a></div>
-          <div style="position: absolute; top: 070px; left: 140px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/raphaelmilliere">@raphaelmilliere</a></div>
-          <div style="position: absolute; top: 140px; left: 050px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/GaryMarcus">@GaryMarcus</a></div>
-          <div style="position: absolute; top: 160px; left: 135px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/tyrell_turing">@tyrell_turing</a></div>
-          <div style="position: absolute; top: 130px; left: 250px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/ylecun">@ylecun</a></div>
-          <div style="position: absolute; top: 220px; left: 220px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/rohinmshah">@rohinmshah</a></div>
-                  <!-- top right -->
-          <div style="position: absolute; top: 050px; left: 430px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/sama">@sama</a></div>
-          <div style="position: absolute; top: 080px; left: 280px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/soniajoseph_">@soniajoseph_</a></div>
-          <div style="position: absolute; top: 115px; left: 330px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/ID_AA_Carmack">@ID_AA_Carmack</a></div>
-          <div style="position: absolute; top: 120px; left: 420px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/tszzl">@tszzl</a></div>
-          <div style="position: absolute; top: 170px; left: 270px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/demishassabis">@demishassabis</a></div>
-          <div style="position: absolute; top: 200px; left: 330px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/michael_nielsen">@michael_nielsen</a></div>
-          <div style="position: absolute; top: 170px; left: 460px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/sea_snell">@sea_snell</a></div>
-
-          <!-- bottom left -->
-          <div style="position: absolute; top: 320px; left: 060px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/robinhanson">@robinhanson</a></div>
-          <div style="position: absolute; top: 340px; left: 140px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/tamaybes">@tamaybes</a></div>
-          <div style="position: absolute; top: 410px; left: 110px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/MatthewJBar">@MatthewJBar</a></div>
-          <div style="position: absolute; top: 420px; left: 200px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/robertwiblin">@robertwiblin</a></div>
-
-          <!-- bottom right -->
-          <div style="position: absolute; top: 280px; left: 310px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/elonmusk">@elonmusk</a></div>
-          <div style="position: absolute; top: 310px; left: 250px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/paulfchristiano">@paulfchristiano</a></div>
-          <div style="position: absolute; top: 325px; left: 375px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/VitalikButerin">@VitalikButerin</a></div>
-          <div style="position: absolute; top: 280px; left: 440px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/ethanCaballero">@ethanCaballero</a></div>
-          <div style="position: absolute; top: 340px; left: 450px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/nickcammarata">@nickcammarata</a></div>
-          <div style="position: absolute; top: 380px; left: 420px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/Plinz">@Plinz</a></div>
-
-          <div style="position: absolute; top: 400px; left: 460px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/gwern">@gwern</a></div>
-          <div style="position: absolute; top: 420px; left: 280px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/deepfates">@deepfates</a></div>
-          <div style="position: absolute; top: 400px; left: 340px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/robertskmiles">@robertskmiles</a></div>
-          <div style="position: absolute; top: 410px; left: 380px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/jackclarkSF">@jackclarkSF</a></div>
-          <div style="position: absolute; top: 450px; left: 340px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/slatestarcodex">@slatestarcodex</a></div>
-          <div style="position: absolute; top: 460px; left: 400px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/NPCollapse">@NPCollapse</a></div>
-          <div style="position: absolute; top: 430px; left: 440px; font-size:8px; color:black"><a target="_blank" href="https://twitter.com/ESYudkowsky">@ESYudkowsky</a></div>
-*/
 </script>
 
 
@@ -105,7 +36,7 @@ window.addEventListener('load', function() {
 
         var oElement = document.querySelectorAll(".Bensinger")[0];
 
-        dom_addImageTags (
+        dom_addImageOverlays (
                 oElement,
                 "https://i.imgur.com/NTL6S2y.jpg",
                 aaTags,
