@@ -20,24 +20,9 @@
 
 <script>
 window.addEventListener('load', function() {
-
 dom_changeTitleAndFavicon("AGI Compasses", String.fromCodePoint("0x"+"1f9ed") );
-
-
-document.querySelectorAll(".tags a").forEach(o=>{
-   o.onmouseover=function() { this.style.color='#000'; this.style.fontSize = 50; };
-   o.onmouseout=function () { this.style.color='#00F'; this.style.fontSize = 8; };
-})
-// end temphack
-
-
-
-
-
-
-
-
 }, false )
+
 </script>
 <script> // Trazzi AGI Political Compass
 window.addEventListener('load', function() { 
@@ -75,6 +60,12 @@ window.addEventListener('load', function() {
                 aaTags,
                 1000, 1000
         );
+
+
+        document.querySelectorAll(".tags a").forEach(o=>{
+           o.onmouseover=function() { this.style.color='#000'; this.style.fontSize = 50; };
+           o.onmouseout=function () { this.style.color='#00F'; this.style.fontSize = 8; };
+        })
 
 }, false )
 </script>
