@@ -17,4 +17,18 @@
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://yayinternets.github.io/datacss.css&quot;&gt;
 
 
+domLoadScripts_SCRIPT = function(aScripts){ // injects &lt;script&gt; tags
+        // eg domLoadScripts_SCRIPT(&quot;var sGlobal = &apos;blah&apos;;&quot;)
+        // eg domLoadScripts_SCRIPT([&quot;var sGlobal1 = &apos;global 1&apos;;&quot;, &quot;var sGlobal2 = &apos;global 2&apos;;&quot;])
+        if (Array.isArray(aScripts)) {} else { aScripts = [aScripts]; } 
+        aScripts.forEach(function(sScript) {
+            var head = document.getElementsByTagName(&apos;head&apos;)[0];
+            var s = document.createElement(&apos;script&apos;);
+            s.appendChild(document.createTextNode(sScript));
+            head.appendChild(s);                 
+        })
+}
+
+
+
 </textarea>
