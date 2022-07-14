@@ -52,4 +52,45 @@ const [user, products] = await Promise.all([
 getUser(), getProducts()
 i);
 
+
+
+// 4 Ways to make async function process asynchronously and wait for each other to finish after another based on an initial Array
+// via https://stackoverflow.com/questions/40328932/javascript-es6-promise-for-loop/40329190
+// javascript 12/28 notes asynch "cascacding"? - refactor into domscripts.notes/hints?
+
+aArray = $$$a(".btnsubmit_single_transfer");
+
+// With reduce
+aArray.reduce((a,e,i)=>{
+    return a.then(() => submit_single_transfer(e))
+     .then(() => console.log(i))
+}, Promise.resolve() );
+
+
+// With for loop
+for (let i = 0, p = Promise.resolve(); i < aArray.length; i++) {
+    p = p.then(() => submit_single_transfer(aArray[i]))
+         .then(() => console.log(i));
+}
+
+
+// With a function passing itself as resolution-callback
+(function loop(i) {
+    if (i >= aArray.length) return; // all done
+    submit_single_transfer(aArray[i]).then(() => {
+        console.log(i);
+        loop(i+1);
+    });
+})(0);
+
+
+// With async/await
+(async function loop() {
+    for (let i = 0; i < aArray.length; i++) {
+        await submit_single_transfer(aArray[i]);
+        console.log(i);
+    }
+})();
+
+
 </textarea>
