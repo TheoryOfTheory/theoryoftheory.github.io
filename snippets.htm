@@ -16,21 +16,10 @@
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://yayinternets.github.io/datacss.css&quot;&gt;
 
 
-domLoadScripts_Link = function (aLinks){ // creates &lt;script src=&apos;whatever.js&apos;&gt; tags
-        // eg domLoadScripts_Link(&quot;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js&quot;)
-        // eg domLoadScripts_Link([&quot;https://yayinternets.github.io/datascripts.js&quot;, &quot;https://yayinternets.github.io/domscripts.js&quot;])
-        if (Array.isArray(aLinks)) {} else { aLinks = [aLinks]; }
-        aLinks.forEach(function(sLink) {
-            var head = document.getElementsByTagName(&apos;head&apos;)[0];
-            var s = document.createElement(&apos;script&apos;);
-            s.setAttribute(&apos;src&apos;, sLink.trim());
-            head.appendChild(s);
-        })
-}
-
-
-// domLoadScripts_Link(["https://yayinternets.github.io/datascripts.js", "https://yayinternets.github.io/domscripts.js"]);
-// domLoadStyles_Link("https://yayinternets.github.io/datacss.css");
+domLoadScripts_Link=function(t){Array.isArray(t)||(t=[t]),t.forEach((function(t){var e=document.getElementsByTagName("head")[0],r=document.createElement("script");r.setAttribute("src",t.trim()),e.appendChild(r)}))};
+// load scripts
+domLoadScripts_Link(["https://yayinternets.github.io/datascripts.js", "https://yayinternets.github.io/domscripts.js"]);
+domLoadStyles_Link("https://yayinternets.github.io/datacss.css");
 // copy(toTabDelimited(dom_deconstructDOM()));
 
 
