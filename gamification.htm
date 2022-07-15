@@ -91,7 +91,7 @@ document.body.onclick = function() {
 
 <span class="bug"><span class="bold">V</span></span>
 
-<h1> click anywhere to pause / unpause </h1>
+<h1> click anywhere to change schematic </h1>
 
 
 
@@ -256,7 +256,7 @@ function moveMe(target) {
 gsap.utils.toArray(".bug").forEach( (el) => moveMe(el) )
 
 //learn how this was made: https://www.creativecodingclub.com/
-document.addEventListener("click", () => gsap.globalTimeline.paused(!gsap.globalTimeline.paused()))
+// document.addEventListener("click", () => gsap.globalTimeline.paused(!gsap.globalTimeline.paused()))
   
    
 }); </script>
