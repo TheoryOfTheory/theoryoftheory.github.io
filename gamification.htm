@@ -111,3 +111,127 @@ https://studycrafter.com/
 <br />
 <br />
 <br />
+<style>
+/* css classes for lacanian "bugs" (aka moving elements) */
+.bug {
+        width:60px;
+        height:60px;
+        background:#f6c;
+        position:absolute;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        border-radius:50%;
+        -webkit-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.19); 
+box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.19);
+}
+
+h1 {
+        color:white;
+        margin:20px;
+        font-family:sans-serif;
+}        
+</style>
+<style>
+/* css classes for lacanian arithmetic */
+.strikethru { text-decoration:line-through; font-family:"Verdana"; }
+.bold { font-weight: 900; font-family:"Verdana"; } 
+.italic { font-style: italic; font-family:Verdana; }
+.sub { vertical-align: sub; font-size: 0.50em; }
+.strikethrud { position:relative; }
+.strikethrud:before { position: absolute; content: ""; left: 0; top: 45%; right: 0; border-top: 2px solid; border-color: black; -webkit-transform: rotate(-25deg); -moz-transform: rotate(-25deg); -ms-transform: rotate(-25deg); -o-transform: rotate(-25deg); transform: rotate(-25deg); }
+</style>
+
+<span class="bug"><span class="bold">A</span></span>
+
+<span class="bug"><span class="bold strikethru">A</span></strike></span>
+
+<span class="bug"><span class="italic">a</span></span>
+
+<span class="bug"><span class="italic">a'</span></span>
+
+<span class="bug"><span class="italic">s</span></span>
+
+<span class="bug"><span class="italic strikethrud">s</span></span>
+
+<span class="bug"><span class="italic">s<span class="sub">1</span></span></span>
+
+<span class="bug"><span class="italic">s<span class="sub">2</span></span></span>
+
+<span class="bug"><span class="bold italic">s</span></span>
+
+<span class="bug"><span class="bold italic">S(<span class="strikethrud">A</span>)</span></span>
+
+<span class="bug"><span class="bold italic">s(A)</span></span>
+
+<span class="bug"><span class="bold">D</span></span>
+
+<span class="bug"><span class="bold italic">d</span></span>
+
+<span class="bug"><span class="bold italic">m</span></span>
+
+<span class="bug"><span class="bold italic">i</span></span>
+
+<span class="bug"><span class="bold italic">i(a)</span></span>
+
+<span class="bug"><span class="bold">I</span></span>
+
+<span class="bug"><span class="bold">I(A)</span></span>
+
+<span class="bug"><span class="bold">Π</span></span>
+
+<span class="bug"><span class="bold">Φ</span></span>
+
+<span class="bug"><span class="bold">(-φ)</span></span>
+
+<span class="bug"><span class="bold italic">S</span></span>
+
+<span class="bug"><span class="bold italic">R</span></span>
+
+<span class="bug"><span class="bold italic">I</span></span>
+
+<span class="bug"><span class="bold">P</span></span>
+
+<span class="bug"><span class="bold italic">p</span></span>
+
+<span class="bug"><span class="bold">M</span></span>
+
+<span class="bug"><span class="bold">J</span></span>
+
+<span class="bug"><span class="bold">Jφ</span></span>
+
+<span class="bug"><span class="bold">JA</span></span>
+
+<span class="bug"><span class="bold">E</span></span>
+
+<span class="bug"><span class="bold">e</span></span>
+
+<span class="bug"><span class="bold">V</span></span>
+
+<h1> click anywhere to pause / unpause </h1>
+
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
+  
+ //learn how this was made: https://www.creativecodingclub.com/
+let pxPerSecond = 100;
+gsap.set(".bug", {backgroundColor:gsap.utils.wrap(["#f6c", "#77BF98", "#4B9AE8"])})
+function moveMe(target) {
+	let newPos = {
+		x:gsap.utils.random(0, window.innerWidth),
+		y:gsap.utils.random(0, window.innerHeight)
+	}
+	
+	
+	gsap.to(target, {x:newPos.x, y:newPos.y, duration:"random(2,5)", ease:"none", onComplete:moveMe, onCompleteParams:[target]})
+}
+
+gsap.utils.toArray(".bug").forEach( (el) => moveMe(el) )
+
+//learn how this was made: https://www.creativecodingclub.com/
+document.addEventListener("click", () => gsap.globalTimeline.paused(!gsap.globalTimeline.paused()))
+  
+   
+}); </script>
+<script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+
+
