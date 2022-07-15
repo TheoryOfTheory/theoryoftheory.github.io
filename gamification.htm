@@ -17,8 +17,8 @@ document.body.onclick = function() {
     // oRandomLacanianSchematic = getRandomArrayToken(aLacanianSchematics);
     oRandomLacanianSchematic = aLacanianSchematics[iLacanianSchematics];
     $$$$("#lacanschematic").src = oRandomLacanianSchematic.src;
-    $$$$("#lacanschematicdesc").innerText = "scheme #" + (i+1) + ": " + oRandomLacanianSchematic.description;
-    i=(i+1)%aLacanianSchematics.length;
+    $$$$("#lacanschematicdesc").innerText = "scheme #" + (iLacanianSchematics+1) + ": " + oRandomLacanianSchematic.description;
+    iLacanianSchematics=(iLacanianSchematics+1)%aLacanianSchematics.length;
 }
 
 }); </script>
