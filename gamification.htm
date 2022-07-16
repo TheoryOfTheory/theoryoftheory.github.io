@@ -95,7 +95,7 @@ document.body.onclick = function() {
 
 <span class="bug"><span class="bold">V</span></span>
 
-<h1> click anywhere to change schematic </h1>
+<h1>  Cursos de Dr. Bracha Ettinger:</h1>
 
 
 
@@ -213,21 +213,22 @@ https://studycrafter.com/
 <style>
 /* css classes for lacanian "bugs" (aka moving elements) */
 .bug {
-        width:60px;
+        font-size:60px;
+        width:120px;
         height:60px;
         background:#f6c;
         position:absolute;
         display:flex;
         align-items:center;
         justify-content:center;
-        border-radius:50%;
+        border-radius:500%;
         -webkit-box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.19); 
 box-shadow: 0px 0px 3px 3px rgba(0,0,0,0.19);
 }
 
 h1 {
         color:white;
-        margin:20px;
+        margin:0px;
         font-family:sans-serif;
 }        
 </style>
@@ -249,8 +250,8 @@ let pxPerSecond = 100;
 gsap.set(".bug", {backgroundColor:gsap.utils.wrap(["#f6c", "#77BF98", "#4B9AE8"])})
 function moveMe(target) {
         let newPos = {
-                x:gsap.utils.random(0, window.innerWidth),
-                y:gsap.utils.random(0, window.innerHeight)
+                x:gsap.utils.random(500, window.innerWidth),
+                y:gsap.utils.random(100, window.innerHeight)
         }
         
         
