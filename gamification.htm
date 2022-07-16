@@ -25,7 +25,7 @@ document.body.onclick = function() {
 
 
 
-<div id="lacanschematicdiv" style="position: absolute; left: 600px; top: 100px;"><img style="height: 450px; width:650px;" id="lacanschematic"><div id="lacanschematicdesc" style="font-size:28px; font-weight:900; color:red;"></div></div>
+<div id="lacanschematicdiv" style="position: absolute; left: 600px; top: 100px;"><img style="height: 650px; width:750px;" id="lacanschematic"><div id="lacanschematicdesc" style="font-size:28px; font-weight:900; color:red;"></div></div>
 
 <p class="superp">How Gamified Experiences and New Symbols (NSP, ȘȈǤƝȘ, Michèle Montrelay) re-enchants language and life.</p>
 
@@ -209,6 +209,8 @@ https://studycrafter.com/
 .bug {
         white-space: nowrap;
         font-size:35px;
+        left: 400px;
+        top: 100px;
         width:50px;
         height:50px;
         background:#f6c;
@@ -245,8 +247,8 @@ let pxPerSecond = 150;
 gsap.set(".bug", {backgroundColor:gsap.utils.wrap(["#f6c", "#77BF98", "#4B9AE8"])})
 function moveMe(target) {
         let newPos = {
-                x:gsap.utils.random(500, window.innerWidth),
-                y:gsap.utils.random(100, window.innerHeight)
+                x:gsap.utils.random(500, window.innerWidth-100),
+                y:gsap.utils.random(100, window.innerHeight-100)
         }
         
         
