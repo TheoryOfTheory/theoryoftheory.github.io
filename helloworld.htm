@@ -1,0 +1,72 @@
+<h1 id="other-gimp-plugins-to-checkout-">other gimp plugins to checkout:</h1>
+<ul>
+<li><a href="https://raw.githubusercontent.com/utecht/gimp_imgur/master/imgur-upload.py">https://raw.githubusercontent.com/utecht/gimp_imgur/master/imgur-upload.py</a></li>
+</ul>
+<h1 id="helloworld-py">helloworld.py</h1>
+<pre><code># make sure plug-ins is the right older junder Gimp/File -&gt; Preferences -&gt; Folders -&gt; plugins (not scripts which seem to be ?scm? files?)
+cd &quot;/Users/beaulyle/Library/Application Support/GIMP/2.10/plug-ins&quot;
+sudo chmod +x helloworld.py
+
+</code></pre><p>now nano helloworld.py this file:</p>
+<pre><code>#!/usr/bin/env python
+
+# Hello World in GIMP Python
+
+from gimpfu import *
+
+def hello_world(initstr, font, size, color) :
+    # First do a quick sanity check on the font
+    if font == &#39;Comic Sans MS&#39; :
+        initstr = &quot;Comic Sans? Are you sure?&quot;
+
+    # Make a new image. Size 10x10 for now -- we&#39;ll resize later.
+    img = gimp.Image(1, 1, RGB)
+
+    # Save the current foreground color:
+    pdb.gimp_context_push()
+
+    # Set the text color
+    gimp.set_foreground(color)
+
+    # Create a new text layer (-1 for the layer means create a new layer)
+    layer = pdb.gimp_text_fontname(img, None, 0, 0, initstr, 10,
+                                   True, size, PIXELS, font)
+
+    # Resize the image to the size of the layer
+    img.resize(layer.width, layer.height, 0, 0)
+
+    # Background layer.
+    # Can&#39;t add this first because we don&#39;t know the size of the text layer.
+    background = gimp.Layer(img, &quot;Background&quot;, layer.width, layer.height,
+                            RGB_IMAGE, 100, NORMAL_MODE)
+    background.fill(BACKGROUND_FILL)
+    img.add_layer(background, 1)
+
+    # Create a new image window
+    gimp.Display(img)
+    # Show the new image window
+    gimp.displays_flush()
+
+    # Restore the old foreground color:
+    pdb.gimp_context_pop()
+
+register(
+    &quot;python_fu_hello_world&quot;,
+    &quot;Hello world image&quot;,
+    &quot;Create a new image with your text string&quot;,
+    &quot;Akkana Peck&quot;,
+    &quot;Akkana Peck&quot;,
+    &quot;2010&quot;,
+    &quot;Hello world (Py)...&quot;,
+    &quot;&quot;,      # Create a new image, don&#39;t work on an existing one
+    [
+        (PF_STRING, &quot;string&quot;, &quot;Text string&quot;, &#39;Hello, world!&#39;),
+        (PF_FONT, &quot;font&quot;, &quot;Font face&quot;, &quot;Sans&quot;),
+        (PF_SPINNER, &quot;size&quot;, &quot;Font size&quot;, 50, (1, 3000, 1)),
+        (PF_COLOR, &quot;color&quot;, &quot;Text color&quot;, (1.0, 0.0, 0.0))
+    ],
+    [],
+    hello_world, menu=&quot;&lt;Image&gt;/File/Create&quot;)
+
+main()
+</code></pre>
