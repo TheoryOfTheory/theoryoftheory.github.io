@@ -1,17 +1,17 @@
 <h1 id="other-gimp-plugins-to-checkout-">other gimp plugins to checkout:</h1>
 <ul>
-<li><p><a href="https://raw.githubusercontent.com/utecht/gimp_imgur/master/imgur-upload.py">https://raw.githubusercontent.com/utecht/gimp_imgur/master/imgur-upload.py</a></p>
+<li><p><a href="https://raw.githubusercontent.com/utecht/gimp_imgur/master/imgur-flatten-upload.py">https://raw.githubusercontent.com/utecht/gimp_imgur/master/imgur-flatten-upload.py</a></p>
 </li>
 <li><p><a href="https://github.com/tschuy/gimp-export-to-imgur/blob/master/upload.py">https://github.com/tschuy/gimp-export-to-imgur/blob/master/upload.py</a></p>
 <ul>
-<li>for MacOS, might need to run a sudo python3 <a href="https://stackoverflow.com/questions/44649449/brew-installation-of-python-3-6-1-ssl-certificate-verify-failed-certificate/49953648#comment108192664_44649450">install_certifi.py</a>
-**might have to add this line of code to get it to work: <a href="https://stackoverflow.com/questions/44649449/brew-installation-of-python-3-6-1-ssl-certificate-verify-failed-certificate/49953648#comment108192664_44649450">import ssl; ssl.<em>create</em>default_https_context = ssl.<em>create</em>stdlib_context</a></li>
+<li>for MacOS, might need to run a sudo python3 <a href="https://stackoverflow.com/questions/44649449/brew-installation-of-python-3-6-1-ssl-certificate-verify-failed-certificate/49953648#comment108192664_44649450">install_certifi.py</a></li>
+<li>might have to add this line of code to get it to work: <code>import ssl; ssl._create_default_https_context = ssl._create_stdlib_context</code> <a href="https://stackoverflow.com/questions/44649449/brew-installation-of-python-3-6-1-ssl-certificate-verify-failed-certificate/49953648#comment108192664_44649450">via</a></li>
 </ul>
 </li>
 </ul>
 <h1 id="helloworld-gimp-py">helloworld.gimp.py</h1>
 <pre><code>#make sure plug-ins is the right older junder Gimp/File -&gt; Preferences -&gt; Folders -&gt; plugins (not scripts which seem to be ?scm? files?)
-cd &quot;~/Library/Application Support/GIMP/2.10/plug-ins&quot;
+cd ~/Library/&quot;Application Support&quot;/GIMP/2.10/plug-ins
 sudo chmod +x helloworld.py
 
 </code></pre><p>now nano helloworld.gimp.py this file:</p>
