@@ -10,15 +10,15 @@
 </li>
 </ul>
 <h1 id="helloworld-gimp-py">helloworld.gimp.py</h1>
-<pre><code>#make sure plug-ins is the right older junder Gimp/File -&gt; Preferences -&gt; Folders -&gt; plugins (not scripts which seem to be ?scm? files?)
+<pre><code># where is plugins folder? Gimp/File -&gt; Preferences -&gt; Folders -&gt; plugins
 cd ~/Library/&quot;Application Support&quot;/GIMP/2.10/plug-ins
-sudo chmod +x helloworld.py
+sudo chmod +x *.py
 
-</code></pre><p>now nano helloworld.gimp.py this file:</p>
+</code></pre><h1 id="hello-world-in-gimp-python">Hello World in GIMP Python</h1>
+<h2 id="remember-run-chmod-x-py-and-restart-gimp-to-see-the-python-plugins-render-">Remember: run <code>chmod +x *py</code> and restart GIMP to see the python plugins render!</h2>
+<p>now nano helloworld.gimp.py this file:</p>
 <pre><code># !/usr/bin/env python
 
-# Hello World in GIMP Python
-## Remember: run ```chmod +x *py``` and restart GIMP to see the python plugins render!
 
 from gimpfu import *
 
