@@ -1,16 +1,17 @@
-<h1 id="other-gimp-plugins-to-checkout-">other gimp plugins to checkout:</h1>
+<p>#other gimp plugins to checkout:</p>
 <ul>
 <li><a href="https://raw.githubusercontent.com/utecht/gimp_imgur/master/imgur-upload.py">https://raw.githubusercontent.com/utecht/gimp_imgur/master/imgur-upload.py</a></li>
 </ul>
-<h1 id="helloworld-py">helloworld.py</h1>
-<pre><code># make sure plug-ins is the right older junder Gimp/File -&gt; Preferences -&gt; Folders -&gt; plugins (not scripts which seem to be ?scm? files?)
+<p>#helloworld.py</p>
+<pre><code>#make sure plug-ins is the right older junder Gimp/File -&gt; Preferences -&gt; Folders -&gt; plugins (not scripts which seem to be ?scm? files?)
 cd &quot;/Users/beaulyle/Library/Application Support/GIMP/2.10/plug-ins&quot;
 sudo chmod +x helloworld.py
 
 </code></pre><p>now nano helloworld.py this file:</p>
-<pre><code>#!/usr/bin/env python
+<pre><code># !/usr/bin/env python
 
-# Hello World in GIMP Python
+#Hello World in GIMP Python
+##Remember: run ```chmod +x *py``` and restart GIMP to see the python plugins render!
 
 from gimpfu import *
 
