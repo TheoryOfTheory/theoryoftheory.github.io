@@ -14,9 +14,15 @@
 
 
 
-<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
+<script type="text/javascript">
+function changeGroup() {
+// function() { $$$$("#group").innerHTML = getRandomArrayToken(aGroups) }
+   $$$$("#group").innerHTML = getRandomArrayToken(aGroups)
+}
+document.addEventListener("DOMContentLoaded", function(event) { 
+changeGroup();
 const aGroups = $$$$("#group").innerHTML.split("/")
-document.body.onmousemove = function() { $$$$("#group").innerHTML = getRandomArrayToken(aGroups); }
+document.body.onmousemove = changeGroup;
  }); </script>
 
 
