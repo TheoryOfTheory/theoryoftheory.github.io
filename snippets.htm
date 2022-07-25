@@ -9,13 +9,21 @@
 <p class="superp">a few commonly-used scripts/gists/snippets, or scripts pending to be refactored into a library</p>
 
 <textarea>
-setTimeout(() => { console.log("Delayed for 1 second."); }, 1000)
+// bash
 curl "example.com/examle.py" --output example.py
-document.querySelectorAll("[data-foo='1']"); // data elements
+
+//ffmpeg
+ffmpeg -i video.webm video.mp4
+ffmpeg -i filename.mp4 filename.mp3
+ffmpeg -f gif -i seal.gif seal.mp4
+
+// js
+for (i=0;i<10;i++){ /* code */ }
+setTimeout(() => { console.log("Delayed for 1 second."); }, 1000)
 Math.ceil(Math.random()*100) // generates random num between 1 and 99 incluslive
+// js dom
+document.querySelectorAll("[data-foo='1']"); // data elements
 var test = document.querySelectorAll('input[value][type="checkbox"]:not([value=""])'); // = get all inputs with the attribute "value" and has the attribute "value" that is not blank.
-
-
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { /* code */ }); </script>
 var awaitingSetTimeout = async (iMs) => new Promise((resolve) => setTimeout(() => { "code"; resolve('done') }, iMs )); await awaitingSetTimeout(1000);
 
@@ -32,11 +40,6 @@ domLoadScripts_Link=function(t){Array.isArray(t)||(t=[t]),t.forEach((function(t)
 domLoadScripts_Link(["https://yayinternets.github.io/datascripts.js", "https://yayinternets.github.io/domscripts.js"]);
 domLoadStyles_Link("https://yayinternets.github.io/datacss.css");
 copy(toTabDelimited(dom_deconstructDOM()));
-
-//ffmpeg
-ffmpeg -i video.webm video.mp4
-ffmpeg -i filename.mp4 filename.mp3
-ffmpeg -f gif -i seal.gif seal.mp4
 
 
 // OLD script snippets
