@@ -9,37 +9,38 @@
 <p class="superp">a few commonly-used scripts/gists/snippets, or scripts pending to be refactored into a library</p>
 
 <textarea>
-// bash
+# bash
 curl "example.com/examle.py" --output example.py
 
-//ffmpeg
+# ffmpeg
 ffmpeg -i video.webm video.mp4
 ffmpeg -i filename.mp4 filename.mp3
 ffmpeg -f gif -i seal.gif seal.mp4
 
-// js
+// 4x js
+domLoadScripts_Link=function(t){Array.isArray(t)||(t=[t]),t.forEach((function(t){var e=document.getElementsByTagName("head")[0],r=document.createElement("script");r.setAttribute("src",t.trim()),e.appendChild(r)}))};
+// load scripts
+domLoadScripts_Link(["https://yayinternets.github.io/datascripts.js", "https://yayinternets.github.io/domscripts.js"]);
+domLoadStyles_Link("https://yayinternets.github.io/datacss.css");
+copy(toTabDelimited(dom_deconstructDOM()));
+
+// basic js
 for (i=0;i<10;i++){ /* code */ }
 setTimeout(() => { console.log("Delayed for 1 second."); }, 1000)
 Math.ceil(Math.random()*100) // generates random num between 1 and 99 incluslive
 // js dom
 document.querySelectorAll("[data-foo='1']"); // data elements
 var test = document.querySelectorAll('input[value][type="checkbox"]:not([value=""])'); // = get all inputs with the attribute "value" and has the attribute "value" that is not blank.
-<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { /* code */ }); </script>
 var awaitingSetTimeout = async (iMs) => new Promise((resolve) => setTimeout(() => { "code"; resolve('done') }, iMs )); await awaitingSetTimeout(1000);
 
+&lt;!-- html --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;document.addEventListener(&quot;DOMContentLoaded&quot;, function(event) { /* code */ }); &lt;/script&gt;
 &lt;script src=&quot;https://yayinternets.github.io/datascripts.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://yayinternets.github.io/domscripts.js&quot;&gt;&lt;/script&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://yayinternets.github.io/datacss.css&quot;&gt;
 <script>window.addEventListener('load', function() { dom_changeTitleAndFavicon("Code Snippets", "https://letshirepro.com/icons/freelauncer.ico" ); }, false )</script>
 <title>favicon emoji</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
-
-
-domLoadScripts_Link=function(t){Array.isArray(t)||(t=[t]),t.forEach((function(t){var e=document.getElementsByTagName("head")[0],r=document.createElement("script");r.setAttribute("src",t.trim()),e.appendChild(r)}))};
-// load scripts
-domLoadScripts_Link(["https://yayinternets.github.io/datascripts.js", "https://yayinternets.github.io/domscripts.js"]);
-domLoadStyles_Link("https://yayinternets.github.io/datacss.css");
-copy(toTabDelimited(dom_deconstructDOM()));
 
 
 // OLD script snippets
