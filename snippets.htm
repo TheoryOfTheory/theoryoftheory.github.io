@@ -13,10 +13,13 @@
 curl "example.com/examle.py" --output example.py
 wget -i example.txt # wget is curl but can take list of files as input
 
-# ffmpeg
+# ffmpeg/calibre
 ffmpeg -i video.webm video.mp4
 ffmpeg -i filename.mp4 filename.mp3
 ffmpeg -f gif -i seal.gif seal.mp4
+ffmpegpdf myfile.pdf myfile.mp4
+ebook-convert myfile.epub myfile.pdf
+
 
 // 4x js
 domLoadScripts_Link=function(t){Array.isArray(t)||(t=[t]),t.forEach((function(t){var e=document.getElementsByTagName("head")[0],r=document.createElement("script");r.setAttribute("src",t.trim()),e.appendChild(r)}))};
@@ -29,6 +32,7 @@ copy(toTabDelimited(dom_deconstructDOM()));
 for (i=0;i<10;i++){ /* code */ }
 setTimeout(() => { console.log("Delayed for 1 second."); }, 1000)
 Math.ceil(Math.random()*100) // generates random num between 1 and 99 incluslive
+min = Math.ceil(min-1); max = Math.floor(max+1); Math.floor(Math.random() * (max - min) + min); // min/max inclusive, via getRandomInt
 // js dom
 document.querySelectorAll("[data-foo='1']"); // data elements
 var test = document.querySelectorAll('input[value][type="checkbox"]:not([value=""])'); // = get all inputs with the attribute "value" and has the attribute "value" that is not blank.
