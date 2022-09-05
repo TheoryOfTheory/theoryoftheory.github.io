@@ -3,11 +3,11 @@
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 
 <script>
-window.addEventListener('load', function() { dom_changeTitleAndFavicon("searchtree", "s" ); }, false )
+     window.addEventListener('load', function() { dom_changeTitleAndFavicon("searchtree", "s" ); }, false )
 </script>
 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
-    $$$$("input").value = oGetAllParameters_CLIENT().search;
+     if (oGetAllParameters_CLIENT().search) { $$$$("input").value = oGetAllParameters_CLIENT().search; }
 }); </script>
 
 
