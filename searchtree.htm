@@ -8,9 +8,9 @@ window.addEventListener('load', function() { dom_changeTitleAndFavicon("searchtr
 
 <script>
 
-function openMe() {
+function openMe(othis) {
    sValue = $$$$("input").value || oGetAllParameters_CLIENT().search;
-   sURL = this.dataset.url;
+   sURL = othis.dataset.url;
    sURL = eval(sURL); // get rid of this?
    window.open(sURL, "_blank");
 }
@@ -24,8 +24,8 @@ search :<br />
 <input value="fetch node"><button>search all</button>
 
 
-<button data-url="`https://www.linkedin.com/search/results/content/?keywords=${sValue}&sortBy=%22date_posted%22`">search linkedin</button>
-<button data-url="`https://twitter.com/search?vertical=news&src=typd&f=live&q=${sValue}`">search twitter</button>
+<button onclick="openMe(this);" data-url="`https://www.linkedin.com/search/results/content/?keywords=${sValue}&sortBy=%22date_posted%22`">search linkedin</button>
+<button onclick="openMe(this);" data-url="`https://twitter.com/search?vertical=news&src=typd&f=live&q=${sValue}`">search twitter</button>
 
 
 
