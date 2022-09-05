@@ -1,9 +1,21 @@
+<script src="https://yayinternets.github.io/datascripts.js"></script>
+<script src="https://yayinternets.github.io/domscripts.js"></script>
+<link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
+
+<script>
+window.addEventListener('load', function() { dom_changeTitleAndFavicon("searchtree", "s" ); }, false )
+</script>
+
+
 <br />
 search :<br />
 <input value="fetch node"><button>search all</button>
 
 
 <button>search linkedin</button>
+
+sValue = document.querySelectorAll("input")[0].value;
+window.open("https://www.linkedin.com/search/results/content/?keywords=" + sValue + "&sortBy=%22date_posted%22", "_blank")
 
 
 <pre>
