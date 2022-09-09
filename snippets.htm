@@ -39,12 +39,16 @@ document.querySelectorAll("[data-foo='1']"); // data elements
 var test = document.querySelectorAll('input[value][type="checkbox"]:not([value=""])'); // = get all inputs with the attribute "value" and has the attribute "value" that is not blank.
 var awaitingSetTimeout = async (iMs) => new Promise((resolve) => setTimeout(() => { "code"; resolve('done') }, iMs )); await awaitingSetTimeout(1000);
 
+&lt;!-- html bg image --&gt;
+<style>body { background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.90), rgba(255, 153, 230, 0.73)), url('https://i.imgur.com/b5Z6ZNG.jpg'); background-repeat: repeat; } </style>
+body { background-image: url(https://i.imgur.com/JNnR9lh.jpg); background-size: 100% 100%; }
+
 &lt;!-- html --&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;document.addEventListener(&quot;DOMContentLoaded&quot;, function(event) { /* code */ }); &lt;/script&gt;
 &lt;script src=&quot;https://yayinternets.github.io/datascripts.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;https://yayinternets.github.io/domscripts.js&quot;&gt;&lt;/script&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://yayinternets.github.io/datacss.css&quot;&gt;
-<style>body { background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.90), rgba(255, 153, 230, 0.73)), url('https://i.imgur.com/b5Z6ZNG.jpg'); background-repeat: repeat; } </style>
+
 <script>window.addEventListener('load', function() { dom_changeTitleAndFavicon("Code Snippets", "https://letshirepro.com/icons/freelauncer.ico" ); }, false )</script>
 <title>favicon emoji</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
