@@ -7,9 +7,9 @@ dom_changeTitleAndFavicon("موسيقى", "♬🎼" );
 
 sBody = document.body.innerText;
 document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
-    aHref = `https://www.youtube.com/results?search_query=${superencode(o)}`; // youtube
-    aHref = `https://duckduckgo.com/?q=%5c${superencode(o)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
-    return a + `<a target='_blank' href='${aHref}'>${o}</a><br />`;
+    aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(o)}`; // youtube &loop=0
+    aHrefDuck = `https://duckduckgo.com/?q=%5c${superencode(o)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+    return a + `<a target='_blank' href='${aHrefYoutube}'>▶️</a><a target='_blank' href='${aHrefDuck}'>🦆</a>${o}<br />`;
 }, "")
 
 }, false )</script>
