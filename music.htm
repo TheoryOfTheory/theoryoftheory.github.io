@@ -1,0 +1,85 @@
+<script src="https://yayinternets.github.io/datascripts.js"></script>
+<script src="https://yayinternets.github.io/domscripts.js"></script>
+<link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
+<script>window.addEventListener('load', function() {
+
+dom_changeTitleAndFavicon("موسيقى", "???" );
+
+sBody = document.body.innerText;
+document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
+    aHref = `https://www.youtube.com/results?search_query=${superencode(o)}`; // youtube
+    aHref = `https://duckduckgo.com/?q=%5c${superencode(o)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+    return a + `<a target='_blank' href='${aHref}'>${o}</a><br />`;
+}, "")
+
+}, false )</script>
+
+<pre>
+== 2022 rock it out
+Fleet Foxes - Mykonos
+
+== 2022 Miami
+New Order - Temptation
+The xx - Dangerous
+Expected Mirage - Time Does Not Exist
+Mike Woods - Dance
+Bollen & Fichtner - Sophos (Jessica Diaz Remix)
+Hot Natured - Detroit
+Jay Connor - Real
+Cryogeyser - Sun
+Labi Siffre - I Got The...
+Jacques Dutronc - L'aventurier
+Billy Talent - Afraid of Heights
+Last Dinosaurs - Italo Disco
+Justin Quiles - Si Ella Quisiera
+T.I. - Bring Em Out
+Orquesta America - Chachacha del Flautista (Remastered)
+BTTRFLY Quintent, Dominic Lalli & Adam Deitch - Coast (Feat. Eric Benny Bloom, Borahm Lee & Hunter Roberts)
+La Musique de Jazz Detente - Ecoute facile
+Radiohead - Electioneering
+Pixies - Ana
+The Paper Kites - St. Clarity
+Beck - Think I'm in Love
+The Marias - Cariño
+Beach House - Other People
+Pearls - Pretend You're Mine
+Porches - Pool
+Nana Grizol - Tiny Rainbows
+Tearjerker - Another Moon
+Fleet Foxes - Helplessness Blues
+Luis Fonsi & Nicky Jam & Sebastian Yatra - Date La Vuelta
+Daddy Yankee - Que Tire Pa Lante
+Matthew Bento & Matthew  - Hot Tamale
+Jay Chou - 本草綱目
+Ellie Goulding - Anything Could Happen
+Alex Campos - Si Estoy Contigo (feat. Barak)
+Norman Connors - Love from the Sun
+Terry Callier - Until Tomorrow
+We don't talk about Bruno
+Disclosure - Grab Her
+Kanye West - Jesus Walks
+HSHK & Uzller & XUFEIH & 贰皮 - Italia E Voi
+BoyWithUke - IDGAF (feat blackbear)
+Gayle - abc (nicer)
+Lynn Morrison - Cradle Spell Of Dunvegan (Taladh An Leinibh Leoidi)
+Charlie Wilson - Sugar.Honey.Ice.Tea
+J Balvin & Willy William - Mi Gente
+Mya - Best of Me (feat. Jadakiss)
+Lizzo - Abount Damn Time
+Em Beihold - Numb Little Bug
+Glass Animals - Heat Waves
+Ava Max - Kings & Queens
+Humble Pie - I Don't Need No Doctor (Live at the Fillmore East/1971)
+Level 42 - Something About You
+Crazy Design - Guanguan
+Devo - That's Good
+Mahalia - What Am I?
+The Who - Eminence Front
+Neil Young - Heart of Gold
+Universal Idol, VodKe, HSH Pnan & ??? - Italia e voi (双枪说)
+XTC - Senses Working Overtime
+The Weeknd - Take My Breath
+Carter Burwell - We Love you So
+
+== 2021 Apocalypse
+Pat 'The Bunny' Schneeweis - Your Heart Is A Muscle The Size Of Your Fist
