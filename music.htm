@@ -9,7 +9,11 @@ sBody = document.body.innerText;
 document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
     aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(o)}`; // youtube &loop=0
     aHrefDuck = `https://duckduckgo.com/?q=%5c${superencode(o)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
-    return a + `<a target='_blank' href='${aHrefYoutube}'>▶️</a><a target='_blank' href='${aHrefDuck}'>🦆</a>${o}<br />`;
+    if (o.length>0) {
+         return a + `<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a><span style="font-size:8px;">${o}</span><br />`;
+    } else {
+         return a + `<br />`
+    }
 }, "")
 
 }, false )</script>
@@ -146,7 +150,7 @@ Motion Array So Easy song
 Belinda Carlisle - Har Gobinday
 Andrew Hung - Fizzy Barf
 Terry Presume - Act Up (Official Video)
-evelyn everywhere
+Son Lux - Evelyn Everywhere
 Wouldn't It Be Good - Nik Kershaw lyrics
 John Maus - Just Wait Til Next Year
 METAL Fight Against a Somewhat Stronger Monster - Super Mario RPG [Mashup]
@@ -156,7 +160,6 @@ Slow Motion - Official Audio
 Narcissus in a red dress
 The Evens - The EvensMartin Hägglund.
 Nik Kershaw - Wouldn't It Be Good (Only Strings Vocal Version)
-Instupendo - Comfort Chain
 Instupendo - Comfort Chain
 Shakewell - Leglock (Official Music Video) Prod.MTM
 THREE THOUSAND YEARS OF LONGING
