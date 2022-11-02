@@ -30,14 +30,18 @@ function superurlify(text) { // mine - ?needs to be refactored?
 //var sLine = "Find me at http://www.example.com and also at http://stackoverflow.com";
 //console.log(superurlify(sLine));
 
+    
+// dollarstore-markdown-ify - need to refactor but this is a mess and is only really specialized for my music playlist
 sBody = document.body.innerText;
 document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
-    aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(o)}`; // youtube &loop=0
-    aHrefDuck = `https://duckduckgo.com/?q=%5c${superencode(o)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
-    if (o.length>0) {
-         return a + `<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a><span style="font-size:8px;">${superurlify(o)}</span><br />`;
-    } else {
-         return a + `<br />`
+    if (o.match(/^\# /g)) { o = o.replace(/^\# /g, "<h2>") + "</h2>"; } else {
+      aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(o)}`; // youtube &loop=0
+      aHrefDuck = `https://duckduckgo.com/?q=%5c${superencode(o)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+      if (o.length>0) {
+           return a + `<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a><span style="font-size:8px;">${superurlify(o)}</span><br />`;
+      } else {
+           return a + `<br />`
+      }
     }
 }, "")
 
