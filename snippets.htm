@@ -127,8 +127,9 @@ for (let i = 0, p = Promise.resolve(); i < aArray.length; i++) {
 })();
 
 // regex (javascript)
-`eg 12:34 11:11`.match(/[0-9]+\:[0-9]+/g).sort().join(" ") // match timestamps for youtube
-
+var rTimeStamps; `eg 12:34 11:11`.match(/[0-9]+\:[0-9]+/g).sort().join(" "); // match timestamps for youtube
+var rURLs; `https://www.whatever.com https://www.example.com`.match(/(https?:\/\/[^\s]+)/g);
+                                      
 
 </textarea>
 <a href="http://tinyurl.com/supersnippets">supersnippets tinyurl</a> - http://tinyurl.com/supersnippets (self)<br />
