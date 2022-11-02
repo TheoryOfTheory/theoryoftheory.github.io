@@ -34,7 +34,7 @@ function superurlify(text) { // mine - ?needs to be refactored?
 // dollarstore-markdown-ify - need to refactor but this is a mess and is only really specialized for my music playlist
 sBody = document.body.innerText;
 document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
-    if (o.match(/^\# /g)) { o = o.replace(/^\# /g, "<h2>") + "</h2>"; } else {
+    if (o.match(/^\# /g)) { o = o.replace(/^\# /g, "<h2>") + "</h2>"; return a + o; } else {
       aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(o)}`; // youtube &loop=0
       aHrefDuck = `https://duckduckgo.com/?q=%5c${superencode(o)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
       if (o.length>0) {
