@@ -32,7 +32,8 @@ body { background-image: url(https://i.imgur.com/JNnR9lh.jpg); background-size: 
 search :<br />
 <input id="search" style="height:50px; font-size:40px" value="fetch node">
 
-<br /><button>search all</button>
+<br /><button>search all</button><button onclick="(function() { window.location.href = 'https://theoryoftheory.github.io/searchtree.htm?search=' + document.querySelectorAll('#search')[0].value.trim(); })()">refresh URL with #search value</button>
+<br />
 <br />
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}`">search google</button>
 <button onclick="openMe(this);" data-url="`https://arxiv.org/search/?query=${sValue}`">search arxiv.org</button>
