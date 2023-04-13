@@ -33,7 +33,7 @@ search :<br />
 <input id="search" style="height:50px; font-size:40px" value="fetch node"><br />
 
 <script> fFormulaLink = function() {
-    $$$$("#formulalink").value = `=HYPERLINK("${$$$$("#search").value + " searchtree"}", "${window.location.href}")`  
+    $$$$("#formulalink").value = `=HYPERLINK("${window.location.href}", "${$$$$("#search").value.replaceAll(/\"/g, '""') + " searchtree"}")`  
 }
 </script>
 <button onclick="fFormulaLink();">generate excel formula link</button>
