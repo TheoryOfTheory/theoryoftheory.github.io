@@ -23,6 +23,28 @@ function openMe(othis) {
 
 <style>
 body { background-image: url(https://i.imgur.com/JNnR9lh.jpg); background-size: 100% 100%; }
+
+
+button {
+  padding: 10px;
+  margin: 10px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  
+  border: 1px solid purple;
+  border-radius: 0 15px;
+  background: lightblue;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+button:hover {
+  background: purple;
+  color: #fff;
+  transition: all 0.4s ease;
+}
+
+
 </style>
 
 <br />
@@ -98,6 +120,8 @@ search :<br />
 <button onclick="openMe(this);" data-url="`https://codepen.io/search/pens?q=${sValue}`">search codepen</button>
 <button onclick="openMe(this);" data-url="`https://stackoverflow.com/search?q=${sValue}`">search stackoverflow</button>
 <button onclick="openMe(this);" data-url="`https://github.com/search?q=${sValue}`">search github</button>
+<button onclick="openMe(this);" data-url="`https://github.com/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+sort%3Aupdated-desc+${sValue}`">search github good first issues</button>
+
 
 
 live markdown: <textarea id="livemarkdown" rows=4 cols=20></textarea>
