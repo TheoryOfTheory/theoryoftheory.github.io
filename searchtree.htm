@@ -65,6 +65,15 @@ search :<br />
 <br /><button>search all</button><button onclick="(function() { window.location.href = 'https://theoryoftheory.github.io/searchtree.htm?search=' + document.querySelectorAll('#search')[0].value.trim(); })()">refresh URL with #search value</button>
 <br />
 <br />
+
+
+
+<button onclick="openMe(this);" data-url="`https://bard.google.com/?q=${sValue}`">search bard</button>
+<button onclick="openMe(this);" data-url="`https://chat.openai.com/?q=${sValue}`">search chatGPT</button>
+<button onclick="openMe(this);" data-url="`https://www.bing.com/new?q=${sValue}`">search bing AI chat</button>
+
+<br />
+<br />
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}`">search google</button>
 <button onclick="openMe(this);" data-url="`https://arxiv.org/search/?query=${sValue}&searchtype=all&abstracts=show&order=-announced_date_first&size=100`">search arxiv.org</button>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}%20site%3Aycombinator.com`">search ycombinator.org</button>
