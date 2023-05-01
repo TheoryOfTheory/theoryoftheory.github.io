@@ -37,8 +37,9 @@ document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
     if (o.match(/^\# /g)) { o = o.replace(/^\# /g, "<h2>") + "</h2>"; return a + o; } else {
       aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(o)}`; // youtube &loop=0
       aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + o)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+      aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(o)}`; // searchtree
       if (o.length>0) {
-           return a + `<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a><span style="font-size:8px;">${superurlify(o)}</span><br />`;
+           return a + `<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a><a target='_blank' href='${aHrefSearchTree}'>𓀂</a><span style="font-size:8px;">${superurlify(o)}</span><br />`;
       } else {
            return a + `<br />`
       }
@@ -53,6 +54,7 @@ software: fl studio vs ableton
 Joanna Newsom - Ys (Full Album)
 Nurse Jackie / Edie Falco karaoke - Up on the Roof
 Amongus Hide n Seek https://www.youtube.com/watch?v=0bnSKWV4t8E&t=70s
+Emmure - 10 Signs You Should Leave https://www.youtube.com/watch?v=iwTdODejQh0
 
 
 
