@@ -20,10 +20,10 @@ function superurlify(text) { // mine - ?needs to be refactored?
     var aURLMatches = text.match(/(https?:\/\/[^\s]+)/g); if (aURLMatches) {} else {aURLMatches = [];}
     var oReturn = {};
     text = text.replace(/(https?:\/\/[^\s]+)/g, "");
+    oReturn.text = text; // it's okay for oReturn's text to be blank
     if (text=="") {
         text = aURLMatches.join(" ");
     }
-    oReturn.text = text;
     oReturn.href = "";
     if (aURLMatches) {
         if (aURLMatches.length == 1) {
