@@ -37,11 +37,16 @@ function superurlify(text) { // mine - ?needs to be refactored?
 }
 // dollarstore-markdown-ify - need to refactor but this is a mess and is only really specialized for my music playlist & daily list
 dollarstoreMarkdownSearchTreeify = function () {
+    // implement all of these? - https://www.markdownguide.org/cheat-sheet/
     sBody = document.body.innerText;
     bBulletPoint = false;
     document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
         if (o.match(/^\# /g)) {
             o = o.replace(/^\# /g, "<h2>") + "</h2>"; return a + o;
+        } else if (o.match(/^\## /g)) {
+            o = o.replace(/^\## /g, "<h3>") + "</h3>"; return a + o;
+        } else if (o.match(/^\### /g)) {
+            o = o.replace(/^\### /g, "<h4>") + "</h4>"; return a + o;
         } else if ("match" == "* ") {
             // if lastIterationWasNotBullet
             // <ul>
@@ -63,7 +68,7 @@ dollarstoreMarkdownSearchTreeify = function () {
 dollarstoreMarkdownSearchTreeify();    
     
 
-}, false )</script>#  Rust lists/multi
+}, false )</script>##  Rust lists/multi
 <pre>
 # prereqs: https://www.reddit.com/r/rust/comments/p07h7d/whats_a_good_tech_stack_for_rust_and_web/
 
