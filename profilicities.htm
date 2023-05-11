@@ -1,4 +1,4 @@
-<script>window.addEventListener('load', function() { dom_convertAllURLsToAhrefs(); }, false )</script>
+<script>window.addEventListener('load', function() { dom_convertAllURLsToAhrefs("td"); }, false )</script>
 <style>
 table, th, td {
   border: 1px solid black;
@@ -13,10 +13,11 @@ td {
 }
 </style>
 <script>
-function dom_convertAllURLsToAhrefs() {
+function dom_convertAllURLsToAhrefs(sDOMElement) {
+    // eg sDOMElement = "td", dom_convertAllURLsToAhrefs(sDOMElement);
     var urlRegex = /(?<!href=")(https?:\/\/[^\s<]+|www\.[^\s<]+)/gi;
     
-    var tdElements = document.body.querySelectorAll('td');
+    var tdElements = document.body.querySelectorAll(sDOMElement);
     tdElements.forEach(td => {
       var cellContents = td.innerHTML;
       var urls = cellContents.match(urlRegex);
