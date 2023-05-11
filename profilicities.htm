@@ -1,4 +1,16 @@
 <script>window.addEventListener('load', function() { dom_convertAllURLsToAhrefs("td"); }, false )</script>
+<script>window.addEventListener('load', function() {
+
+aTags = $$("table td:first-child")
+    .splice(1,).map(o=>o.innerText.split(",")) // splits tags by comma
+    .reduce((acc, val) => acc.concat(val[0].trim()), []); // flattens array and trims the comma-delimited info
+
+// dom_WordCloudify(["nah", "nah", "nah", "nah", "hey", "hey", "hey", "goodbye"], $$$$("canvas"));
+dom_WordCloudify(aTags, $$$$("canvas"));
+
+}, false )</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js">
 <script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
@@ -10,16 +22,7 @@ table, th, td {
   border-collapse: collapse;
 }
 
-<script>window.addEventListener('load', function() {
 
-aTags = $$("table td:first-child")
-    .splice(1,).map(o=>o.innerText.split(",")) // splits tags by comma
-    .reduce((acc, val) => acc.concat(val[0].trim()), []); // flattens array and trims the comma-delimited info
-
-// dom_WordCloudify(["nah", "nah", "nah", "nah", "hey", "hey", "hey", "goodbye"], $$$$("canvas"));
-dom_WordCloudify(aTags, $$$$("canvas"));
-
-}, false )</script>
 
 
 
@@ -50,6 +53,8 @@ function dom_convertAllURLsToAhrefs(sDOMElement) {
     });
 }
 </script>
+
+
 
 <canvas id="myCanvas" width="200" height="200" style="border:1px solid"></canvas>
 
