@@ -1,5 +1,5 @@
-<script>window.addEventListener('load', function() { dom_convertAllURLsToAhrefs("td"); }, false )</script>
-<script>window.addEventListener('load', function() {
+<script>window.addEventListener('DOMContentLoaded', function() { dom_convertAllURLsToAhrefs("td"); }, false )</script>
+<script>window.addEventListener('DOMContentLoaded', function() {
 
 aTags = $$("table td:first-child")
     .splice(1,).map(o=>o.innerText.split(",")) // splits tags by comma
