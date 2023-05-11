@@ -10,6 +10,22 @@ table, th, td {
   border-collapse: collapse;
 }
 
+<script>window.addEventListener('load', function() {
+
+aTags = $$("table td:first-child")
+    .splice(1,).map(o=>o.innerText.split(",")) // splits tags by comma
+    .reduce((acc, val) => acc.concat(val[0].trim()), []); // flattens array and trims the comma-delimited info
+
+// dom_WordCloudify(["nah", "nah", "nah", "nah", "hey", "hey", "hey", "goodbye"], $$$$("canvas"));
+dom_WordCloudify(aTags, $$$$("canvas"));
+
+}, false )</script>
+
+
+
+
+
+
 td {
   height: 100px;
   width: 100px;
