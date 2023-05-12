@@ -1,6 +1,10 @@
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { /* code */ }); </script>
 <script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
-<link rel="stylesheet" href="https://yayinternets.github.io/datacss.css"><script>window.addEventListener('load', function() { dom_changeTitleAndFavicon("supersnippets", "https://letshirepro.com/icons/freelauncer.ico" ); }, false )</script>
+<link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
+
+
+<script>window.addEventListener('load', function() { dom_changeTitleAndFavicon("supersnippets", "https://letshirepro.com/icons/freelauncer.ico" ); }, false )</script>
 <style>body { background-size: 300px 300px; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.73)), url('https://i.imgur.com/1b0Ptkk.png'); background-repeat: repeat; } </style>
 
 
@@ -9,6 +13,36 @@
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { editor_codeMirror_ify($$$$("textarea")); }); </script>
 
 <p class="superp">commonly-used/refactorably-pending scripts/gists/snippets</p>
+
+<button onclick="googlesheetlinebreaks()">googlesheetlinebreaks</button><script>
+// <button onclick="googlesheetlinebreaks()">googlesheetlinebreaks</button><script>
+function googlesheetlinebreaks() {
+    //let myArray = [['1', '2', '3\n3.5'], ['4', '5', '6'], ['7', '8', '9']];
+    //let myArray = [['1', '2', '3&#13;3.5'], ['4', '5', '6'], ['7', '8', '9']];
+    let myArray = [['1', '2', '3<br />3.5'], ['4', '5', '6'], ['7', '8', '9']];
+    let myString = myArray.reduce((acc, val) => acc + val.join('\t') + '\n', '');
+    
+    let copyEvent = new ClipboardEvent('copy', {
+        clipboardData: new DataTransfer(),
+    });
+    // copyEvent.clipboardData.setData('text/plain', myString);
+    // copyEvent.clipboardData.setData('text/html', '<table><tbody><tr><td>' + myString.replace(/\n/g, '</td></tr><tr><td>') + '</td></tr></tbody></table>');
+    //document.dispatchEvent(copyEvent);
+
+    document.addEventListener('copy', function(e) {
+      // e.clipboardData is initially empty, but we can set it to the
+      // data that we want copied onto the clipboard.
+      e.clipboardData.setData('text/plain', 'Hello, world!');
+      e.clipboardData.setData('text/html', '<b>Hello, world!</b>');
+    
+      // This is necessary to prevent the current document selection from
+      // being written to the clipboard.
+      e.preventDefault();
+    });
+    
+}
+</script>
+
 
 <textarea>
 # bash
