@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Split Textarea</title>
+        <title>Chunkize 45000/50000 textarea for gs cells</title>
 </head>
 <body>
 
@@ -15,12 +15,13 @@
                         const textarea = document.getElementById("myTextarea");
                         const chunkedTextareas = document.getElementById("chunkedTextareas");
                         const text = textarea.value;
+                        var i = 45000; // 50000?
 
-                        if (text.length > 500) {
+                        if (text.length > i45000) {
                                 const chunks = [];
 
-                                for (let i = 0; i < text.length; i += 45000) {
-                                        chunks.push(text.substring(i, i + 45000));
+                                for (let i = 0; i < text.length; i += i45000) {
+                                        chunks.push(text.substring(i, i + i45000));
                                 }
 
                                 chunkedTextareas.innerHTML = chunks.map(chunk => `<br /><br /><textarea>${chunk}</textarea>`).join("");
