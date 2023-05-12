@@ -16,11 +16,11 @@
                         if (text.length > 500) {
                                 const chunks = [];
 
-                                for (let i = 0; i < text.length; i += 500) {
-                                        chunks.push(text.substring(i, i + 500));
+                                for (let i = 0; i < text.length; i += 45000) {
+                                        chunks.push(text.substring(i, i + 45000));
                                 }
 
-                                chunkedTextareas.innerHTML = chunks.map(chunk => `<textarea>${chunk}</textarea>`).join("");
+                                chunkedTextareas.innerHTML = chunks.map(chunk => `<br /><br /><textarea>${chunk}</textarea>`).join("");
                         } else {
                                 chunkedTextareas.innerHTML = "";
                         }
