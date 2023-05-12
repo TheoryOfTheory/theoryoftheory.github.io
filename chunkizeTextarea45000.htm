@@ -4,7 +4,10 @@
         <title>Split Textarea</title>
 </head>
 <body>
-        <textarea id="myTextarea" onchange="splitTextarea()"></textarea>
+
+<style>textarea { style: width: 1445px; height: 311px; }</style>
+
+        <textarea id="myTextarea" onedit="splitTextarea()"></textarea>
         <div id="chunkedTextareas"></div>
 
         <script>
