@@ -5,7 +5,7 @@ dom_fFilterTable = function(dElement, iRow, sTag) {
     iRow = 0;
     dElement.$$$a("tr").map(o=>{ return o.$$$a("td")[iRow]}).forEach(domTD=>{
         console.log(domTD);
-        if(domTD.innerText.match(new RegExp(sTag))) {
+        if(domTD.innerText.toLowerCase().match(new RegExp(sTag.toLowerCase()))) {
             domTR = domTD.parentNode;
             domTR.style.display = "";
         } else {
