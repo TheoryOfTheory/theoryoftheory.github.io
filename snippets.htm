@@ -78,10 +78,21 @@ function googlesheetlinebreaks2() {
 
     // ATTEMPT 3
     function setClipboard(text) {
-      const type = "text/html";
-      const blob = new Blob([text], { type });
-      const data = [new ClipboardItem({ [type]: blob })];
-    
+        // const type = "text/html";
+        // const blob = new Blob([text], { type });
+        // let data = [new ClipboardItem({ [type]: blob })];
+
+        let data = new ClipboardItem({
+        "text/plain": new Blob(
+            ["test"],
+            { type: "text/plain" }
+        ),
+        "text/html": new Blob(
+            [text],
+            { type: "text/html" }
+        ),
+      });
+      
       navigator.clipboard.write(data).then(
         () => {
           alert("success");
