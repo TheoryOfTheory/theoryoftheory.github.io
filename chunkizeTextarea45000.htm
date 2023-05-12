@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://yayinternets.github.io/datascripts.js"></script>
+<script src="https://yayinternets.github.io/domscripts.js"></script>
+<link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
+
         <title>Chunkize 45000/50000 textarea for gs cells</title>
         <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
                 if (oGetAllParameters_CLIENT()?.chunksize) {
@@ -24,6 +28,8 @@ textarea { width: 1445px; height: 311px; }
 
         <textarea id="myTextarea" oninput="splitTextarea()"></textarea><br /><br />
         <div id="chunkedTextareas">Paste in large data above and textareas of gs-friendly <input id="chunksize"></input>-sized chunks will appear below:</div>
+        <br /><a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks
+        <br /><br />
 
         <script>
                 function splitTextarea() {
