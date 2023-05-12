@@ -24,7 +24,7 @@
                                         chunks.push(text.substring(i, i + i50000));
                                 }
 
-                                chunkedTextareas.innerHTML = chunks.map(chunk => `<br /><br /><textarea>${chunk}</textarea>`).join("");
+                                chunkedTextareas.innerHTML = chunks.map(chunk => `<br /><br /><div><textarea class="chunk50000">${chunk}</textarea><br /><button onclick="copy">copy</button></div>`).join("");
                         } else {
                                 chunkedTextareas.innerHTML = "";
                         }
