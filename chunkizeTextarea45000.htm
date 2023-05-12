@@ -7,7 +7,7 @@
 
 <style>textarea { style: width: 1445px; height: 311px; }</style>
 
-        <textarea id="myTextarea" onedit="splitTextarea()"></textarea>
+        <textarea id="myTextarea" oninput="splitTextarea()"></textarea>
         <div id="chunkedTextareas"></div>
 
         <script>
@@ -17,11 +17,11 @@
                         const text = textarea.value;
                         var i = 45000; // 50000?
 
-                        if (text.length > i45000) {
+                        if (text.length > i50000) {
                                 const chunks = [];
 
-                                for (let i = 0; i < text.length; i += i45000) {
-                                        chunks.push(text.substring(i, i + i45000));
+                                for (let i = 0; i < text.length; i += i50000) {
+                                        chunks.push(text.substring(i, i + i50000));
                                 }
 
                                 chunkedTextareas.innerHTML = chunks.map(chunk => `<br /><br /><textarea>${chunk}</textarea>`).join("");
