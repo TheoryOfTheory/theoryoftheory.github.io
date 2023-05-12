@@ -2,6 +2,7 @@
 <html>
 <head>
 <script>
+// NEW-PROMISE navigator.clipboard.writeText("blah")/Clipboard.write() =, DEBUGGING document needs focus vs copy("blah") vs OLD document.execCommand("copy") 
 function fallbackCopyTextToClipboard(text) {
   var textArea = document.createElement("textarea");
   textArea.value = text;
@@ -36,6 +37,86 @@ function copyTextToClipboard(text) {
     console.error('Async: Could not copy text: ', err);
   });
 }
+function copyJSArrayToClipboard(aArray) {
+// function copyRTFHTML_to_clipboard(sHTML) {
+    // copy rich text format / html to clipboard
+    //OLD let myArray = [['1', '2', '3\n3.5'], ['4', '5', '6'], ['7', '8', '9']]; //let myArray = [['1', '2', '3&#13;3.5'], ['4', '5', '6'], ['7', '8', '9']];
+    //eg: 
+    // let aArray = [['1', '2', '3<br />3.5'], ['4', '5', '6'], ['7', '8', '9']]; copyJSArrayToClipboard(aArray);
+    
+    // let myString = myArray.reduce((acc, val) => acc + val.join('\t') + '\n', '');
+
+
+    // ATTEMPT 1
+    // let copyEvent = new ClipboardEvent('copy', {
+    //    clipboardData: new DataTransfer(),
+    // });
+    // copyEvent.clipboardData.setData('text/plain', myString);
+    // copyEvent.clipboardData.setData('text/html', '<table><tbody><tr><td>' + myString.replace(/\n/g, '</td></tr><tr><td>') + '</td></tr></tbody></table>');
+    //document.dispatchEvent(copyEvent);
+
+    // ATTEMPT 2
+    /*
+    document.addEventListener('copy', function(e) {
+      // e.clipboardData is initially empty, but we can set it to the
+      // data that we want copied onto the clipboard.
+      e.clipboardData.setData('text/plain', 'Hello, world!');
+      e.clipboardData.setData('text/html', '<b>Hello, world!</b>');
+    
+      // This is necessary to prevent the current document selection from
+      // being written to the clipboard.
+      e.preventDefault();
+    });
+    */
+
+    // ATTEMPT 3 // https://www.nikouusitalo.com/blog/why-isnt-clipboard-write-copying-my-richtext-html/
+    // Error due to text/html and text/plain at teh samem time - : TypeError - Failed to execute 'write' on 'Clipboard': The object must have a callable @@iterator property.
+    /*
+    function setClipboard(text) {
+        // const type = "text/html";
+        // const blob = new Blob([text], { type });
+        // let data = [new ClipboardItem({ [type]: blob })];
+        alert(text);
+        let data = new ClipboardItem({
+        "text/plain": new Blob(
+            ["test"],
+            { type: "text/plain" }
+        ),
+        "text/html": new Blob(
+            ["<div style='color:red'>test<div>"],
+            { type: "text/html" }
+        ),
+      });
+      
+      navigator.clipboard.write(data).then(
+        () => {
+          alert("success");    
+
+        },
+        (err) => {
+            alert(`Error: ${err.name} - ${err.message}`);
+        }
+      );
+    }
+    setClipboard(toHTMLTable(aArray));
+    // chatgpt - how do i fix this code.. I get this error: Error: TypeError - Failed to execute 'write' on 'Clipboard': The object must have a callable @@iterator property.
+    */
+
+    // ATTEMPT 4 - refactoring notes: use ATTEMPT 3 to figure out how to incorporate both text/plain and text/html at the same time
+    sHTMLTable = toHTMLTable(aArray);
+      var type = "text/html";
+      var blob = new Blob([sHTMLTable], { type });
+      var data = [new ClipboardItem({ [type]: blob })];
+    
+      navigator.clipboard.write(data).then(
+        () => {
+          alert("success, now paste the HTML/RTF content in the clipboard onto an RTF-receptive platform (eg an externally-selected googlesheet cell");    
+        },
+        (err) => {
+            alert(`Error: ${err.name} - ${err.message}`);
+        }
+      );    
+} 
 </script>
 <script>
 function copyall() {
@@ -43,7 +124,12 @@ function copyall() {
     copyTextToClipboard(sText);
 } 
 </script>
-
+<script>
+function copyJSArrayToClipboardHELPER() {
+	let aArray = [['1', '2', '3<br />3.5'], ['4', '5', '6'], ['7', '8', '9']];
+	copyJSArrayToClipboard(aArray);
+}
+</script>
 
 <script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
@@ -72,7 +158,7 @@ textarea { width: 1445px; height: 311px; }
 
         <textarea id="myTextarea" oninput="splitTextarea()"></textarea><br /><br />
         <br /><a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks
-        <div>Paste in large data above and textareas of gs-friendly <input id="chunksize"></input>-sized chunks will appear below: <button onclick="copyall()">Copy All</button></div>
+        <div>Paste in large data above and textareas of gs-friendly <input id="chunksize"></input>-sized chunks will appear below: <button onclick="copyall()">Copy All - dom_copyall?</button><button onclick="copyJSArrayToClipboardHELPER()">Copy All - copyJSArrayToClipboard</button></div>
         <div id="chunkedTextareas"></div>
 
         <br /><br />
