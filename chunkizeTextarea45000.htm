@@ -1,6 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+function fallbackCopyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+  
+  // Avoid scrolling to bottom
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.position = "fixed";
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Fallback: Copying text command was ' + msg);
+  } catch (err) {
+    console.error('Fallback: Oops, unable to copy', err);
+  }
+
+  document.body.removeChild(textArea);
+}
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(text);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+}
+</script>
+<script>
+function copyall() {
+    sText = $$$a(".chunk50000").map(o=>o.value.replace(/\n/g, "¶").replace(/\r/g, "¶")).reduce((a,e,i)=>{return a + "\n" + e;}, "").trim()
+    copyTextToClipboard(sText);
+} 
+</script>
+
+
 <script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
@@ -27,8 +71,10 @@ textarea { width: 1445px; height: 311px; }
 </style>
 
         <textarea id="myTextarea" oninput="splitTextarea()"></textarea><br /><br />
-        <div id="chunkedTextareas">Paste in large data above and textareas of gs-friendly <input id="chunksize"></input>-sized chunks will appear below:</div>
         <br /><a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks
+        <div>Paste in large data above and textareas of gs-friendly <input id="chunksize"></input>-sized chunks will appear below: <button onclick="copyall()">Copy All</button></div>
+        <div id="chunkedTextareas">Paste in large data above and textareas of gs-friendly <input id="chunksize"></input>-sized chunks will appear below: <button onclick="copyall()">Copy All</button></div>
+
         <br /><br />
 
         <script>
