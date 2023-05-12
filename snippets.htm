@@ -25,10 +25,11 @@ function googlesheetlinebreaks() {
     let copyEvent = new ClipboardEvent('copy', {
         clipboardData: new DataTransfer(),
     });
-    // copyEvent.clipboardData.setData('text/plain', myString);
-    // copyEvent.clipboardData.setData('text/html', '<table><tbody><tr><td>' + myString.replace(/\n/g, '</td></tr><tr><td>') + '</td></tr></tbody></table>');
-    //document.dispatchEvent(copyEvent);
+    copyEvent.clipboardData.setData('text/plain', myString);
+    copyEvent.clipboardData.setData('text/html', '<table><tbody><tr><td>' + myString.replace(/\n/g, '</td></tr><tr><td>') + '</td></tr></tbody></table>');
+    document.dispatchEvent(copyEvent);
 
+    /*
     document.addEventListener('copy', function(e) {
       // e.clipboardData is initially empty, but we can set it to the
       // data that we want copied onto the clipboard.
@@ -39,7 +40,8 @@ function googlesheetlinebreaks() {
       // being written to the clipboard.
       e.preventDefault();
     });
-    
+    */
+    alert("done2");
 }
 </script>
 
