@@ -5,10 +5,16 @@
 </head>
 <body>
 
-<style>textarea { width: 1445px; height: 311px; }</style>
+<style>
 
-        <textarea id="myTextarea" oninput="splitTextarea()"></textarea>
-        <div id="chunkedTextareas"></div>
+textarea { width: 1445px; height: 311px; }
+
+.chunk50000 { background-color: lightcyan; }
+
+</style>
+
+        <textarea id="myTextarea" oninput="splitTextarea()"></textarea><br /><br />
+        <div id="chunkedTextareas">Paste in large data above and textareas of gs-friendly 45000-sized chunks will appear below:</div>
 
         <script>
                 function splitTextarea() {
