@@ -2,6 +2,15 @@
 <html>
 <head>
         <title>Chunkize 45000/50000 textarea for gs cells</title>
+        <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
+                if (oGetAllParameters_CLIENT()?.chunksize) {
+                    document.querySelectorAll("#chunksize")[0].value = oGetAllParameters_CLIENT()?.chunksize;
+                } else {
+                    document.querySelectorAll$("#chunksize")[0].value = "45000";
+                }
+
+         }); </script>
+
 </head>
 <body>
 
@@ -14,7 +23,7 @@ textarea { width: 1445px; height: 311px; }
 </style>
 
         <textarea id="myTextarea" oninput="splitTextarea()"></textarea><br /><br />
-        <div id="chunkedTextareas">Paste in large data above and textareas of gs-friendly 45000-sized chunks will appear below:</div>
+        <div id="chunkedTextareas">Paste in large data above and textareas of gs-friendly <input id="chunksize"></input>-sized chunks will appear below:</div>
 
         <script>
                 function splitTextarea() {
