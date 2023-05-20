@@ -17,11 +17,18 @@ dom_fFilterTable = function(dElement, iRow, sTag) {
 </script>
 <script>window.addEventListener('DOMContentLoaded', function() {
 
+
+// add clickable filter into label tags
+$$$a("tr").map(o=>o.querySelectorAll("td")[0]).forEach(oo=>{ 
+    oo.innerHTML = oo.innerHTML.split(",").map(o=>`<span onclick='dom_fFilterTable(document.querySelectorAll("table")[0], 0, this.innerText)' class='tagfilter'>${o.trim()}</span>`).join(", ");
+})
+
+
+// add clickable canvas tag
 // aTags = $$("table td:first-child")
 aTags = Array.from(document.querySelectorAll("table td:first-child"))
     .splice(1,).map(o=>o.innerText.split(",")) // splits tags by comma
     .reduce((acc, val) => acc.concat(val[0].trim()), []); // flattens array and trims the comma-delimited info
-
 // dom_WordCloudify(["nah", "nah", "nah", "nah", "hey", "hey", "hey", "goodbye"], $$$$("canvas"));
 // dom_WordCloudify(aTags, $$$$("canvas"));
 dom_WordCloudify(aTags, $$$$("canvas"), (sTag)=>{ dom_fFilterTable($$$$("table"), 0, sTag);} );
