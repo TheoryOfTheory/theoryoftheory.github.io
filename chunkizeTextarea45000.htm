@@ -103,7 +103,7 @@ function copyJSArrayToClipboard(aArray) {
     */
 
     // ATTEMPT 4 - refactoring notes: use ATTEMPT 3 to figure out how to incorporate both text/plain and text/html at the same time
-      sHTMLTable = toHTMLTable(aArray, undefined, "#copyJSArrayToClipboard");
+      sHTMLTable = toHTMLTable(aArray, undefined, "#copyJSArrayToClipboard", 0);
       sHTMLTable = sHTMLTable.replace(/table /, "table style='text-align: left; '");
       // <style> no funciona - i guess navigator.clipboard.write can't accept <style> html?
       // sHTMLTable = "<style>#copyJSArrayToClipboard { text-align: left; } </style>" + sHTMLTable;
