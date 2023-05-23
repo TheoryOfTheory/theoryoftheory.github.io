@@ -56,7 +56,7 @@ dollarstoreMarkdownSearchTreeify = function () {
         } else if ("match" == "on bullet points, title!!url, and so on..") {
             
         } else { // assume just searchtree-ify whatever is on the line?  or introduce a notation?
-          aHrefYoutube = `https://www.youtube.com/results?search_query=${superurlify(o).text}`; // youtube &loop=0
+          aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(o).text)}`; // youtube &loop=0
           aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(o).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
           aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(o).text)}`; // searchtree
           if (o.length>0) {
