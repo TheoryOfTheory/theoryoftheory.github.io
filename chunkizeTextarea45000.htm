@@ -130,11 +130,17 @@ function copyall() {
 } 
 </script>
 <script>
-function copyJSArrayToClipboardHELPER() {
+function copyJSArrayToClipboardHELPER(sOrientation) {
         // let aArray = [['1', '2', '3<br />3.5'], ['4', '5', '6'], ['7', '8', '9']];
         // let aArray = [['1'], ['4'], ['7']];
     // let aArray = $$$a(".chunk50000").map(o=>[superhtmlEntities(o.value).substring(0,10)]);
     let aArray = $$$a(".chunk50000").map(o=>[superhtmlEntities(o.value)]);
+    
+    if (sOrientation == "tab/horizontal/transposed") {
+        aArray = transpose(aArray);
+    } else { // ""
+        // do not tranpose
+    }
     // copyTextToClipboard(toHTMLTable(aArray));
         copyJSArrayToClipboard(aArray);
 }
@@ -169,7 +175,18 @@ textarea { width: 600px; height: 311px; }
         <textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea><br /><br />
         <a href="https://html-cleaner.com">html-cleaner</a> - find a vanilla javascript library replicates this site's tools<br />
         <br /><a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks
-        <div>Paste in large data above and textareas of gs-friendly <input id="chunksize"></input>-sized chunks will appear below: <button onclick="copyall()">Copy All - dom_copyall?</button><button onclick="copyJSArrayToClipboardHELPER()">Copy All - copyJSArrayToClipboard</button></div>
+
+        <div>Paste in large data above and textareas of gs-friendly <input id="chunksize">-sized chunks will appear below: <br />
+            
+            <button onclick="copyall()">Copy All - dom_copyall?</button><br />
+                
+            <button onclick="copyJSArrayToClipboardHELPER('newline/vertical/normal')">Copy All - copyJSArrayToClipboard newline/vertical/normal</button><br />
+            
+            <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button>
+            
+        </div>
+
+
         <div id="chunkedTextareas"></div>
 
         <br /><br />
