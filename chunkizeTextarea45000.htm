@@ -144,6 +144,9 @@ function copyJSArrayToClipboardHELPER(sOrientation) {
     // copyTextToClipboard(toHTMLTable(aArray));
         copyJSArrayToClipboard(aArray);
 }
+function replaceNewlinesWithPilcrows() {
+    $$$a('.chunk50000').forEach(o=>{ o.value = o.value.replace(/\n/g, '¶'); })
+}
 </script>
 
 <script src="https://yayinternets.github.io/datascripts.js"></script>
@@ -182,8 +185,9 @@ textarea { width: 600px; height: 311px; }
                 
             <button onclick="copyJSArrayToClipboardHELPER('newline/vertical/normal')">Copy All - copyJSArrayToClipboard newline/vertical/normal</button><br />
             
-            <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button>
+            <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button><br /><br />
             
+          	<button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
         </div>
         <div><input id="maximumNumberOfChunks" value="20"> maximum number of chunks</div>
         <div id="numberOfChunks">There are a total of ??? chunks.</div>
