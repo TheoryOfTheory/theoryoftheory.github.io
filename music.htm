@@ -56,11 +56,12 @@ dollarstoreMarkdownSearchTreeify = function () {
         } else if ("match" == "on bullet points, title!!url, and so on..") {
             
         } else { // assume just searchtree-ify whatever is on the line?  or introduce a notation?
+          sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(superurlify(o).text)}&btnI=I%27m+Feeling+Lucky`; // from google bard
           aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(o).text)}`; // youtube &loop=0
           aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(o).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
           aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(o).text)}`; // searchtree
           if (o.length>0) {
-               return a + `<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(o).href}</span>${superurlify(o).text}<br />`;
+               return a + `<a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(o).href}</span>${superurlify(o).text}<br />`;
           } else {
                return a + `<br />`
           }
@@ -74,7 +75,14 @@ dollarstoreMarkdownSearchTreeify();
 # notes
 software: fl studio vs ableton
 
+# July 2023
+The Last Goodnight - Pictures Of You
+The Cure - Pictures Of You https://www.reddit.com/r/redscarepod/comments/153r7e4/the_cure_pictures_of_you/
+
+
+
 # June 2023
+Kali Uchis - Lottery https://www.youtube.com/watch?v=jrtIJK1SfcY
 Echosmith - Over My Head
 Josh Wilson - Revolutionary
 The Black Lips - Dirty Hands
