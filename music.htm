@@ -38,7 +38,7 @@ function superurlify(text) { // mine - ?needs to be refactored?
     return oReturn;
 }
 // dollarstore-markdown-ify - need to refactor but this is a mess and is only really specialized for my music playlist & daily list
-dollarstoreMarkdownSearchTreeify = function () {
+dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
     // implement all of these? - https://www.markdownguide.org/cheat-sheet/
     sBody = document.body.innerText;
     bBulletPoint = false;
@@ -49,26 +49,31 @@ dollarstoreMarkdownSearchTreeify = function () {
             o = o.replace(/^\## /g, "<h3>") + "</h3>"; return a + o;
         } else if (o.match(/^\### /g)) {
             o = o.replace(/^\### /g, "<h4>") + "</h4>"; return a + o;
-        } else if ("match" == "* ") {
+        } else if ("match" == "* ") { // if o.trim()== "*", if "*" then <li></li>, if " *" then <li><li></li></li>, and so on.
             // if lastIterationWasNotBullet
             // <ul>
             bBulletPoint = true;
         } else if ("match" == "on bullet points, title!!url, and so on..") {
             
-        } else { // assume just searchtree-ify whatever is on the line?  or introduce a notation?
-          sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(superurlify(o).text)}&btnI=I%27m+Feeling+Lucky`; // from google bard
-          aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(o).text)}`; // youtube &loop=0
-          aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(o).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
-          aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(o).text)}`; // searchtree
-          if (o.length>0) {
-               return a + `<a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(o).href}</span>${superurlify(o).text}<br />`;
-          } else {
-               return a + `<br />`
+        } else { 
+          // if else, then put in closing </ul>
+          
+          // but for now just dollarstore'ing this:
+          if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
+            sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(superurlify(o).text)}&btnI=I%27m+Feeling+Lucky`; // from google bard
+            aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(o).text)}`; // youtube &loop=0
+            aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(o).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+            aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(o).text)}`; // searchtree
+            if (o.length>0) {
+                 return a + `<a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(o).href}</span>${superurlify(o).text}<br />`;
+            } else {
+                 return a + `<br />`
+            }
           }
         }
     }, "");
 }
-dollarstoreMarkdownSearchTreeify();    
+dollarstoreMarkdownSearchTreeify(true);    
     
 
 }, false )</script><pre>
