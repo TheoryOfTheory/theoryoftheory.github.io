@@ -29,11 +29,11 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
         } else { // if else then it's a song name eg "song name // tag, tag"
           // if else, then put in closing </ul>
           sSansHrefText = superurlify(o).text;
-          sTextSansCommentTags = o.split("//")[0]?.trim();
-          sArtistSong = sSansHrefText.split("//")[0]?.trim(); // remove the double slash tags from Artist - Song name
-          if (sSansHrefText.split("//")[1]) { // eg "favs arabic sad"
+          sTextSansCommentTags = o.split(" // ")[0]?.trim();
+          sArtistSong = sSansHrefText.split(" // ")[0]?.trim(); // remove the double slash tags from Artist - Song name
+          if (sSansHrefText.split(" // ")[1]) { // eg "favs arabic sad"
             // console.log(sSansHrefText);
-            sCommentTags = sSansHrefText.split("//")[1].trim();
+            sCommentTags = sSansHrefText.split(" // ")[1].trim();
             sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
           } else {
             sCommentTags = "";
@@ -151,6 +151,7 @@ Beware the Forest's Mushrooms - Super Mario RPG: Legend of the Seven Stars Music
 Fight Against a Somewhat Stronger Monster - Super Mario RPG: Legend of the Seven Stars // videogame
 
 # August 2023
+Abel jiro - Lucid // magical chill
 Janet Jackson - Escapade // 80s favs dance 
 2Pac - Hate It Or Love It
 The Game - Hate It Or Love It (feat 50 Cent)
