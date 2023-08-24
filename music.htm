@@ -31,7 +31,8 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
           sSansHrefText = superurlify(o).text;
           sArtistSong = sSansHrefText.split("//")[0]?.trim(); // remove the double slash tags from Artist - Song name
           if (sSansHrefText.split("//")[1]) { // eg "favs arabic sad"
-            sCommentTags = sSansHrefText.text.split("//")[1]?.trim();
+            // console.log(sSansHrefText);
+            sCommentTags = sSansHrefText.split("//")[1].trim();
             sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
           } else {
             sCommentTags = "";
