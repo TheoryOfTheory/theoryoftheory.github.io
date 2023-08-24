@@ -28,9 +28,10 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
             
         } else { // if else then it's a song name eg "song name // tag, tag"
           // if else, then put in closing </ul>
-          sArtistSong = superurlify(o).text.split("//")[0].trim(); // remove the double slash tags from Artist - Song name
-          if (o.split("//")[1]) { // eg "favs arabic sad"
-            sCommentTags = superurlify(o).text.split("//")[1].trim();
+          sSansHrefText = superurlify(o).text;
+          sArtistSong = sSansHrefText.split("//")[0].trim(); // remove the double slash tags from Artist - Song name
+          if (sSansHrefText.split("//")[1]) { // eg "favs arabic sad"
+            sCommentTags = sSansHrefText.text.split("//")[1].trim();
             sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
           } else {
             sCommentTags = "";
