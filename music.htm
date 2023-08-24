@@ -98,6 +98,8 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
 function filtertags(oTag) {
     sTag = oTag.innerText;
     sTag = sTag.replaceAll(",", "").toLowerCase(); // remove extraneous comma
+    
+    $$$("h2").forEach(o=>o.style.display = "none");
 
     $$$a(".artistsong").forEach(oArtistSong=>{
         sCommentTag = oArtistSong.innerText.split("//")[1]?.trim();
@@ -151,6 +153,7 @@ Beware the Forest's Mushrooms - Super Mario RPG: Legend of the Seven Stars Music
 Fight Against a Somewhat Stronger Monster - Super Mario RPG: Legend of the Seven Stars // videogame
 
 # August 2023
+Savoir Adore - Slow Motion // magical
 Abel jiro - Lucid // magical chill
 Janet Jackson - Escapade // 80s favs dance 
 2Pac - Hate It Or Love It
