@@ -6,6 +6,8 @@
 
 <script>window.addEventListener('load', function() {
 
+document.body.innerHTML = document.body.innerHTML.replace("🎵MUSIC", "<span onclick='unfiltertags()'>🎵MUSIC🎵</span>");
+
 // var text = 'Find me at http://www.example.com and also at http://stackoverflow.com';
 // console.log(urlify(text))
 //var sLine = "Find me at http://www.example.com and also at http://stackoverflow.com";
@@ -117,7 +119,8 @@ function unfiltertags() { // restore visibility of all artist/songs
 }
 </script><pre>
 
-# 🎵<span onclick='unfiltertags()'>MUSIC</span>
+# 🎵MUSIC
+
 # notes
 software: fl studio vs ableton
 
