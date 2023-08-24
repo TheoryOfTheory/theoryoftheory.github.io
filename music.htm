@@ -97,23 +97,23 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
 function filtertags(oTag) {
     sTag = oTag.innerText;
     sTag = sTag.replaceAll(",", "").toLowerCase(); // remove extraneous comma
-    console.log(sTag)
+
     $$$a(".artistsong").forEach(oArtistSong=>{
-        sCommentTag = oArtistSong.innerText.split("//")[1];
+        sCommentTag = oArtistSong.innerText.split("//")[1]?.trim();
+        
         if (sCommentTag) {
-            sCommentTag = sCommentTag.replaceAll(",", " ").replaceAll("  ", " "); // remove extra commas and spaces
+            sCommentTag = sCommentTag.toLowerCase().replaceAll(",", " ").replaceAll("  ", " "); // remove extra commas and spaces
+
             aCommentTags = sCommentTag.split(" ");
-        } else { sCommentTag = ""; }
-        if ((sCommentTag.length == 0) && aCommentTags.indexOf(sTag) == -1) {
+        } else { sCommentTag = ""; aCommentTags = []; }
+        
+        if ((sCommentTag.length == 0) || (aCommentTags.indexOf(sTag) == -1)) {
             oArtistSong.style.display = "none";
         } else {
             // console.log(oArtistSong.style);
-            oArtistSong.style.display = "hidden";
+            oArtistSong.style.display = "";
         }
-    
-
     })
-
 }
 
 function unfiltertags() { // restore visibility of all artist/songs
@@ -121,7 +121,9 @@ function unfiltertags() { // restore visibility of all artist/songs
                 oArtistSong.style.display = "";
     })
 }
-</script><pre>
+</script>
+
+<pre>
 
 # 🎵MUSIC
 
