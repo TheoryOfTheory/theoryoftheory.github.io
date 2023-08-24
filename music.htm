@@ -109,9 +109,15 @@ function filtertags(oTag) {
     })
 
 }
+
+function unfiltertags() { // restore visibility of all artist/songs
+    $$$a(".artistsong").forEach(oArtistSong=>{
+                oArtistSong.style.display = "";
+    })
+}
 </script><pre>
 
-# MUSIC
+# 🎵<span onclick='unfiltertags()'>MUSIC</span>
 # notes
 software: fl studio vs ableton
 
