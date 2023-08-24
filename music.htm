@@ -55,15 +55,15 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
             bBulletPoint = true;
         } else if ("match" == "on bullet points, title!!url, and so on..") {
             
-        } else { 
+        } else { // if else then it's a song name eg "song name // tag, tag"
           // if else, then put in closing </ul>
-          
+          sArtistSong = o.split("//")[0].trim(); // remove the double slash tags from Artist - Song name
           // but for now just dollarstore'ing this:
           if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
-            sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(superurlify(o).text)}&btnI=I%27m+Feeling+Lucky`; // from google bard
-            aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(o).text)}`; // youtube &loop=0
-            aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(o).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
-            aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(o).text)}`; // searchtree
+            sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(superurlify(sArtistSong).text)}&btnI=I%27m+Feeling+Lucky`; // from google bard
+            aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(sArtistSong).text)}`; // youtube &loop=0
+            aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(sArtistSong).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+            aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(sArtistSong).text)}`; // searchtree
             if (o.length>0) {
                  return a + `<a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(o).href}</span>${superurlify(o).text}<br />`;
             } else {
