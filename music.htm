@@ -18,7 +18,7 @@ function urlify(text) { // via https://stackoverflow.com/questions/1500260/detec
   // or alternatively
   // return text.replace(urlRegex, '<a href="$1">$1</a>')
 }
-function superurlify(text) { // mine - ?needs to be refactored?
+function superurlify(text) { // converts text to {text: t, href, url } object to extract url;; mine - ?needs to be refactored?
     var aURLMatches = text.match(/(https?:\/\/[^\s]+)/g); if (aURLMatches) {} else {aURLMatches = [];}
     var oReturn = {};
     text = text.replace(/(https?:\/\/[^\s]+)/g, "");
@@ -65,7 +65,7 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
             aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(sArtistSong).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
             aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(sArtistSong).text)}`; // searchtree
             if (o.length>0) {
-                 return a + `<a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(o).href}</span>${superurlify(o).text}<br />`;
+                 return a + `<span class='artistsong'><a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(o).href}</span>${superurlify(o).text}</span><br />`;
             } else {
                  return a + `<br />`
             }
