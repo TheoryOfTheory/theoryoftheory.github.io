@@ -74,7 +74,7 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
             aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(sArtistSong).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
             aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(sArtistSong).text)}`; // searchtree
             if (o.length>0) {
-                 return a + `<span class='artistsong'><a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(sArtistSong).href}</span>${superurlify(sArtistSong).text + sCommentTags}</span><br />`;
+                 return a + `<span class='artistsong'><a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;<span style="font-size:8px;">${superurlify(sArtistSong).href}</span>${superurlify(sArtistSong).text + sCommentTags}<br /></span>`;
             } else {
                  return a + `<br />`
             }
@@ -85,7 +85,31 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
 dollarstoreMarkdownSearchTreeify(true);    
     
 
-}, false )</script><pre>
+}, false )</script>
+
+<script>
+function filtertags(oTag) {
+    sTag = oTag.innerText;
+    sTag = sTag.replaceAll(",", "").toLowerCase(); // remove extraneous comma
+    console.log(sTag)
+    $$$a(".artistsong").forEach(oArtistSong=>{
+        sCommentTag = oArtistSong.innerText.split("//")[1];
+        if (sCommentTag) {
+            sCommentTag = sCommentTag.replaceAll(",", " ").replaceAll("  ", " "); // remove extra commas and spaces
+            aCommentTags = sCommentTag.split(" ");
+        } else { sCommentTag = ""; }
+        if ((sCommentTag.length == 0) || aCommentTags.indexOf(sTag) == -1) {
+            oArtistSong.style.display = "none";
+        } else {
+            // console.log(oArtistSong.style);
+            oArtistSong.style.display = "hidden";
+        }
+    
+
+    })
+
+}
+</script><pre>
 
 # MUSIC
 # notes
