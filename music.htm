@@ -99,7 +99,8 @@ function filtertags(oTag) {
     sTag = oTag.innerText;
     sTag = sTag.replaceAll(",", "").toLowerCase(); // remove extraneous comma
     
-    $$$("h2").forEach(o=>o.style.display = "none");
+    // causes page to crash for some reason
+    // $$$("h2").forEach(o=>o.style.display = "none");
 
     $$$a(".artistsong").forEach(oArtistSong=>{
         sCommentTag = oArtistSong.innerText.split("//")[1]?.trim();
