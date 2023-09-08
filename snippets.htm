@@ -134,70 +134,17 @@ for (let i = 0, p = Promise.resolve(); i < aArray.length; i++) {
 var rTimeStamps; `eg 12:34 11:11`.match(/[0-9]+\:[0-9]+/g).sort().join(" "); // match timestamps for youtube
 var rURLs; `https://www.whatever.com https://www.example.com`.match(/(https?:\/\/[^\s]+)/g);
                 
-# BASH functions (ffmpeg,youtube-dl-ish) to add:
-
-# youtubemp3
-youtubemp3() {
-    # do things with parameters like $1 such as
-    # mv "$1" "$1.bak"
-    # cp "$2" "$1"
-    yt-dlp -v -x --audio-format mp3 --audio-quality 0 "$1"
-}
-# eg yt-dlp -v -x --audio-format mp3 --audio-quality 0 "https://www.youtube.com/watch?v=GUdHn64rVBM"
-# eg youtubemp3 "https://www.youtube.com/watch?v=GUdHn64rVBM"
-
-# ffmpegpdf
-for filename in ./*.pdf; do
-    ffmpegpdf "$filename"
-done
-
-function ffmpegpdf() {
-    mkdir ffmpegpdf
-    # convert -density 400 Mad_Max_-_Affine_Spline_Insights_into_Deep_Learning_\]_Richard_Baraniuk,_Rice_University.pdf ./pdfpicture/pdfpicture.png
-    # convert -density 400 Mad_Max_-_Affine_Spline_Insights_into_Deep_Learning_\]_Richard_Baraniuk,_Rice_University.pdf ./pdfpicture/pdfpicture.png
-    echo "converting pdf to png now..."
-    convert -density 400 "$1" ./ffmpegpdf/ffmpegpdf.png
-
-    # hack to rename all single digits to double -> use bash or python script to pad all to 4 instead since I want to convert books to mp4
-    cd ./ffmpegpdf/
-    echo "padding all pages with leading zeroes to maintain order..."
-    function decodeURIComponent() { echo -e $1 | python -c "import sys, urllib as ul; print ul.unquote(sys.stdin.read());"; }; decodeURIComponent %23%20import%20required%20module%0Aimport%20os%0Aimport%20re%0A%0A%0A%0A%0AsFile%20%3D%20%22%2FUsers0%2Fbeaulyle%2FDesktop%2Fpicture%2Fpicz-13.png%22%0A%0Adef%20padFileName%28sFileName%2C%20x%29%3A%0A%20%20%20aFile%20%3D%20sFileName.split%28%22%2F%22%29%0A%20%20%20m%20%3D%20re.search%28r%22%5Cd%2B%22%2C%20aFile%5B-1%5D%29%0A%0A%20%20%20%23if%20re.match%28r%22%5Cd%2B%22%2C%20aFile%5B-1%5D%29%3A%0A%20%20%20try%3A%0A%20%20%20%20%20%20sReplace%20%3D%20%28m.group%280%29.zfill%28x%29%29%0A%20%20%20%20%20%20aFile%5B-1%5D%20%3D%20re.sub%28r%22%5Cd%2B%22%2C%20sReplace%2C%20aFile%5B-1%5D%29%0A%20%20%20%20%20%20sNewFileName%20%3D%20%22%2F%22.join%28aFile%29%0A%20%20%20%23%20else%3A%0A%20%20%20except%3A%0A%20%20%20%20%20%20sNewFileName%20%3D%20sFileName%0A%20%20%20return%20sNewFileName%0A%0A%0A%0A%23%20assign%20directory%0Adirectory%20%3D%20%27.%2F%27%0Adirectory%20%3D%20os.getcwd%28%29%0A%0A%23%20iterate%20over%20files%20in%0A%23%20that%20directory%0Afor%20filename%20in%20os.listdir%28directory%29%3A%0A%20%20%20%20f%20%3D%20os.path.join%28directory%2C%20filename%29%0A%20%20%20%20%23%20checking%20if%20it%20is%20a%20file%0A%20%20%20%20if%20os.path.isfile%28f%29%3A%0A%20%20%20%20%20%20%20%20%23%20print%28padFileName%28f%2C%207%29%29%0A%20%20%20%20%20%20%20%20os.rename%28f%2C%20padFileName%28f%2C%207%29%29 > temp.py; python3 temp.py; rm -r temp.py
-    # mv ffmpegpdf-0.png ffmpegpdf-00.png
-    # mv ffmpegpdf-1.png ffmpegpdf-01.png
-    # mv ffmpegpdf-2.png ffmpegpdf-02.png
-    # mv ffmpegpdf-3.png ffmpegpdf-03.png
-    # mv ffmpegpdf-4.png ffmpegpdf-04.png
-    # mv ffmpegpdf-5.png ffmpegpdf-05.png
-    # mv ffmpegpdf-6.png ffmpegpdf-06.png
-    #mv ffmpegpdf-7.png ffmpegpdf-07.png
-    #mv ffmpegpdf-8.png ffmpegpdf-08.png
-    #mv ffmpegpdf-9.png ffmpegpdf-09.png
-    cd ..
-
-    echo "converting all the pngs to mp4 now..."
-    # ffmpeg -r 1/1 -i ./ffmpegpdf/ffmpegpdf-%07d.png -c:v libx264 -r 30 -pix_fmt yuv420p ./ffmpegpdf/video.pdf.mp4
-    # fix width/height when its not an even number wtf?
-    ffmpeg -r 1/1 -i ./ffmpegpdf/ffmpegpdf-%07d.png -c:v libx264 -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" -r 30 -pix_fmt yuv420p ./ffmpegpdf/video.pdf.mp4
-
-    mv ./ffmpegpdf/video.pdf.mp4 ./"$1.mp4"
-
-    rm -r ffmpegpdf
-}
-
-function youtube-dl-subtitles(){
-    # script to download youtube subtitles
-    # yt-dlp --write-auto-sub --convert-subs=srt --skip-download "https://www.youtube.com/watch?v=DglAta3ixuw"
-    # subtitles aka transcript aka captions
-    # youtube-dl-subtitles "https://www.youtube.com/watch?v=3jjRq-CW1dc" de
-    # youtube-dl --all-subs --skip-download "$1"
-    # youtube-dl --sub-lang en --write-auto-sub --sub-format srt --skip-download "https://www.youtube.com/watch?v=3jjRq-CW1dc"
-    if [ -z ${2+x} ]; then 2="en"; else echo "$2"; fi
-    youtube-dl --sub-lang $2 --write-auto-sub --sub-format srt --skip-download $1
-}
+</textarea><!-- BOTTOM SNIPPETS -->
+<a href="http://tinyurl.com/supersnippets">supersnippets tinyurl</a> - http://tinyurl.com/supersnippets (self)<br />
+<a href="https://github.com/snoopysecurity/Vulnerable-Code-Snippets">Vulnerable Code Snippets</a>
+<a href="https://flexboxfroggy.com/">flexboxfroggy</a>&nbsp;<a href="https://cssgridgarden.com">gridgarden</a>
+<a href="https://theoryoftheory.github.io/helloworld.htm">helloworld extravaganza</a>
+  
+<br />
 
 
-# TO REFACTOR:
-# ffmpeg for jpgs...ffmpegjpg?
-# ffmpeg -framerate 30 -pattern_type glob -i '*.jpeg' -c:v libx264 -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" out.mp4
+# prototypes
 
-# BASH functions (ffmpeg,youtube-dl-ish)
+* [linktree](https://theoryoftheory.github.io/linktree.htm)
+* [organize code snippets?](https://www.reddit.com/r/webdev/comments/sq6vto/looking_for_a_way_to_organize_code_snippets/)
+* [a.singlediv.com](https://a.singlediv.com/)
