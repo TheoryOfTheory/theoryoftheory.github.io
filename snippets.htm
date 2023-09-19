@@ -16,9 +16,9 @@
 <p class="superp">commonly-used/refactorably-pending scripts/gists/snippets</p>
 
 <textarea>
-#BASH
+# BASH SNIPPETS (basics, ffmpeg, calibre, rename)
 
-# bash
+# bash basics
 cat helloworld.py | pbcopy
 curl "example.com/examle.py" --output example.py
 wget -i example.txt # wget is curl but can take list of files as input
@@ -33,6 +33,24 @@ ebook-convert myfile.epub myfile.pdf
 # ffmpeg - reduce video scale (adapted from https://unix.stackexchange.com/questions/28803/how-can-i-reduce-a-videos-size-with-ffmpeg)
 # variable fraction 2 = one half, 3 = one third, four = one fourth, 5 = one fifth, etc...
 fraction=2; for i in *.mkv; do ffmpeg -i "$i" -vf "scale=trunc(iw/(2*$fraction))*2:trunc(ih/(2*$fraction))*2" -c:v libx265 -crf 28 "$i.mobile.mp4"; done
+
+# RENAMING FILES - perl rename utility
+# to install: "brew install rename"
+# use the rename -n flag to test what files will be renamed, remove it to 'go live'!
+# ([0-9]+) / [a-zA-Z0-9]{8} = matches digits infinitely (+) and alphanumeric 8 length
+# SIMPLE RENAMING FILES:
+# For example following command will prepend string MyVacation2011_ to all the files with jpg extension.
+rename -n 's/^/MyVacation2011_/g' *.jpg
+# MORE COMPLICATED RENAMING FILES:
+# to rename "[gg]_Hetalia_Axis_Powers_-_01_[Webcast]_[047F1273].mkv" to "Hetalia 01.mkv", use this:
+rename -n 's/\[gg\]_Hetalia_Axis_Powers_-_([0-9]+)_\[Webcast\]_\[[a-zA-Z0-9]{8}\]/Hetalia $1/g' *.mkv
+# to rename "[AnimeRG] Hetlia - 54 [480p] [Xcelent].mp4" to "Hetalia 54.mkv", use this:
+rename -n 's/\[gg\]_Hetalia_Axis_Powers_-_([0-9]+)_\[Webcast\]_\[[a-zA-Z0-9]{8}\]/Hetalia $1/g' *.mkv
+
+
+
+
+// JAVASCRIPT SNIPPETS
 // 4x js
 domLoadScripts_Link=function(t){Array.isArray(t)||(t=[t]),t.forEach((function(t){var e=document.getElementsByTagName("head")[0],r=document.createElement("script");r.setAttribute("src",t.trim()),e.appendChild(r)}))};
 // load scripts
@@ -63,7 +81,7 @@ body { background-image: url(https://i.imgur.com/JNnR9lh.jpg); background-size: 
 <script>window.addEventListener('load', function() { dom_changeTitleAndFavicon("Code Snippets", "https://letshirepro.com/icons/freelauncer.ico" ); }, false )</script>
 <title>favicon emoji</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📋</text></svg>">
-// OLD script snippets
+// OLD JAVASCRIPT script snippets
 
 // for loop one-liner
 for (i=2e3;i--;){console.log("blah");}
