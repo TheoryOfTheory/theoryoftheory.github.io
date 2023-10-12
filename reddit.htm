@@ -1,7 +1,28 @@
 <html><head><script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
-<script>window.addEventListener('load', function() { dom_changeTitleAndFavicon("cartesian mind", "https://www.shareicon.net/download/2015/08/25/90628_th.ico" ); }, false )</script>
+<script>window.addEventListener('load', function() { dom_changeTitleAndFavicon("reddit multireddit subreddits", "https://www.shareicon.net/download/2015/08/25/90628_th.ico" ); }, false )
+
+
+
+
+var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
+.map(oTR=>{
+    sMultiredditName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML).split(" ")[0];
+    try {
+    sMultiredditLink = eval(superHtmlDecode(oTR.querySelectorAll("td")[1].innerHTML.trim().replace("copy(", "(")));
+    } catch(e) { sMultiredditLink = ""; }
+    
+    return `<a href='${sMultiredditLink}'>${sMultiredditName}</a>`;
+
+});
+
+document.body.prependHTML(
+    "<ul>" + aRedditMultireddits.map(o=>"<li>" + o + "</li>").join("") + "</ul>"
+);
+
+
+</script>
 <style>img { height: 50px; width: 50px; }</style>
 <title>The Cartesian Mind TheCartesianMind vs Cartesian Coordinates?</title></head><body><table><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#PHIREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
