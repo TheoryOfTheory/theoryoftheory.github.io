@@ -937,7 +937,19 @@ Hindi+telugu
 duolingo
 languagelearning
 bilingual
-HelloTalk</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#STATECRAFTREDDIT #GEOREDDIT (international-ish)</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+HelloTalk
+  
+
+
+`;
+    
+copy("https://old.reddit.com/r/" + sString.split("\n")
+    .filter(o=>{ // filter out header comments
+        return (o.substring(0,2) != "//" && o.substring(0,1) != "#" && o.trim() != "");
+    })
+    .map(o=>{ return o.split("//")[0].trim() }) // split out comments
+    .join("+")
+);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#STATECRAFTREDDIT #GEOREDDIT (international-ish)</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 // statecraftreddit statereddit polreddit georeddit geopolitics - conflicts, arab, slav, asian - Nagorno-Karabakh (Azerbaijani/Soviet name) = Artsakh (Armenian name);
 
