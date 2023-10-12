@@ -8,12 +8,12 @@
 
 var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
 .map(oTR=>{
-    sMultiredditName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML).split(" ")[0];
+    var sMultiredditName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML).split(" ")[0];
     try {
-    sMultiredditLink = eval(superHtmlDecode(oTR.querySelectorAll("td")[1].innerHTML.trim().replace("copy(", "(")));
+    var sMultiredditLink = eval(superHtmlDecode(oTR.querySelectorAll("td")[1].innerHTML.trim().replace("copy(", "(")));
     } catch(e) { sMultiredditLink = ""; }
     
-    return `<a href='${sMultiredditLink}'>${sMultiredditName}</a>`;
+    return `<a target='_blank' href='${sMultiredditLink}'>${sMultiredditName}</a>`;
 
 });
 
