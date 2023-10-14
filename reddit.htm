@@ -24,7 +24,7 @@ document.body.innerHTML = "<ul>" + aRedditMultireddits.map(o=>"<li>" + o + "</li
 })
 </script>
 <style>img { height: 50px; width: 50px; }</style>
-<title>reddit multireddit subreddits</title></head><body><table><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#PHIREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+<title>reddit multireddit subreddits</title></head><body><table><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#PHIREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 
 // SPECIFIC
@@ -182,7 +182,63 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
 );
-</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#AMAZONREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#RELIGIOUSREDDIT THEOLOGYREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+
+theology
+
+Buddhism+Madhyamaka
+buddhiststudies
+
+Christianity
+DebateAChristian
+OrthodoxChristianity+CatholicTalks+Reformed+latterdaysaints+exmormon+ReformedBaptist+SouthernBaptist+ExBaptist+ExChristian+Baptist+ReformedHumor+PrimativeBaptists+Presbyterian+ReformedPresbyterian
+
+Confucianism
+taoism
+TaoTeChingDiscussions+LaoTzu 
+
+
+AcademicQuran
+IslamicStudies
+progressive_islam
+exmuslim
+SunniAshariMaturidi
+shia+ShiaMemes // Why is sunni and Sunni_Islam private, but Shia and ShiaMemes arent?
+
+AllamaMuhammadIqbal
+
+DebateReligion+DebateAnAtheist+Islam+AskBibleScholars+AcademicBiblical+hinduism+ReformEd
+
+
+
+`;
+    
+copy("https://old.reddit.com/r/" + sString.split("\n")
+    .filter(o=>{ // filter out header comments
+        return (o.substring(0,2) != "//" && o.substring(0,1) != "#" && o.trim() != "");
+    })
+    .map(o=>{ return o.split("//")[0].trim() }) // split out comments
+    .join("+")
+);
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#SPORTSREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+
+
+CFB
+
+CollegeBasketball
+
+
+
+`;
+    
+copy("https://old.reddit.com/r/" + sString.split("\n")
+    .filter(o=>{ // filter out header comments
+        return (o.substring(0,2) != "//" && o.substring(0,1) != "#" && o.trim() != "");
+    })
+    .map(o=>{ return o.split("//")[0].trim() }) // split out comments
+    .join("+")
+);
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#AMAZONREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 AmazonDS
 FASCAmazon
@@ -200,7 +256,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
 );
-</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#UNIONREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#UNIONREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 union
 UnitedAssociation
@@ -225,7 +281,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
 );
 
 
-</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#DEVREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#DEVREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 # PODCASTERS
 theprimeagen
@@ -344,7 +400,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
 );
 
 
-</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#COMEDYREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#COMEDYREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 // GENERIC
 StandUpComedy
@@ -564,7 +620,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     .join("+")
 );
 
-</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#LITREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#LITREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 # GENERAL
 kindle+goodreads
@@ -584,6 +640,12 @@ printSF
 readinglist
 suggestmeabook
 bookclub
+
+# SCIFI
+UrsulaKLeGuin
+OctaviaButler
+
+
 
 # UM
 BookClubTheMovie
@@ -631,7 +693,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
 
 
 
-</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#TVREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#TVREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 
 # TV
@@ -684,6 +746,9 @@ Velma+beeandpuppycat
 DHMIS // claymation?
 Wondershowzen // not a cartoon but a satire kids show
 bluey // Maybe a little bit out of context but I jumped when I heard Bluey’s Dad (Bandit) voice actor as Scarab’s boss haha https://www.reddit.com/r/adventuretime/comments/16o8fc2/fionna_and_cake_episodes_78_discussion/k1jay6k/
+CourageTheCowardlyDog
+
+
 
 
 # GENERIC
@@ -766,7 +831,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     .join("+")
 );
 
-</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#ANIMEREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#ANIMEREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 
 # GENERIC
@@ -805,7 +870,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     })
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
-);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#MLREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#MLREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 
 // GENERAL
@@ -870,7 +935,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     })
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
-);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#AIARTREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#AIARTREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 # AIMusic
 AIMusic
@@ -897,6 +962,7 @@ SingularityWatch+Lensa+SynthesiaAI+HighEndAI+normancrypt+generative+bigsleep
 deepdream
 bigsleep
 generateforme
+anyaiart
 
 // NSFW Ai Subs
 sdnsfw
@@ -918,7 +984,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     })
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
-);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#LINGREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#LINGREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 
 learnspanish+SpanishMemes+Spanish+memexico+yo_elvr+MexicanMemes+LatinoPeopleTwitter 
@@ -938,7 +1004,7 @@ duolingo
 languagelearning
 bilingual
 HelloTalk
-  
+
 
 
 `;
@@ -949,7 +1015,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     })
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
-);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#STATECRAFTREDDIT #GEOREDDIT (international-ish)</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#STATECRAFTREDDIT #GEOREDDIT (international-ish)</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 // statecraftreddit statereddit polreddit georeddit geopolitics - conflicts, arab, slav, asian - Nagorno-Karabakh (Azerbaijani/Soviet name) = Artsakh (Armenian name);
 
@@ -974,6 +1040,8 @@ UkraineWarVideoReport
 Arabs
 MiddleEastNews
 2ndYomKippurWar+Palestinian_Violence+IsraelPalestine
+PalestineExposed
+israelexposed // https://www.reddit.com/r/israelexposed/comments/17779ry/reuters_reporter_mr_issam_abdallah_is_dead/ 
 LevantineWar
 syriancivilwar
 LibyanCrisis
@@ -984,7 +1052,7 @@ YemeniCrisis
 IslamicStateNews
 AskMiddleEast
 
-
+Myanmarcombatfootage+SaveMyanmar+MyanmarCoupResistance+Myanmar2021+MyanmarMuslims
 
 CredibleDefense
 NonCredibleDefense
@@ -1008,7 +1076,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     })
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
-);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#POLITICSREDDIT (domestic or ideology-focused)</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#POLITICSREDDIT (domestic or ideology-focused)</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 
 #enough/anti- subreddits
@@ -1065,7 +1133,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     })
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
-);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#JOBSREDDIT #CAREERREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#JOBSREDDIT #CAREERREDDIT</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 DevOpsJob
 recruitinghell
@@ -1078,7 +1146,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
     })
     .map(o=>{ return o.split("//")[0].trim() }) // split out comments
     .join("+")
-);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#TRUECRIME</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+);</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#TRUECRIME</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 
 TrueCrime
@@ -1099,7 +1167,7 @@ copy("https://old.reddit.com/r/" + sString.split("\n")
 );
 
 
-</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>#IDIOTSIN* REDDITTIMEKILLER</td><td style='background-color:#b6d7a8; color:#000000; height:18px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
+</td></tr><tr><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>#IDIOTSIN* REDDITTIMEKILLER</td><td style='background-color:#b6d7a8; color:#000000; height:16px; width:100px; ' colspan=1 rowspan=1>sString = `// CONVERT TO BOOKMARK:
 
 TikTokCringe+LinkedInLunatics
 
@@ -1122,6 +1190,9 @@ dontflinch+UKFreakouts+gtaorbrazil+ithadtobebrazil
 dankinindia+HumanKitKat+looneytuneslogic+criticalblunder+holdmyredbull+accidentalslapstick+publicfreakout
 
 WorstAid+Idiotswithguns+TerrifyingAsFuck
+
+PraiseTheCameraMan
+WTF
 
 
 
