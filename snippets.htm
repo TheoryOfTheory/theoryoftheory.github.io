@@ -30,9 +30,12 @@ ffmpeg -f gif -i seal.gif seal.mp4
 ffmpegpdf myfile.pdf myfile.mp4
 ebook-convert myfile.epub myfile.pdf
 
-# ffmpeg - reduce video scale (adapted from https://unix.stackexchange.com/questions/28803/how-can-i-reduce-a-videos-size-with-ffmpeg)
+# ffmpeg one directory - reduce video scale for all mkv files in a directory (adapted from https://unix.stackexchange.com/questions/28803/how-can-i-reduce-a-videos-size-with-ffmpeg)
 # variable fraction 2 = one half, 3 = one third, four = one fourth, 5 = one fifth, etc...
 fraction=2; for i in *.mkv; do ffmpeg -i "$i" -vf "scale=trunc(iw/(2*$fraction))*2:trunc(ih/(2*$fraction))*2" -c:v libx265 -crf 28 "$i.mobile.mp4"; done
+# ffmpeg broader - reduce video scale for mkv or mp4 or avi files recursively (zShell/zsh solution)
+fraction=2; setopt extended_glob; for i in **/*.(mkv|mp4|avi); do ffmpeg -i "$i" -vf "scale=trunc(iw/(2*$fraction))*2:trunc(ih/(2*$fraction))*2" -c:v libx265 -crf 28 "$i:r.mobile.mp4"; done
+
 
 # RENAMING FILES - perl rename utility
 # to install: "brew install rename"
