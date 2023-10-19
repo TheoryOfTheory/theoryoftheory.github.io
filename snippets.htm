@@ -49,6 +49,10 @@ rename -n 's/^/MyVacation2011_/g' *.jpg
 rename -n 's/\[gg\]_Hetalia_Axis_Powers_-_([0-9]+)_\[Webcast\]_\[[a-zA-Z0-9]{8}\]/Hetalia $1/g' *.mkv
 # to rename "[AnimeRG] Hetlia - 54 [480p] [Xcelent].mp4" to "Hetalia 54.mkv", use this:
 rename -n 's/\[gg\]_Hetalia_Axis_Powers_-_([0-9]+)_\[Webcast\]_\[[a-zA-Z0-9]{8}\]/Hetalia $1/g' *.mkv
+# GENERIC RENAME SOLUTION FOR MY PERSONAL PURPOSES
+rename 's/\.mobile\.mp4$/.mp4/' *.mobile.mp4
+rename -n 's/(.+)\.mobile\.mp4$/$1.mp4/' *.mobile.mp4
+
 
 
 
