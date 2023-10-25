@@ -177,10 +177,16 @@ textarea { width: 600px; height: 311px; }
 </style>
 
         <textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea>
-  		<br /><br />
-		<div>Total length=<span id="totallength"></span></div>
+
+<br /><button onclick="prependMarkdownListAsterisks();">prepend markdown list asterisks</button><script>
+function prependMarkdownListAsterisks() {
+    $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"* " + o).join("\n")+ "\n* \n* \n* \n* \n* \n* \n* ";
+}</script>
+
+                  <br /><br />
+                <div>Total length=<span id="totallength"></span></div>
         <br /><br />
-  		<a href="https://html-cleaner.com">html-cleaner</a> - find a vanilla javascript library replicates this site's tools<br />
+                  <a href="https://html-cleaner.com">html-cleaner</a> - find a vanilla javascript library replicates this site's tools<br />
         <br /><a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks
 
         <div>Paste in large data above and textareas of gs-friendly <input id="chunksize">-sized chunks will appear below: <br />
@@ -205,7 +211,7 @@ textarea { width: 600px; height: 311px; }
                         const chunkedTextareas = document.getElementById("chunkedTextareas");
                         const text = textarea.value;
                         var i50000 = parseInt($$$$("#chunksize").value); // 45000; // 50000?
-						document.getElementById("totallength").innerText = textarea.value.length;
+                                                document.getElementById("totallength").innerText = textarea.value.length;
                   
                         if (text.length > i50000) {
                                 const chunks = [];
