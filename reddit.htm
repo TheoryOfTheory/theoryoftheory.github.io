@@ -4,16 +4,30 @@
 <script>window.addEventListener('load', function() { 
 
 
-
-
-
-
 var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
 .map(oTR=>{
     var sMultiredditName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML).split(" ")[0];
-    try {
-    var sMultiredditLink = eval(superHtmlDecode(oTR.querySelectorAll("td")[1].innerHTML.trim().replaceAll("<br>", "\n").replace("copy(", "(")));
-    } catch(e) { sMultiredditLink = ""; }
+    try { // get rid of this my god...
+    	var sMultiredditLink = eval(superHtmlDecode(oTR.querySelectorAll("td")[1].innerHTML.trim().replaceAll("<br>", "\n").replace("copy(", "(")));
+    } catch(e) {
+      try { // javascript code not embedded in cell, therefore run the code here to generate href
+
+        
+
+        sMultiredditLink = "https://old.reddit.com/r/" + sString.split("\n")
+            .filter(o=>{ // filter out header comments
+                return (o.substring(0,2) != "//" && o.substring(0,1) != "#" && o.trim() != "");
+            })
+            .map(o=>{ return o.split("//")[0].trim() }) // split out comments
+            .join("+");
+
+        
+        
+        
+      } catch(ee) { // something terribly wrong, just put in a blank for the href
+      	sMultiredditLink = "";
+      }
+    }
     
     return `<a target='_blank' href='${sMultiredditLink}'>${sMultiredditName}</a>`;
 
