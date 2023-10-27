@@ -14,7 +14,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
 
         
 
-        sMultiredditLink = "https://old.reddit.com/r/" + sString.split("\n")
+        sMultiredditLink = "" + sString.split("\n")
             .filter(o=>{ // filter out header comments
                 return (o.substring(0,2) != "//" && o.substring(0,1) != "#" && o.trim() != "");
             })
@@ -28,8 +28,8 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
               sMultiredditLink = "";
       }
     }
-    
-    return `<a target='_blank' href='${sMultiredditLink}'>${sMultiredditName}</a>`;
+
+    return `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>${sMultiredditName}</a>` + "&nbsp;&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR "))}'>𝕏${sMultiredditName}</a>`;
 
 });
 
