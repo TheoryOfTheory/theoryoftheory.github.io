@@ -148,6 +148,9 @@ function copyJSArrayToClipboardHELPER(sOrientation) {
 function replaceNewlinesWithPilcrows() {
     $$$a('.chunk50000').forEach(o=>{ o.value = o.value.replace(/\n/g, '¶'); })
 }
+function replaceTabsWithRightarrows() {
+    $$$a('.chunk50000').forEach(o=>{ o.value = o.value.replace(/\t/g, '⇒'); })
+}
 </script>
 
 <script src="https://yayinternets.github.io/datascripts.js"></script>
@@ -197,7 +200,10 @@ function prependMarkdownListAsterisks() {
             
             <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button><br /><br />
             
-                  <button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
+            <button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
+          	<br /><br />
+			<button onclick="replaceTabsWithRightarrows();">Replace tabs with ⇒RightArrows</button>
+          
         </div>
         <div><input id="maximumNumberOfChunks" value="20"> maximum number of chunks</div>
         <div id="numberOfChunks">There are a total of ??? chunks.</div>
