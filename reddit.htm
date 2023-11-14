@@ -11,7 +11,8 @@
 
 var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
 .map(oTR=>{
-    var sMultiredditName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML).split(" ")[0];
+    var sMultiredditFullName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML);
+    var sMultiredditName = sMultiredditFullName.split(" ")[0];
     var sString = oTR.querySelectorAll("td")[1].innerHTML;
     console.log(sMultiredditName + " - " + sString);
     // try {  } catch(e) {
@@ -31,7 +32,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
               sMultiredditLink = "ERROR";
       }
     // }
-    if (sMultiredditName.toUpperCase().includes("PROMPT")) {
+    if (sMultiredditFullName.toUpperCase().includes("PROMPT")) {
        sPrompt = prompt(sMultiredditName + "?");
        sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
     }
