@@ -3,6 +3,9 @@
 <script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
+<script>
+
+</script>
 <script>window.addEventListener('load', function() { 
 
 
@@ -23,9 +26,10 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
             .join("+");
 
                 
-      } catch(ee) { // something terribly wrong, just put in a blank for the href
+      } catch(ee) { // something terribly wrong, just put in an ERROR for the href
               console.log(ee);
-              sMultiredditLink = "";
+              var sPrompt = prompt("wat?");
+              sMultiredditLink = sPrompt;
       }
     // }
 
