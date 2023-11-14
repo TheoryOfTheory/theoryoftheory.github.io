@@ -4,7 +4,9 @@
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 <script>
-
+function renderSpan(oThis) {
+   print(oThis);
+}
 </script>
 <script>window.addEventListener('load', function() { 
 
@@ -34,9 +36,12 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
     // }
     if (sMultiredditFullName.toUpperCase().includes("PROMPT")) {
        sPrompt = prompt(sMultiredditName + "?");
-       sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
+       // sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
+       return `<span onclick='renderSpan(this);' class='prompt' info='${sMultiredditName}'></span>`;
+    } else {
+       return `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>${sMultiredditName}</a>` + "&nbsp;&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏${sMultiredditName}</a>`;
+
     }
-    return `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>${sMultiredditName}</a>` + "&nbsp;&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏${sMultiredditName}</a>`;
 
 });
 
