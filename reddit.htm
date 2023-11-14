@@ -5,12 +5,26 @@
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 <script>
 function renderSpan(oThis) {
-    sMultiredditName = oThis.attributes.sMultiredditName
-    sMultiredditLink = oThis.attributes.sMultiredditLink
+    gThis = oThis;
+    sMultiredditName = oThis.attributes.sMultiredditName.value;
+    sMultiredditLink = oThis.attributes.sMultiredditLink.value
     sPrompt = prompt(sMultiredditName + "?");
     sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
-    console.log(sMultiredditLink);
-   // oThis.attributes.info
+
+    sMultiredditLink = "" + sMultiredditLink.split("\n")
+            .filter(o=>{ // filter out header comments
+                return (o.substring(0,2) != "//" && o.substring(0,1) != "#" && o.trim() != "");
+            })
+            .map(o=>{ return o.split("//")[0].trim() }) // split out comments
+            .join("+");
+    
+    sReturn = `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>${sMultiredditName}</a>` + "&nbsp;&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏${sMultiredditName}</a>`;
+
+    gThis.innerHTML=sReturn;
+    gThis.onclick='';
+
+    // console.log(sReturn);
+    // oThis.attributes.info
 }
 </script>
 <script>window.addEventListener('load', function() { 
