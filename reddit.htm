@@ -5,7 +5,12 @@
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 <script>
 function renderSpan(oThis) {
-   oThis.attributes.info
+    sMultiredditName = oThis.attributes.sMultiredditName
+    sMultiredditLink = oThis.attributes.sMultiredditLink
+    sPrompt = prompt(sMultiredditName + "?");
+    sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
+    console.log(sMultiredditLink);
+   // oThis.attributes.info
 }
 </script>
 <script>window.addEventListener('load', function() { 
@@ -16,7 +21,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
     var sMultiredditFullName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML);
     var sMultiredditName = sMultiredditFullName.split(" ")[0];
     var sString = oTR.querySelectorAll("td")[1].innerHTML;
-    console.log(sMultiredditName + " - " + sString);
+    // console.log(sMultiredditName + " - " + sString);
     // try {  } catch(e) {
       try { // javascript code not embedded in cell, therefore run the code here to generate href
         // OLD (js embedded in cell) - var sMultiredditLink = eval(superHtmlDecode(oTR.querySelectorAll("td")[1].innerHTML.trim().replaceAll("<br>", "\n").replace("copy(", "(")));
@@ -37,7 +42,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
     if (sMultiredditFullName.toUpperCase().includes("PROMPT")) {
        // sPrompt = prompt(sMultiredditName + "?");
        // sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
-       return `<span onclick='renderSpan(this);' class='prompt' sMultiredditLink='${sMultiredditLink}' sMultiredditLink='${sMultiredditLink}'></span>`;
+       return `<span onclick='renderSpan(this);' class='prompt' sMultiredditName='${sMultiredditName}' sMultiredditLink='${sMultiredditLink}'></span>`;
     } else {
        return `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>${sMultiredditName}</a>` + "&nbsp;&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏${sMultiredditName}</a>`;
 
