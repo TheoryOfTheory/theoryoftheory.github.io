@@ -83,7 +83,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
        // sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
        oTR.querySelectorAll("td")[0].innerHTML = `<span onclick='renderSpan(this);' class='prompt' sMultiredditName='${sMultiredditName}' sMultiredditLink='${sMultiredditLink}'>${sMultiredditName}</span>`;
     } else {
-       oTR.querySelectorAll("td")[0].innerHTML = `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a>` + "&nbsp;&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "nbsp;nbsp;nbsp;" + oTR.querySelectorAll("td")[0].innerHTML;
+       oTR.querySelectorAll("td")[0].innerHTML = `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a>` + "&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "&nbsp;&nbsp;&nbsp;" + oTR.querySelectorAll("td")[0].innerHTML;
 
     }
     return '';
