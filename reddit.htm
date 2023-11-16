@@ -43,7 +43,7 @@ function renderSpan(oThis) {
             .map(o=>{ return o.split("//")[0].trim() }) // split out comments
             .join("+");
     
-    sReturn = `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>${sMultiredditName}</a>` + "&nbsp;&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏${sMultiredditName}</a>`;
+    sReturn = `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a>` + "&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>`;
 
     gThis.innerHTML=sReturn;
     gThis.onclick='';
@@ -81,7 +81,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
     if (sMultiredditFullName.toUpperCase().includes("PROMPT")) { // if contains "prompt" then just put in a clickable span
        // sPrompt = prompt(sMultiredditName + "?");
        // sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
-       oTR.querySelectorAll("td")[0].innerHTML = `<span onclick='renderSpan(this);' class='prompt' sMultiredditName='${sMultiredditName}' sMultiredditLink='${sMultiredditLink}'>${sMultiredditName}</span>`;
+       oTR.querySelectorAll("td")[0].innerHTML = `<span onclick='renderSpan(this);' class='prompt' sMultiredditName='${sMultiredditName}' sMultiredditLink='${sMultiredditLink}'>${sMultiredditName}</span>` + oTR.querySelectorAll("td")[0].innerHTML;
     } else {
        oTR.querySelectorAll("td")[0].innerHTML = `<a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a>` + "&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "&nbsp;&nbsp;&nbsp;" + oTR.querySelectorAll("td")[0].innerHTML;
 
