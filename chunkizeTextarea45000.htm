@@ -193,9 +193,9 @@ function pushright(oButton) {
 function refreshChunk50000Lengths() {
     // iterate through each textarea.chunk50000 and update the span.chunk50000length tag with the appropriate lengths
     // oSpan = document.querySelectorAll("span.chunkLength")[0];
-    document.querySelectorAll("span.chunkLength").forEach(oSpan) {
+    document.querySelectorAll("span.chunkLength").forEach(function(oSpan) {
         oSpan.innerText = oSpan.parentNode.parentNode.querySelector("textarea").value.length + " characters long";
-    }
+    })
 
 }
 
