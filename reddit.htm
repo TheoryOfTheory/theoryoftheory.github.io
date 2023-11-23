@@ -28,6 +28,7 @@ function domscripts_linkify(inputText) {
     return replacedText;
 }
 </script>
+
 <script>
 function renderSpan(oThis) {
     gThis = oThis;
@@ -73,9 +74,8 @@ function displayTDContents(oElement) {
 }
 </script>
 
+<!-- add custom reddit, reddit prompt, and domscripts_linkify logic -->
 <script>window.addEventListener('load', function() { 
-
-
 var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
 .map(oTR=>{
     var sMultiredditFullName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML);
@@ -110,15 +110,16 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
     return '';
 
 });
-
 //document.body.innerHTML = "<ul>" + aRedditMultireddits.map(o=>"<li>" + o + "</li>").join("") + "</ul>" + document.body.innerHTML;
 
-// FINALLY DO domscripts_linkify()
+// FINALLY DO domscripts_linkify() on 2nd and 3rd columns
 // OLD document.querySelectorAll("table")[0].innerHTML = domscripts_linkify(document.querySelectorAll("table")[0].innerHTML);
+document.querySelectorAll("table td:nth-child(2n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
 document.querySelectorAll("table td:nth-child(3n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
-
-})
-</script>
+    
+})</script>
+  
+<!-- styles -->
 <style>img { height: 50px; width: 50px; }</style>
 
 <!-- fix this styling then add to datacss? -->
@@ -138,8 +139,6 @@ td {
   padding-bottom: 25px;
   float: left;
 }
-
-
 </style>
 
 
