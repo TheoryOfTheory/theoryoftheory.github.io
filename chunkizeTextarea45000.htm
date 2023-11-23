@@ -168,6 +168,35 @@ function replaceTabsWithRightarrows() {
 
          }); </script>
 
+<!-- pullleft, pushright, and refreshChunk50000Lengths (to be coded) -->
+<script>
+function pullleft(oButton) {
+    oAllTextAreas = oButton.parentNode.parentNode.parentNode.querySelectorAll("TEXTAREA");
+    oRightTextArea = oButton.parentNode.parentNode.querySelector("TEXTAREA");
+    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - 1]]
+    sNew_oLeftTextArea = oLeftTextArea.value + oRightTextArea.value.substring(0, 1)
+    sNew_oRightTextArea = oRightTextArea.value.substring(1, oRightTextArea.value.length)
+    oLeftTextArea.value = sNew_oLeftTextArea;
+    oRightTextArea.value = sNew_oRightTextArea;
+    refreshChunk50000Lengths();
+}
+function pushright(oButton) {
+    oAllTextAreas = oButton.parentNode.parentNode.parentNode.querySelectorAll("TEXTAREA");
+    oRightTextArea = oButton.parentNode.parentNode.querySelector("TEXTAREA");
+    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - 1]]
+    sNew_oLeftTextArea = oLeftTextArea.value.substring(0, oLeftTextArea.value.length-1)
+    sNew_oRightTextArea = oLeftTextArea.value.substring(oLeftTextArea.value.length-1, oLeftTextArea.value.length) + oRightTextArea.value;
+    oLeftTextArea.value = sNew_oLeftTextArea;
+    oRightTextArea.value = sNew_oRightTextArea;
+    refreshChunk50000Lengths();
+}
+function refreshChunk50000Lengths() {
+    // iterate through each textarea.chunk50000 and update the span.chunk50000length tag with the appropriate lengths
+}
+
+</script>
+
+
 </head>
 <body>
 
