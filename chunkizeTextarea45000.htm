@@ -201,8 +201,8 @@ function prependMarkdownListAsterisks() {
             <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button><br /><br />
             
             <button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
-          	<br /><br />
-			<button onclick="replaceTabsWithRightarrows();">Replace tabs with ⇒RightArrows</button>
+                  <br /><br />
+                        <button onclick="replaceTabsWithRightarrows();">Replace tabs with ⇒RightArrows</button>
           
         </div>
         <div><input id="maximumNumberOfChunks" value="20"> maximum number of chunks</div>
@@ -227,8 +227,8 @@ function prependMarkdownListAsterisks() {
                                 }
                                 iMaximumNumberOfChunks = parseInt($$$$("#maximumNumberOfChunks").value);
                                 $$$$("#numberOfChunks").innerText = "There are a total of " + chunks.length + " chunk(s)";
-								// 10/29/2023 - added superHTMLEntities after noticing code from cajamotora.Code.gs caused a failure in parsing
-                                chunkedTextareas.innerHTML = chunks.map(chunk => `<br /><br /><div><textarea class="chunk50000">${superhtmlEntities(chunk)}</textarea><br /><button onclick="copy">copy</button></div>`).slice(0,iMaximumNumberOfChunks).join("");
+                                                                // 10/29/2023 - added superHTMLEntities after noticing code from cajamotora.Code.gs caused a failure in parsing
+                                chunkedTextareas.innerHTML = chunks.map((chunk, i) => `<br /><br /><div>` + `<div><button onclick="pullleft(this)">&lt;&lt;</button><button onclick="pushright(this)">&gt;&gt;</button><br></div>` + `<textarea class="chunk50000">${superhtmlEntities(chunk)}</textarea><br /><button onclick="copy">copy</button></div>`).slice(0,iMaximumNumberOfChunks).join("");
                         } else {
                                 chunkedTextareas.innerHTML = "";
                         }
