@@ -85,7 +85,25 @@ function dom_convertAllURLsToAhrefs(sDOMElement) {
     });
 }
 </script>
-
+<!-- // make 3rd, 4th and 5th columns clickable events to display the innerHTML -->
+<script>window.addEventListener('load', function() { 
+// make 3rd, 4th and 5th columns clickable events to display the innerHTML
+document.addEventListener('click', (event) => {
+    oElement = event.target;
+    oElementIndex = Array.prototype.indexOf.call(oElement.parentNode.children, oElement);
+    // console.log(oElementIndex);
+  if (oElement.tagName === 'TD' && (oElementIndex === 2 || oElementIndex === 3 || oElementIndex === 4)) {    
+    displayTDContents(oElement);
+  }
+});
+})</script>
+<script>
+function displayTDContents(oElement) {
+    const tdContent = oElement.innerHTML;
+    const newWindow = window.open("", "newWindow", "width=500,height=500");
+    newWindow.document.write(tdContent);
+}
+</script>
 
 <div><h3><a target="_blank" href="https://theoryoftheory.github.io/searchtree.htm?search=profilicity">Profilicities</a></h3> is a "user-curated linktree/crunchbase" clone that keeps track of many public speakers, engineers, psychoanalysts, and theorists.</h3></div>
 
