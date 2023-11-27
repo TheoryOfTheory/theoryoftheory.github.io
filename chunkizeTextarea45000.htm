@@ -170,22 +170,22 @@ function replaceTabsWithRightarrows() {
 
 <!-- pullleft, pushright, and refreshChunk50000Lengths (to be coded) -->
 <script>
-function pullleft(oButton) {
+function pullleft(oButton, iNumOfChars) {
     oAllTextAreas = oButton.parentNode.parentNode.parentNode.querySelectorAll("TEXTAREA");
     oRightTextArea = oButton.parentNode.parentNode.querySelector("TEXTAREA");
-    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - 1]]
-    sNew_oLeftTextArea = oLeftTextArea.value + oRightTextArea.value.substring(0, 1)
-    sNew_oRightTextArea = oRightTextArea.value.substring(1, oRightTextArea.value.length)
+    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - iNumOfChars]]
+    sNew_oLeftTextArea = oLeftTextArea.value + oRightTextArea.value.substring(0, iNumOfChars)
+    sNew_oRightTextArea = oRightTextArea.value.substring(iNumOfChars, oRightTextArea.value.length)
     oLeftTextArea.value = sNew_oLeftTextArea;
     oRightTextArea.value = sNew_oRightTextArea;
     refreshChunk50000Lengths();
 }
-function pushright(oButton) {
+function pushright(oButton, iNumOfChars) {
     oAllTextAreas = oButton.parentNode.parentNode.parentNode.querySelectorAll("TEXTAREA");
     oRightTextArea = oButton.parentNode.parentNode.querySelector("TEXTAREA");
-    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - 1]]
-    sNew_oLeftTextArea = oLeftTextArea.value.substring(0, oLeftTextArea.value.length-1)
-    sNew_oRightTextArea = oLeftTextArea.value.substring(oLeftTextArea.value.length-1, oLeftTextArea.value.length) + oRightTextArea.value;
+    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - iNumOfChars]]
+    sNew_oLeftTextArea = oLeftTextArea.value.substring(0, oLeftTextArea.value.length-iNumOfChars)
+    sNew_oRightTextArea = oLeftTextArea.value.substring(oLeftTextArea.value.length-iNumOfChars, oLeftTextArea.value.length) + oRightTextArea.value;
     oLeftTextArea.value = sNew_oLeftTextArea;
     oRightTextArea.value = sNew_oRightTextArea;
     refreshChunk50000Lengths();
@@ -226,7 +226,7 @@ function prependMarkdownListAsterisks() {
                   <a href="https://html-cleaner.com">html-cleaner</a> - find a vanilla javascript library replicates this site's tools<br />
         <br /><a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks
 
-  		<div>Paste in large data above and textareas of gs-friendly <input id="chunksize" onblur="splitTextarea();" style="width:50px;">-sized chunks will appear below: <br />
+                  <div>Paste in large data above and textareas of gs-friendly <input id="chunksize" onblur="splitTextarea();" style="width:50px;">-sized chunks will appear below: <br />
             
             <button onclick="copyall()">Copy All - dom_copyall?</button><br />
                 
@@ -262,8 +262,8 @@ function prependMarkdownListAsterisks() {
                                 iMaximumNumberOfChunks = parseInt($$$$("#maximumNumberOfChunks").value);
                                 $$$$("#numberOfChunks").innerText = "There are a total of " + chunks.length + " chunk(s)";
                                                                 // 10/29/2023 - added superHTMLEntities after noticing code from cajamotora.Code.gs caused a failure in parsing
-                                chunkedTextareas.innerHTML = chunks.map((chunk, i) => `<br /><br /><div>` + ((i>0)? `<div><button onclick="pullleft(this)">&lt;&lt;</button><button onclick="pushright(this)">&gt;&gt;</button><br></div>` : "") + `<textarea class="chunk50000" onchange="refreshChunk50000Lengths()">${superhtmlEntities(chunk)}</textarea><br /><button onclick="copy">copy</button><span class='chunkLength'></span></div>`).slice(0,iMaximumNumberOfChunks).join("");
-                          		refreshChunk50000Lengths();
+                                chunkedTextareas.innerHTML = chunks.map((chunk, i) => `<br /><br /><div>` + ((i>0)? `<div><button onclick="pullleft(this, 10)">&lt;&lt;</button><button onclick="pullleft(this, 1)">&lt;</button><button onclick="pushright(this, 1)">&gt;</button><button onclick="pushright(this, 10)">&gt;&gt;</button><br></div>` : "") + `<textarea class="chunk50000" onchange="refreshChunk50000Lengths()">${superhtmlEntities(chunk)}</textarea><br /><button onclick="copy">copy</button><span class='chunkLength'></span></div>`).slice(0,iMaximumNumberOfChunks).join("");
+                                          refreshChunk50000Lengths();
                         } else {
                                 chunkedTextareas.innerHTML = "";
                         }
