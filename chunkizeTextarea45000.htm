@@ -173,20 +173,26 @@ function replaceTabsWithRightarrows() {
 function pullleft(oButton, iNumOfChars) {
     oAllTextAreas = oButton.parentNode.parentNode.parentNode.querySelectorAll("TEXTAREA");
     oRightTextArea = oButton.parentNode.parentNode.querySelector("TEXTAREA");
-    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - iNumOfChars]]
+    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - 1]]
     sNew_oLeftTextArea = oLeftTextArea.value + oRightTextArea.value.substring(0, iNumOfChars)
     sNew_oRightTextArea = oRightTextArea.value.substring(iNumOfChars, oRightTextArea.value.length)
+    
     oLeftTextArea.value = sNew_oLeftTextArea;
+    oLeftTextArea.scrollTop = oLeftTextArea.scrollHeight;
+
     oRightTextArea.value = sNew_oRightTextArea;
     refreshChunk50000Lengths();
 }
 function pushright(oButton, iNumOfChars) {
     oAllTextAreas = oButton.parentNode.parentNode.parentNode.querySelectorAll("TEXTAREA");
     oRightTextArea = oButton.parentNode.parentNode.querySelector("TEXTAREA");
-    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - iNumOfChars]]
+    oLeftTextArea = oAllTextAreas[[Array.prototype.indexOf.call(oAllTextAreas, oRightTextArea) - 1]]
     sNew_oLeftTextArea = oLeftTextArea.value.substring(0, oLeftTextArea.value.length-iNumOfChars)
     sNew_oRightTextArea = oLeftTextArea.value.substring(oLeftTextArea.value.length-iNumOfChars, oLeftTextArea.value.length) + oRightTextArea.value;
+    
     oLeftTextArea.value = sNew_oLeftTextArea;
+    oLeftTextArea.scrollTop = oLeftTextArea.scrollHeight;
+    
     oRightTextArea.value = sNew_oRightTextArea;
     refreshChunk50000Lengths();
 }
@@ -262,7 +268,7 @@ function prependMarkdownListAsterisks() {
                                 iMaximumNumberOfChunks = parseInt($$$$("#maximumNumberOfChunks").value);
                                 $$$$("#numberOfChunks").innerText = "There are a total of " + chunks.length + " chunk(s)";
                                                                 // 10/29/2023 - added superHTMLEntities after noticing code from cajamotora.Code.gs caused a failure in parsing
-                                chunkedTextareas.innerHTML = chunks.map((chunk, i) => `<br /><br /><div>` + ((i>0)? `<div><button onclick="pullleft(this, 10)">&lt;&lt;</button><button onclick="pullleft(this, 1)">&lt;</button><button onclick="pushright(this, 1)">&gt;</button><button onclick="pushright(this, 10)">&gt;&gt;</button><br></div>` : "") + `<textarea class="chunk50000" onchange="refreshChunk50000Lengths()">${superhtmlEntities(chunk)}</textarea><br /><button onclick="copy">copy</button><span class='chunkLength'></span></div>`).slice(0,iMaximumNumberOfChunks).join("");
+                                chunkedTextareas.innerHTML = chunks.map((chunk, i) => `<br /><br /><div>` + ((i>0)? `<div><button onclick="pullleft(this, 10)">&lt;&lt;&lt;</button><button onclick="pullleft(this, 10)">&lt;&lt;</button><button onclick="pullleft(this, 1)">&lt;</button><button onclick="pushright(this, 1)">&gt;</button><button onclick="pushright(this, 10)">&gt;&gt;</button><button onclick="pushright(this, 10)">&gt;&gt;&gt;</button><br></div>` : "") + `<textarea class="chunk50000" onchange="refreshChunk50000Lengths()">${superhtmlEntities(chunk)}</textarea><br /><button onclick="copy">copy</button><span class='chunkLength'></span></div>`).slice(0,iMaximumNumberOfChunks).join("");
                                           refreshChunk50000Lengths();
                         } else {
                                 chunkedTextareas.innerHTML = "";
