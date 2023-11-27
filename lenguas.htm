@@ -76,41 +76,6 @@ function displayTDContents(oElement) {
 
 <!-- add custom reddit, reddit prompt, and domscripts_linkify logic -->
 <script>window.addEventListener('load', function() { 
-var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
-.map(oTR=>{
-    var sMultiredditFullName = superHtmlDecode(oTR.querySelectorAll("td")[0].innerHTML);
-    var sMultiredditName = sMultiredditFullName.split(" ")[0];
-    var sString = oTR.querySelectorAll("td")[1].innerHTML;
-    // console.log(sMultiredditName + " - " + sString);
-    // try {  } catch(e) {
-      try { // javascript code not embedded in cell, therefore run the code here to generate href
-        // OLD (js embedded in cell) - var sMultiredditLink = eval(superHtmlDecode(oTR.querySelectorAll("td")[1].innerHTML.trim().replaceAll("<br>", "\n").replace("copy(", "(")));
-        
-        sMultiredditLink = "" + sString.split("<br>")
-            .filter(o=>{ // filter out header comments
-                return (o.substring(0,2) != "//" && o.substring(0,1) != "#" && o.trim() != "");
-            })
-            .map(o=>{ return o.split("//")[0].trim() }) // split out comments
-            .join("+");
-
-                
-      } catch(ee) { // something terribly wrong, just put in an ERROR for the href
-              console.log(ee);
-              sMultiredditLink = "ERROR";
-      }
-    // }
-    if (sMultiredditFullName.toUpperCase().includes("PROMPT")) { // if contains "prompt" then just put in a clickable span
-       // sPrompt = prompt(sMultiredditName + "?");
-       // sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
-       oTR.querySelectorAll("td")[0].innerHTML = `<span onclick='renderSpan(this);' class='prompt' sMultiredditName='${sMultiredditName}' sMultiredditLink='${sMultiredditLink}'>${sMultiredditName}</span>` + oTR.querySelectorAll("td")[0].innerHTML;
-    } else {
-       oTR.querySelectorAll("td")[0].innerHTML = `<span style='font-size:32px;'><a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a></span>` + "&nbsp;&nbsp;" + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "&nbsp;&nbsp;&nbsp;" + oTR.querySelectorAll("td")[0].innerHTML;
-
-    }
-    return '';
-
-});
-//document.body.innerHTML = "<ul>" + aRedditMultireddits.map(o=>"<li>" + o + "</li>").join("") + "</ul>" + document.body.innerHTML;
 
 // FINALLY DO domscripts_linkify() on 2nd and 3rd columns
 // OLD document.querySelectorAll("table")[0].innerHTML = domscripts_linkify(document.querySelectorAll("table")[0].innerHTML);
@@ -154,6 +119,16 @@ td {
 
   /* Target the 3rd column */
   td:nth-child(3) {
+    width: 300px;
+  }
+
+  /* Target the 3rd column */
+  td:nth-child(4) {
+    width: 300px;
+  }
+
+  /* Target the 3rd column */
+  td:nth-child(5) {
     width: 300px;
   }
 
