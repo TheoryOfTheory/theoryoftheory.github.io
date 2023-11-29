@@ -104,8 +104,13 @@ function copyJSArrayToClipboard(aArray) {
     */
 
     // ATTEMPT 4 - refactoring notes: use ATTEMPT 3 to figure out how to incorporate both text/plain and text/html at the same time
+      if ($$$$("#copyJSArrayToClipboardCOLORCHECKBOX").checked) {
+          sBackgroundColor = $$$$("#copyJSArrayToClipboardCOLOR").value;
+      } else {
+          sBackgroundColor = "white";
+      }      
       sHTMLTable = toHTMLTable(aArray, undefined, "#copyJSArrayToClipboard", 0);
-      sHTMLTable = sHTMLTable.replace(/table /, "table style='text-align: left; background-color: #90EE90;'");
+      sHTMLTable = sHTMLTable.replace(/table /, "table style='text-align: left; background-color:" + sBackgroundColor  + ";'");
       // <style> no funciona - i guess navigator.clipboard.write can't accept <style> html?
       // sHTMLTable = "<style>#copyJSArrayToClipboard { text-align: left; } </style>" + sHTMLTable;
 
@@ -239,7 +244,9 @@ function prependMarkdownListAsterisks() {
                   <div>Paste in large data above and textareas of gs-friendly <input id="chunksize" onblur="splitTextarea();" style="width:50px;">-sized chunks will appear below: <br />
             
             <button onclick="copyall()">Copy All - dom_copyall?</button><br />
-                
+
+			<br><input checked type="checkbox" id="copyJSArrayToClipboardCOLORCHECKBOX"><input type="color" id="copyJSArrayToClipboardCOLOR" name="copyJSArrayToClipboardCOLOR" value="#90EE90"><br><button onclick="copyJSArrayToClipboardHELPER('newline/vertical/normal')">Copy All - copyJSArrayToClipboard newline/vertical/normal</button><br>
+            
             <button onclick="copyJSArrayToClipboardHELPER('newline/vertical/normal')">Copy All - copyJSArrayToClipboard newline/vertical/normal</button><br />
             
             <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button><br /><br />
