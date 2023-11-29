@@ -6,7 +6,8 @@ dom_fFilterTable = function(dElement, iRow, sTag) {
     iRow = 0;
     dElement.$$$a("tr").map(o=>{ return o.$$$a("td")[iRow]}).forEach(domTD=>{
         console.log(domTD);
-        if(domTD.innerText.toLowerCase().replace(/\s/g, "").match(new RegExp(sTag.toLowerCase().replace(/\s/g, "")))) {
+        // OLD if(domTD.innerText.toLowerCase().replace(/\s/g, "").match(new RegExp(sTag.toLowerCase().replace(/\s/g, "")))) {
+        if (domTD.innerText.replace(/\s/g, "").match(new RegExp(sTag.replace(/\s/g, ""), 'i'))) { // replaced OLD code above with RegExp's 'i' parameter/flag to ignore case
             domTR = domTD.parentNode;
             domTR.style.display = "";
         } else {
@@ -109,7 +110,7 @@ function displayTDContents(oElement) {
 // eg https://theoryoftheory.github.io/profilicities.htm?search=ML
 
 if (oGetAllParameters_CLIENT().search) {
-	dom_fFilterTable(document.querySelector("table"), 0, oGetAllParameters_CLIENT().search);
+        dom_fFilterTable(document.querySelector("table"), 0, oGetAllParameters_CLIENT().search);
 }
 
 }); </script>
