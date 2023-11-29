@@ -38,7 +38,7 @@ function copyTextToClipboard(text) {
     console.error('Async: Could not copy text: ', err);
   });
 }
-function copyJSArrayToClipboard(aArray) {
+function copyJSArrayToClipboard(aArray) { 
 // function copyRTFHTML_to_clipboard(sHTML) {
     // copy rich text format / html to clipboard
     //OLD let myArray = [['1', '2', '3\n3.5'], ['4', '5', '6'], ['7', '8', '9']]; //let myArray = [['1', '2', '3&#13;3.5'], ['4', '5', '6'], ['7', '8', '9']];
@@ -105,7 +105,7 @@ function copyJSArrayToClipboard(aArray) {
 
     // ATTEMPT 4 - refactoring notes: use ATTEMPT 3 to figure out how to incorporate both text/plain and text/html at the same time
       sHTMLTable = toHTMLTable(aArray, undefined, "#copyJSArrayToClipboard", 0);
-      sHTMLTable = sHTMLTable.replace(/table /, "table style='text-align: left; '");
+      sHTMLTable = sHTMLTable.replace(/table /, "table style='text-align: left; background-color: #90EE90;'");
       // <style> no funciona - i guess navigator.clipboard.write can't accept <style> html?
       // sHTMLTable = "<style>#copyJSArrayToClipboard { text-align: left; } </style>" + sHTMLTable;
 
