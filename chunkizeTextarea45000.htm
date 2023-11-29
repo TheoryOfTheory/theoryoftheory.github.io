@@ -181,6 +181,8 @@ function pullleft(oButton, iNumOfChars) {
     oLeftTextArea.scrollTop = oLeftTextArea.scrollHeight;
 
     oRightTextArea.value = sNew_oRightTextArea;
+    oRightTextArea.scrollTop = 0;
+
     refreshChunk50000Lengths();
 }
 function pushright(oButton, iNumOfChars) {
@@ -194,6 +196,8 @@ function pushright(oButton, iNumOfChars) {
     oLeftTextArea.scrollTop = oLeftTextArea.scrollHeight;
     
     oRightTextArea.value = sNew_oRightTextArea;
+    oRightTextArea.scrollTop = 0;
+
     refreshChunk50000Lengths();
 }
 function refreshChunk50000Lengths() {
