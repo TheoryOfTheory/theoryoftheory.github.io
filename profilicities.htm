@@ -104,6 +104,15 @@ function displayTDContents(oElement) {
     newWindow.document.write(tdContent);
 }
 </script>
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
+// final script: auto-filter based on URL parameters
+// eg https://theoryoftheory.github.io/profilicities.htm?search=ML
+
+if (oGetAllParameters_CLIENT().search) {
+	dom_fFilterTable(document.querySelector("table"), 0, oGetAllParameters_CLIENT().search);
+}
+
+}); </script>
 
 <div><h3><a target="_blank" href="https://theoryoftheory.github.io/searchtree.htm?search=profilicity">Profilicities</a></h3> is a "user-curated linktree/crunchbase" clone that keeps track of many public speakers, engineers, psychoanalysts, and theorists.</h3></div>
 
