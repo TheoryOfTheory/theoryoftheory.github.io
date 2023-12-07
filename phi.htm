@@ -11,6 +11,33 @@ sTableAndTDStyle = domGenerateTableAndTDWidth(1830, [0,0,0,45,10,0,0,0], null, 2
 domLoadStyles_CSS(sTableAndTDStyle);
 }); </script>
 
+
+<!-- // make 4th, 5th, 6th, and 7th columns ahref-able, and also clickable events to display the innerHTML -->
+<script>window.addEventListener('load', function() { 
+document.querySelectorAll("table td:nth-child(4n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
+document.querySelectorAll("table td:nth-child(5n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
+document.querySelectorAll("table td:nth-child(6n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
+document.querySelectorAll("table td:nth-child(7n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
+
+// make 2nd and 3rd columns clickable events to display the innerHTML
+document.addEventListener('click', (event) => {
+    oElement = event.target;
+    oElementIndex = Array.prototype.indexOf.call(oElement.parentNode.children, oElement);
+    // console.log(oElementIndex);
+  if (oElement.tagName === 'TD' && (oElementIndex === 3 || oElementIndex === 4 || oElementIndex === 5 || oElementIndex === 6)) {    
+    displayTDContents(oElement);
+  }
+});
+})</script>
+<script>
+function displayTDContents(oElement) {
+    const tdContent = oElement.innerHTML;
+    const newWindow = window.open("", "newWindow", "width=500,height=500");
+    newWindow.document.write(tdContent);
+}
+</script>
+
+
 </head>
 <body>
 <h2>Vamos a aprender filosofía</h2>
