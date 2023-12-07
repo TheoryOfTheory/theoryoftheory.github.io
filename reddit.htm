@@ -126,7 +126,12 @@ if (oGetAllParameters_CLIENT().search) {
         }
     })
 }
-})</script>
+})
+
+// lastly lastly - define td widths
+sTableAndTDStyle = domGenerateTableAndTDWidth(600, [10, 50, 40], null, 25);
+domLoadStyles_CSS(sTableAndTDStyle);
+</script>
   
 <!-- styles -->
 <style>img { height: 50px; width: 50px; }</style>
