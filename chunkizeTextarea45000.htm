@@ -259,6 +259,10 @@ textarea { width: 600px; height: 311px; }
                       var iNumOfMatches = oNumOfMatches.length;
                       if (confirm(iNumOfMatches + " matches. Replace?")) {
                           $$$$("#myTextarea").value = $$$$("#myTextarea").value.replace(rRegex, sReplace);
+
+                          // find and replace successfully completed.  now pop off the first rRegex token so I can press the button again and move to the next find and replace
+                          $$$$("#input_find").value = $$$$("#input_find").value.split("\n").slice(1).join("\n");
+
                       }
                       splitTextarea();
                   }     
