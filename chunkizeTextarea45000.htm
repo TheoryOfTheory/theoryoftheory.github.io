@@ -233,32 +233,38 @@ textarea { width: 600px; height: 311px; }
 <br />
   
   <!-- regex find and replace -->
-  <div id="findandreplace">regex?<input checked="" type="checkbox" id="regex">ignorecase?<input checked="" type="checkbox" id="ignorecase"><input type="text" id="input_find" value="height:(\d+)px;\s*width:(\d+)px;"><input type="text" id="input_replace"><button onclick="fFindAndReplace()">find and replace</button></div>
+  <div id="findandreplace">
+    regex?<input checked="" type="checkbox" id="regex">
+    ignorecase?<input checked="" type="checkbox" id="ignorecase">
+	<textarea style="font-size:8px; height:40px; width:250px;" id="input_find" row="3" col="3">
+      height:(\d+)px;\s*width:(\d+)px;\s&#013;&#010;colspan=1 rowspan=1
+    </textarea>
+    <input type="text" id="input_replace">
+    <button onclick="fFindAndReplace()">find and replace</button></div>
   <script>
-    function fFindAndReplace() {
-        // eg: " height:20px; width:285px; height:20px; width:3005px;".replace(new RegExp($$$$("#input_find").value, "g"), "")
+	function fFindAndReplace() {
+      // eg: " height:20px; width:285px; height:20px; width:3005px;".replace(new RegExp($$$$("#input_find").value, "g"), "")
+	  // .match(new RegExp(sTag.replace(/\s/g, ""), 'i')))
+      var sFind = $$$$("#input_find").value.split("\n")[0]; // split by linebreaks and choose the first because this textarea defaults with multiple regex optionsn to pick from
+      var sReplace = $$$$("#input_replace").value;
+      var sIG = (($$$$("#ignorecase").checked) ? "i" : "" ) + "g"; // ignore case, global
+          if ($$$$("#regex").checked) {
+                  // rRegex = new RegExp($$$$("#input_find").value, "g");
+                  var rRegex = new RegExp(sFind, sIG);
+                  var oNumOfMatches = $$$$("#myTextarea").value.match(rRegex);
+                  // console.log(oNumOfMatches);
+                  if (!oNumOfMatches) {
+                      alert("0 matches.");
+                  } else {
+                      var iNumOfMatches = oNumOfMatches.length;
+                      if (confirm(iNumOfMatches + " matches. Replace?")) {
+                          $$$$("#myTextarea").value = $$$$("#myTextarea").value.replace(rRegex, sReplace);
+                      }
+                      splitTextarea();
+                  }     
+          } else {
 
-     // .match(new RegExp(sTag.replace(/\s/g, ""), 'i')))
-        if ($$$$("#regex")) {
-            if ($$$$("#ignorecase")) {
-                rRegex = new RegExp($$$$("#input_find").value, "g");
-                oNumOfMatches = $$$$("#myTextarea").value.match(rRegex);
-                // console.log(oNumOfMatches);
-                if (!oNumOfMatches) {
-                    alert("0 matches.");
-                } else {
-                    iNumOfMatches = oNumOfMatches.length;
-                    if (confirm(iNumOfMatches + " matches. Replace?")) {
-                        $$$$("#myTextarea").value = $$$$("#myTextarea").value.replace(rRegex, $$$$("#input_replace").value, "i");
-                    }
-                    splitTextarea();
-                }     
-            } else {
-
-            }
-        } else {
-
-        }
+          }
 
     }
     </script>
