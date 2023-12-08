@@ -228,10 +228,10 @@ textarea { width: 600px; height: 311px; }
 
 </style>
 
-        <textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea>
+  <div><textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea></div>
 
-<br />
-  
+  <div>Total length=<span id="totallength"></span></div>
+
   
   <!-- regex find and replace -->
   <div id="findandreplace" style="background-color:rgb(242, 227, 235);">
@@ -302,33 +302,32 @@ function fFindAndReplace() {
   
   
 <br />  
-  <!-- PREPEND MARKDOWN -->
+
+<!-- PREPEND -->  
+<div>
   <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button>
+</div>
+<script>
+  function prependMarkdownListAsterisks() {
+      $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"* " + o).join("\n")+ "\n* \n* \n* \n* \n* \n* \n* ";
+  }
+  function prependMardownQuoteGreaterThan() {
+      $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"> " + o).join("\n")+ "\n> \n> \n> \n> \n> \n> \n> ";
+  }
+  function prependTab() {
+      $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"\t" + o).join("\n")+ "";
+  }  
+</script>
+<br /><br />
+<br /><br />
+<a href="https://html-cleaner.com">html-cleaner</a> - find a vanilla javascript library replicates this site's tools<br />
+<br />
 
-  
-  <script>
-function prependMarkdownListAsterisks() {
-    $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"* " + o).join("\n")+ "\n* \n* \n* \n* \n* \n* \n* ";
-}
-function prependMardownQuoteGreaterThan() {
-    $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"> " + o).join("\n")+ "\n> \n> \n> \n> \n> \n> \n> ";
-}
-function prependTab() {
-    $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"\t" + o).join("\n")+ "";
-}  
-  </script>
-
-                  <br /><br />
-                <div>Total length=<span id="totallength"></span></div>
-        <br /><br />
-                  <a href="https://html-cleaner.com">html-cleaner</a> - find a vanilla javascript library replicates this site's tools<br />
-        <br /><a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks
-
-                  <div>Paste in large data above and textareas of gs-friendly <input id="chunksize" onblur="splitTextarea();" style="width:50px;">-sized chunks will appear below: <br />
+<div>Paste in large data above and textareas of gs-friendly <input id="chunksize" onblur="splitTextarea();" style="width:50px;">-sized chunks will appear below.&nbsp;<a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks. <br />
             
-            <button onclick="copyall()">Copy All - dom_copyall?</button><br />
+<div><button onclick="copyall()">Copy All - dom_copyall?</button></div>
 
-            <br><br>background color?&nbsp;<input checked type="checkbox" id="copyJSArrayToClipboardCOLORCHECKBOX"><input type="color" id="copyJSArrayToClipboardCOLOR" name="copyJSArrayToClipboardCOLOR" value="#90EE90" oninput="updateColorValue(this.value)"><span id="backgroundcolor">HEX: #90EE90 / RGB: rgb(144, 238, 144)</span><br>
+            <br /><div>background color?&nbsp;<input checked type="checkbox" id="copyJSArrayToClipboardCOLORCHECKBOX"><input type="color" id="copyJSArrayToClipboardCOLOR" name="copyJSArrayToClipboardCOLOR" value="#90EE90" oninput="updateColorValue(this.value)"><span id="backgroundcolor">HEX: #90EE90 / RGB: rgb(144, 238, 144)</span></div>
             <script>
               function updateColorValue(hex) {
                 const rgb = hexToRgb(hex);
@@ -343,13 +342,17 @@ function prependTab() {
               }
             </script>
             
-            <button onclick="copyJSArrayToClipboardHELPER('newline/vertical/normal')">Copy All - copyJSArrayToClipboard newline/vertical/normal</button><br />
+  			<div>
+              <button onclick="copyJSArrayToClipboardHELPER('newline/vertical/normal')">Copy All - copyJSArrayToClipboard newline/vertical/normal</button>
+              <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button>
+            </div>
+  
+            <br />
             
-            <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button><br /><br />
-            
-            <button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
-                  <br /><br />
-                        <button onclick="replaceTabsWithRightarrows();">Replace tabs with ⇒RightArrows</button>
+            <div>
+              <button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
+              <button onclick="replaceTabsWithRightarrows();">Replace tabs with ⇒RightArrows</button>
+            </div>
           
         </div>
         <div><input id="maximumNumberOfChunks" value="20"> maximum number of chunks</div>
@@ -357,30 +360,29 @@ function prependTab() {
 
         <div id="chunkedTextareas"></div>
 
-        <br /><br />
         <script>
-                function splitTextarea() {
-                        const textarea = document.getElementById("myTextarea");
-                        const chunkedTextareas = document.getElementById("chunkedTextareas");
-                        const text = textarea.value;
-                        var i50000 = parseInt($$$$("#chunksize").value); // 45000; // 50000?
-                                                document.getElementById("totallength").innerText = textarea.value.length;
-                  
-                        if (text.length > i50000) {
-                                const chunks = [];
+          function splitTextarea() {
+            const textarea = document.getElementById("myTextarea");
+            const chunkedTextareas = document.getElementById("chunkedTextareas");
+            const text = textarea.value;
+            var i50000 = parseInt($$$$("#chunksize").value); // 45000; // 50000?
+            document.getElementById("totallength").innerText = textarea.value.length;
 
-                                for (let i = 0; i < text.length; i += i50000) {
-                                        chunks.push(text.substring(i, i + i50000));
-                                }
-                                iMaximumNumberOfChunks = parseInt($$$$("#maximumNumberOfChunks").value);
-                                $$$$("#numberOfChunks").innerText = "There are a total of " + chunks.length + " chunk(s)";
-                                                                // 10/29/2023 - added superHTMLEntities after noticing code from cajamotora.Code.gs caused a failure in parsing
-                                chunkedTextareas.innerHTML = chunks.map((chunk, i) => `<br /><br /><div>` + ((i>0)? `<div><button onclick="pullleft(this, 100)">&lt;&lt;&lt;</button><button onclick="pullleft(this, 10)">&lt;&lt;</button><button onclick="pullleft(this, 1)">&lt;</button><button onclick="pushright(this, 1)">&gt;</button><button onclick="pushright(this, 10)">&gt;&gt;</button><button onclick="pushright(this, 100)">&gt;&gt;&gt;</button><br></div>` : "") + `<textarea class="chunk50000" onchange="refreshChunk50000Lengths()">${superhtmlEntities(chunk)}</textarea><br /><button onclick="copy">copy</button><span class='chunkLength'></span></div>`).slice(0,iMaximumNumberOfChunks).join("");
-                                          refreshChunk50000Lengths();
-                        } else {
-                                chunkedTextareas.innerHTML = "";
-                        }
-                }
+            if (text.length > i50000) {
+              const chunks = [];
+
+              for (let i = 0; i < text.length; i += i50000) {
+                chunks.push(text.substring(i, i + i50000));
+              }
+              iMaximumNumberOfChunks = parseInt($$$$("#maximumNumberOfChunks").value);
+              $$$$("#numberOfChunks").innerText = "There are a total of " + chunks.length + " chunk(s)";
+              // 10/29/2023 - added superHTMLEntities after noticing code from cajamotora.Code.gs caused a failure in parsing
+              chunkedTextareas.innerHTML = chunks.map((chunk, i) => `<br /><br /><div>` + ((i>0)? `<div><button onclick="pullleft(this, 100)">&lt;&lt;&lt;</button><button onclick="pullleft(this, 10)">&lt;&lt;</button><button onclick="pullleft(this, 1)">&lt;</button><button onclick="pushright(this, 1)">&gt;</button><button onclick="pushright(this, 10)">&gt;&gt;</button><button onclick="pushright(this, 100)">&gt;&gt;&gt;</button><br></div>` : "") + `<textarea class="chunk50000" onchange="refreshChunk50000Lengths()">${superhtmlEntities(chunk)}</textarea><br /><button onclick="copy">copy</button><span class='chunkLength'></span></div>`).slice(0,iMaximumNumberOfChunks).join("");
+              refreshChunk50000Lengths();
+            } else {
+              chunkedTextareas.innerHTML = "";
+            }
+          }
         </script>
 </body>
 </html>
