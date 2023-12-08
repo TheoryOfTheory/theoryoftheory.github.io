@@ -60,7 +60,7 @@ function displayTDContents(oElement) {
 // OLD document.querySelectorAll("table")[0].innerHTML = domscripts_linkify(document.querySelectorAll("table")[0].innerHTML);
 document.querySelectorAll("table td:nth-child(2n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
 document.querySelectorAll("table td:nth-child(3n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
-document.querySelectorAll("table td:nth-child(rn)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
+document.querySelectorAll("table td:nth-child(4n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
 
 // LASTLY FINALLY set table and td widths/styling
 sTableAndTDStyle = domGenerateTableAndTDWidth(1435, [10, 0, 0, 0, 0], null, 25);
