@@ -247,35 +247,33 @@ textarea { width: 600px; height: 311px; }
     <button onclick="regexMoiNotes()">display regex moinotes</button>
   </div>
   <script>
-  function fFindAndReplace() {
-    
-      // eg: " height:20px; width:285px; height:20px; width:3005px;".replace(new RegExp($$$$("#input_find").value, "g"), "")
-          // .match(new RegExp(sTag.replace(/\s/g, ""), 'i')))
+function fFindAndReplace() {
+      // eg: " height:20px; width:285px;\nheight:20px; width:3005px;".replace(new RegExp("height:(\\d+)px;\\s*width:(\\d+)px;", "g"), "replaced")
       var sFind = $$$$("#input_find").value.split("\n")[0]; // split by linebreaks and choose the first because this textarea defaults with multiple regex optionsn to pick from
       var sReplace = $$$$("#input_replace").value.split("\n")[0]; // split by linebreaks and choose the first because this textarea defaults with multiple regex optionsn to pick from
       var sIG = (($$$$("#ignorecase").checked) ? "i" : "" ) + "g"; // ignore case, global
-          if ($$$$("#regex").checked) {
-                  // rRegex = new RegExp($$$$("#input_find").value, "g");
-                  var rRegex = new RegExp(sFind, sIG);
-                  var oNumOfMatches = $$$$("#myTextarea").value.match(rRegex);
-                  // console.log(oNumOfMatches);
-                  if (!oNumOfMatches) {
-                      alert("0 matches.");
-                  } else {
-                      var iNumOfMatches = oNumOfMatches.length;
-                      if (confirm(iNumOfMatches + " matches. Replace?")) {
-                          $$$$("#myTextarea").value = $$$$("#myTextarea").value.replace(rRegex, sReplace);
+      // rRegex = new RegExp($$$$("#input_find").value, "g");
+      if ($$$$("#regex").checked) {
+        var rRegex = new RegExp(sFind, sIG);              
+      } else {
+        var rRegex = new RegExp(sFind.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), sIG); // this quick replace is a way to escape all the special regex characters so that I do an exact string literal search (yet still ultimately utilizing RegExp object) since I couldn't get a simpler, non-RegExp .match/.matchAll to work elegantly                                
+      }
+      var oNumOfMatches = $$$$("#myTextarea").value.match(rRegex);
+      // console.log(oNumOfMatches);
+      if (!oNumOfMatches) {
+        alert("0 matches.");
+      } else {
+        var iNumOfMatches = oNumOfMatches.length;
+        if (confirm(iNumOfMatches + " match" + (iNumOfMatches>1?"es":"") + ". Replace?")) {
+          $$$$("#myTextarea").value = $$$$("#myTextarea").value.replace(rRegex, sReplace);
 
-                          // find and replace successfully completed.  now pop off the first rRegex token so I can press the button again and move to the next find and replace
-                          $$$$("#input_find").value = $$$$("#input_find").value.split("\n").slice(1).join("\n");
-                          $$$$("#input_replace").value = $$$$("#input_replace").value.split("\n").slice(1).join("\n");
+          // find and replace successfully completed.  now pop off the first rRegex token so I can press the button again and move to the next find and replace
+          $$$$("#input_find").value = $$$$("#input_find").value.split("\n").slice(1).join("\n");
+          $$$$("#input_replace").value = $$$$("#input_replace").value.split("\n").slice(1).join("\n");
 
-                      }
-                      splitTextarea();
-                  }     
-          } else {
-
-          }
+        }
+        splitTextarea();
+      }     
 
     }
     
