@@ -305,7 +305,7 @@ function fFindAndReplace() {
 <br />  
 
 <!-- PREPEND -->  
-<div>
+<div style="background-color: rgb(249, 189, 215); ">
   <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button>
 </div>
 <script>
@@ -324,11 +324,12 @@ function fFindAndReplace() {
 <a href="https://html-cleaner.com">html-cleaner</a> - find a vanilla javascript library replicates this site's tools<br />
 <br />
 
-<div>Paste in large data above and textareas of gs-friendly <input id="chunksize" onblur="splitTextarea();" style="width:50px;">-sized chunks will appear below.&nbsp;<a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks. <br />
+<div style="background-color: rgb(249, 189, 215);">Paste in large data above and textareas of gs-friendly <input id="chunksize" onblur="splitTextarea();" style="width:50px;">-sized chunks will appear below.&nbsp;<a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm?chunksize=150">click here</a> for 150-sized chunks. <br />
             
-<div><button onclick="copyall()">Copy All - dom_copyall?</button></div>
+<div style="background-color: rgb(249, 189, 215);"><button onclick="copyall()">Copy All - dom_copyall?</button></div>
 
-            <br /><div>background color?&nbsp;<input checked type="checkbox" id="copyJSArrayToClipboardCOLORCHECKBOX"><input type="color" id="copyJSArrayToClipboardCOLOR" name="copyJSArrayToClipboardCOLOR" value="#90EE90" oninput="updateColorValue(this.value)"><span id="backgroundcolor">HEX: #90EE90 / RGB: rgb(144, 238, 144)</span></div>
+            <br />
+<div style="background-color: rgb(249, 189, 215);">background color?&nbsp;<input checked type="checkbox" id="copyJSArrayToClipboardCOLORCHECKBOX"><input type="color" id="copyJSArrayToClipboardCOLOR" name="copyJSArrayToClipboardCOLOR" value="#90EE90" oninput="updateColorValue(this.value)"><span id="backgroundcolor">HEX: #90EE90 / RGB: rgb(144, 238, 144)</span></div>
             <script>
               function updateColorValue(hex) {
                 const rgb = hexToRgb(hex);
@@ -343,20 +344,22 @@ function fFindAndReplace() {
               }
             </script>
             
-                          <div>
+            <div style="background-color: rgb(249, 189, 215);">
               <button onclick="copyJSArrayToClipboardHELPER('newline/vertical/normal')">Copy All - copyJSArrayToClipboard newline/vertical/normal</button>
               <button onclick="copyJSArrayToClipboardHELPER('tab/horizontal/transposed')">Copy All - copyJSArrayToClipboard tab/horizontal/transposed</button>
             </div>
   
             <br />
             
-            <div>
+            <div style="background-color: rgb(249, 189, 215);">
               <button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
               <button onclick="replaceTabsWithRightarrows();">Replace tabs with ⇒RightArrows</button>
             </div>
           
         </div>
+  <div style="background-color: rgb(249, 189, 215);">
         <div><input id="maximumNumberOfChunks" value="20"> maximum number of chunks</div>
+  </div>
         <div id="numberOfChunks">There are a total of ??? chunks.</div>
 
         <div id="chunkedTextareas"></div>
