@@ -230,10 +230,53 @@ textarea { width: 600px; height: 311px; }
 
         <textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea>
 
-<br /><button onclick="prependMarkdownListAsterisks();">prepend markdown list asterisks</button><script>
+<br />
+  
+  <!-- regex find and replace -->
+  <div id="findandreplace">regex?<input checked="" type="checkbox" id="regex">ignorecase?<input checked="" type="checkbox" id="ignorecase"><input type="text" id="input_find" value="height:(\d+)px;\s*width:(\d+)px;"><input type="text" id="input_replace"><button onclick="fFindAndReplace()">find and replace</button></div>
+  <script>
+    function fFindAndReplace() {
+        // eg: " height:20px; width:285px; height:20px; width:3005px;".replace(new RegExp($$$$("#input_find").value, "g"), "")
+
+     // .match(new RegExp(sTag.replace(/\s/g, ""), 'i')))
+        if ($$$$("#regex")) {
+            if ($$$$("#ignorecase")) {
+                rRegex = new RegExp($$$$("#input_find").value, "g");
+                oNumOfMatches = $$$$("#myTextarea").value.match(rRegex);
+                // console.log(oNumOfMatches);
+                if (!oNumOfMatches) {
+                    alert("0 matches.");
+                } else {
+                    iNumOfMatches = oNumOfMatches.length;
+                    if (confirm(iNumOfMatches + " matches. Replace?")) {
+                        $$$$("#myTextarea").value = $$$$("#myTextarea").value.replace(rRegex, $$$$("#input_replace").value, "i");
+                    }
+                    splitTextarea();
+                }     
+            } else {
+
+            }
+        } else {
+
+        }
+
+    }
+    </script>
+  
+  
+<br />  
+  <!-- PREPEND MARKDOWN -->
+  <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button>
+
+  
+  <script>
 function prependMarkdownListAsterisks() {
     $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"* " + o).join("\n")+ "\n* \n* \n* \n* \n* \n* \n* ";
-}</script>
+}
+function prependMardownQuoteGreaterThan() {
+    $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"> " + o).join("\n")+ "\n> \n> \n> \n> \n> \n> \n> ";
+}  
+  </script>
 
                   <br /><br />
                 <div>Total length=<span id="totallength"></span></div>
@@ -245,7 +288,7 @@ function prependMarkdownListAsterisks() {
             
             <button onclick="copyall()">Copy All - dom_copyall?</button><br />
 
-			<br><br>background color?&nbsp;<input checked type="checkbox" id="copyJSArrayToClipboardCOLORCHECKBOX"><input type="color" id="copyJSArrayToClipboardCOLOR" name="copyJSArrayToClipboardCOLOR" value="#90EE90"><br>
+                        <br><br>background color?&nbsp;<input checked type="checkbox" id="copyJSArrayToClipboardCOLORCHECKBOX"><input type="color" id="copyJSArrayToClipboardCOLOR" name="copyJSArrayToClipboardCOLOR" value="#90EE90"><br>
             
             <button onclick="copyJSArrayToClipboardHELPER('newline/vertical/normal')">Copy All - copyJSArrayToClipboard newline/vertical/normal</button><br />
             
