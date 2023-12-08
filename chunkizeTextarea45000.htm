@@ -242,7 +242,9 @@ textarea { width: 600px; height: 311px; }
     <textarea style="font-size:7px; height:35px; width:300px;" id="input_find" row="3" col="3">height:(\d+)px;\s*width:(\d+)px;\s&#013;&#010;\scolspan=1 rowspan=1&#013;&#010;background-color:#[0-9a-fA-F]{6};\s*color:#[0-9a-fA-F]{6};\s&#013;&#010;&lt;td style=&apos;&apos;&gt;&#013;&#010;dang_anything_else?</textarea>
     <textarea style="font-size:7px; height:35px; width:300px;" id="input_replace" row="3" col="3">&#013;&#010;&#013;&#010;&#013;&#010;&lt;td&gt;&#013;&#010;</textarea>
 
-    <br /><button onclick="fFindAndReplace()">find and replace</button>
+    <br />
+    <button onclick="fFindAndReplace()">find and replace</button>
+    <button onclick="regexMoiNotes()">display regex moinotes</button>
   </div>
   <script>
   function fFindAndReplace() {
@@ -276,12 +278,34 @@ textarea { width: 600px; height: 311px; }
           }
 
     }
+    
+    function regexMoiNotes() {
+        var myWindow = window.open("", "MsgWindow", "width=400,height=300");
+        myWindow.document.write(`<div class="flex-col w-full"><article class="message prose prose-slate break-words"><p>Python and JavaScript do indeed have some differences in their regular expression (regex) syntax and capabilities, as their regex engines are not identical. Most of the core features of regular expressions are consistent across different programming languages, including basic patterns like literals, character classes, quantifiers, anchors, and grouping. However, there can be variations, particularly in more advanced features.</p>
+        <p><strong>Python regex differences include:</strong></p>
+        <ul>
+        <li>Verbose regex: Python supports a verbose mode that allows regexes to be written across multiple lines and include comments, which JavaScript does not support natively.</li>
+        <li>Named groups: Python's <code>re</code> module allows you to name capturing groups, which is a feature that until recently was not available in JavaScript.</li>
+        <li>Lookbehind assertions: Python's <code>re</code> module historically supported both fixed-width positive and negative lookbehinds, whereas JavaScript only started supporting fixed-width lookbehinds natively in ES2018.</li>
+        <li>Unicode Handling: The way Unicode is handled can differ. Python has a flag for making patterns Unicode-aware, whereas JavaScript's support for Unicode in regexes has evolved over time and may differ between environments.</li>
+        </ul>
+        <p><strong>Visual Studio Code's find and replace regex functionality</strong> is based on the JavaScript regex engine. Therefore, it largely follows JavaScript's regex syntax. However, it's worth noting that in a text editor environment, certain regex features might be slightly altered or extended to fit the text editing use case.</p>
+        <p>The term for these different regex "flavors" or "dialects" stems from the underlying regex engine they are built on. For example:</p>
+        <ul>
+        <li>Python's regex syntax is based on the <code>re</code> module's syntax.</li>
+        <li>JavaScript's regex syntax is built in line with the ECMAScript standard for regex.</li>
+        <li>Perl has its own flavor of regex, often referred to as PCRE (Perl Compatible Regular Expressions), which is also used in many other environments due to its rich feature set. moinotes: This is used in bash's rename utility ("brew install rename")</li>
+        <li>.NET has its own regex library with particular features like right-to-left matching.</li>
+        <li>POSIX regex, which comes in two flavors: BRE (Basic Regular Expressions) and ERE (Extended Regular Expressions), seen in tools like <code>grep</code> (BRE by default) and <code>egrep</code> (ERE by default).</li>
+        </ul>
+        <p>Many programming languages and tools document their specific regex features and syntax, so it's always good to consult the official documentation when writing regexes for a particular environment.</p></article></div>`);
+    }
     </script>
   
   
 <br />  
   <!-- PREPEND MARKDOWN -->
-  <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button>
+  <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button>
 
   
   <script>
@@ -290,6 +314,9 @@ function prependMarkdownListAsterisks() {
 }
 function prependMardownQuoteGreaterThan() {
     $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"> " + o).join("\n")+ "\n> \n> \n> \n> \n> \n> \n> ";
+}
+function prependTab() {
+    $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"\t" + o).join("\n")+ "";
 }  
   </script>
 
