@@ -116,77 +116,80 @@ domLoadStyles_CSS(sTableAndTDStyle);
 
 
 // lastly lastly lastly - redditfy links
-function redditfyHTMLLinks(sTextFULL) {
-/*
-var sTextFULL = `tryhackme+vulnhub+hackthebox // https://www.facebook.com/groups/1904685786212833
+function redditfy() {
+  function redditfyHTMLLinks(sTextFULL) {
+  /*
+  var sTextFULL = `tryhackme+vulnhub+hackthebox // https://www.facebook.com/groups/1904685786212833
 
-CyberSecurityJobs+SecurityCareerAdvice
+  CyberSecurityJobs+SecurityCareerAdvice
 
-Cybersecurity101+ComputerSecurity
+  Cybersecurity101+ComputerSecurity
 
-Netsecstudents+WGUCybersecurity+Cybersecurity101
+  Netsecstudents+WGUCybersecurity+Cybersecurity101
 
-Kalilinux
+  Kalilinux
 
-OperationsSecurity
+  OperationsSecurity
 
-cybersecurity+cybersecurity_help
+  cybersecurity+cybersecurity_help
 
-netdef
+  netdef
 
-netsec
+  netsec
 
-nmap
+  nmap
 
-opsec
+  opsec
 
-// AI cybsec organizations
-Simius+DeepInstinct
+  // AI cybsec organizations
+  Simius+DeepInstinct
 
-AIOpsSec
+  AIOpsSec
 
-cybersecurityUK+cybersecurityNZ
+  cybersecurityUK+cybersecurityNZ
 
-CyberSecurityMemes+Cybersecurity_help+Cybersecurity_TIPS+GoogleCybersecurity+cybersecurity_news+cybersecurityUK+Hacking+Computersicherheit+cybersecurity4U+CyberSecurityFans+cybsec++CyberSecurityFails+AskNetSec++CybersecurityHumor+cybersecuritynews+SecurityCareerAdvice+cyber_security+Hacking_Tutorials+CybersecurityDS+CompTIA
+  CyberSecurityMemes+Cybersecurity_help+Cybersecurity_TIPS+GoogleCybersecurity+cybersecurity_news+cybersecurityUK+Hacking+Computersicherheit+cybersecurity4U+CyberSecurityFans+cybsec++CyberSecurityFails+AskNetSec++CybersecurityHumor+cybersecuritynews+SecurityCareerAdvice+cyber_security+Hacking_Tutorials+CybersecurityDS+CompTIA
 
-SeguridadCibernetica
+  SeguridadCibernetica
 
 
-// possible dupes?  SecurityAnalysis+InfoSec+Information_Security+InfoSecNews+PenTest+NetSec+AskNetSec+NetSecStudents+GRC+Compliance.`;
-*/
-/*
-aTexts = sTextFULL.split("\n");
+  // possible dupes?  SecurityAnalysis+InfoSec+Information_Security+InfoSecNews+PenTest+NetSec+AskNetSec+NetSecStudents+GRC+Compliance.`;
+  */
+  /*
+  aTexts = sTextFULL.split("\n");
 
-document.body.innerHTML = ((aTexts.map(text => {
-  sText = text.split("#")[0].split("//")[0].trim();
-  if (sText.length != 0) {
-    text = text.replace(sText, `<a target='_blank' href='${"http://old.reddit.com/r/" + sText}'>${sText}</a>`);
+  document.body.innerHTML = ((aTexts.map(text => {
+    sText = text.split("#")[0].split("//")[0].trim();
+    if (sText.length != 0) {
+      text = text.replace(sText, `<a target='_blank' href='${"http://old.reddit.com/r/" + sText}'>${sText}</a>`);
 
-    return text;
-  } else { return text; }
-    
-  // console.log(sText);
-})).join("<br>"));
-*/
-    aTexts = sTextFULL.split("\n");
+      return text;
+    } else { return text; }
 
-    return ((aTexts.map(text => {
-      sText = text.split("#")[0].split("//")[0].trim();
-      if (sText.length != 0) {
-        text = text.replace(sText, `<a target='_blank' href='${"http://old.reddit.com/r/" + sText}'>${sText}</a>`);
-    
-        return text;
-      } else { return text; }
-        
-      // console.log(sText);
-    })).join("<br>"));
-    
+    // console.log(sText);
+  })).join("<br>"));
+  */
+      aTexts = sTextFULL.split("\n");
+
+      return ((aTexts.map(text => {
+        sText = text.split("#")[0].split("//")[0].trim();
+        if (sText.length != 0) {
+          text = text.replace(sText, `<a target='_blank' href='${"http://old.reddit.com/r/" + sText}'>${sText}</a>`);
+
+          return text;
+        } else { return text; }
+
+        // console.log(sText);
+      })).join("<br>"));
+
+  }
+
+  document.querySelectorAll("table")[0].querySelectorAll("tr").forEach(o=>{
+      sTextFULL = o.querySelectorAll("td")[1].innerText;
+      o.querySelectorAll("td")[1].innerHTML = redditfyHTMLLinks(sTextFULL);
+  })
 }
-
-document.querySelectorAll("table")[0].querySelectorAll("tr").forEach(o=>{
-    sTextFULL = o.querySelectorAll("td")[1].innerText;
-    o.querySelectorAll("td")[1].innerHTML = redditfyHTMLLinks(sTextFULL);
-})
+setTimeout(redditfy, 4500);
 
 
 </script>
