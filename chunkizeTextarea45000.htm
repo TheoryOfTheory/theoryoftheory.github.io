@@ -168,6 +168,9 @@ function replaceNewlinesWithPilcrows() {
 }
 function replaceTabsWithRightarrows() {
     $$$a('.chunk50000').forEach(o=>{ o.value = o.value.replace(/\t/g, '⇒'); })
+} 
+function prefaceChunksWithChunkIndex() {
+    $$$a(".chunk50000").forEach((o,i)=>{ o.value = "chunk " + i + "\n" + o.value });
 }
 </script>
 
@@ -366,6 +369,7 @@ function fFindAndReplace() {
             <div style="background-color: rgb(249, 189, 215);">
               <button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
               <button onclick="replaceTabsWithRightarrows();">Replace tabs with ⇒RightArrows</button>
+			  <button onclick="prefaceChunksWithChunkIndex();">Preface Chunks w Chunk Index</button>
             </div>
           
         </div>
