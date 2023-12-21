@@ -112,6 +112,83 @@ if (oGetAllParameters_CLIENT().search) {
 // lastly lastly - define td widths
 sTableAndTDStyle = domGenerateTableAndTDWidth(900, [20, 50, 30], null, 25);
 domLoadStyles_CSS(sTableAndTDStyle);
+
+
+
+// lastly lastly lastly - redditfy links
+function redditfyHTMLLinks(sTextFULL) {
+/*
+var sTextFULL = `tryhackme+vulnhub+hackthebox // https://www.facebook.com/groups/1904685786212833
+
+CyberSecurityJobs+SecurityCareerAdvice
+
+Cybersecurity101+ComputerSecurity
+
+Netsecstudents+WGUCybersecurity+Cybersecurity101
+
+Kalilinux
+
+OperationsSecurity
+
+cybersecurity+cybersecurity_help
+
+netdef
+
+netsec
+
+nmap
+
+opsec
+
+// AI cybsec organizations
+Simius+DeepInstinct
+
+AIOpsSec
+
+cybersecurityUK+cybersecurityNZ
+
+CyberSecurityMemes+Cybersecurity_help+Cybersecurity_TIPS+GoogleCybersecurity+cybersecurity_news+cybersecurityUK+Hacking+Computersicherheit+cybersecurity4U+CyberSecurityFans+cybsec++CyberSecurityFails+AskNetSec++CybersecurityHumor+cybersecuritynews+SecurityCareerAdvice+cyber_security+Hacking_Tutorials+CybersecurityDS+CompTIA
+
+SeguridadCibernetica
+
+
+// possible dupes?  SecurityAnalysis+InfoSec+Information_Security+InfoSecNews+PenTest+NetSec+AskNetSec+NetSecStudents+GRC+Compliance.`;
+*/
+/*
+aTexts = sTextFULL.split("\n");
+
+document.body.innerHTML = ((aTexts.map(text => {
+  sText = text.split("#")[0].split("//")[0].trim();
+  if (sText.length != 0) {
+    text = text.replace(sText, `<a target='_blank' href='${"http://old.reddit.com/r/" + sText}'>${sText}</a>`);
+
+    return text;
+  } else { return text; }
+    
+  // console.log(sText);
+})).join("<br>"));
+*/
+    aTexts = sTextFULL.split("\n");
+
+    return ((aTexts.map(text => {
+      sText = text.split("#")[0].split("//")[0].trim();
+      if (sText.length != 0) {
+        text = text.replace(sText, `<a target='_blank' href='${"http://old.reddit.com/r/" + sText}'>${sText}</a>`);
+    
+        return text;
+      } else { return text; }
+        
+      // console.log(sText);
+    })).join("<br>"));
+    
+}
+
+document.querySelectorAll("table")[0].querySelectorAll("tr").forEach(o=>{
+    sTextFULL = o.querySelectorAll("td")[1].innerText;
+    o.querySelectorAll("td")[1].innerHTML = redditfyHTMLLinks(sTextFULL);
+})
+
+
 </script>
   
 <!-- styles -->
