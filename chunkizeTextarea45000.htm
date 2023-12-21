@@ -105,8 +105,8 @@ function copyJSArrayToClipboard(aArray) {
     */
 
     // ATTEMPT 4 - refactoring notes: use ATTEMPT 3 to figure out how to incorporate both text/plain and text/html at the same time
-    /*	  
-  	  if ($$$$("#copyJSArrayToClipboardCOLORCHECKBOX").checked) {
+    /*          
+            if ($$$$("#copyJSArrayToClipboardCOLORCHECKBOX").checked) {
           sBackgroundColor = $$$$("#copyJSArrayToClipboardCOLOR").value;
       } else {
           sBackgroundColor = "white";
@@ -138,22 +138,9 @@ function copyJSArrayToClipboard(aArray) {
       }      
       sHTMLTable = toHTMLTable(aArray, undefined, "#copyJSArrayToClipboard", 0);
       sHTMLTable = sHTMLTable.replace(/table /, "table style='text-align: left; background-color:" + sBackgroundColor  + ";'");
-
-      var data = [new ClipboardItem({
-          ["text/html"]: new Blob([sHTMLTable], { type: "text/html" }),
-          ["text/plain"]: new Blob([sHTMLTable], { type: "text/plain" })
-      })];
-    
-      navigator.clipboard.write(data).then(
-        () => {
-          alert("success navigator.clipboard.write of ClipboardItem with both text/html and text/plain Blobs.");    
-        },
-        (err) => {
-            alert(`Error: ${err.name} - ${err.message}`);
-        }
-      );  
- 
-}  
+	  dom_copyHTMLToClipboard(sHTMLTable);
+}
+  
 </script>
 <script>
 function copyall() {
