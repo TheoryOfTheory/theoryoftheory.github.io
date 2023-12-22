@@ -138,7 +138,7 @@ function copyJSArrayToClipboard(aArray) {
       }      
       sHTMLTable = toHTMLTable(aArray, undefined, "#copyJSArrayToClipboard", 0);
       sHTMLTable = sHTMLTable.replace(/table /, "table style='text-align: left; background-color:" + sBackgroundColor  + ";'");
-	  dom_copyHTMLToClipboard(sHTMLTable);
+          dom_copyHTMLToClipboard(sHTMLTable);
 }
   
 </script>
@@ -244,6 +244,7 @@ textarea { width: 600px; height: 311px; }
 
 </style>
 
+  <div><button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">dom_copyHTMLFromClipboardIntoPlaintext()</button></div>
   <div><textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea></div>
 
   <div>Total length=<span id="totallength"></span></div>
@@ -369,7 +370,7 @@ function fFindAndReplace() {
             <div style="background-color: rgb(249, 189, 215);">
               <button onclick="replaceNewlinesWithPilcrows();">Replace newlines with ¶ilcrows</button>
               <button onclick="replaceTabsWithRightarrows();">Replace tabs with ⇒RightArrows</button>
-			  <button onclick="prefaceChunksWithChunkIndex();">Preface Chunks w Chunk Index</button>
+                          <button onclick="prefaceChunksWithChunkIndex();">Preface Chunks w Chunk Index</button>
             </div>
           
         </div>
