@@ -324,9 +324,11 @@ function fFindAndReplace() {
 
 <!-- PREPEND -->  
 <div style="background-color: rgb(249, 189, 215); ">
-  <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button>
+  <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button><button onclick="prependSpace()">prepend " " (space)</button>
+
 </div>
 <script>
+  // consider merging these into a single function?  note how .trim() mebbie shouldn't be used in all of them?  idk..
   function prependMarkdownListAsterisks() {
       $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"* " + o).join("\n")+ "\n* \n* \n* \n* \n* \n* \n* ";
   }
@@ -336,6 +338,9 @@ function fFindAndReplace() {
   function prependTab() {
       $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map(o=>"\t" + o).join("\n")+ "";
   }  
+  function prependSpace() {
+        $$$$("#myTextarea").value = $$$$("#myTextarea").value.split("\n").map(o=>" " + o).join("\n")+ "\n \n \n \n \n \n \n ";
+  }
 </script>
 <br /><br />
 <br /><br />
