@@ -245,8 +245,14 @@ textarea { width: 600px; height: 311px; }
 </style>
 <script>
 function copyTextAreaIntoHTML() { document.body.innerHTML = $$$$("#myTextarea").value; }
+function alternateCase(sText) {
+    return sText.toLowerCase().split(" ").map(o=>o.split("").map((oo,ii)=>(ii % 2 === 0 ? oo.toLowerCase() : oo.toUpperCase())).join("")).join(" ")
+}
 </script>
-  <div><button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">dom_copyHTMLFromClipboardIntoPlaintext()</button><button onclick="copyTextAreaIntoHTML()">copyTextAreaIntoHTML()</button></div>
+  <div>
+    <button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">dom_copyHTMLFromClipboardIntoPlaintext()</button><button onclick="copyTextAreaIntoHTML()">copyTextAreaIntoHTML()</button>
+    <button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">alternate text</button>
+  </div>
   <div><textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea></div>
 
   <div>Total length=<span id="totallength"></span></div>
