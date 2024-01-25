@@ -9,10 +9,12 @@
 <script src="https://unpkg.com/lodash.multipermutations"></script>
 
 <script>
-// source
-/*
+
+var sGroups = `
 atelier // At age 24, he joined the Cristina Rota's atelier https://en.wikipedia.org/wiki/Alberto_San_Juan
 salons
+cabals
+cartels
 sangha - https://parallax-media.eu/parallax-sangha
 anthologies
 cohorts
@@ -23,6 +25,7 @@ guilds
 networks
 bootcamps
 symposiums - Hegelian Symposium https://philosophyportal.online/phenomenology-of-spirit-2022
+summits
 lectures
 channels
 clans
@@ -31,7 +34,8 @@ confluences
 dojos
 proseminars
 assemblies
-*/
+`;
+const aGroups = sGroups.trim().split("\n").map(o=>(o.split("//")[0].trim()))
 </script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 <script>window.addEventListener('load', function() { dom_changeTitleAndFavicon("Theory of Theory", "https://www.awicons.com/free-icons/download/object-icons/large-home-icons-by-aha-soft/ico/Museum.ico" ); }, false )</script>
@@ -39,18 +43,18 @@ assemblies
 <!-- (MDL+DBL) copied-and-pasted  -->
 
 <p class="superp">
-bienvenidos!<br /><br>I'm theory.of.teoria@gmail.com and I work with batch ML and real-time ML models<br />this site is ground zero for glimpses of knowledge I've jotted down<br /> onto napkin-math notes from various <span id="group">atelier/cabals/cartels/salons/sangha/anthologies/cohorts/convoys/seminars/cadres/guilds/networks/bootcamps/summits/symposiums/lectures/channels/clans/collegiates/confluences/dojos/proseminars/assemblies</span>.
+bienvenidos!<br /><br>I'm theory.of.teoria@gmail.com and I work with batch ML and real-time ML models<br />this site is ground zero for glimpses of knowledge I've jotted down<br /> onto napkin-math notes from various <span id="group"></span>.
 </p>
 
 
 <script type="text/javascript">
-var aGroups;
+//var aGroups;
 function changeGroup() {
 // function() { $$$$("#group").innerHTML = getRandomArrayToken(aGroups) }
    $$$$("#group").innerHTML = getRandomArrayToken(aGroups)
 }
 document.addEventListener("DOMContentLoaded", function(event) { 
-  aGroups = $$$$("#group").innerText.split("/");
+  //aGroups = $$$$("#group").innerText.split("/");
 
   changeGroup();
   document.body.onmousemove = changeGroup;
@@ -85,3 +89,57 @@ to implement: Tailwind vs Bootstrap vs Material vs Bulma vs SCSS vs raw SASS (wi
 </tbody></table>
 
 
+<h2>R2✋(Zuhanden) / P@✋(Vorhanden) Tools</h2>
+<ul>
+<li><a href="https://theoryoftheory.github.io/AGIcountdown.htm">AGI/singularity countdown clocks</a><li>
+<li><a href="https://theoryoftheory.github.io/politicalcompasses.html">AGI political compasses</a></li>
+<li><a href="https://theoryoftheory.github.io/profilicities.htm">profilicities.htm</a></li>
+<li><a href="https://theoryoftheory.github.io/chunkizeTextarea45000.htm">chunkizeTextarea45000.htm</a></li>
+<li><a href="https://theoryoftheory.github.io/snippets.htm">snippets.htm</a></li>
+
+</ul>
+
+
+<h2>Priorities</h2>
+
+<ul>
+<li>complete illustrations (pull from giclées?)</li>
+<li>ed5 projects</li>
+<li>Belarusian+Latvian poetry for Ana (need to copy out/refactor)</li>
+<li>project specs for Robby/Lane (need to retrieve)</li>
+<li><a href="http://theoryoftheory.github.io/latvian.htm">Latvian post-Apocalypse poetry</a></li>
+<li><a href="http://theoryoftheory.github.io/denmarkvesey.htm">My Denmark Vesey + Myst + Zork Video Game</a> for Carol</li>
+</ul>
+
+<br /><br />
+
+<ul>
+<li style="visibility: hidden;"><div></div></li>
+<li><div><h2>My Syllabus: escuchar y aprender, champion good learns, challenging bad learns</ht></div></li><!-- Sigh, Escalate, Accelerate; Serve, Elevate, Automate -->
+<li><span style="font-family:Courier">Serve, Elevate, Automate</span> vs <span style="font-family:Courier">Sigh Escalate Accelerate</span><li>
+<li><a href="https://theoryoftheory.github.io/syllabus.htm">escuela - challenging all my assumptions</a><li>
+<li><a href="https://theoryoftheory.github.io/phi.htm">σχολή - challenging all my presuppositions</a><li>
+<li><a href="https://theoryoftheory.github.io/vowofsilence.html">vow of silence</a><li>
+<li><a href="https://theoryoftheory.github.io/chaos.htm">chaos x dwitter</a><li>
+<li><a href="https://theoryoftheory.github.io/politicalcompasses.html">AGI x politicalcompassmemes</a><li>
+<li><a href="https://theoryoftheory.github.io/gamification.htm">gamification theory</a><li>
+<li><a href="https://theoryoftheory.github.io/filosofos.htm">filosofos</a><li>
+<li><a href="https://theoryoftheory.github.io/math.htm">math</a><li>
+<li><a href="https://theoryoftheory.github.io/snippets.htm">code snippets</a><li>
+<li><a href="https://theoryoftheory.github.io/theCartesianMind.htm">The Cartesian Mind, Cartesian Coordinates, and Matrix/Tetralogy models</a><li>
+<li style="visibility: hidden;"><div></div></li>
+
+<li><div><h2>re-enchantment of language, literature, reflection</h2></div></li>
+<li><a href="https://theoryoftheory.github.io/ReleaseSisterMaria.htm">#ReleaseSisterMaria</a><li>
+<li><a href="https://theoryoftheory.github.io/books.htm">my reading list / books-to-read</a><li>
+<li><a href="https://theoryoftheory.github.io/RhetoricalDevices.htm">Figures of Speech (aka "Literary Techniques" / "Rhetorical Devices" / "Forms of Wit")</a><li>
+<li><a href="https://theoryoftheory.github.io/AlphabetAntics.htm">Alphabet Antics (eg: palindromes, anagrams, ambigrams, and so on)</a><li>
+
+<li style="visibility: hidden;"><div></div></li>
+<li><div><h2>caca politics and caca theory - must be ruthlessly critiqued from groundful grounds</ht></div></li>
+<li><a href="https://theoryoftheory.github.io/activism.htm">activism</a><li>
+<li><a href="https://old.reddit.com/r/dugin+zizek">/r/dugin+zizek+chomsky</a><li>
+
+
+
+<ul>
