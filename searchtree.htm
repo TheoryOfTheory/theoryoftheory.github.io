@@ -3,13 +3,12 @@
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 
 <script>
-     window.addEventListener('load', function() { dom_changeTitleAndFavicon("searchtree", "s" ); }, false )
+     window.addEventListener('load', function() { dom_changeTitleAndFavicon(document.title = document.querySelector("#search").value + " - searchtree", "🔍" ); }, false )
 </script>
 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
      if (oGetAllParameters_CLIENT().search) { $$$$("input").value = oGetAllParameters_CLIENT().search; }
 
-document.title = document.querySelector("#search").value + " - searchtree";
 // change document title as search input is changed
 document.querySelector("#search").oninput = function (e) {
   // some things
