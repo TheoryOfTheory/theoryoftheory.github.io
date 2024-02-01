@@ -8,6 +8,13 @@
 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
      if (oGetAllParameters_CLIENT().search) { $$$$("input").value = oGetAllParameters_CLIENT().search; }
+
+// change document title as search input is changed
+document.querySelector("#search").oninput = function (e) {
+  // some things
+  document.title = e.target.value + " - searchtree";
+}
+
 }); </script>
 
 <script>
