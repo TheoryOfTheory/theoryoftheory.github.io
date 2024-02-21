@@ -198,7 +198,61 @@ function redditfy() {
       
   })
 }
+
+function subMultiredditfy() {
+
+// "SubMultireddit-ifier" - creates sub-multireddits based on each subsection (ie, ".segment" in the text.  very hack-y
+
+
+  document.querySelectorAll("table")[0].querySelectorAll("tr").forEach(o=>{
+      
+      oRedditTD = o.querySelectorAll("td")[1];
+
+      oRedditTD.innerHTML = (oRedditTD.innerHTML).split("<br><br>").map(o=>`<span class='segment'>${o}</span>`).join("<br><br>");
+
+      //console.log(oRedditTD);
+aSegments = oRedditTD.$$$a(".segment");
+      // console.log(aSegments);
+aSegments.forEach((e,i)=>{
+    // console.log(i);
+    // if (e.$$$$(".submultireddit")) {
+    // if .submultireddit exists then
+    // if aSegments[i]?.$$$a("a") exists
+    sSubMultiredditURL = (e.$$$a("a").map(o=>{
+        if (o.href.match(/.*\/([a-zA-Z0-9\+]+)$/)) {
+            return o.href.match(/.*\/([a-zA-Z0-9\+]+)$/)[1];
+        } else {
+            return "";
+        }
+        // return ( ? o.href.match(/\/([^\/\W]+)$/)[1]).join("+") : "" )
+        }).reduce((aa,ee,ii)=>{
+            if (ee) {
+                return aa + (ii>0 ? "+" : "") + ee;
+            } else {
+                return aa;
+            }
+            // return 
+        }, ""))
+        console.log(sSubMultiredditURL);
+        if (sSubMultiredditURL) {
+            if (e.$$$$(".submultireddit")) {
+                e.$$$$(".submultireddit").innerHTML = `<a target="_blank" href='https://old.reddit.com/${sSubMultiredditURL}'>${e.$$$$(".submultireddit").innerText}</a>`;
+            }
+
+        }
+    // sSubMultiredditURL = "https://old.reddit.com/r/" + aSegments[i]?.$$$a("a").map(o=>o.href.match(/\/([^\/\W]+)$/)[1]).join("+")
+    
+    // console.log(sSubMultiredditURL)
+})
+      
+  })
+
+
+
+}
+
 setTimeout(redditfy, 4500);
+setTimeout(subMultiredditfy, 5500);
 
 
 </script>
