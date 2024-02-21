@@ -185,8 +185,17 @@ function redditfy() {
   }
 
   document.querySelectorAll("table")[0].querySelectorAll("tr").forEach(o=>{
-      sTextFULL = o.querySelectorAll("td")[1].innerText;
-      o.querySelectorAll("td")[1].innerHTML = redditfyHTMLLinks(sTextFULL);
+      oRedditTD = o.querySelectorAll("td")[1];
+      var sTextFULL = oRedditTD.innerText;
+      var sRedditifedTextFull = redditfyHTMLLinks(sTextFULL)
+      // add titlespan to "#" and "//" titles
+      var sRedditifedTextFullWithTitlespans = sRedditifedTextFull.split("<br>").map(o=>{
+        if (o[0]=="#" || o.substring(0,2)=="//") { return `<span class='submultireddit'>${o}</span>`; } else { return o; }
+      }).join("<br>");
+      
+      
+      oRedditTD.innerHTML = sRedditifedTextFullWithTitlespans;
+      
   })
 }
 setTimeout(redditfy, 4500);
