@@ -14,11 +14,13 @@
 sTableAndTDStyle = domGenerateTableAndTDWidth(900, [35, 40, 5, 15,5], "#filosofos", 50, 30); // .replace("table", "body table:first-child");
 domLoadStyles_CSS(sTableAndTDStyle);
 
-// make the third column expandible
+// make the second column expandible
 $$$a("table#filosofos td:nth-child(2)").forEach(oTD=>{
     oTD.onclick = function(o) { dom_displayTDContents(o.target); }
 })
 
+// make the second column links clickable (domscripts_linkify)
+document.querySelectorAll("table td:nth-child(2n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
 
 
 }); </script>
