@@ -264,8 +264,8 @@ function alternateCase(sText) {
     ignorecase?<input checked="" type="checkbox" id="ignorecase"><br />
     
     <!-- javascript-style regexes -->
-    <textarea style="font-size:7px; height:35px; width:300px;" id="input_find" row="3" col="3">height:(\d+)px;\s*width:(\d+)px;\s&#013;&#010;\scolspan=1 rowspan=1&#013;&#010;background-color:#[0-9a-fA-F]{6};\s*color:#[0-9a-fA-F]{6};\s&#013;&#010;&lt;td style=&apos;&apos;&gt;&#013;&#010;dang_anything_else?</textarea>
-    <textarea style="font-size:7px; height:35px; width:300px;" id="input_replace" row="3" col="3">&#013;&#010;&#013;&#010;&#013;&#010;&lt;td&gt;&#013;&#010;</textarea>
+    <textarea style="font-size:7px; height:35px; width:300px;" id="input_find" row="3" col="3">\sdata-sheets-value="[^"]*"&#013;&#010;\sdata-sheets-textstyleruns="[^"]*"&#013;&#010;\sdata-sheets-hyperlinkruns="[^"]*"&#013;&#010;height:(\d+)px;\s*width:(\d+)px;\s&#013;&#010;\scolspan=1 rowspan=1&#013;&#010;background-color:#[0-9a-fA-F]{6};\s*color:#[0-9a-fA-F]{6};\s&#013;&#010;&lt;td style=&apos;&apos;&gt;&#013;&#010;dang_anything_else?</textarea>
+    <textarea style="font-size:7px; height:35px; width:300px;" id="input_replace" row="3" col="3">&#013;&#010;&#013;&#010;&#013;&#010;&#013;&#010;&#013;&#010;&#013;&#010;&lt;td&gt;&#013;&#010;</textarea>
 
     <br />
     <button onclick="fFindAndReplace()">find and replace</button>
