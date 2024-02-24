@@ -97,17 +97,11 @@ document.addEventListener('click', (event) => {
     oElementIndex = Array.prototype.indexOf.call(oElement.parentNode.children, oElement);
     // console.log(oElementIndex);
   if (oElement.tagName === 'TD' && (oElementIndex === 2 || oElementIndex === 3 || oElementIndex === 4)) {    
-    displayTDContents(oElement);
+    dom_displayTDContents(oElement);
   }
 });
 })</script>
-<script>
-function displayTDContents(oElement) {
-    const tdContent = oElement.innerHTML;
-    const newWindow = window.open("", "newWindow", "width=500,height=500");
-    newWindow.document.write(tdContent);
-}
-</script>
+
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
 // final script: auto-filter based on URL parameters
 // eg https://theoryoftheory.github.io/profilicities.htm?search=ML
