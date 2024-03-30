@@ -89,7 +89,7 @@ search :<br />
 <input id="formulalink">
 <br />
 
-<br /><button>search all</button><button onclick="(function() { window.location.href = 'https://theoryoftheory.github.io/searchtree.htm?search=' + document.querySelectorAll('#search')[0].value.replaceAll('+', ' ').trim(); })()">refresh URL with #search value</button>
+<br /><button>search all</button><button onclick="(function() { window.location.href = 'https://theoryoftheory.github.io/searchtree.htm?search=' + superencode(document.querySelectorAll('#search')[0].value.replaceAll('+', ' ')).trim(); })()">refresh URL with #search value</button>
 <br />
 <br />
 
