@@ -108,7 +108,7 @@ search :<br />
 
 <button onclick="openMe(this);" data-url="`https://translate.google.com/?sl=auto&tl=en&text=${sValue}`">translate</button>
 <br />
-<button onclick="openMe(this);" data-url="`https://www1.attacker.tv/search/${sValue}`">search attackertv</button> <!-- need to convert spaces to dashes for attackertv -->
+<button onclick="openMe(this);" data-url="https://attackertv.so/search/${sValue.replaceAll(' ', '-')}`">search attackertv</button> <!-- need to convert spaces to dashes for attackertv -->
 
 <br />
 <button onclick="openMe(this);" data-url="`https://www.linkedin.com/search/results/content/?keywords=${sValue}&sortBy=%22date_posted%22`">search linkedin</button>
@@ -135,7 +135,7 @@ search :<br />
 
 <br />
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=Amazon+%22Customer+Reviews%22+${sValue}&amp;btnI=I%27m+Feeling+Lucky`">search Amazon Customer Reviews</button><br />
-<button onclick="openMe(this);" data-url="`https://libgen.is/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=${sValue}`">search libgen</button>
+<button onclick="openMe(this);" data-url="`https://libgen.is/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=${superencode(sValue)}`">search libgen</button>
 <button onclick="openMe(this);" data-url="`https://www.pdfdrive.com/search?q=${sValue}&pagecount=&pubyear=&searchin=&em=&more=true`">search pdfdrive</button>
 <button onclick="openMe(this);" data-url="`https://annas-archive.org/search?q=${sValue}?`">search Anna's Archive</button>
 <button onclick="openMe(this);" data-url="`https://z-lib.is/s/${sValue}?`">search zlibrary</button>
