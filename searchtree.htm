@@ -37,8 +37,11 @@ document.querySelector("#search").oninput = function (e) {
   document.title = e.target.value + " - searchtree";
 }
 
-// generate excel formula =HYPERLINK()
-FormulaLink();
+// generate excel formula =HYPERLINK() (adding settimeout cuz it doesnt load the function right away??)
+setTimeout(() => {
+  FormulaLink();
+}, 3000);
+
 
 
 
@@ -51,6 +54,25 @@ function openMe(othis) {
    sURL = othis.dataset.url;
    sURL = eval(sURL); // get rid of this?
    window.open(sURL, "_blank");
+}
+
+function copy_formulalink() {
+  var copyText = document.getElementById("formulalink");
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+  // Alert the copied text
+  alert("Copied the text: " + copyText.value);
+}
+
+function fFormulaLink() {
+    $$$$("#formulalink").value = `=HYPERLINK("${window.location.href}", "${$$$$("#search").value.replaceAll(/\"/g, '""') + " searchtree"}")`;
+}
+
+function removeRedditDomainREGEX(sString){
+    return sString.replace(/(https\:\/\/old\.reddit\.com\/|https\:\/\/www\.reddit\.com\/)/, "")
 }
 
 </script>
@@ -92,20 +114,10 @@ button:hover {
 
 </style>
 
-<script>
-fFormulaLink = function() {
-    $$$$("#formulalink").value = `=HYPERLINK("${window.location.href}", "${$$$$("#search").value.replaceAll(/\"/g, '""') + " searchtree"}")`  
-}
-</script>
-<script>
-    function removeRedditDomainREGEX(sString){
-        return sString.replace(/(https\:\/\/old\.reddit\.com\/|https\:\/\/www\.reddit\.com\/)/, "")
-    }
-</script>
 
 </head><body><!-- MAIN SEARCHBAR -->
 <input id="search" style="height:50px; width: 800px; font-size:40px" value="fetch node"><br />
-excel formula: <input id="formulalink">
+<span style="color:white">excel formula:&nbsp;</span><input id="formulalink">
 <br />
 
 <!-- ADMIN / NON-SEARCH BUTTONS -->
