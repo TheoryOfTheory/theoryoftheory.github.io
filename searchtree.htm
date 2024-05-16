@@ -176,7 +176,6 @@ button:hover {
 <button onclick="openMe(this);" data-url="`https://www.removepaywall.com/${sValue}`">removepaywall.com</button>
 <button onclick="openMe(this);" data-url="`https://archive.is/${sValue}`">archive.ph</button>
 <button onclick="openMe(this);" data-url="`https://web.archive.org/web/${sValue}`">web.archive.org</button>
-
 <br>
 <h2>reddit undelete</h2>
 <button onclick="openMe(this);" data-url="`https://undelete.pullpush.io/${removeRedditDomainREGEX(sValue)}`">undelete.pullpush.io</button>
@@ -196,7 +195,7 @@ button:hover {
 <h6>text generative AI</h6>
 <h6>LLMs currently don't accept GET/POST URL parameters (except <a href="https://old.reddit.com/r/bing/comments/15h9xka/i_figured_out_how_to_start_a_conversation_with/">this?</a>) so a prompt-engineered text is copied to clipboard instead:</h6>
 <button onclick="openMeLLMs(this);" data-url="`https://bard.google.com/?q=${sValue}`">search bard</button>
-<button onclick="openMeLLMs(this);" data-url="`https://chat.openai.com/?q=${sValue}`">search chatGPT</button>
+<button onclick="openMeLLMs(this);" data-url="`https://chat.openai.com/?q=${"Please tell me about " + sValue + ". I ask you to please think step by step and in a deductive way (vs inductive) while avoiding possible cognitive biases and especially hallucinations."}`">search chatGPT</button>
 <button onclick="openMeLLMs(this);" data-url="`https://www.bing.com/search?form=MY0291&OCID=MY0291&q=Bing+AI&showconv=17q=${sValue}`">search bing AI chat</button> <!-- (the only LLM that has to be in an active tab in order to operate) -->
 <br>
 <button onclick="openMeLLMs(this);" data-url="`https://vello.ai/app/?q=${sValue}`">vello.ai</button> <!-- via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/k7exj36/ -->
