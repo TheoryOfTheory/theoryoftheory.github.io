@@ -77,20 +77,47 @@ button:hover {
 
 </style>
 
+<script>
+fFormulaLink = function() {
+    $$$$("#formulalink").value = `=HYPERLINK("${window.location.href}", "${$$$$("#search").value.replaceAll(/\"/g, '""') + " searchtree"}")`  
+}
+</script>
+<script>
+    function removeRedditDomainREGEX(sString){
+        return sString.replace(/(https\:\/\/old\.reddit\.com\/|https\:\/\/www\.reddit\.com\/)/, "")
+    }
+</script>
+
 </head><body><br />
 <br />
 <br />
 <br />
+
+<h2 style="color:white">searchtree bar</h2>
 search :<br />
 <input id="search" style="height:50px; font-size:40px" value="fetch node"><br />
 
-<script> fFormulaLink = function() {
-    $$$$("#formulalink").value = `=HYPERLINK("${window.location.href}", "${$$$$("#search").value.replaceAll(/\"/g, '""') + " searchtree"}")`  
-}
-</script>
+
+<h2 style="color:white">various housekeeping</h2>
 <button onclick="fFormulaLink();">generate excel formula link</button>
 <input id="formulalink">
 <br />
+
+
+<div id="paywallremovers">
+<br><h2 style="color:white">paywall removers</h2>
+<button onclick="openMe(this);" data-url="`https://12ft.io/proxy?q=${sValue}`">12ft.io</button>
+<button onclick="openMe(this);" data-url="`https://www.removepaywall.com/${sValue}`">removepaywall.com</button>
+<button onclick="openMe(this);" data-url="`https://archive.is/${sValue}`">archive.ph</button>
+<button onclick="openMe(this);" data-url="`https://web.archive.org/web/${sValue}`">web.archive.org</button>
+
+<br>
+<h2 style="color:white">reddit undelete</h2>
+
+<button onclick="openMe(this);" data-url="`https://undelete.pullpush.io/${removeRedditDomainREGEX(sValue)}`">undelete.pullpush.io</button>
+<br><br><br><br><br><br><br>
+</div>
+
 
 <br /><button>search all</button><button onclick="(function() { window.location.href = 'https://theoryoftheory.github.io/searchtree.htm?search=' + superencode(document.querySelectorAll('#search')[0].value.replaceAll('+', ' ')).trim(); })()">refresh URL with #search value</button>
 <br />
