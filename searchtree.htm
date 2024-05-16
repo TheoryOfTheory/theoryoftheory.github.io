@@ -92,7 +92,9 @@ function openMeLLMs(oThis) {
     }, 100); // add delay because for some reason immediately copying and then opening window fails to actually copy anything to clipboard
 }
 
-
+function fLLMPromptEngineering(sString) {
+    return superencode("Please tell me about `" + sString + "`. I ask you to please think step by step and in a deductive way (vs inductive) while avoiding possible cognitive biases and especially hallucinations.");
+}
 
 
 
