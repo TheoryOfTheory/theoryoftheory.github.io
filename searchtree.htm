@@ -74,6 +74,11 @@ function removeRedditDomainREGEX(sString){
     return sString.replace(/(https\:\/\/old\.reddit\.com\/|https\:\/\/www\.reddit\.com\/)/, "")
 }
 
+function on_search_input() {
+    window.history.pushState( null, null, "searchtree.htm?search=" + superencode(document.querySelectorAll('#search')[0].value.replaceAll('+', ' ')).trim() )
+    fFormulaLink();
+}
+
 </script>
 
 <style>
@@ -115,15 +120,19 @@ button:hover {
 
 
 </head><body><!-- MAIN SEARCHBAR -->
-<input id="search" style="height:50px; width: 800px; font-size:40px" value="fetch node"><br />
+<input id="search" style="height:50px; width: 800px; font-size:40px" value="fetch node" oninput="on_search_input()"><br />
 <span style="color:white">excel formula (click to copy):&nbsp;</span><input id="formulalink" onclick="copy_formulalink();" >
-<br />
+<br /><br><br>
 
 <!-- ADMIN / NON-SEARCH BUTTONS -->
+<!-- deprecated 5/16 in favor of truthsocial-like functionality of updating url without refreshing whole page
 <h2>admin</h2>
 <button onclick="(function() { window.location.href = 'https://theoryoftheory.github.io/searchtree.htm?search=' + superencode(document.querySelectorAll('#search')[0].value.replaceAll('+', ' ')).trim(); })()">refresh URL with #search value</button>
 <br>
-<br><br>
+-->
+
+
+
 
 <!-- PAYWALL REMOVER BUTTONS -->
 <div id="paywallremovers">
