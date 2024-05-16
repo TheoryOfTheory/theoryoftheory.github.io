@@ -37,10 +37,9 @@ document.querySelector("#search").oninput = function (e) {
   document.title = e.target.value + " - searchtree";
 }
 
-// generate excel formula =HYPERLINK() (adding settimeout cuz it doesnt load the function right away??)
-setTimeout(() => {
-  FormulaLink();
-}, 3000);
+// generate excel formula =HYPERLINK()
+fFormulaLink();
+
 
 
 
