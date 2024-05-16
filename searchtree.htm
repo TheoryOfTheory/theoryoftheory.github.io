@@ -55,6 +55,14 @@ body {
    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .7);
 }
 
+h2 {
+color:white;margin: 0px;font-size:50px;
+}
+
+h6 {
+color:white;margin: 0px;font-size:20px
+}
+
 
 button {
   padding: 5px;
@@ -94,12 +102,12 @@ fFormulaLink = function() {
 <br />
 
 <!-- MAIN SEARCHBAR -->
-<h2 style="color:white">searchtree bar</h2>
+<h2>searchtree bar</h2>
 search :<br />
 <input id="search" style="height:50px; font-size:40px" value="fetch node"><br />
 
 <!-- ADMIN / NON-SEARCH BUTTONS -->
-<h2 style="color:white">various admin/housekeeping</h2>
+<h2>various admin/housekeeping</h2>
 <button onclick="(function() { window.location.href = 'https://theoryoftheory.github.io/searchtree.htm?search=' + superencode(document.querySelectorAll('#search')[0].value.replaceAll('+', ' ')).trim(); })()">refresh URL with #search value</button>
 <br><button onclick="fFormulaLink();">generate excel formula link</button>
 <input id="formulalink">
@@ -107,14 +115,14 @@ search :<br />
 
 <!-- PAYWALL REMOVER BUTTONS -->
 <div id="paywallremovers">
-<h2 style="color:white">paywall removers</h2>
+<h2>paywall removers</h2>
 <button onclick="openMe(this);" data-url="`https://12ft.io/proxy?q=${sValue}`">12ft.io</button>
 <button onclick="openMe(this);" data-url="`https://www.removepaywall.com/${sValue}`">removepaywall.com</button>
 <button onclick="openMe(this);" data-url="`https://archive.is/${sValue}`">archive.ph</button>
 <button onclick="openMe(this);" data-url="`https://web.archive.org/web/${sValue}`">web.archive.org</button>
 
 <br>
-<h2 style="color:white">reddit undelete</h2>
+<h2>reddit undelete</h2>
 <button onclick="openMe(this);" data-url="`https://undelete.pullpush.io/${removeRedditDomainREGEX(sValue)}`">undelete.pullpush.io</button>
 <br><br><br><br>
 </div>
@@ -123,37 +131,37 @@ search :<br />
 <div id="search">
 
 
-<h2 style="color:white">non-functioning search-all to refactor:</h2><br>
+<h2>non-functioning search-all to refactor:</h2><br>
 <br /><button>search all</button>
 <br><br><br>
 
 
 <h2 style="color:white">main search buttons:</h2><br>
-<h6 style="color:white">LLMs (currently doesn't accept GET/POST URL parameters so..copy to clipboard instead?</h6><br>
+<h6>LLMs (currently doesn't accept GET/POST URL parameters so..copy to clipboard instead?</h6><br>
 <button onclick="openMe(this);" data-url="`https://bard.google.com/?q=${sValue}`">search bard</button>
 <button onclick="openMe(this);" data-url="`https://chat.openai.com/?q=${sValue}`">search chatGPT</button>
 <button onclick="openMe(this);" data-url="`https://www.bing.com/search?form=MY0291&OCID=MY0291&q=Bing+AI&showconv=17q=${sValue}`">search bing AI chat</button>
 <br><br><br>
 
-<h6 style="color:white">my top searches</h6><br>
+<h6>my top searches</h6><br>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}`">search google</button>
 <button onclick="openMe(this);" data-url="`https://arxiv.org/search/?query=${sValue}&searchtype=all&abstracts=show&order=-announced_date_first&size=100`">search arxiv.org</button>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}%20site%3Aycombinator.com`">search ycombinator.org</button>
 <br><br><br>
 
-<h6 style="color:white">translate</h6><br>
+<h6>translate</h6><br>
 <button onclick="openMe(this);" data-url="`https://translate.google.com/?sl=auto&tl=en&text=${sValue}`">translate</button>
 <br />
 <button onclick="openMe(this);" data-url="`https://attackertv.so/search/${sValue.replaceAll(' ', '-')}`">search attackertv</button> <!-- need to convert spaces to dashes for attackertv -->
 <br><br><br>
 
-<h6 style="color:white">social</h6><br>
+<h6>social</h6><br>
 <button onclick="openMe(this);" data-url="`https://www.linkedin.com/search/results/content/?keywords=${sValue}&sortBy=%22date_posted%22`">search linkedin</button>
 <button onclick="openMe(this);" data-url="`https://www.facebook.com/search/top?q=${sValue}`">search facebook</button>
 <button onclick="openMe(this);" data-url="`https://old.reddit.com/search/?sort=new&q=${sValue}`">search reddit</button>
 <br><br><br>
 
-<h6 style="color:white">twitter (or x or whatever tf)</h6><br>
+<h6>twitter (or x or whatever tf)</h6><br>
 <button onclick="openMe(this);" data-url="`https://twitter.com/search?vertical=news&src=typd&f=live&q=${sValue}`">search twitter</button>
 <button onclick="openMe(this);" data-url="`https://twitter.com/i/lists/search?q=${sValue}`">search twitterlists 𝕏𝕋𝕨𝕚𝕥𝕥𝕖𝕣</button>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=site%3Atwitter.com%2Fi%2Flists+list+${sValue}`">search twitterlists 𝔾𝕠𝕠𝕘𝕝𝕖</button>
