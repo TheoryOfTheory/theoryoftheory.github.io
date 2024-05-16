@@ -192,37 +192,37 @@ button:hover {
 <br><br><br>
 
 
-<h2 style="color:white">main search buttons:</h2>
+<h2 style="color:white">LLM search buttons:</h2>
+<h6>text generative AI</h6>
 <h6>LLMs currently don't accept GET/POST URL parameters (except <a href="https://old.reddit.com/r/bing/comments/15h9xka/i_figured_out_how_to_start_a_conversation_with/">this?</a>) so a prompt-engineered text is copied to clipboard instead:</h6>
 <button onclick="openMeLLMs(this);" data-url="`https://bard.google.com/?q=${sValue}`">search bard</button>
 <button onclick="openMeLLMs(this);" data-url="`https://chat.openai.com/?q=${sValue}`">search chatGPT</button>
-<button onclick="openMeLLMs(this);" data-url="`https://www.bing.com/search?form=MY0291&OCID=MY0291&q=Bing+AI&showconv=17q=${sValue}`">search bing AI chat</button>
+<button onclick="openMeLLMs(this);" data-url="`https://www.bing.com/search?form=MY0291&OCID=MY0291&q=Bing+AI&showconv=17q=${sValue}`">search bing AI chat</button> <!-- (the only LLM that has to be in an active tab in order to operate) -->
+<br>
+<button onclick="openMeLLMs(this);" data-url="`https://vello.ai/app/?q=${sValue}`">vello.ai</button> <!-- via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/k7exj36/ -->
+<button onclick="openMeLLMs(this);" data-url="`https://labs.perplexity.ai/?q=${sValue}`">perplexity.ai/button> <!-- via https://www.reddit.com/r/singularity/comments/16uucpo/mistralai_publishes_an_ai_model_mistral7bv01_via/ -->
+<button onclick="openMeLLMs(this);" data-url="`https://www.phind.com/?q=${sValue}`">phind.com</button>  <!-- via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/ -->
 <br><br><br>
+
+<h6>image generative AI</h6>
+<button onclick="openMeLLMs(this);" data-url="`https://deepdreamgenerator.com/u/1228414?q=${sValue}`">deepdreamgenerator.com</button>
+<button onclick="openMeLLMs(this);" data-url="`https://ideogram.ai/?q=${sValue}`">ideogram.ai</button>
+
 
 <!-- TO REFACTOR INTO THE LLMs section
 
-# generative image AIs
-* https://deepdreamgenerator.com/u/1228414 
-* https://ideogram.ai/ 
-* 
-* 
-
-# generative text AIs
-* https://vello.ai/app // via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/k7exj36/ 
-* https://labs.perplexity.ai/ // via https://www.reddit.com/r/singularity/comments/16uucpo/mistralai_publishes_an_ai_model_mistral7bv01_via/ 
-* https://bard.google.com/ 
-* https://chat.openai.com/ 
-* https://www.phind.com/  // via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/ 
-* https://www.bing.com/search (the only LLM that has to be in an active tab in order to operate)
-
 # transcript summarizers:
 * Harpa AI vs Claude for summarizing transcripts https://www.reddit.com/r/singularity/comments/16yrq6n/sam_altmans_bold_assertion_agi_on_the_horizon_and/k3an277/
+
+# video generative AI???
+* sora?
+* ???
 
 -->
 
 
 
-
+<h2 style="color:white">main search buttons:</h2>
 <h6>my top searches</h6>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}`">search google</button>
 <button onclick="openMe(this);" data-url="`https://arxiv.org/search/?query=${sValue}&searchtype=all&abstracts=show&order=-announced_date_first&size=100`">search arxiv.org</button>
