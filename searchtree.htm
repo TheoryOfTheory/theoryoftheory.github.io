@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html><head>    <meta charset="UTF-8">
+<html><head>
+
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="this is desc">
@@ -18,7 +20,11 @@
     <meta name="twitter:description" content="SearchTree - search the entire web">
     <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
 
-</head><body><script src="https://yayinternets.github.io/datascripts.js"></script>
+
+
+</head><body>
+
+<script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 
@@ -137,6 +143,13 @@ search :<br />
 <button onclick="openMe(this);" data-url="`https://www.youtube.com/results?sp=CAI%253D&search_query=${sValue}`">search youtube</button>
 <button onclick="openMe(this);" data-url="`https://rumble.com/search/video?q=${sValue}`">search rumble</button>
 
+<br>
+
+<button onclick="openMe(this);" data-url="`https://search.bilibili.com/all?keyword=${sValue}`">search 哔哩哔哩 bilibili</button>
+<button onclick="openMe(this);" data-url="`https://s.weibo.com/weibo?q=${sValue}`">search 新浪微博 weibo</button>
+<button onclick="openMe(this);" data-url="`https://www.douyin.com/search/${sValue}`">search 抖音 douyin</button>
+
+
 
 <br />
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=Amazon+%22Customer+Reviews%22+${sValue}&amp;btnI=I%27m+Feeling+Lucky`">search Amazon Customer Reviews</button><br />
@@ -205,4 +218,6 @@ search codepen
 local tech jobs
 geopolitics
 
-</pre></body></html>
+</pre>
+
+</body></html>
