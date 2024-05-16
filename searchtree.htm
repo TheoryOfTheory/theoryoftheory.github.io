@@ -79,7 +79,7 @@ function copy_search_string_for_LLMs() {
   copyText.select();
   copyText.setSelectionRange(0, 99999); // For mobile devices
    // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
+  navigator.clipboard.writeText("Please tell me about `" + copyText.value + "`. I ask you to please think step by step and in a deductive way (vs inductive) while avoiding possible cognitive biases and especially hallucinations."); // PROMPT ENGINEERING TECHNIQUES - https://old.reddit.com/r/LocalLLaMA/comments/18b793g/what_interesting_formulations_do_you_know_that/ CO-STAR framework https://medium.com/the-modern-scientist/best-prompt-techniques-for-best-llm-responses-24d2ff4f6bca
   // Alert the copied text
   // alert("Copied the text: " + copyText.value);
 }
