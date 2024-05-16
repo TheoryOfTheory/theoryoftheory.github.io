@@ -28,6 +28,7 @@
 </script>
 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
+// ONDOMCONTENT LOADED FUNCTIONS 
 
 //  auto-populate searchbar with parameters
 if (oGetAllParameters_CLIENT().search) { $$$$("input").value = oGetAllParameters_CLIENT().search; }
@@ -41,7 +42,12 @@ document.querySelector("#search").oninput = function (e) {
 // generate excel formula =HYPERLINK()
 fFormulaLink();
 
-
+document.querySelector('#search').addEventListener('keyup', function (e) {
+  console.log(e)
+    if (e.key === 'Enter') {
+        on_search_input();
+    }
+});
 
 
 
@@ -121,7 +127,7 @@ button:hover {
 
 
 </head><body><!-- MAIN SEARCHBAR -->
-<input id="search" style="height:50px; width: 800px; font-size:40px" value="fetch node" oninput="on_search_input()"><br />
+<input id="search" style="height:50px; width: 800px; font-size:40px" value="fetch node" "><br /> <!-- porque oninput="on_search_input(); no funciona??" -->
 <span style="color:white">excel formula (click to copy):&nbsp;</span><input id="formulalink" onclick="copy_formulalink();" >
 <br /><br><br>
 
