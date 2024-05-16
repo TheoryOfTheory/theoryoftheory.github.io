@@ -27,13 +27,20 @@
 </script>
 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
-     if (oGetAllParameters_CLIENT().search) { $$$$("input").value = oGetAllParameters_CLIENT().search; }
+
+//  auto-populate searchbar with parameters
+if (oGetAllParameters_CLIENT().search) { $$$$("input").value = oGetAllParameters_CLIENT().search; }
 
 // change document title as search input is changed
 document.querySelector("#search").oninput = function (e) {
   // some things
   document.title = e.target.value + " - searchtree";
 }
+
+// generate excel formula =HYPERLINK()
+FormulaLink();
+
+
 
 }); </script>
 
@@ -98,12 +105,13 @@ fFormulaLink = function() {
 
 </head><body><!-- MAIN SEARCHBAR -->
 <input id="search" style="height:50px; width: 800px; font-size:40px" value="fetch node"><br />
+excel formula: <input id="formulalink">
+<br />
 
 <!-- ADMIN / NON-SEARCH BUTTONS -->
-<h2>various admin/housekeeping</h2>
+<h2>admin</h2>
 <button onclick="(function() { window.location.href = 'https://theoryoftheory.github.io/searchtree.htm?search=' + superencode(document.querySelectorAll('#search')[0].value.replaceAll('+', ' ')).trim(); })()">refresh URL with #search value</button>
-<br><button onclick="fFormulaLink();">generate excel formula link</button>
-<input id="formulalink">
+<br>
 <br><br>
 
 <!-- PAYWALL REMOVER BUTTONS -->
