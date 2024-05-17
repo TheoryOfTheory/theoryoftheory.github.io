@@ -250,8 +250,11 @@ function alternateCase(sText) {
 }
 </script>
   <div>
-    <button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">dom_copyHTMLFromClipboardIntoPlaintext()</button><button onclick="copyTextAreaIntoHTML()">copyTextAreaIntoHTML()</button>
-    <button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">alternate text</button>
+    <button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">📋➜🔤</button>
+    <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
+    <button onclick="copyTextAreaIntoHTML()">🔤➜📄</button>
+    <br>
+    <button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">aLtErNaTe</button>
   </div>
   <div><textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea></div>
 
@@ -323,6 +326,26 @@ function fFindAndReplace() {
         </ul>
         <p>Many programming languages and tools document their specific regex features and syntax, so it's always good to consult the official documentation when writing regexes for a particular environment.</p></article></div>`);
     }
+    
+    // britney
+    function dom_copyTextFromTextIntoClipboardHTML(sText) { // <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
+        sTest = `What's the opposite of instrumentalism? Is it structuralism (Althusser), scientific realism, pragmatism (Dewey), or "being-with" (Heidegger)? I've seen`;
+                    var data = [new ClipboardItem({
+                      ["text/html"]: new Blob([sTest], { type: "text/html" }),
+                      ["text/plain"]: new Blob([sTest], { type: "text/plain" })
+                    })];
+
+                    navigator.clipboard.write(data).then(
+                      () => {
+                        alert("successful navigator.clipboard.read and then navigator.clipboard.write of ClipboardItem with both text/html and text/plain Blobs.");    
+                      },
+                      (err) => {
+                        alert(`Error: ${err.name} - ${err.message}`);
+                      }
+                    );
+        console.log("completed.");
+    }    
+    
     </script>
   
   
