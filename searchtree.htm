@@ -62,6 +62,20 @@ function openMe(othis) {
    window.open(sURL, "_blank");
 }
 
+function openMeCopy(oThis) { // for scihub only?
+  var copyText = document.getElementById("search");
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+    setTimeout(function() {
+      openMe(oThis);
+    }, 100); // add delay because for some reason immediately copying and then opening window fails to actually copy anything to clipboard
+
+}
+
 function copy_formulalink() {
   var copyText = document.getElementById("formulalink");
   // Select the text field
@@ -271,13 +285,14 @@ button:hover {
 
 <h6 style="color:white">book searches</h6>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=Amazon+%22Customer+Reviews%22+${sValue}&amp;btnI=I%27m+Feeling+Lucky`">search Amazon Customer Reviews</button><br />
+<button onclick="openMe(this);" data-url="`https://www.goodreads.com/search?utf8=%E2%9C%93&q=${sValue}`">search goodreads</button>
+<button onclick="openMe(this);" data-url="`https://www.amazon.com/s?k=${sValue}`">search amazon</button>
+<br>
 <button onclick="openMe(this);" data-url="`https://libgen.is/search.php?lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def&req=${superencode(sValue)}`">search libgen</button>
 <button onclick="openMe(this);" data-url="`https://www.pdfdrive.com/search?q=${sValue}&pagecount=&pubyear=&searchin=&em=&more=true`">search pdfdrive</button>
 <button onclick="openMe(this);" data-url="`https://annas-archive.org/search?q=${sValue}?`">search Anna's Archive</button>
 <button onclick="openMe(this);" data-url="`https://z-lib.io/s/${sValue}?`">search zlibrary</button>
-<button onclick="openMe(this);" data-url="`https://www.goodreads.com/search?utf8=%E2%9C%93&q=${sValue}`">search goodreads</button>
-<button onclick="openMe(this);" data-url="`https://www.amazon.com/s?k=${sValue}`">search amazon</button>
-<button onclick="openMe(this);" data-url="`https://sci-hub.st/?search=${sValue}`">search scihub</button>
+<button onclick="openMeCopy(this);" data-url="`https://sci-hub.st/?search=${sValue}`">search scihub</button>
 <button onclick="openMe(this);" data-url="`https://standardebooks.org/ebooks?query=${sValue}&sort=newest&view=grid&per-page=12`">search standardebooks</button>
 <br><br><br>
 
