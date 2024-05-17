@@ -267,7 +267,12 @@ function alternateCase(sText) {
             <button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">aLtErNaTe</button>
     </div>
     <div style="background-color: rgb(249, 189, 215); "> <!-- PREPEND buttons --> 
-      <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button><button onclick="prependSpace()">prepend " " (space)</button>
+      <button onclick="prependMarkdownListAsterisks();">prepend "* "</button>
+      <button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button>
+      <button onclick="prependTab();">prepend tab</button>
+      <button onclick="prependSpace()">prepend " " (space)</button>
+      <button onclick="prependNumerals();">prepend numerals</button>
+      <button onclick="prependEmojiNumerals();">prepend emoji numerals</button>      
     </div>
   </div>
   <div><textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea></div>
@@ -378,6 +383,15 @@ function fFindAndReplace() {
   function prependSpace() {
         $$$$("#myTextarea").value = $$$$("#myTextarea").value.split("\n").map(o=>" " + o).join("\n")+ "\n \n \n \n \n \n \n ";
   }
+  function prependNumerals() { // 
+        $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map((o,i)=>(i+1) + " " + o).join("\n")+ "";
+  }
+  function prependEmojiNumerals() {
+      aEmojiNumerals = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟"];
+      $$$$("#myTextarea").value = $$$$("#myTextarea").value.trim().split("\n").map((o,i)=>(aEmojiNumerals[i%10]) + o).join("\n")+ "";
+  }  
+
+
 </script>
 <br /><br />
 <br /><br />
