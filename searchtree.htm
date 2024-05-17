@@ -329,9 +329,34 @@ button:hover {
 <button onclick="openMe(this);" data-url="`https://standardebooks.org/ebooks?query=${sValue}&sort=newest&view=grid&per-page=12`">standardebooks</button>
 <br><br><br>
 
-<h6 style="color:white">movies searches</h6>
+<h6 style="color:white">media searches</h6>
+<!-- attackertv-like streaming sites -->
 <button onclick="openMe(this);" data-url="`https://attackertv.so/search/${sValue.replaceAll(' ', '-')}`">attackertv</button> <!-- need to convert spaces to dashes for attackertv -->
+<button onclick="openMe(this);" data-url="`https://moviesjoy.plus/search/${sValue.replaceAll(' ', '-')}`">moviesjoy</button> <!-- need to convert spaces to dashes for this -->
+<button onclick="openMe(this);" data-url="`https://theflixertv.to/search/${sValue.replaceAll(' ', '-')}`">theflixertv</button> <!-- need to convert spaces to dashes for this https://theflixertv.to/search/obsessed-to-death-  -->
+
+<br> <!-- other streaming sites -->
+<button onclick="openMe(this);" data-url="`https://fmoviesz.to/filter?keyword=${sValue}`">fmoviesz</button> <!-- vs www.fmovies.to? -->
+<button onclick="openMe(this);" data-url="`https://ww21.soap2day.day/?s=${sValue}`">soap2day</button> <!-- ? -->
+<button onclick="openMe(this);" data-url="`https://bflix.to/filter?keyword=${sValue}`">bflix</button> <!-- ? -->
+<button onclick="openMe(this);" data-url="`https://moviestowatch.id/filter?keyword=${sValue}`">moviestowatch</button> <!-- ? -->
+
+
+<br> <!-- non-functioning streaming sites -->
+<button onclick="openMe(this);" data-url="`https://flixtor.to/s=${sValue}`">flixtor</button> <!-- nonfunctioning?? via https://old.reddit.com/r/technology/comments/1ctrulb/the_dream_of_streaming_is_dead_bundles_are_back/l4ehy3y/ -->
+<button onclick="openMe(this);" data-url="`https://ww2.putlockers.io/?s=${sValue}`">putlockers</button> <!-- nonfunctioning?? via https://www.google.com/search?q=putlocker+%26+watchseries&oq=putlocker+%26+watchseries -->
+<button onclick="openMe(this);" data-url="`https://watchseries.bar/?s=${sValue}`">watchseries</button> <!-- nonfunctioning?? -->
+
+<br> <!-- search is not GET but POST only, therefore copy the search into clipboard? -->
+<button onclick="openMeCopy(this);" data-url="`https://www.wcofun.net/dubbed-anime-list/?s=${sValue}`">watchcartoonsonline / wcofun (anime mostly)</button> <!-- https://old.reddit.com/r/WatchCartoonOnline/comments/cti0zp/this_is_the_offical_websites_of_wco_stay_away/  -->
+
+<br> <!-- non-streaming sites -->
 <button onclick="openMe(this);" data-url="`https://pirateproxy.wtf/?search=${sValue}`">tpb</button>
+<button onclick="openMe(this);" data-url="`https://www.1377x.to/search/${sValue}/1/`">1377x</button> <!-- https://old.reddit.com/r/technology/comments/1ctrulb/the_dream_of_streaming_is_dead_bundles_are_back/l4fgsr6/?context=3 -->
+
+
+
+
 <br><br><br>
 
 <h6 style="color:white">academic1 searches</h6>
