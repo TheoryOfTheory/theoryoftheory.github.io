@@ -252,11 +252,11 @@ function alternateCase(sText) {
   <div>
     <div> <!-- clipboard to text, text to clipboard, and text to htmlpage buttons --> 
       <button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">📋➜🔤</button>
-      <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
+      <button onclick="dom_copyTextFromTextIntoClipboardHTML()">🔤➜📋</button>
       <button onclick="copyTextAreaIntoHTML()">🔤➜📄</button>
     </div>
     <div> <!-- text manipulation -->
-    	<button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">aLtErNaTe</button>
+            <button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">aLtErNaTe</button>
     </div>
     <div style="background-color: rgb(249, 189, 215); "> <!-- PREPEND buttons --> 
       <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button><button onclick="prependSpace()">prepend " " (space)</button>
@@ -333,12 +333,11 @@ function fFindAndReplace() {
         <p>Many programming languages and tools document their specific regex features and syntax, so it's always good to consult the official documentation when writing regexes for a particular environment.</p></article></div>`);
     }
     
-    // britney
-    function dom_copyTextFromTextIntoClipboardHTML(sText) { // <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
-        sTest = `What's the opposite of instrumentalism? Is it structuralism (Althusser), scientific realism, pragmatism (Dewey), or "being-with" (Heidegger)? I've seen`;
+	function dom_copyTextFromTextIntoClipboardHTML(sText) { // <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
+        sTest = `<table><tbody><tr><td>What's the opposite of instrumentalism? Is it structuralism (Althusser), <a href="https://plato.stanford.edu/entries/scientific-realism/">scientific realism</a>, pragmatism (Dewey), or "being-with" (Heidegger)? I've seen it all.</td></tr></tbody></table>`;
                     var data = [new ClipboardItem({
                       ["text/html"]: new Blob([sTest], { type: "text/html" }),
-                      ["text/plain"]: new Blob([sTest], { type: "text/plain" })
+                      ["text/plain"]: new Blob(["There is a text/html blob on the clipboard, so disregard this text/plain text"], { type: "text/plain" })
                     })];
 
                     navigator.clipboard.write(data).then(
@@ -350,7 +349,7 @@ function fFindAndReplace() {
                       }
                     );
         console.log("completed.");
-    }    
+    }   
     
     </script>
   
@@ -443,4 +442,4 @@ function fFindAndReplace() {
           }
         </script>
 </body>
-</html>\
+</html>
