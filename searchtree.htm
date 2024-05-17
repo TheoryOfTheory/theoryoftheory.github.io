@@ -93,7 +93,7 @@ function copy_search_string_for_LLMs() {
   copyText.select();
   copyText.setSelectionRange(0, 99999); // For mobile devices
    // Copy the text inside the text field
-  if (checked) {
+  if ($$$$("#llm_promptengineered").checked) {
      navigator.clipboard.writeText("Please tell me about `" + copyText.value + "`. I ask you to please think step by step and in a deductive way (vs inductive) while avoiding possible cognitive biases and especially hallucinations."); // PROMPT ENGINEERING TECHNIQUES - https://old.reddit.com/r/LocalLLaMA/comments/18b793g/what_interesting_formulations_do_you_know_that/ CO-STAR framework https://medium.com/the-modern-scientist/best-prompt-techniques-for-best-llm-responses-24d2ff4f6bca
   } else {
      navigator.clipboard.writeText(copyText.value);
@@ -114,7 +114,16 @@ function fLLMPromptEngineering(sString) {
     return superencode("Please tell me about `" + sString + "`. I ask you to please think step by step and in a deductive way (vs inductive) while avoiding possible cognitive biases and especially hallucinations.");
 }
 
-
+// this function helps flip the gettable LLM searchs to nongettable depending on the status of the llm_promptengineered checkbox
+function f_llm_promptengineered_checkbox() {
+  if ($$$$("#llm_promptengineered").checked) {
+    $$$a(".gettable")[0].dataset.url = $$$a(".gettable")[0].dataset.urlGet
+    $$$a(".gettable")[1].dataset.url = $$$a(".gettable")[1].dataset.urlGet
+  } else {
+    $$$a(".gettable")[0].dataset.url = $$$a(".gettable")[0].dataset.urlNonget
+    $$$a(".gettable")[1].dataset.url = $$$a(".gettable")[1].dataset.urlNonGet
+  }
+}
 
 
 
@@ -214,7 +223,7 @@ button:hover {
 <h2 style="color:white">LLM search buttons:</h2>
 <h6>text generative AI</h6>
 <!-- <h6>LLMs currently don't accept GET/POST URL parameters (except <a href="https://old.reddit.com/r/bing/comments/15h9xka/i_figured_out_how_to_start_a_conversation_with/">this?</a>) so a prompt-engineered text is copied to clipboard instead:</h6> -->
-<span style="color:white">include prompt engineer AND inject as url params?</span><input checked id="llm_promptengineered" type="checkbox"><br>
+<span style="color:white">include prompt engineer AND inject as url params?</span><input onclick="f_llm_promptengineered_checkbox();" checked id="llm_promptengineered" type="checkbox"><br>
 <button onclick="openMeLLMs(this);" data-url="`https://bard.google.com/?q=${fLLMPromptEngineering(sValue)}`">search bard</button>
 <!-- gettable (not 'get table' but rather 'able to be get' ) -->
 <button class="gettable"
