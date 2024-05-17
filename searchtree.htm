@@ -306,8 +306,8 @@ button:hover {
 <br><br><br>
 
 <h6 style="color:white">date-dependent searches- from<input id="datefrom" type="date" value="2016-01-01">-to:<input id="dateto" type="date" value="2016-12-31"></h6>
-<button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}&source=lnt&tbs=cdr%3A1%2Ccd_min%3A1%2F1%2F2016%2Ccd_max%3A12%2F31%2F2016&tbm=nws`">googlepast</button>
-<button onclick="openMe(this);" data-url="`https://twitter.com/search?l=&q=${sValue}%20since%3A2016-01-01%20until%3A2016-12-31&src=typd`">twitter past</button>
+<button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}&amp;source=lnt&amp;tbs=cdr%3A1%2Ccd_min%3A${convertYYYYMMDDToMMDDYYYY($$$$('#datefrom').value)}%2Ccd_max%3A${convertYYYYMMDDToMMDDYYYY($$$$('#dateto').value)}&amp;tbm=nws`">googlenews past</button>
+<button onclick="openMe(this);" data-url="`https://twitter.com/search?l=&q=${sValue}%20since%3A${$$$$('#datefrom').value}%20until%3A${$$$$('#dateto').value}&src=typd`">twitter past</button>
 <br><br><br>
 
 <h6 style="color:white">videos searches</h6>
