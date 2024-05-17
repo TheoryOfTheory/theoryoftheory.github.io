@@ -125,9 +125,6 @@ function f_llm_promptengineered_checkbox() {
   }
 }
 
-
-
-
 function fFormulaLink() {
     $$$$("#formulalink").value = `=HYPERLINK("${window.location.href}", "${$$$$("#search").value.replaceAll(/\"/g, '""') + " searchtree"}")`;
 }
@@ -140,6 +137,21 @@ function on_search_input() {
     window.history.pushState( null, null, "searchtree.htm?search=" + superencode(document.querySelectorAll('#search')[0].value.replaceAll('+', ' ')).trim() )
     fFormulaLink();
 }
+
+function convertYYYYMMDDToMMDDYYYY(dateStr) {
+    // Split the input string by the hyphen
+    var parts = dateStr.split('-');
+    // Rearrange the parts to MM/DD/YYYY
+    return `${parts[1]}/${parts[2]}/${parts[0]}`;
+}
+
+function convertMMDDYYYYToYYYYMMDD(dateStr) {
+    // Split the input string by the slash
+    var parts = dateStr.split('/');
+    // Rearrange the parts to YYYY-MM-DD
+    return `${parts[2]}-${parts[0]}-${parts[1]}`;
+}
+
 
 </script>
 
@@ -284,20 +296,16 @@ button:hover {
 <button onclick="openMe(this);" data-url="`https://www.linkedin.com/search/results/content/?keywords=${sValue}&sortBy=%22date_posted%22`">linkedin</button>
 <button onclick="openMe(this);" data-url="`https://www.facebook.com/search/posts/?q=${sValue}`">facebook</button>
 <button onclick="openMe(this);" data-url="`https://old.reddit.com/search/?sort=new&q=${sValue}`">reddit</button>
-<br><br><br>
-
-<h6>twitter (or x or whatever tf)</h6>
+<br> <!-- twitter ->
 <button onclick="openMe(this);" data-url="`https://twitter.com/search?vertical=news&src=typd&f=live&q=${sValue}`">twitter</button>
 <button onclick="openMe(this);" data-url="`https://twitter.com/i/lists/search?q=${sValue}`">twitterlists 𝕏𝕋𝕨𝕚𝕥𝕥𝕖𝕣</button>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=site%3Atwitter.com%2Fi%2Flists+list+${sValue}`">twitterlists 𝔾𝕠𝕠𝕘𝕝𝕖</button>
 <button onclick="openMe(this);" data-url="`https://twitter.com/search?f=live&q=near%3A%2233133%22%20within%3A15mi%20${sValue}`">twitter local</button>
-<br><br><br>
-
-<h6 style="color:white">conservative/transgressive</h6>
+<br> <!-- conservative/transgressive -->
 <button onclick="openMe(this);" data-url="`https://truthsocial.com/search?q=${sValue}`">TruthSocial</button>
 <br><br><br>
 
-<h6 style="color:white">date-dependent searches</h6>from<input id="datefrom">-to:<input id="dateto">
+<h6 style="color:white">date-dependent searches- from<input id="datefrom" type="date" value="2016-01-01">-to:<input id="dateto" type="date" value="2016-12-31"></h6>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}&source=lnt&tbs=cdr%3A1%2Ccd_min%3A1%2F1%2F2016%2Ccd_max%3A12%2F31%2F2016&tbm=nws`">googlepast</button>
 <button onclick="openMe(this);" data-url="`https://twitter.com/search?l=&q=${sValue}%20since%3A2016-01-01%20until%3A2016-12-31&src=typd`">twitter past</button>
 <br><br><br>
