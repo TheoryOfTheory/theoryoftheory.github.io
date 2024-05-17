@@ -55,12 +55,26 @@ document.querySelector('#search').addEventListener('keyup', function (e) {
 
 <script>
 
+/*
 function openMe(othis) {
    sValue = $$$$("input").value || oGetAllParameters_CLIENT().search;
    sURL = othis.dataset.url;
    sURL = eval(sURL); // get rid of this?
    window.open(sURL, "_blank");
 }
+*/
+
+function openMe(othis) {
+   sValue = $$$$("input").value || oGetAllParameters_CLIENT().search;
+   sURL = othis.dataset.url;
+   sURL = eval(sURL); // get rid of this?
+   if ($$$$("#redditd").checked) { // if redditd is checked then just open the redditdomains (possibly refactor this to copy in the search value?)
+       window.open(`https://old.reddit.com/domain/${fStripDomain(sURL)}/new/`, "_blank");
+   } else {
+       window.open(sURL, "_blank");
+   }
+}
+
 
 function openMeCopy(oThis) { // for scihub only?
   var copyText = document.getElementById("search");
@@ -152,6 +166,16 @@ function convertMMDDYYYYToYYYYMMDD(dateStr) {
     return `${parts[2]}-${parts[0]}-${parts[1]}`;
 }
 
+function fStripDomain(url) {
+    // var url = "https://plato.stanford.edu/search";
+    var regex = /^https:\/\/(?:www\.)?([^/]+)/;
+    var match = url.match(regex);
+    if (match) {
+        var domain = match[1];
+        return domain;  // Outputs: plato.stanford.edu
+    }
+}
+
 
 </script>
 
@@ -196,9 +220,11 @@ button:hover {
 </head><body><!-- MAIN SEARCHBAR -->
 <input id="search" style="height:50px; width: 70%; font-size:40px" value="fetch node" "><button style="height:50px;" onclick="on_search_input();">refresh</button> <!-- porque oninput="on_search_input(); no funciona??" -->
 
-<br />
+<br>
 <span style="color:white">excel formula (click to copy):&nbsp;</span><input id="formulalink" onclick="copy_formulalink();" >
-<br /><br><br>
+<br>
+<label><span style="color:white">redditd?</span><input type="checkbox" id="redditd"></label>
+<br><br><br>
 
 <!-- ADMIN / NON-SEARCH BUTTONS -->
 <!-- deprecated 5/16 in favor of truthsocial-like functionality of updating url without refreshing whole page
