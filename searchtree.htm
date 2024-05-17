@@ -121,7 +121,7 @@ function f_llm_promptengineered_checkbox() {
     $$$a(".gettable")[1].dataset.url = $$$a(".gettable")[1].dataset.urlGet
   } else {
     $$$a(".gettable")[0].dataset.url = $$$a(".gettable")[0].dataset.urlNonget
-    $$$a(".gettable")[1].dataset.url = $$$a(".gettable")[1].dataset.urlNonGet
+    $$$a(".gettable")[1].dataset.url = $$$a(".gettable")[1].dataset.urlNonget
   }
 }
 
@@ -223,7 +223,8 @@ button:hover {
 <h2 style="color:white">LLM search buttons:</h2>
 <h6>text generative AI</h6>
 <!-- <h6>LLMs currently don't accept GET/POST URL parameters (except <a href="https://old.reddit.com/r/bing/comments/15h9xka/i_figured_out_how_to_start_a_conversation_with/">this?</a>) so a prompt-engineered text is copied to clipboard instead:</h6> -->
-<span style="color:white">include prompt engineer AND inject as url params?</span><input onclick="f_llm_promptengineered_checkbox();" checked id="llm_promptengineered" type="checkbox"><br>
+<label><span style="color:white">include prompt engineer AND inject as url params (for openai and bing only)?</span><input onclick="f_llm_promptengineered_checkbox();" checked id="llm_promptengineered" type="checkbox"></label>
+<br>
 <button onclick="openMeLLMs(this);" data-url="`https://bard.google.com/?q=${fLLMPromptEngineering(sValue)}`">search bard</button>
 <!-- gettable (not 'get table' but rather 'able to be get' ) -->
 <button class="gettable"
@@ -231,7 +232,7 @@ button:hover {
              data-url-get="`https://chat.openai.com/?q=${fLLMPromptEngineering(sValue)}`"
              data-url-nonget="`https://chat.openai.com/`"
              data-url="`https://chat.openai.com/?q=${fLLMPromptEngineering(sValue)}`">
-             search chatGPT
+             search openai
 </button>
 <button class="gettable" 
              onclick="openMeLLMs(this);"
