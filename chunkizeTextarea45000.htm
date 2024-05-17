@@ -250,11 +250,17 @@ function alternateCase(sText) {
 }
 </script>
   <div>
-    <button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">📋➜🔤</button>
-    <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
-    <button onclick="copyTextAreaIntoHTML()">🔤➜📄</button>
-    <br>
-    <button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">aLtErNaTe</button>
+    <div> <!-- clipboard to text, text to clipboard, and text to htmlpage buttons --> 
+      <button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">📋➜🔤</button>
+      <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
+      <button onclick="copyTextAreaIntoHTML()">🔤➜📄</button>
+    </div>
+    <div> <!-- text manipulation -->
+    	<button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">aLtErNaTe</button>
+    </div>
+    <div style="background-color: rgb(249, 189, 215); "> <!-- PREPEND buttons --> 
+      <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button><button onclick="prependSpace()">prepend " " (space)</button>
+    </div>
   </div>
   <div><textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea></div>
 
@@ -351,11 +357,6 @@ function fFindAndReplace() {
   
 <br />  
 
-<!-- PREPEND -->  
-<div style="background-color: rgb(249, 189, 215); ">
-  <button onclick="prependMarkdownListAsterisks();">prepend "* "</button><button onclick="prependMardownQuoteGreaterThan();">prepend "> "</button><button onclick="prependTab();">prepend tab</button><button onclick="prependSpace()">prepend " " (space)</button>
-
-</div>
 <script>
   // consider merging these into a single function?  note how .trim() mebbie shouldn't be used in all of them?  idk..
   function prependMarkdownListAsterisks() {
@@ -442,4 +443,4 @@ function fFindAndReplace() {
           }
         </script>
 </body>
-</html>
+</html>\
