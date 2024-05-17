@@ -253,7 +253,7 @@ function alternateCase(sText) {
     <div id="Clipboard_Manipulation_Buttons_And_Emojis" style="width:600px;"> <!-- clipboard to text, text to clipboard, and text to htmlpage buttons --> 
       <div>
          <button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">📋&lt;/&gt; ➜ 📋🔤</button> <!-- "clipboard html blob to clipboard text blob" (aka "clipboard text/html blob to clipboard text/plain blob" -->
-         <button style="background-color: yellow" onclick="dom_copyTextFromTextIntoClipboardHTML(); alert('need to finish find britney');">🔤🔲 ➜ 📋&lt;/&gt;</button> <!-- "textarea (textbox) to clipboard" -->
+         <button style="background-color: yellow" onclick="dom_copyTextFromTextIntoClipboardHTML();">🔤🔲 ➜ 📋&lt;/&gt;</button> <!-- "textarea (textbox) to clipboard" -->
          <button onclick="copyTextAreaIntoHTML()">🔤🔲 ➜ &lt;/&gt;📄</button> <!-- "textbox (textarea) to html page" -->
       <div>
       <div style="float: right; font-size: 8px; margin-top: -30px;">
@@ -351,12 +351,12 @@ function fFindAndReplace() {
             sTest = `<table><tbody><tr><td>` + $$$$("#myTextarea").value + `</td></tr></tbody></table>`; //.replaceAll("<a ", "<a style='color:blue' ");
                         var data = [new ClipboardItem({
                           ["text/html"]: new Blob([sTest], { type: "text/html" }),
-                          ["text/plain"]: new Blob(["There are two blobs on the clipboard: a text/html blob (📋</> aka 'clipboard html') and this text/plain blob (📋🔤 aka 'clipboard plaintext') you're seeing, so disregard this one and try pasting onto a word doc or a googlesheet cell to see the html rendering.  Or click on chunkizeTextarea45000.htm's '📋</> ➜ 📋🔤' button to see the text/html blob stripped out into plaintext."], { type: "text/plain" })
+                          ["text/plain"]: new Blob(["There are currently two blobs on the clipboard: a text/html blob (📋</> aka 'clipboard html') and this text/plain blob (📋🔤 aka 'clipboard plaintext') you're seeing, so disregard this one and try pasting onto a word doc or a googlesheet cell to see the html rendering.  Or click on chunkizeTextarea45000.htm's '📋</> ➜ 📋🔤' button to see the text/html blob stripped out into plaintext."], { type: "text/plain" })
                         })];
 
                         navigator.clipboard.write(data).then(
                           () => {
-                            alert("successful navigator.clipboard.read and then navigator.clipboard.write of ClipboardItem with both text/html and text/plain Blobs.");    
+                            alert("Successfully copied the text from the text area to the clipboard's html blob.  Now the clipboard currently has two different blobs.");    
                           },
                           (err) => {
                             alert(`Error: ${err.name} - ${err.message}`);
