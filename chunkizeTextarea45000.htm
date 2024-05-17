@@ -332,9 +332,9 @@ function fFindAndReplace() {
         </ul>
         <p>Many programming languages and tools document their specific regex features and syntax, so it's always good to consult the official documentation when writing regexes for a particular environment.</p></article></div>`);
     }
-    
-	function dom_copyTextFromTextIntoClipboardHTML(sText) { // <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
-        sTest = `<table><tbody><tr><td>What's the opposite of instrumentalism? Is it structuralism (Althusser), <a href="https://plato.stanford.edu/entries/scientific-realism/">scientific realism</a>, pragmatism (Dewey), or "being-with" (Heidegger)? I've seen it all.</td></tr></tbody></table>`;
+    // britney
+    function dom_copyTextFromTextIntoClipboardHTML(sText) { // <button onclick="dom_copyTextFromTextIntoClipboardHTML">🔤➜📋</button>
+        sTest = `<table><tbody><tr><td>What's the opposite of instrumentalism? Is it structuralism (Althusser), <a href="https://plato.stanford.edu/entries/scientific-realism/">scientific realism</a>, pragmatism (Dewey), or <a href="https://plato.stanford.edu/entries/heidegger/#Bei">Mitsein/"being-with"</a> (Heidegger)? I've seen it all.</td></tr></tbody></table>`;
                     var data = [new ClipboardItem({
                       ["text/html"]: new Blob([sTest], { type: "text/html" }),
                       ["text/plain"]: new Blob(["There is a text/html blob on the clipboard, so disregard this text/plain text"], { type: "text/plain" })
