@@ -338,7 +338,7 @@ function fFindAndReplace() {
         sTest = `<table><tbody><tr><td>What's the opposite of instrumentalism? Is it structuralism (Althusser), <a href="https://plato.stanford.edu/entries/scientific-realism/">scientific realism</a>, pragmatism (Dewey), or <a href="https://plato.stanford.edu/entries/heidegger/#Bei">Mitsein/"being-with"</a> (Heidegger)? I've seen it all.</td></tr></tbody></table>`;
                     var data = [new ClipboardItem({
                       ["text/html"]: new Blob([sTest], { type: "text/html" }),
-                      ["text/plain"]: new Blob(["There are two blobs on the clipboard: a text/html blob and this text/plain one, so disregard this one and try pasting onto a word doc or a googlesheet cell to see the html rendering.  Or click on chunkizeTextarea45000.htm's 📋➜🔤 button to see the text/html blob stripped out into plaintext."], { type: "text/plain" })
+                      ["text/plain"]: new Blob(["There are two blobs on the clipboard: a text/html blob and this text/plain one, so disregard this one and try pasting onto a word doc or a googlesheet cell to see the html rendering.  Or click on chunkizeTextarea45000.htm's '📋</> ➜ 📋🔤' button to see the text/html blob stripped out into plaintext."], { type: "text/plain" })
                     })];
 
                     navigator.clipboard.write(data).then(
