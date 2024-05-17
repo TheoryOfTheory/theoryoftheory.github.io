@@ -195,14 +195,15 @@ button:hover {
 
 <h2 style="color:white">LLM search buttons:</h2>
 <h6>text generative AI</h6>
-<h6>LLMs currently don't accept GET/POST URL parameters (except <a href="https://old.reddit.com/r/bing/comments/15h9xka/i_figured_out_how_to_start_a_conversation_with/">this?</a>) so a prompt-engineered text is copied to clipboard instead:</h6>
-<button onclick="openMeLLMs(this);" data-url="`https://bard.google.com/?q=${sValue}`">search bard</button>
+<!-- <h6>LLMs currently don't accept GET/POST URL parameters (except <a href="https://old.reddit.com/r/bing/comments/15h9xka/i_figured_out_how_to_start_a_conversation_with/">this?</a>) so a prompt-engineered text is copied to clipboard instead:</h6> -->
+<button onclick="openMeLLMs(this);" data-url="`https://bard.google.com/?q=${fLLMPromptEngineering(sValue)}`">search bard</button>
 <button onclick="openMeLLMs(this);" data-url="`https://chat.openai.com/?q=${fLLMPromptEngineering(sValue)}`">search chatGPT</button>
 <button onclick="openMeLLMs(this);" data-url="`https://www.bing.com/search?showconv=1&sendquery=1&q=${fLLMPromptEngineering(sValue)}`">search bing AI chat</button> <!-- (the only LLM that has to be in an active tab in order to operate) -->
 <br>
 <button onclick="openMeLLMs(this);" data-url="`https://vello.ai/app/?q=${sValue}`">vello.ai</button> <!-- via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/k7exj36/ -->
 <button onclick="openMeLLMs(this);" data-url="`https://labs.perplexity.ai/?q=${sValue}`">perplexity.ai/button> <!-- via https://www.reddit.com/r/singularity/comments/16uucpo/mistralai_publishes_an_ai_model_mistral7bv01_via/ -->
 <button onclick="openMeLLMs(this);" data-url="`https://www.phind.com/?q=${sValue}`">phind.com</button>  <!-- via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/ -->
+<button onclick="openMeLLMs(this);" data-url="`https://groq.com/?q=${sValue}`">phind.com</button>  <!-- via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/ -->
 <br><br><br>
 
 <h6>image generative AI</h6>
