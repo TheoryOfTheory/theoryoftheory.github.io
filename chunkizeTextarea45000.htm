@@ -250,18 +250,18 @@ function alternateCase(sText) {
 }
 </script>
   <div>
-    <div> <!-- clipboard to text, text to clipboard, and text to htmlpage buttons --> 
+    <div id="Clipboard_Manipulation_Buttons_And_Emojis" style="width:600px;"> <!-- clipboard to text, text to clipboard, and text to htmlpage buttons --> 
       <div>
          <button onclick="dom_copyHTMLFromClipboardIntoPlaintext()">📋&lt;/&gt; ➜ 📋🔤</button> <!-- "clipboard html blob to clipboard text blob" (aka "clipboard text/html blob to clipboard text/plain blob" -->
          <button style="background-color: yellow" onclick="dom_copyTextFromTextIntoClipboardHTML(); alert('need to finish find britney');">🔤🔲 ➜ 📋&lt;/&gt;</button> <!-- "textarea (textbox) to clipboard" -->
          <button onclick="copyTextAreaIntoHTML()">🔤🔲 ➜ &lt;/&gt;📄</button> <!-- "textbox (textarea) to html page" -->
       <div>
-        <div style="float: right; font-size: 8px; margin-top: -30px;">
+      <div style="float: right; font-size: 8px; margin-top: -30px;">
             📋&lt;/&gt; = (clipboard html blob)<br>
             🔤🔲 = (textarea)<br>
             📋🔤 = (clipboard plaintext blob)<br>
             &lt;/&gt;📄 = (html page)<br>
-        </div>
+      </div>
     </div>
     <div> <!-- text manipulation -->
             <button onclick="document.querySelectorAll('#myTextarea')[0].value = alternateCase(document.querySelectorAll('#myTextarea')[0].value);">aLtErNaTe</button>
