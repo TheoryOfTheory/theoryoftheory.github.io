@@ -93,7 +93,11 @@ function copy_search_string_for_LLMs() {
   copyText.select();
   copyText.setSelectionRange(0, 99999); // For mobile devices
    // Copy the text inside the text field
-  navigator.clipboard.writeText("Please tell me about `" + copyText.value + "`. I ask you to please think step by step and in a deductive way (vs inductive) while avoiding possible cognitive biases and especially hallucinations."); // PROMPT ENGINEERING TECHNIQUES - https://old.reddit.com/r/LocalLLaMA/comments/18b793g/what_interesting_formulations_do_you_know_that/ CO-STAR framework https://medium.com/the-modern-scientist/best-prompt-techniques-for-best-llm-responses-24d2ff4f6bca
+  if (checked) {
+     navigator.clipboard.writeText("Please tell me about `" + copyText.value + "`. I ask you to please think step by step and in a deductive way (vs inductive) while avoiding possible cognitive biases and especially hallucinations."); // PROMPT ENGINEERING TECHNIQUES - https://old.reddit.com/r/LocalLLaMA/comments/18b793g/what_interesting_formulations_do_you_know_that/ CO-STAR framework https://medium.com/the-modern-scientist/best-prompt-techniques-for-best-llm-responses-24d2ff4f6bca
+  } else {
+     navigator.clipboard.writeText(copyText.value);
+  }
   // Alert the copied text
   // alert("Copied the text: " + copyText.value);
 }
@@ -210,10 +214,26 @@ button:hover {
 <h2 style="color:white">LLM search buttons:</h2>
 <h6>text generative AI</h6>
 <!-- <h6>LLMs currently don't accept GET/POST URL parameters (except <a href="https://old.reddit.com/r/bing/comments/15h9xka/i_figured_out_how_to_start_a_conversation_with/">this?</a>) so a prompt-engineered text is copied to clipboard instead:</h6> -->
-<span style="color:white">include prompt engineer AND inject as url params?</span><input id="llm_promptengineered" type="checkbox"><br>
+<span style="color:white">include prompt engineer AND inject as url params?</span><input checked id="llm_promptengineered" type="checkbox"><br>
 <button onclick="openMeLLMs(this);" data-url="`https://bard.google.com/?q=${fLLMPromptEngineering(sValue)}`">search bard</button>
+<!-- gettable (not 'get table' but rather 'able to be get' ) -->
+<button class="gettable"
+             onclick="openMeLLMs(this);"
+             data-url-get="`https://chat.openai.com/?q=${fLLMPromptEngineering(sValue)}`"
+             data-url-nonget="`https://chat.openai.com/?q=${fLLMPromptEngineering(sValue)}`"
+             data-url="`https://chat.openai.com/?q=${fLLMPromptEngineering(sValue)}`">
+             search chatGPT
+</button>
+<button class="gettable" 
+             onclick="openMeLLMs(this);"
+             data-url="`https://www.bing.com/search?showconv=1&amp;sendquery=1&amp;q=${fLLMPromptEngineering(sValue)}`"
+             data-url-get="`https://www.bing.com/search?showconv=1&amp;sendquery=1&amp;q=${fLLMPromptEngineering(sValue)}`"
+             data-url-nonget="`https://www.bing.com/search?showconv=1&amp;sendquery=1&amp;q=${fLLMPromptEngineering(sValue)}`">
+             search bing AI chat
+</button>
+<!--
 <button onclick="openMeLLMs(this);" data-url="`https://chat.openai.com/?q=${fLLMPromptEngineering(sValue)}`">search chatGPT</button>
-<button onclick="openMeLLMs(this);" data-url="`https://www.bing.com/search?showconv=1&sendquery=1&q=${fLLMPromptEngineering(sValue)}`">search bing AI chat</button> <!-- (the only LLM that has to be in an active tab in order to operate) -->
+<button onclick="openMeLLMs(this);" data-url="`https://www.bing.com/search?showconv=1&sendquery=1&q=${fLLMPromptEngineering(sValue)}`">search bing AI chat</button> --> <!-- (the only LLM that has to be in an active tab in order to operate) -->
 <br>
 <button onclick="openMeLLMs(this);" data-url="`https://vello.ai/app/?q=${sValue}`">vello.ai</button> <!-- via https://www.reddit.com/r/singularity/comments/17lamvu/a_new_finetuned_codellama_model_called_phind/k7exj36/ -->
 <button onclick="openMeLLMs(this);" data-url="`https://labs.perplexity.ai/?q=${sValue}`">perplexity.ai</button> <!-- via https://www.reddit.com/r/singularity/comments/16uucpo/mistralai_publishes_an_ai_model_mistral7bv01_via/ -->
