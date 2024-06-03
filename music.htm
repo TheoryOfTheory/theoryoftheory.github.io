@@ -134,10 +134,19 @@ function unfiltertags() { // restore visibility of all artist/songs
     $$$a(".artistsong").forEach(oArtistSong=>{
                 oArtistSong.style.display = "";
     })
+    document.querySelectorAll("h2").forEach(o=>{o.style.display = "";})
+    document.querySelectorAll("br").forEach(o=>{o.style.display = "";})
+    document.querySelectorAll("h2")[0].innerText = "�̵̰̓�̴̣̓M̷͈̂U̷̽͜S̸̰͝Ì̷͚C̸̦̀#̶͈́ ̶̭́n̴̗̔o̶̅͜t̷͔̿ë̶͇́;";
+
 }
 </script>
 
-<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { dom_changeTitleAndFavicon("موسيقى", "♬🎼" ); }); </script></head><body><pre>
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { dom_changeTitleAndFavicon("موسيقى", "♬🎼" ); }); </script>
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { document.querySelectorAll("h2")[0].onclick = unfiltertags; }); </script>
+
+
+
+</head><body><pre>
 
 # 🎵MUSIC# notes
 software: fl studio vs ableton
