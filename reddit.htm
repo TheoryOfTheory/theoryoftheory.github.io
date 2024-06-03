@@ -17,7 +17,7 @@ function renderSpan(oThis) {
     sMultiredditLinkValue = oThis.attributes.sMultiredditLink.value
     sPrompt = prompt(sMultiredditName + "?");
     sMultiredditLinkDecrypted = CryptoJS.AES.decrypt(sMultiredditLinkValue, sPrompt).toString(CryptoJS.enc.Utf8);
-    console.log(sMultiredditLinkDecrypted);
+    // console.log(sMultiredditLinkDecrypted);
 
     sMultiredditLink = "" + sMultiredditLinkDecrypted.split("\n")
             .filter(o=>{ // filter out header comments
@@ -30,7 +30,7 @@ function renderSpan(oThis) {
 
     gThis.innerHTML=sReturn;
     gThis.onclick='';
-    gThis.parentNode.nextSibling.innerText = redditfyHTMLLinks(sMultiredditLinkDecrypted);
+    gThis.parentNode.nextSibling.innerHTML = redditfyHTMLLinks(sMultiredditLinkDecrypted);
 
     // console.log(sReturn);
     // oThis.attributes.info
