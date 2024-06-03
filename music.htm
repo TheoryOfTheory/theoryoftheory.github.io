@@ -142,7 +142,15 @@ function unfiltertags() { // restore visibility of all artist/songs
 </script>
 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { dom_changeTitleAndFavicon("موسيقى", "♬🎼" ); }); </script>
-<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { document.querySelectorAll("h2")[0].onclick = unfiltertags; }); </script>
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
+    
+    setTimeout(() => {
+      document.querySelectorAll("h2")[0].onclick = unfiltertags;
+    }, "3000"); // wait three seconds to set onclick for h2 because doing it instantly on DOMContentLoaded says that unfiltertags is undefined?
+    
+
+  
+}); </script>
 
 
 
