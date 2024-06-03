@@ -124,7 +124,7 @@ function filtertags(oTag) {
     document.querySelectorAll("h2").forEach(o=>{o.style.display = "none";});
     document.querySelectorAll("br").forEach(o=>{o.style.display = "none";});
     // ok now unhide the first h2 and replace its contents with tag.  I originally wanted to just make this first one an <h1> but my dollartreemarkdownify implementation doesn't do h1s and my music notes doesn't do h3s???
-    document.querySelectorAll("h2")[0].display = "";
+    document.querySelectorAll("h2")[0].style.display = "";
     document.querySelectorAll("h2")[0].innerText = sTag;
     // britney - code here to replace contents of h1 with sTag name
     
