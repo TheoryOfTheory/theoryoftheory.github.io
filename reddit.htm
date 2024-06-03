@@ -30,7 +30,7 @@ function renderSpan(oThis) {
 
     gThis.innerHTML=sReturn;
     gThis.onclick='';
-    gThis.parentNode.nextSibling.innerText = sMultiredditLinkDecrypted;
+    gThis.parentNode.nextSibling.innerText = redditfyHTMLLinks(sMultiredditLinkDecrypted);
 
     // console.log(sReturn);
     // oThis.attributes.info
@@ -111,8 +111,7 @@ domLoadStyles_CSS(sTableAndTDStyle);
 
 
 // lastly lastly lastly - redditfy links
-function redditfy() {
-  function redditfyHTMLLinks(sTextFULL) {
+function redditfyHTMLLinks(sTextFULL) {
   /*
   var sTextFULL = `tryhackme+vulnhub+hackthebox // https://www.facebook.com/groups/1904685786212833
 
@@ -177,8 +176,8 @@ function redditfy() {
         // console.log(sText);
       })).join("<br>"));
 
-  }
-
+}
+function redditfy() {
   document.querySelectorAll("table")[0].querySelectorAll("tr").forEach(o=>{
       oRedditTD = o.querySelectorAll("td")[1];
       var sTextFULL = oRedditTD.innerText;
