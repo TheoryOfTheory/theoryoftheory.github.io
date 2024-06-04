@@ -178,6 +178,16 @@ function fStripDomain(url) {
 
 
 </script>
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => {
+  
+addELClick(
+    $$$("input#search")[0],
+    4,
+    function () { $$$("input#search")[0].value = $$$("input#search")[0].value.replaceAll("+", " "); on_search_input(); },
+)
+    
+}, "1000"); });
+</script>
 
 <style>
 body {
