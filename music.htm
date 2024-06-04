@@ -4,6 +4,9 @@
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js">
+
+
 
 <script>window.addEventListener('load', function() {
 
@@ -97,6 +100,8 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
 }
 
 function filtertags(oTag) {
+    if (typeof(oTag) == "string") { sTag = oTag; } else { sTag = oTag.innerText; }
+
     sTag = oTag.innerText;
     sTag = sTag.replaceAll(",", "").toLowerCase(); // remove extraneous comma
     
@@ -154,7 +159,8 @@ function unfiltertags() { // restore visibility of all artist/songs
 
 
 
-</head><body><pre>
+</head><body><canvas style="height:100px;width:400px;"></canvas>
+<pre>
 
 # 🎵MUSIC
 lets gooooo
@@ -241,7 +247,7 @@ Deetron - Crave (James Jones Tea Time In Detroit Mix)
 Vitalic - Hans is Driving (feat. Miss Kittin)
 Enrique Iglesias & Yotuel - Fría
 Bootsy Collins - I'd Rather Be With You
-El Alfa, El Cherry Scom & CJ - La Mama de la Mama
+El Alfa, El Cherry Scom & CJ - La Mama de la Mama // work spanish memorize
 Lunay, Daddy Yankee, & Bad Bunny - Soltera (Remix)
 Kanye West - Praise god
 The Beanuts - Watch Out Now // double
@@ -525,7 +531,7 @@ John Maus - The Combine
 Hans Zimmer 
 Max Richter - https://www.youtube.com/watch?v=B4Kybxu7fiQ&list=PLYNlX-IPr14blYYO0ujrFyg9xdmN4Cd8n&index=14 // cab
 Dj Rodri - La Mamá de la mamá (Perreo)
-Celia Cruz - La Vida Es Un Carnaval
+Celia Cruz - La Vida Es Un Carnaval // work, spanish
 Melody - De Pata Negra
 Frogman - Human Touch wtf
 Gamliel - Corazón Enamorao
