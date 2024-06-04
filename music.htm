@@ -61,9 +61,17 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
     }, "");
 }
 dollarstoreMarkdownSearchTreeify(true);    
-    
+document.body.prependHTML("<canvas style='height:200px;width:400px;'></canvas");
+
 
 }, false )</script>
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => {
+aTags = $$$a(".artistsong").map(o=>o.innerText.split(" // ")[1]?.replaceAll(",", "").split(" "))
+    .reduce((a,e,i)=>{if(e) {a.push(e)}; return a;}, [])
+    .reduce((aa,ee,ii)=>{ console.log(aa); ee.forEach((eee)=>{aa.push(eee)}); return aa; }, []);
+
+dom_WordCloudify(aTags, document.querySelector("canvas"), (sTag) => { filtertags(sTag); } )
+}, "2000"); }); </script>
 
 <script>
 
@@ -102,7 +110,6 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
 function filtertags(oTag) {
     if (typeof(oTag) == "string") { sTag = oTag; } else { sTag = oTag.innerText; }
 
-    sTag = oTag.innerText;
     sTag = sTag.replaceAll(",", "").toLowerCase(); // remove extraneous comma
     
     // causes page to crash for some reason
