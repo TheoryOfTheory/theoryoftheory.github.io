@@ -31,6 +31,14 @@ function renderSpan(oThis) {
     gThis.innerHTML=sReturn;
     gThis.onclick='';
     gThis.parentNode.nextSibling.innerHTML = redditfyHTMLLinks(sMultiredditLinkDecrypted);
+    try {
+        //console.log(gThis.parentNode.nextSibling.nextSibling);
+        sText = gThis.parentNode.nextSibling.nextSibling.innerText;
+        sNewText = CryptoJS.AES.decrypt(sText, sPrompt).toString(CryptoJS.enc.Utf8);
+        gThis.parentNode.nextSibling.nextSibling.innerText = sNewText;
+    } catch(e) {
+        console.log(e);
+    }
 
     // console.log(sReturn);
     // oThis.attributes.info
