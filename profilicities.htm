@@ -3,22 +3,37 @@
 <link rel="icon" type="image/png" href="https://icons.iconarchive.com/icons/icons8/windows-8/256/City-Portrait-icon.png">
 <script>window.addEventListener('DOMContentLoaded', function() { dom_convertAllURLsToAhrefs("td"); }, false )</script>
 <script>
-dom_fFilterTable = function(dElement, iRow, sTag) {
+dom_fFilterTable = function(dElement, aColumns, sTag) {
 // dom_fFilterTable($$$$("table"), 0, "b")
 // vs domscripts' filterHTMLTable?? refactor this into that solution??
-    iRow = 0;
-    dElement.$$$a("tr").map(o=>{ return o.$$$a("td")[iRow]}).forEach(domTD=>{
-        console.log(domTD);
-        // OLD if(domTD.innerText.toLowerCase().replace(/\s/g, "").match(new RegExp(sTag.toLowerCase().replace(/\s/g, "")))) {
-        if (domTD.innerText.replace(/\s/g, "").match(new RegExp(sTag.replace(/\s/g, ""), 'i'))) { // replaced OLD code above with RegExp's 'i' parameter/flag to ignore case
-            domTR = domTD.parentNode;
+    //iRow = 0;
+    if (Array.isArray(aColumns)) {
+      // is an array, do nothing
+    } else {
+      if (aColumns) {
+        aColumns = [aColumns];
+      } else {
+        aColumns = [0];
+      }
+    }
+
+    dElement.$$$a("tr").forEach(domTR=>{
+        // console.log(aColumns);
+		sTR = aColumns.map(iColumn=>{
+            domTD = domTR.$$$a("td")[iColumn];
+            // console.log(iRow);
+            if (domTD) { return domTD.innerText } else { return ""; }
+        }).join("");
+        // console.log(sTR);
+
+        if (sTR.replace(/\s/g, "").match(new RegExp(sTag.replace(/\s/g, ""), 'i'))) { // replaced OLD code above with RegExp's 'i' parameter/flag to ignore case
             domTR.style.display = "";
         } else {
-            domTR = domTD.parentNode;
             domTR.style.display = "none";   
         }
     });
 }
+
 </script>
 <script>window.addEventListener('DOMContentLoaded', function() {
 
@@ -108,6 +123,8 @@ document.addEventListener('click', (event) => {
 
 if (oGetAllParameters_CLIENT().search) {
         dom_fFilterTable(document.querySelector("table"), 0, oGetAllParameters_CLIENT().search);
+} else if (oGetAllParameters_CLIENT().q) {
+    dom_fFilterTable($$$$("table"), [0,1,2,3,4], oGetAllParameters_CLIENT().q)
 }
 
 }); </script>
