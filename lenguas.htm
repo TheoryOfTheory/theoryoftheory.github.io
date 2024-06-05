@@ -94,7 +94,7 @@ function dom_windowopen(sHTML, sTitle, iWidth, iHeight) {
       $$$a("tr").forEach(o=>{
           sHTML = Array.from(o.children).map(o=>o.innerHTML).join("<br><br>");
           // console.log(sHTML);
-          if (sHTML.match( oGetAllParameters_CLIENT().q )) {
+          if (sHTML.toLowerCase().match( oGetAllParameters_CLIENT().q.toLowerCase() )) {
               sHTMLReturn = sHTML + "<br><br>" + sHTMLReturn;
           }
           //console.log(sHTMLReturn);
@@ -103,7 +103,7 @@ function dom_windowopen(sHTML, sTitle, iWidth, iHeight) {
       document.body.innerHTML=sHTMLReturn;
 
   }   
-}, "2000"); }); </script>
+}, "1200"); }); </script>
   
 <!-- styles -->
 <style>img { height: 50px; width: 50px; }</style>
