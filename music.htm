@@ -163,14 +163,49 @@ function unfiltertags() { // restore visibility of all artist/songs
 
   
 }); </script>
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => { 
+function filterString(sString) {
+    //if (typeof(oTag) == "string") { sTag = oTag; } else { sTag = oTag.innerText; }
 
+    sString = sString.replaceAll(",", "").toLowerCase(); // remove extraneous comma
+    
+    // causes page to crash for some reason
+    // $$$("h2").forEach(o=>o.style.display = "none");
+
+    $$$a(".artistsong").forEach(oArtistSong=>{
+        sCommentTag = oArtistSong.innerText.toLowerCase();
+        
+
+        if ((sCommentTag.length == 0) || (sCommentTag.indexOf(sString) == -1)) {
+            oArtistSong.style.display = "none";
+        } else {
+            // console.log(oArtistSong.style);
+            oArtistSong.style.display = "";
+        }
+    })
+    
+    // ok now remove extraneous h2s and br's so that everything is listed together nice and neatly
+    document.querySelectorAll("h2").forEach(o=>{o.style.display = "none";});
+    document.querySelectorAll("br").forEach(o=>{o.style.display = "none";});
+    // ok now unhide the first h2 and replace its contents with tag.  I originally wanted to just make this first one an <h1> but my dollartreemarkdownify implementation doesn't do h1s and my music notes doesn't do h3s???
+    document.querySelectorAll("h2")[0].style.display = "";
+    document.querySelectorAll("h2")[0].innerText = sString;
+    // britney - code here to replace contents of h1 with sTag name
+    
+}
+
+if (oGetAllParameters_CLIENT().q) {
+    filterString(oGetAllParameters_CLIENT().q);
+}
+
+}, "2000"); }); </script>
 
 
 </head><body><pre>
 
 # 🎵MUSIC
 lets gooooo
-# Deciembre 2024
+# ديسمبر 2024
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024 - May and June have a lot of starbucks 
@@ -1383,7 +1418,7 @@ Bob Andy - I can win
 Val Bennett & the JJ All Stars - Cabbage Leaf
 Hikaru Utada | Somewhere Near Marseilles - LIVE at Sea Paradise
 
-# December 2022
+# DEZEMBER 2022
 Cariño - Bisexual
 Lupulo - Manimal
 Car Seat Headrest - Maud Gone
