@@ -23,6 +23,14 @@
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => { 
+  domLoadScripts(["https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"]);
+  addELClick(document.querySelector("input#search"), 5, ()=>{
+      document.querySelector("#hiddenbuttons").style.display = "";
+      document.querySelector("#hiddenbuttons").innerHTML = CryptoJS.AES.decrypt(document.querySelector("#hiddenbuttons").dataset.info, prompt("Theravada's four sublime states: Love or Loving-kindness (metta) Compassion (karuna) Sympathetic Joy (mudita) Equanimity (upekkha)") ).toString(CryptoJS.enc.Utf8)
+  } )  
+}, "1000"); }); </script>
+
 <script>
      window.addEventListener('load', function() { dom_changeTitleAndFavicon(document.title = document.querySelector("#search").value + " - searchtree", "🔍" ); }, false )
 </script>
