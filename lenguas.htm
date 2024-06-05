@@ -61,7 +61,49 @@ document.querySelectorAll("table td:nth-child(4n)").forEach(o=>{ o.innerHTML = d
 sTableAndTDStyle = domGenerateTableAndTDWidth(1435, [10, 0, 0, 0, 0], null, 25, 30);
 domLoadStyles_CSS(sTableAndTDStyle);
 
+    
+    
+    
+// 06/05/2024 June2024 Changes
+// functions to better navigate/read data thru clicking or URL parameters
+
+// make each row thrice-clickable to display full row results
+document.querySelectorAlla("tr").forEach(o=>{
+    addELClick(o, 3, ()=>{ fJoinTRIntoHTML(o) } )
+})
+
+function fJoinTRIntoHTML(oTR) {
+    // console.log(oTR);
+    sHTML = Array.from(oTR.children).map(o=>o.innerHTML).join("<br><br>")
+    dom_windowopen(sHTML, "sTitle");
+}
+
+function dom_windowopen(sHTML, sTitle, iWidth, iHeight) {
+    if (iWidth) {} else { iWidth=screen.width }
+    if (iHeight) {} else { iHeight=screen.height }
+    
+    var win = window.open("", "Title", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=" + iWidth + ",height=" + screen.height + ",top="+(screen.height-0)+",left="+(screen.width-0));
+    win.document.body.innerHTML = sHTML;
+}
+
 })</script>
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => { 
+  if (oGetAllParameters_CLIENT().q ) {
+      // ie if https://theoryoftheory.github.io/lenguas.htm?q=tiempo has q parameter...
+      sHTMLReturn = "";
+      $$$a("tr").forEach(o=>{
+          sHTML = Array.from(o.children).map(o=>o.innerHTML).join("<br><br>");
+          // console.log(sHTML);
+          if (sHTML.match( oGetAllParameters_CLIENT().q )) {
+              sHTMLReturn = sHTML + "<br><br>" + sHTMLReturn;
+          }
+          //console.log(sHTMLReturn);
+          // addELClick(o, 3, ()=>{ fJoinTRIntoHTML(o) } )
+      })
+      document.body.innerHTML=sHTMLReturn;
+
+  }   
+}, "2000"); }); </script>
   
 <!-- styles -->
 <style>img { height: 50px; width: 50px; }</style>
