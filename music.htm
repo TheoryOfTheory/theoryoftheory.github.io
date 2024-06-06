@@ -9,13 +9,14 @@
 
 
 <script>
+// hacky tags - just add to the list
 var sTags_global = `
 TAG guide - here are all the possible tags
 TheRoar88point1 - https://panthernow.com/theroar/ shoegaze dreampop?
 triple - shazamed 3 times...why lol
 double - shazamed multiple times ("must be important"?)
 `;
-
+oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{ a[e.split(" - ")[0]] = e.split(" - ")[1]; return a; }, {});
 </script>
 
 <script>window.addEventListener('load', function() {
@@ -147,7 +148,7 @@ function filtertags(oTag) {
     document.querySelectorAll("br").forEach(o=>{o.style.display = "none";});
     // ok now unhide the first h2 and replace its contents with tag.  I originally wanted to just make this first one an <h1> but my dollartreemarkdownify implementation doesn't do h1s and my music notes doesn't do h3s???
     document.querySelectorAll("h2")[0].style.display = "";
-    document.querySelectorAll("h2")[0].innerText = sTag;
+    document.querySelectorAll("h2")[0].innerText = sTag + ( oTagsGlobal[sTag] ? "" : " - " + oTagsGlobal[sTag] );
     // britney - code here to replace contents of h1 with sTag name
     
 }
@@ -220,6 +221,7 @@ lets gooooo
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024 - May and June have a lot of starbucks 
+Nina Simone - Sinnerman // TheRoar88point1 instrumental ohywah
 Blakk Soul - Take Your Time // favorites slow TheRoar88point1 vibrate unlearn free motivating
 Taylor Swift - Down Bad // testing // Not pregnant–just down bad cryin at the gym https://www.cnn.com/2024/06/05/entertainment/lady-gaga-taylor-swift-lyric-pregnancy-speculation/index.html
 Beck - Up All Night (Official Music Video) // overnight favs
