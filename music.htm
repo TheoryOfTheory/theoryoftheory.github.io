@@ -120,6 +120,36 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
     return oReturn;
 }
 
+function dom_ahrefenumeratize() { // used by filtertags..finds <ahrefenumerate> and fills in the links correctly. add to dom_scripts or refactor more?
+    function fIsURL(str) {
+      var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z@\\d%_.~+]*)*'+ // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+      return !!pattern.test(str);
+    }
+    try {           
+        var sDescription = "";
+        var iIndex = 0;
+        var sReturnHTML = $$$("ahrefenumerate")[0].innerText.split(" ").reduce((a,e,i)=>{
+            if (fIsURL(e)) {
+                if (sDescription) { } else { sDescription = (iIndex+1) + "" }
+                a.push({ description: sDescription, url: e, });
+                sDescription = "";
+                iIndex++;
+            } else {
+                sDescription = e;
+                // its not a url its the description for the next URL, so save it
+            }
+            return a;
+        }, []).reduce((a,e,i)=>{
+            return a + `<a target="_blank" href="${e.url}">${e.description}</a>&nbsp;&nbsp;&nbsp;`;
+        }, "");
+        $$$("ahrefenumerate")[0].innerHTML = sReturnHTML;
+    } catch(e) { "error in the hacky dom_ahrefenumeratize function" }
+}
 function filtertags(oTag) {
     if (typeof(oTag) == "string") { sTag = oTag; } else { sTag = oTag.innerText; }
 
@@ -155,7 +185,7 @@ function filtertags(oTag) {
 
     document.querySelectorAll("h2")[0].innerHTML = sTag + ( oTagsGlobal[sTag] ? " - " + oTagsGlobal[sTag] : "" );
     // britney - code here to replace contents of h1 with sTag name
-    
+    dom_ahrefenumeratize(); //  ahrefenumeratizes the <ahrefenumerate> tag
 }
 
 function unfiltertags() { // restore visibility of all artist/songs
@@ -225,8 +255,10 @@ lets gooooo
 # ديسمبر 2024
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
-# Junio 2024 - May and June have a lot of starbucks 
-Kendrick Lamar - King Kunta // fav TheRoar rap catchy
+# Junio 2024 - late May and early June have a lot of starbucks 
+Jodye Collaye - Think About Me // TheRoar catchybridge
+Rooney - I'm Shakin' // TheRoar
+Kendrick Lamar - King Kunta // fav TheRoar rap catchy exercise haunting funk // adeeyokay okay okayeeeayyeee "we want the funk"
 R.A.P. Ferreira - No Starving Artists // TheRoar rap
 Immortal Technique - Freedom of Speech // TheRoar rap sampled
 Labi Siffre - I Got The... // TheRoar sampled funk catchy // catchy towards the end 'all is lost but now im found'
