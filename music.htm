@@ -11,18 +11,20 @@
 <script>
 // hacky tags - just add to the list
 var sTags_global = `
-
+d shoegaze https://old.reddit.com/r/dreampop/
 TAG guide - here are all the possible tags
-TheRoar - <a href='https://panthernow.com/theroar/'>listen to theRoar 88.1 now</a> shoegaze dreampop alt punk trance
+TheRoar - listen to theRoar 88.1<ahe>now https://panthernow.com/theroar/ shoegaze_dreampop https://old.reddit.com/r/shoegaze+dreampop </ahe>alt punk trance
 triple - shazamed 3 times...why lol
 double - shazamed multiple times ("must be important"?)
-nickland -  lemur playlist (Nick Land) <ahrefenumerate>https://www.youtube.com/@mandys1505 https://www.youtube.com/playlist?list=PLBUEYfio8hoCkDtD_c92wMU0s6ko0EfsW https://www.youtube.com/watch?v=RIW_PnkomYs</ahrefenumerate>
-rap - <ahrefenumerate>reddit_htm_rap https://theoryoftheory.github.io/reddit.htm?search=rap</ahrefenumerate>
-funk - <ahrefenumerate>https://old.reddit.com/r/ArabFunk+DancandoFunk+DancarinasDoFunk+DeepFunk+FunkCarioca+FunkStyle+JapaneseFunk+NeuroFunk+NuFunk+Trans_Funk_pelada+Vinyl_Funk+bailefunk+funk+funk_adjacent+futurefunk/</ahrefenumerate>
-favs - <ahrefenumerate>https://theoryoftheory.github.io/reddit.htm?search=music jimmypop https://x.com/jimmypop</ahrefenumerate>
+nickland -  lemur playlist (Nick Land) <ahe>https://www.youtube.com/@mandys1505 https://www.youtube.com/playlist?list=PLBUEYfio8hoCkDtD_c92wMU0s6ko0EfsW https://www.youtube.com/watch?v=RIW_PnkomYs</ahe>
+rap - <ahe>reddit_htm_rap https://theoryoftheory.github.io/reddit.htm?search=rap</ahe>
+funk - <ahe>https://old.reddit.com/r/ArabFunk+DancandoFunk+DancarinasDoFunk+DeepFunk+FunkCarioca+FunkStyle+JapaneseFunk+NeuroFunk+NuFunk+Trans_Funk_pelada+Vinyl_Funk+bailefunk+funk+funk_adjacent+futurefunk/</ahe>
+favs - <ahe>https://theoryoftheory.github.io/reddit.htm?search=music jimmypop https://x.com/jimmypop</ahe>
 production - these are songs i should use in a video or whatevs
-spanish - <ahrefenumerate>espanol https://theoryoftheory.github.io/reddit.htm?search=espa%C3%B1ol paises https://theoryoftheory.github.io/reddit.htm?search=paises</ahrefenumerate>
-magical - Jung says "because the stars have fallen from the heavens, we have psychology .. we wouldn't have psychology without that because the world would be seen symbolically. Now you have to find your symbolic significance from within. <ahrefenumerate>☿Footnotes2Plato https://www.youtube.com/watch?v=Bck92fuSWwI&loop=0</ahrefenumerate>
+spanish - <ahe>espanol https://theoryoftheory.github.io/reddit.htm?search=espa%C3%B1ol paises https://theoryoftheory.github.io/reddit.htm?search=paises</ahe>
+magical - Jung says "because the stars have fallen from the heavens, we have psychology .. we wouldn't have psychology without that because the world would be seen symbolically. Now you have to find your symbolic significance from within. <ahe>☿Footnotes2Plato https://www.youtube.com/watch?v=Bck92fuSWwI&loop=0</ahe>
+
+
 
 `;
 oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{ a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
@@ -127,7 +129,7 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
     return oReturn;
 }
 
-function dom_ahrefenumeratize() { // used by filtertags..finds <ahrefenumerate> and fills in the links correctly. add to dom_scripts or refactor more?
+function dom_ahrefenumeratize() { // used by filtertags..finds <ahrefenumerate> (but <ahe> now) and fills in the links correctly. add to dom_scripts or refactor more?
     function fIsURL(str) {
       var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
@@ -139,8 +141,8 @@ function dom_ahrefenumeratize() { // used by filtertags..finds <ahrefenumerate> 
     }
     try {           
         var sDescription = "";
-        var iIndex = 0;
-        var sReturnHTML = $$$("ahrefenumerate")[0].innerText.split(" ").reduce((a,e,i)=>{
+        var iIndex = 0; // ahrefenumerate
+        var sReturnHTML = $$$("ahe")[0].innerText.split(" ").reduce((a,e,i)=>{
             if (fIsURL(e)) {
                 if (sDescription) { } else { sDescription = (iIndex+1) + "" }
                 a.push({ description: sDescription, url: e, });
@@ -154,7 +156,8 @@ function dom_ahrefenumeratize() { // used by filtertags..finds <ahrefenumerate> 
         }, []).reduce((a,e,i)=>{
             return a + `<a target="_blank" href="${e.url}">${e.description}</a>&nbsp;&nbsp;&nbsp;`;
         }, "");
-        $$$("ahrefenumerate")[0].innerHTML = sReturnHTML;
+        // $$$("ahrefenumerate")[0].innerHTML = sReturnHTML;
+        $$$("ahe")[0].innerHTML = sReturnHTML;
     } catch(e) { "error in the hacky dom_ahrefenumeratize function" }
 }
 function filtertags(oTag) {
@@ -263,6 +266,7 @@ lets gooooo
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Tokyo Ska Paradise Orcheetra - Skull Collector // TheRoar soundslike // the end kidna sounds like Beetlejuice theme
 People Under The Stairs - The L.A. Song // 90sish TheRoar rap
 BadBadNotGood - And That, Too. // magical TheRoar instrumental
 Baby Huey & The Baby Sitters - Mama Get Yourself Together // TheRoar
