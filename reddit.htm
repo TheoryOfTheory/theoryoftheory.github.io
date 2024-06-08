@@ -106,7 +106,9 @@ if (oGetAllParameters_CLIENT().search) {
     $$$("td:first-child").forEach(o=>{
         if (o.innerText.match(new RegExp(oGetAllParameters_CLIENT().search, "i"))){
             var oTR = o.parentNode;
-            document.body.innerHTML = oTR.children[2].innerHTML + "<br /><br />" + oTR.children[1].innerHTML + "<br /><br />" + oTR.children[0].innerHTML
+            setTimeout(() => { 
+                document.body.innerHTML = oTR.children[2].innerHTML + "<br /><br />" + oTR.children[1].innerHTML + "<br /><br />" + oTR.children[0].innerHTML
+            }, 1500)
         }
     })
 }
@@ -256,8 +258,8 @@ $$$a(".submultireddit").map(o=>o.$$$$("a")).forEach(o=>{
 
 }
 
-setTimeout(redditfy, 4500);
-setTimeout(subMultiredditfy, 5500);
+setTimeout(redditfy, 500);
+setTimeout(subMultiredditfy, 800);
 
 
 </script>
