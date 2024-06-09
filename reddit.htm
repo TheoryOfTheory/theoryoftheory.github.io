@@ -13,6 +13,7 @@
 <script>
 function redditverse_ify(oObject, sMultiredditLink) {
     try { var sTitle = oObject.innerText.split("#")[1].trim(); } catch(e) { var sTitle = "notitle"; }
+    console.log("the title is - " + sTitle);
     return           `<span style='font-size:20px;'><a target='_blank' href='https://theoryoftheory.github.io/reddit.htm?search=${sTitle}'>🔗️</a></span>` +
     "&nbsp;&nbsp;" + `<span style='font-size:20px;'><a target='_blank' href='https://saidit.net/s/${sMultiredditLink}'>🗣️</a></span>`+
     "&nbsp;&nbsp;" + `<span style='font-size:20px;'><a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a></span>`+
@@ -248,7 +249,7 @@ aSegments.forEach((e,i)=>{
             }
             // return 
         }, ""))
-        console.log(sSubMultiredditURL);
+        // console.log(sSubMultiredditURL);
         if (sSubMultiredditURL) {
             if (e.$$$$(".submultireddit")) {
                 e.$$$$(".submultireddit").innerHTML = `<a target="_blank" href='https://old.reddit.com/r/${sSubMultiredditURL}'>${e.$$$$(".submultireddit").innerText}</a>`;
