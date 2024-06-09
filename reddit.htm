@@ -12,7 +12,7 @@
 
 <script>
 function redditverse_ify(oObject, sMultiredditLink) {
-    try { var sTitle = oObject.innerText.split("#")[1].split(" ")[0].trim().toLowerCase(); } catch(e) { var sTitle = "notitle"; }
+    try { var sTitle = oObject?.querySelectorAll("td")[0]?.innerText.split("#")[1].split(" ")[0].trim().toLowerCase(); } catch(e) { var sTitle = "notitle"; }
     console.log("the title is - " + sTitle);
     return           `<span style='font-size:20px;'><a target='_blank' href='https://theoryoftheory.github.io/reddit.htm?search=${sTitle}'>🔗️</a></span>` +
     "&nbsp;&nbsp;" + `<span style='font-size:20px;'><a target='_blank' href='https://saidit.net/s/${sMultiredditLink}'>🗣️</a></span>`+
