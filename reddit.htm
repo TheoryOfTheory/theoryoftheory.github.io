@@ -11,6 +11,10 @@
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 
 <script>
+function redditverse_ify(oObject, sMultiredditLink) {
+    return `<span style='font-size:32px;'><a target='_blank' href='https://saidit.net/s/${sMultiredditLink}'>🗣️</a></span>` + "&nbsp;&nbsp;" + `<span style='font-size:32px;'><a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a></span>` + "&nbsp;&nbsp;" + `<span style='font-size:32px;'><a target='_blank' href='https://raddle.me/f/${sMultiredditLink}'>🐍</a></span>&nbsp;&nbsp;` + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "&nbsp;&nbsp;&nbsp;" + oObject?.querySelectorAll("td")[0]?.innerHTML;
+}
+
 function renderSpan(oThis) {
     gThis = oThis;
     sMultiredditName = oThis.attributes.sMultiredditName.value;
@@ -26,7 +30,8 @@ function renderSpan(oThis) {
             .map(o=>{ return o.split("//")[0].trim() }) // split out comments
             .join("+");
     // 
-    sReturn = `<span style='font-size:32px;'><a target='_blank' href='https://saidit.net/s/${sMultiredditLink}'>🗣️</a></span>` + "&nbsp;&nbsp;" +  `<span style='font-size:32px;'><a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a></span>` + "&nbsp;&nbsp;" + `<span style='font-size:32px;'><a target='_blank' href='https://raddle.me/f/${sMultiredditLink}'>🐍</a></span>&nbsp;&nbsp;` + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>`;
+    sReturn = redditverse_ify(oThis, sMultiredditLink);
+
 
     gThis.innerHTML=sReturn;
     gThis.onclick='';
@@ -88,7 +93,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
        // sMultiredditLink = CryptoJS.AES.decrypt(sMultiredditLink, sPrompt).toString(CryptoJS.enc.Utf8);
        oTR.querySelectorAll("td")[0].innerHTML = `<span onclick='renderSpan(this);' class='prompt' sMultiredditName='${sMultiredditName}' sMultiredditLink='${sMultiredditLink}'>${sMultiredditName}</span>` + oTR.querySelectorAll("td")[0].innerHTML;
     } else {
-       oTR.querySelectorAll("td")[0].innerHTML = `<span style='font-size:32px;'><a target='_blank' href='https://saidit.net/s/${sMultiredditLink}'>🗣️</a></span>` + "&nbsp;&nbsp;" + `<span style='font-size:32px;'><a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a></span>` + "&nbsp;&nbsp;" + `<span style='font-size:32px;'><a target='_blank' href='https://raddle.me/f/${sMultiredditLink}'>🐍</a></span>&nbsp;&nbsp;` + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "&nbsp;&nbsp;&nbsp;" + oTR.querySelectorAll("td")[0].innerHTML;
+       oTR.querySelectorAll("td")[0].innerHTML = redditverse_ify(oTR, sMultiredditLink); // `<span style='font-size:32px;'><a target='_blank' href='https://saidit.net/s/${sMultiredditLink}'>🗣️</a></span>` + "&nbsp;&nbsp;" + `<span style='font-size:32px;'><a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a></span>` + "&nbsp;&nbsp;" + `<span style='font-size:32px;'><a target='_blank' href='https://raddle.me/f/${sMultiredditLink}'>🐍</a></span>&nbsp;&nbsp;` + `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "&nbsp;&nbsp;&nbsp;" + oTR.querySelectorAll("td")[0].innerHTML;
 
     }
     return '';
