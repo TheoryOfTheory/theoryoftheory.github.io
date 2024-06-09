@@ -23,12 +23,16 @@
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
 
-<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => { 
+<script type="texta/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => { 
   domLoadScripts(["https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"]);
   addELClick(document.querySelector("input#search"), 5, ()=>{
       document.querySelector("#hiddenbuttons").style.display = "";
       document.querySelector("#hiddenbuttons").innerHTML = CryptoJS.AES.decrypt(document.querySelector("#hiddenbuttons").dataset.info, prompt("Theravada's four sublime states: Love or Loving-kindness (metta) Compassion (karuna) Sympathetic Joy (mudita) Equanimity (upekkha)") ).toString(CryptoJS.enc.Utf8)
-  } )  
+  } );
+  addELClick(document.querySelector("div#praetorian"), 1, ()=>{
+      document.querySelector("#hiddenbuttons").style.display = "";
+      document.querySelector("#hiddenbuttons").innerHTML = CryptoJS.AES.decrypt(document.querySelector("#hiddenbuttons").dataset.info, prompt("Theravada's four sublime states: Love or Loving-kindness (metta) Compassion (karuna) Sympathetic Joy (mudita) Equanimity (upekkha)") ).toString(CryptoJS.enc.Utf8)
+  } );
 }, "1000"); }); </script>
 
 <script>
@@ -236,7 +240,9 @@ button:hover {
 
 
 </head><body><!-- MAIN SEARCHBAR -->
-<input id="search" style="height:50px; width: 70%; font-size:40px" value="fetch node" "><button style="height:50px;" onclick="on_search_input();">refresh</button> <!-- porque oninput="on_search_input(); no funciona??" -->
+<input id="search" style="height:50px; width: 70%; font-size:40px" value="fetch node" ">
+<div id="praetorian">ℼ</div>
+<button style="height:50px;" onclick="on_search_input();">refresh</button> <!-- porque oninput="on_search_input(); no funciona??" -->
 
 <br>
 <span style="color:white">excel formula (click to copy):&nbsp;</span><input id="formulalink" onclick="copy_formulalink();" >
@@ -345,7 +351,7 @@ button:hover {
 <div 
    id="hiddenbuttons"
    style="display:none;"
-   data-info="U2FsdGVkX182Yp+Wx5fcZLHI4vlmQzVmLCS5SwJVlN68hYBi92z3SGs+qLnBKaZ3r5jI5z8yVdOVDRgJzlJpLrJEQ1EmBbfoT9VTXHfylblrINfdMyx9N7f1n5LpM4fnXwSZxaCvAbcNGSC7EqqV7vfiFzmlOIOPh1rxL24csJDklnK86f6kA1Y+HqGlefbJkSnt0JzcNozrpPvW6k9hbz4RtE5n8saI2v+lKoNvD8B0MkE5REGO9lL3FeBNeVd7nuJEd+/8zl/1kn9WekR/18qCmabWhZAfRpGQO6Yi196QvnEd9lZZG/+Z5VnqrSTGHdfHmG7Fc7isflLU8t3JqOav/zgXkPAy784ItPOITiks/XnRboFH8wKX8eK/FWL2EPEzfY+TWiHc5GZDBHB81pv1DorQV1IEwrXDTn6oesinlZRgd6zpDuWJVWcm/N+c">
+   data-info="U2FsdGVkX1+lI1j/upfRXuxQNkCY6suJeUwd8YWbycM1yEbQkwWTf32ZxkYNWMQNBhxjAcs/PUGQWaIoyx0ljcqFMcRknpfPs1EFZVo+J6nPoqHCCxjwLoEEBDBNbulZ/hDkCmpwVgY56H5gUB2m6QyMsQeZKi/SjikvFaGC653+wVh8JDMm1MnJxnks5NQzWoCDZv4SS27jMydHUUXiA+gqBe6k0qwNo1vRHNM1q7LLMdUxUorYrck+P+ujp0IkoK0/tmH8Z201LDhSYKQvIK/yWm+HtLa7U9M/uyJRC0NnrC5/CQjNYgNYYUFRsOxk/RcBq9MdgvdN8xrQEG/REeqobXigD6EMlWZ67pWjcJIq68JSPT+D8Zhuhhvsa+hVxsvJb5+lEOb3oTEvHCAeMJHwETPhLfoBNf5nf1qcHeQN4wITvFnFfmA82ayJI4iH/GwNXRzA03cyr1nVp0csFsUKsyv7eNK0GGuN/zehQ6LwIMphIJ7AGJ4oGHOo6t0TJsJbaRHFPGGjqR+ckBp23etVgQ9rq2W53VkNrsQ9xZRd6q2w3dOvLGXvYMS1NXrCHPuQV0rLQRSuscBM5luwPNzyWuU7OuAOK13y258ajeiIo+vLUnxazwSYu3oqx5bj">
 </div>
 <br><br><br>
 
