@@ -29,7 +29,7 @@
       document.querySelector("#hiddenbuttons").style.display = "";
       document.querySelector("#hiddenbuttons").innerHTML = CryptoJS.AES.decrypt(document.querySelector("#hiddenbuttons").dataset.info, prompt("Theravada's four sublime states: Love or Loving-kindness (metta) Compassion (karuna) Sympathetic Joy (mudita) Equanimity (upekkha)") ).toString(CryptoJS.enc.Utf8)
   } );
-  addELClick(document.querySelector("div#praetorian"), 1, ()=>{
+  addELClick(document.querySelector("span#praetorian"), 1, ()=>{
       document.querySelector("#hiddenbuttons").style.display = "";
       document.querySelector("#hiddenbuttons").innerHTML = CryptoJS.AES.decrypt(document.querySelector("#hiddenbuttons").dataset.info, prompt("Theravada's four sublime states: Love or Loving-kindness (metta) Compassion (karuna) Sympathetic Joy (mudita) Equanimity (upekkha)") ).toString(CryptoJS.enc.Utf8)
   } );
@@ -241,7 +241,7 @@ button:hover {
 
 </head><body><!-- MAIN SEARCHBAR -->
 <input id="search" style="height:50px; width: 70%; font-size:40px" value="fetch node" ">
-<div id="praetorian">ℼ</div>
+<span id="praetorian">ℼ</span>
 <button style="height:50px;" onclick="on_search_input();">refresh</button> <!-- porque oninput="on_search_input(); no funciona??" -->
 
 <br>
