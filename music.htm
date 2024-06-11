@@ -162,7 +162,7 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
     return oReturn;
 }
 
-function dom_ahrefenumeratize() { // used by filtertags..finds <ahrefenumerate> (but <ahe> now) and fills in the links correctly. add to dom_scripts or refactor more?
+function dom_ahrefenumeratize() { // "aheify"? - used by filtertags..finds <ahrefenumerate> (but <ahe> now) and fills in the links correctly. add to dom_scripts or refactor more?
     function fIsURL(str) {
       var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
@@ -172,25 +172,27 @@ function dom_ahrefenumeratize() { // used by filtertags..finds <ahrefenumerate> 
         '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
       return !!pattern.test(str);
     }
-    try {           
-        var sDescription = "";
-        var iIndex = 0; // ahrefenumerate
-        var sReturnHTML = $$$("ahe")[0].innerText.split(" ").reduce((a,e,i)=>{
-            if (fIsURL(e)) {
-                if (sDescription) { } else { sDescription = (iIndex+1) + "" }
-                a.push({ description: sDescription, url: e, });
-                sDescription = "";
-                iIndex++;
-            } else {
-                sDescription = e;
-                // its not a url its the description for the next URL, so save it
-            }
-            return a;
-        }, []).reduce((a,e,i)=>{
-            return a + `<a target="_blank" href="${e.url}">${e.description}</a>&nbsp;&nbsp;&nbsp;`;
-        }, "");
-        // $$$("ahrefenumerate")[0].innerHTML = sReturnHTML;
-        $$$("ahe")[0].innerHTML = sReturnHTML;
+    try { 
+        $$$("ahe")[0].forEach(oAHE)=>{
+            var sDescription = "";
+            var iIndex = 0; // ahrefenumerate
+            var sReturnHTML = oAHE.innerText.split(" ").reduce((a,e,i)=>{
+                if (fIsURL(e)) {
+                    if (sDescription) { } else { sDescription = (iIndex+1) + "" }
+                    a.push({ description: sDescription, url: e, });
+                    sDescription = "";
+                    iIndex++;
+                } else {
+                    sDescription = e;
+                    // its not a url its the description for the next URL, so save it
+                }
+                return a;
+            }, []).reduce((a,e,i)=>{
+                return a + `<a target="_blank" href="${e.url}">${e.description}</a>&nbsp;&nbsp;&nbsp;`;
+            }, "");
+            // $$$("ahrefenumerate")[0].innerHTML = sReturnHTML;
+            oAHE.innerHTML = sReturnHTML;
+        }
     } catch(e) { "error in the hacky dom_ahrefenumeratize function" }
 }
 function filtertags(oTag) {
