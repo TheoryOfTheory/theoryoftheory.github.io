@@ -11,6 +11,7 @@
 <script>
 // hacky tags - just add to the list
 var sTags_global = `
+ddb - David Dean Burkhart https://www.youtube.com/@daviddeanburkhart
 nonenglish - nonenglish AND nonspanish - ie french, german, haitian, maori
 chaotic -  James Gleick's Chaos Guattari (Chaosmosis) vs Delanda's ??? vs 's 1987 Chaos vs Dugin's chaos star
 sun - vs space? ;;; Georges Bataille: The Potlatch with <ahe>the Sun https://academic.oup.com/columbia-scholarship-online/book/23458/chapter-abstract/184536720</ahe>
@@ -68,6 +69,8 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
           var sCurrentTitleInIterationTag = superhtmlEntities(sCurrentTitleInIteration.replaceAll(" ", "")).replaceAll("#", "");
           sSansHrefText = superurlify(o).text;
           sTextSansCommentTags = o.split(" // ")[0]?.trim();
+          var sCommentComments = o.split(" // ")[1];
+          if (sCommentComments) { console.log(sCommentComments); }
           sArtistSong = sSansHrefText.split(" // ")[0]?.trim(); // remove the double slash tags from Artist - Song name
           if (sSansHrefText.split(" // ")[1]) { // eg "favs arabic sad"
             // console.log(sSansHrefText);
@@ -280,6 +283,7 @@ lets gooooo
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Sabrina Carpenter - Please Please Please // ddb
 Teodor Wolgers - System Failure // theory // On June 11, 2021, the music album 'Distractions In a Capitalist World' by artist and composer Teodor Wolgers was released, with Hägglund appearing on the track 'System Failure' with a narration from his book "This Life". https://en.wikipedia.org/wiki/Martin_Hägglund  
 BTS - Blood Sweat Tears (Japanese Version)
 HONEYMOAN - Super Emotional // catchy
