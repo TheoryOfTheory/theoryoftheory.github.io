@@ -65,14 +65,14 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
             
         } else { // if else then it's a song name eg "song name // tag, tag"
           // if else, then put in closing </ul>
-          var sCurrentTitleInIterationTag = superhtmlEntities(sCurrentTitleInIteration.replaceAll(" ", ""));
+          var sCurrentTitleInIterationTag = superhtmlEntities(sCurrentTitleInIteration.replaceAll(" ", "")).replaceAll("#", "");
           sSansHrefText = superurlify(o).text;
           sTextSansCommentTags = o.split(" // ")[0]?.trim();
           sArtistSong = sSansHrefText.split(" // ")[0]?.trim(); // remove the double slash tags from Artist - Song name
           if (sSansHrefText.split(" // ")[1]) { // eg "favs arabic sad"
             // console.log(sSansHrefText);
             sCommentTags = sSansHrefText.split(" // ")[1].trim();
-            sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span data-tags='" + sCurrentTitleInIterationTag + "' onclick='filtertags(this);'>" + oo + "</span>").join(" ");
+            sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + " " + sCurrentTitleInIterationTag + "</span>").join(" ");
           } else {
             sCommentTags = "";
           }// extract tags/comment 
