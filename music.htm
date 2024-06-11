@@ -91,10 +91,13 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
             aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(sArtistSong).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
             aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(sArtistSong).text)}`; // searchtree
             if (o.length>0) {
-                 return a + `<div><span class='artistsong' data-artistsong='${superencode(sArtistSong)}'>
-                 <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;
-                 <a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;
-                 <span class='sCommentTags' style="font-size:7px;">${superurlify(sTextSansCommentTags).href}</span>${superurlify(sArtistSong).text + sCommentTags}</span>
+                 return a + `<div>
+                 <span class='artistsong' data-artistsong='${superencode(sArtistSong)}'>
+                 <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a
+                 >&nbsp;&nbsp;&nbsp;
+                 <a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>
+                 &nbsp;&nbsp;&nbsp;
+                 <span style="font-size:7px;">${superurlify(sTextSansCommentTags).href}</span><span class='sCommentTags'>${superurlify(sArtistSong).text + sCommentTags}</span>
                  <span class='sCommentComments' style='font-size:6px;'>${sCommentComments}</span>
                  </div>`;
             } else {
