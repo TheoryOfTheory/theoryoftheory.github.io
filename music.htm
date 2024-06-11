@@ -72,7 +72,7 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
           if (sSansHrefText.split(" // ")[1]) { // eg "favs arabic sad"
             // console.log(sSansHrefText);
             sCommentTags = sSansHrefText.split(" // ")[1].trim();
-            sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + " " + sCurrentTitleInIterationTag + "</span>").join(" ");
+            sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ") + " " + sCurrentTitleInIterationTag + ;
           } else {
             sCommentTags = "";
           }// extract tags/comment 
