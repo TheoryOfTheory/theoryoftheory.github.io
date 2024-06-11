@@ -69,7 +69,7 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
           var sCurrentTitleInIterationTag = superhtmlEntities(sCurrentTitleInIteration.replaceAll(" ", "")).replaceAll("#", "");
           sSansHrefText = superurlify(o).text;
           sTextSansCommentTags = o.split(" // ")[0]?.trim();
-          var sCommentComments = o.split(" // ")[1];
+          var sCommentComments = o.split(" // ")[2];
           if (sCommentComments) { console.log(sCommentComments); }
           sArtistSong = sSansHrefText.split(" // ")[0]?.trim(); // remove the double slash tags from Artist - Song name
           if (sSansHrefText.split(" // ")[1]) { // eg "favs arabic sad"
