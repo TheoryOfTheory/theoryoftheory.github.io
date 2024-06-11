@@ -76,7 +76,7 @@ dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
             // console.log(sSansHrefText);
             sCommentTags = sSansHrefText.split(" // ")[1].trim();
             sCommentTags = (sCommentTags + " " + sCurrentTitleInIterationTag).trim();
-            sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
+            sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span><span style='font-size:6px;'>" + sCommentComments + "</span>").join(" ");
           } else {
             sCommentTags = "";
           }// extract tags/comment 
