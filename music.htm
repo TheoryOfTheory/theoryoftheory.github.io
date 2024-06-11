@@ -102,8 +102,8 @@ document.body.prependHTML("<canvas width='800' height='200'></canvas>");
 }, false )</script>
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => {
 aTags = $$$a(".artistsong").map(o=>o.innerText.split(" // ")[1]?.replaceAll(",", "").split(" "))
-    .reduce((a,e,i)=>{if(e) {a.push(e)}; return a;}, [])
-    .reduce((aa,ee,ii)=>{ console.log(aa); ee.forEach((eee)=>{aa.push(eee)}); return aa; }, []);
+    .reduce((a,e,i, aArray)=>{if(e && aArray.length-1 != i) {a.push(e)}; return a;}, []) // now push all tags except the last one (ie, the section title) onto the tag list
+    // .reduce((aa,ee,ii)=>{ console.log(aa); ee.forEach((eee)=>{aa.push(eee)}); return aa; }, []);
 
 dom_WordCloudify(aTags, document.querySelector("canvas"), (sTag) => { filtertags(sTag); } )
 }, "2000"); }); </script>
