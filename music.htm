@@ -173,7 +173,7 @@ function dom_ahrefenumeratize() { // "aheify"? - used by filtertags..finds <ahre
       return !!pattern.test(str);
     }
     try { 
-        $$$("ahe")[0].forEach(oAHE)=>{
+        $$$("ahe").forEach(function (oAHE) {
             var sDescription = "";
             var iIndex = 0; // ahrefenumerate
             var sReturnHTML = oAHE.innerText.split(" ").reduce((a,e,i)=>{
@@ -192,7 +192,7 @@ function dom_ahrefenumeratize() { // "aheify"? - used by filtertags..finds <ahre
             }, "");
             // $$$("ahrefenumerate")[0].innerHTML = sReturnHTML;
             oAHE.innerHTML = sReturnHTML;
-        }
+        })
     } catch(e) { "error in the hacky dom_ahrefenumeratize function" }
 }
 function filtertags(oTag) {
