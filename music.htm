@@ -49,82 +49,89 @@ oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{ a[e.split(" - ")
 
 <script>window.addEventListener('load', function() {
 
-// document.body.innerHTML = document.body.innerHTML.replace("🎵MUSIC", "<span onclick='unfiltertags()'>🎵MUSIC🎵</span>");
+    // document.body.innerHTML = document.body.innerHTML.replace("🎵MUSIC", "<span onclick='unfiltertags()'>🎵MUSIC🎵</span>");
 
-// dollarstore-markdown-ify - need to refactor but this is a mess and is only really specialized for my music playlist & daily list
-dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
-    // implement all of these? - https://www.markdownguide.org/cheat-sheet/
-    sBody = document.body.innerText;
-    bBulletPoint = false;
-    var sCurrentTitleInIteration = ""; // aka if bBulletPoint = false?
-    var sCommentComments = "";
-    document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
-        if (o.match(/^\# /g)) {
-            sCurrentTitleInIteration = o;
-            o = o.replace(/^\# /g, "<h2>") + "</h2>"; return a + o;
-        } else if (o.match(/^\## /g)) {
-            o = o.replace(/^\## /g, "<h3>") + "</h3>"; return a + o;
-        } else if (o.match(/^\### /g)) {
-            o = o.replace(/^\### /g, "<h4>") + "</h4>"; return a + o;
-        } else if ("match" == "* ") { // if o.trim()== "*", if "*" then <li></li>, if " *" then <li><li></li></li>, and so on.
-            // if lastIterationWasNotBullet
-            // <ul>
-            bBulletPoint = true;
-        } else if ("match" == "on bullet points, title!!url, and so on..") {
-            
-        } else { // if else then it's a song name eg "song name // tag, tag"
-          // if else, then put in closing </ul>
-          var sCurrentTitleInIterationTag = superhtmlEntities(sCurrentTitleInIteration.replaceAll(" ", "")).replaceAll("#", "");
-          sSansHrefText = superurlify(o).text;
-          sTextSansCommentTags = o.split(" // ")[0]?.trim();
-          sCommentComments = o.split(" // ")[2]; (sCommentComments ? sCommentComments = sCommentComments : sCommentComments = "")
-          // if (sCommentComments) { console.log(sCommentComments); }
-          sArtistSong = sSansHrefText.split(" // ")[0]?.trim(); // remove the double slash tags from Artist - Song name
-          if (sSansHrefText.split(" // ")[1]) { // eg "favs arabic sad"
-            // console.log(sSansHrefText);
-            sCommentTags = sSansHrefText.split(" // ")[1].trim();
-            sCommentTags = (sCommentTags + " " + sCurrentTitleInIterationTag).trim();
-            sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
-          } else {
-            sCommentTags = "";
-          }// extract tags/comment 
-          // now add onclick to tags
-
-
-          // but for now just dollarstore'ing this:
-          if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
-            sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(superurlify(sArtistSong).text)}&btnI=I%27m+Feeling+Lucky`; // from google bard
-            aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(sArtistSong).text)}`; // youtube &loop=0
-            aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(sArtistSong).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
-            aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(sArtistSong).text)}`; // searchtree
-            if (o.length>0) {
-                 return a + `<div>
-                 <span class='artistsong' data-artistsong='${superencode(sArtistSong)}'>
-                 <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a
-                 >&nbsp;&nbsp;&nbsp;
-                 <a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>
-                 &nbsp;&nbsp;&nbsp;
-                 <span style="font-size:7px;">${superurlify(sTextSansCommentTags).href}</span><span class='sCommentTags'>${superurlify(sArtistSong).text + sCommentTags}</span>
-                 <span class='sCommentComments' style='font-size:6px;'>${sCommentComments}</span>
-                 </div>`; //        
-            } else {
-                 return a + `<br>`
+    // dollarstore-markdown-ify - need to refactor but this is a mess and is only really specialized for my music playlist & daily list
+    dollarstoreMarkdownSearchTreeify = function (bIncludeAHrefs) {
+        // implement all of these? - https://www.markdownguide.org/cheat-sheet/
+        sBody = document.body.innerText;
+        bBulletPoint = false;
+        var sCurrentTitleInIteration = ""; // aka if bBulletPoint = false?
+        var sCommentComments = "";
+        document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
+            if (o.match(/^\# /g)) {
+                sCurrentTitleInIteration = o;
+                o = o.replace(/^\# /g, "<h2>") + "</h2>"; return a + o;
+            } else if (o.match(/^\## /g)) {
+                o = o.replace(/^\## /g, "<h3>") + "</h3>"; return a + o;
+            } else if (o.match(/^\### /g)) {
+                o = o.replace(/^\### /g, "<h4>") + "</h4>"; return a + o;
+            } else if ("match" == "* ") { // if o.trim()== "*", if "*" then <li></li>, if " *" then <li><li></li></li>, and so on.
+                // if lastIterationWasNotBullet
+                // <ul>
+                bBulletPoint = true;
+            } else if ("match" == "on bullet points, title!!url, and so on..") {
+                
+            } else { // if else then it's a song name eg "song name // tag, tag"
+              // if else, then put in closing </ul>
+              var sCurrentTitleInIterationTag = superhtmlEntities(sCurrentTitleInIteration.replaceAll(" ", "")).replaceAll("#", "");
+              sSansHrefText = superurlify(o).text;
+              sTextSansCommentTags = o.split(" // ")[0]?.trim();
+              sCommentComments = o.split(" // ")[2]; (sCommentComments ? sCommentComments = sCommentComments : sCommentComments = "")
+              // if (sCommentComments) { console.log(sCommentComments); }
+              sArtistSong = sSansHrefText.split(" // ")[0]?.trim(); // remove the double slash tags from Artist - Song name
+              if (sSansHrefText.split(" // ")[1]) { // eg "favs arabic sad"
+                // console.log(sSansHrefText);
+                sCommentTags = sSansHrefText.split(" // ")[1].trim();
+                sCommentTags = (sCommentTags + " " + sCurrentTitleInIterationTag).trim();
+                sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
+              } else {
+                sCommentTags = "";
+              }// extract tags/comment 
+              // now add onclick to tags
+    
+    
+              // but for now just dollarstore'ing this:
+              if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
+                sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(superurlify(sArtistSong).text)}&btnI=I%27m+Feeling+Lucky`; // from google bard
+                aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(sArtistSong).text)}`; // youtube &loop=0
+                aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(sArtistSong).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+                aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(sArtistSong).text)}`; // searchtree
+                if (o.length>0) {
+                     return a + `<div>
+                     <span class='artistsong' data-artistsong='${superencode(sArtistSong)}'>
+                     <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a
+                     >&nbsp;&nbsp;&nbsp;
+                     <a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>
+                     &nbsp;&nbsp;&nbsp;
+                     <span style="font-size:7px;">${superurlify(sTextSansCommentTags).href}</span><span class='sCommentTags'>${superurlify(sArtistSong).text + sCommentTags}</span>
+                     <span class='sCommentComments' style='font-size:6px;'>${sCommentComments}</span>
+                     </div>`; //        
+                } else {
+                     return a + `<br>`
+                }
+              }
             }
-          }
-        }
-    }, "");
-}
-dollarstoreMarkdownSearchTreeify(true);    
+        }, "");
+    }
+    dollarstoreMarkdownSearchTreeify(true);  
+
+    // make secondary comments' links clickable and condense by making link titles the index
+    $$$a(".sCommentComments").forEach(o=>{o.innerHTML = domscripts_linkify(o.innerHTML, "index") })
+    
 document.body.prependHTML("<canvas width='800' height='200'></canvas>");
 
 
 }, false )</script>
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => {
 
-aTags = $$$a(".sCommentTags").map(o=>o.innerText.split(" // ")[1]?.replaceAll(",", "").split(" "))
-    .reduce((a,e,i, aArray)=>{if(e) {a.push(e.slice(0, e.length-1))}; return a;}, []) // now push all tags except the last one (ie, the section title) onto the tag list
-    .reduce((aa,ee,ii)=>{ ee.forEach((eee)=>{ if (true) { aa.push(eee); } }); return aa; }, []);
-dom_WordCloudify(aTags, document.querySelector("canvas"), (sTag) => { filtertags(sTag); } )
+    // make comments clickable and in a wordcloud
+    aTags = $$$a(".sCommentTags").map(o=>o.innerText.split(" // ")[1]?.replaceAll(",", "").split(" "))
+        .reduce((a,e,i, aArray)=>{if(e) {a.push(e.slice(0, e.length-1))}; return a;}, []) // now push all tags except the last one (ie, the section title) onto the tag list
+        .reduce((aa,ee,ii)=>{ ee.forEach((eee)=>{ if (true) { aa.push(eee); } }); return aa; }, []);
+    dom_WordCloudify(aTags, document.querySelector("canvas"), (sTag) => { filtertags(sTag); } )
+    
+
     
 }, "2000"); }); </script>
 
