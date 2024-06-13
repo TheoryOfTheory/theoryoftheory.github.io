@@ -35,19 +35,6 @@ function renderSpan(oThis) {
 }
 </script>
 
-<!-- // make 2nd and 3rd columns clickable events to display the innerHTML -->
-<script>window.addEventListener('load', function() { 
-// make 2nd and 3rd columns clickable events to display the innerHTML
-document.addEventListener('click', (event) => {
-    oElement = event.target;
-    oElementIndex = Array.prototype.indexOf.call(oElement.parentNode.children, oElement);
-    // console.log(oElementIndex);
-  if (oElement.tagName === 'TD' && (oElementIndex === 1 || oElementIndex === 2)) {    
-    dom_displayTDContents(oElement);
-  }
-});
-})</script>
-
 <!-- add custom reddit, reddit prompt, and domscripts_linkify logic -->
 <script>window.addEventListener('load', function() { 
 
@@ -61,16 +48,13 @@ document.querySelectorAll("table td:nth-child(4n)").forEach(o=>{ o.innerHTML = d
 sTableAndTDStyle = domGenerateTableAndTDWidth(1435, [10, 0, 0, 0, 0], null, 25, 30);
 domLoadStyles_CSS(sTableAndTDStyle);
 
-    
-    
-    
 // 06/05/2024 June2024 Changes
 // functions to better navigate/read data thru clicking or URL parameters
 
 // make each row thrice-clickable to display full row results
-document.querySelectorAll("tr").forEach(o=>{
-    addELClick(o, 3, ()=>{ fJoinTRIntoHTML(o) } )
-})
+document.querySelectorAll("tr td:first-child").forEach(o=>{ addELClick(o, 1, ()=>{ fJoinTRIntoHTML(o) } )})
+// make all but 1st columns (2nd and 3rd and 4th columns) clickable events to display the innerHTML
+document.querySelectorAll("td:not(:first-child)").forEach(o=>{ addELClick(o, 1, ()=>{ dom_displayTDContents(o); } ) });
 
 function fJoinTRIntoHTML(oTR) {
     // console.log(oTR);
@@ -93,12 +77,9 @@ function dom_windowopen(sHTML, sTitle, iWidth, iHeight) {
       sHTMLReturn = "";
       $$$a("tr").forEach(o=>{
           sHTML = Array.from(o.children).map(o=>o.innerHTML).join("<br><br>");
-          // console.log(sHTML);
           if (sHTML.toLowerCase().match( oGetAllParameters_CLIENT().q.toLowerCase() )) {
               sHTMLReturn = sHTML + "<br><br>" + sHTMLReturn;
           }
-          //console.log(sHTMLReturn);
-          // addELClick(o, 3, ()=>{ fJoinTRIntoHTML(o) } )
       })
       document.body.innerHTML=sHTMLReturn;
 
