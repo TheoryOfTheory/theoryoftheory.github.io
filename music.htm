@@ -90,21 +90,19 @@ oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{ a[e.split(" - ")
               }// extract tags/comment 
               // now add onclick to tags
     
-    
+              var sArtistSongText = superurlify(sArtistSong).text;
               // but for now just dollarstore'ing this:
               if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
-                sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(superurlify(sArtistSong).text)}&btnI=I%27m+Feeling+Lucky`; // from google bard
-                aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(superurlify(sArtistSong).text)}`; // youtube &loop=0
-                aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + superurlify(sArtistSong).text)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
-                aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(superurlify(sArtistSong).text)}`; // searchtree
+                sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(sArtistSongText)}&btnI=I%27m+Feeling+Lucky`; // from google bard
+                aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(sArtistSongText)}`; // youtube &loop=0
+                aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + sArtistSongText)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+                aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(sArtistSongText)}`; // searchtree
                 if (o.length>0) {
                      return a + `<div>
                      <span class='artistsong' data-artistsong='${superencode(sArtistSong)}'>
-                     <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a
-                     >&nbsp;&nbsp;&nbsp;
-                     <a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>
-                     &nbsp;&nbsp;&nbsp;
-                     <span style="font-size:7px;">${superurlify(sTextSansCommentTags).href}</span><span class='sCommentTags'>${superurlify(sArtistSong).text + sCommentTags}</span>
+                     <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;
+                     <a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;
+                     <span style="font-size:7px;">${superurlify(sTextSansCommentTags).href}</span><span class='sCommentTags'>${sArtistSongText + sCommentTags}</span>
                      <span class='sCommentComments' style='font-size:6px;'>${sCommentComments}</span>
                      </div>`; //        
                 } else {
@@ -137,7 +135,7 @@ document.body.prependHTML("<canvas width='800' height='200'></canvas>");
 
 <script>
 
-function superurlify(text) { // converts text to {text: t, href, url } object to extract url;; mine - ?needs to be refactored?
+function superurlify(text) { // converts text to {text: t, href, url } object to extract url;; mine - ?needs to be refactored into domscripts_linkify?
     var aURLMatches = text.match(/(https?:\/\/[^\s]+)/g); if (aURLMatches) {} else {aURLMatches = [];}
     var oReturn = {};
     text = text.replace(/(https?:\/\/[^\s]+)/g, "");
@@ -305,6 +303,7 @@ lets gooooo
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Kendrick Lamar - Pride // chill favs // pulitzer
 Fauré - Pavane Op 50 // theory piano // https://old.reddit.com/r/piano/comments/6qns0q/favorite_faur%C3%A9_piano_piece/ also: Jankelevitch's "Music and the Ineffable" - Vladimir Jankélévitch left behind a remarkable body of work steeped as much in philosophy as in music. His writings on moral quandaries reflect a lifelong devotion to music and performance, and, as a counterpoint, he wrote on music aesthetics and on modernist composers such as Fauré, Debussy, and Ravel. Music and the Ineffable brings together these two threads, the philosophical and the musical, as an extraordinary quintessence of his thought. Jankélévitch deals with classical issues in the philosophy of music, including metaphysics and ontology. These are a point of departure for a sustained examination and dismantling of the idea of musical hermeneutics in its conventional sense. Music, Jankélévitch argues, is not a hieroglyph, not a language or sign system; nor does it express emotions, depict landscapes or cultures, or narrate. On the other hand, music cannot be imprisoned within the icy, morbid notion of pure structure or autonomous discourse. Yet if musical works are not a cipher awaiting the decoder, music is nonetheless entwined with human experience, and with the physical, material reality of music in performance. Music is "ineffable," as Jankélévitch puts it, because it cannot be pinned down, and has a capacity to engender limitless resonance in several domains. Jankélévitch's singular work on music was central to such figures as Roland Barthes and Catherine Clément, and the complex textures and rhythms of his lyrical prose sound a unique note, until recently seldom heard outside the francophone world. https://books.google.com/books/about/Music_and_the_Ineffable.html?id=wT36wFP7RL4C
 Debussy - La cathédrale engloutie (The Sunken Cathedral) // piano theory // https://old.reddit.com/r/classicalmusic/comments/1xq7uc/whats_your_favorite_debussy_piece/
 Ravel - Le Tombeau de Couperin // theory piano // https://old.reddit.com/r/classicalmusic/comments/j2y3q9/ravel_lovers_what_are_your_favourite_pieces/
