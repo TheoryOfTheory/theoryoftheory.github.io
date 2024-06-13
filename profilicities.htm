@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html><head>
 <link rel="icon" type="image/png" href="https://icons.iconarchive.com/icons/icons8/windows-8/256/City-Portrait-icon.png">
-<script>window.addEventListener('DOMContentLoaded', function() { dom_convertAllURLsToAhrefs("td"); }, false )</script>
 <script>
 dom_fFilterTable = function(dElement, aColumns, sTag) {
 // dom_fFilterTable($$$$("table"), 0, "b")
@@ -19,7 +18,7 @@ dom_fFilterTable = function(dElement, aColumns, sTag) {
 
     dElement.$$$a("tr").forEach(domTR=>{
         // console.log(aColumns);
-		sTR = aColumns.map(iColumn=>{
+                sTR = aColumns.map(iColumn=>{
             domTD = domTR.$$$a("td")[iColumn];
             // console.log(iRow);
             if (domTD) { return domTD.innerText } else { return ""; }
