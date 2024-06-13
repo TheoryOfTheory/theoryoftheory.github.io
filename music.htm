@@ -200,7 +200,7 @@ function dom_ahrefenumeratize() { // "aheify"? - used by filtertags..finds <ahre
             // $$$("ahrefenumerate")[0].innerHTML = sReturnHTML;
             oAHE.innerHTML = sReturnHTML;
         })
-    } catch(e) { "error in the hacky dom_ahrefenumeratize function" }
+    } catch(e) { "error in the hacky dom_ahrefenumeratize function"; }
 }
 function filtertags(oTag) {
     if (typeof(oTag) == "string") { sTag = oTag; } else { sTag = oTag.innerText; }
@@ -242,7 +242,7 @@ function filtertags(oTag) {
 
 function unfiltertags() { // restore visibility of all artist/songs
     $$$a(".artistsong").forEach(oArtistSong=>{
-                oArtistSong.style.display = "";
+        oArtistSong.style.display = "";
     })
     document.querySelectorAll("h2").forEach(o=>{o.style.display = "";})
     document.querySelectorAll("br").forEach(o=>{o.style.display = "";})
