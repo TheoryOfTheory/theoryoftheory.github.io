@@ -81,7 +81,7 @@ function openMe(othis) {
    sURL = othis.dataset.url;
    sURL = eval(sURL); // get rid of this?
    if ($$$$("#redditd").checked) { // if redditd is checked then just open the redditdomains (possibly refactor this to copy in the search value?)
-       window.open(`https://old.reddit.com/domain/${fStripDomain(sURL)}/new/`, "_blank");
+       window.open(`https://old.reddit.com/domain/${datascripts_regexStripDomain(sURL)}/new/`, "_blank");
    } else {
        window.open(sURL, "_blank");
    }
@@ -177,17 +177,6 @@ function convertMMDDYYYYToYYYYMMDD(dateStr) {
     // Rearrange the parts to YYYY-MM-DD
     return `${parts[2]}-${parts[0]}-${parts[1]}`;
 }
-
-function fStripDomain(url) {
-    // var url = "https://plato.stanford.edu/search";
-    var regex = /^https:\/\/(?:www\.)?([^/]+)/;
-    var match = url.match(regex);
-    if (match) {
-        var domain = match[1];
-        return domain;  // Outputs: plato.stanford.edu
-    }
-}
-
 
 </script>
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => {
