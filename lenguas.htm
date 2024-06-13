@@ -64,8 +64,8 @@ document.querySelectorAll("tr td:first-child").forEach(o=>{ addELClick(o, 1, ()=
 // make all but 1st columns (2nd and 3rd and 4th columns) clickable events to display the domscripts_linkified(innerHTML)
 document.querySelectorAll("td:not(:first-child)").forEach(o=>{
     o.innerHTML = domscripts_linkify(o.innerHTML);
-    addELClick(o, 1, ()=>{ dom_displayTDContents(o);
-} ) });
+    addELClick(o, 1, ()=>{ dom_displayTDContents(o); })
+});
 // FINALLY DO domscripts_linkify() on 2nd and 3rd and 4th columns
 // OLD document.querySelectorAll("table")[0].innerHTML = domscripts_linkify(document.querySelectorAll("table")[0].innerHTML);
 //document.querySelectorAll("table td:nth-child(2n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
