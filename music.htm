@@ -137,18 +137,6 @@ document.body.prependHTML("<canvas width='800' height='200'></canvas>");
 
 <script>
 
-// var text = 'Find me at http://www.example.com and also at http://stackoverflow.com';
-// console.log(urlify(text))
-//var sLine = "Find me at http://www.example.com and also at http://stackoverflow.com";
-//console.log(superurlify(sLine));
-function urlify(text) { // via https://stackoverflow.com/questions/1500260/detect-urls-in-text-with-javascript
-  var urlRegex = /(https?:\/\/[^\s]+)/g;
-  return text.replace(urlRegex, function(url) {
-    return '<a href="' + url + '">' + url + '</a>';
-  })
-  // or alternatively
-  // return text.replace(urlRegex, '<a href="$1">$1</a>')
-}
 function superurlify(text) { // converts text to {text: t, href, url } object to extract url;; mine - ?needs to be refactored?
     var aURLMatches = text.match(/(https?:\/\/[^\s]+)/g); if (aURLMatches) {} else {aURLMatches = [];}
     var oReturn = {};
