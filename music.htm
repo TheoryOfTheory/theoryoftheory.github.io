@@ -145,11 +145,12 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
     }
     oReturn.href = "";
     if (aURLMatches) {
-        if (aURLMatches.length == 1) {
-            oReturn.href = `<a target="_blank" href="${aURLMatches[0]}">${text}</a>`;
-        } else if (aURLMatches.length > 1) {
-            oReturn.href = `${text}` + aURLMatches.reduce((a,e,i)=>{return a + `<a href="${e}">link${i+1}</a>`}, "")
-        }
+        // if (aURLMatches.length == 1) {
+        //     oReturn.href = `<a target="_blank" href="${aURLMatches[0]}">${text}</a>`;
+        // } else if (aURLMatches.length > 1) {
+            // oReturn.href = `${text}` + aURLMatches.reduce((a,e,i)=>{return a + `<a href="${e}">link${i+1}</a>`}, "")
+        oReturn.href = aURLMatches.reduce((a,e,i)=>{return a + `<a href="${e}">link${i+1}</a>`}, "");
+        // }
     }
     // return text;
     return oReturn;
