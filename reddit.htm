@@ -111,7 +111,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
 // FINALLY DO domscripts_linkify() on 2nd and 3rd columns
 // OLD document.querySelectorAll("table")[0].innerHTML = domscripts_linkify(document.querySelectorAll("table")[0].innerHTML);
 document.querySelectorAll("table td:nth-child(2n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
-document.querySelectorAll("table td:nth-child(3n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
+document.querySelectorAll("table td:nth-child(3n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML, "domain"); })
 
 // LASTLY: expand only one category/set of links if URL parameter search is populated
 if (oGetAllParameters_CLIENT().search) {
