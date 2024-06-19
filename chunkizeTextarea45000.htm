@@ -278,7 +278,10 @@ function alternateCase(sText) {
   </div>
   <div><textarea id="myTextarea" placeholder="Paste text here in order to split into chunks of length 45000..." oninput="splitTextarea()"></textarea></div>
 
-  <div>Total length=<span id="totallength"></span></div>
+  <div id="divtotals"> <!-- note the inconsistencies, #refactor later -->
+      Total length=<span id="totallength"></span>
+      <span id="totalwords"></span>
+  </div>
 
   
   <!-- regex find and replace -->
@@ -448,6 +451,7 @@ function fFindAndReplace() {
             const text = textarea.value;
             var i50000 = parseInt($$$$("#chunksize").value); // 45000; // 50000?
             document.getElementById("totallength").innerText = textarea.value.length;
+            document.getElementById("totalwords").innerText = "    \t\t\t\t\nand total words=" + document.getElementById("myTextarea").value.replaceAll("\n", " ").split(" ").length
 
             if (text.length > i50000) {
               const chunks = [];
