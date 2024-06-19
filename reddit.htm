@@ -106,20 +106,15 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
     return '';
 
 });
-//document.body.innerHTML = "<ul>" + aRedditMultireddits.map(o=>"<li>" + o + "</li>").join("") + "</ul>" + document.body.innerHTML;
 
-// FINALLY DO domscripts_linkify() on 2nd and 3rd columns
-// OLD document.querySelectorAll("table")[0].innerHTML = domscripts_linkify(document.querySelectorAll("table")[0].innerHTML);
-document.querySelectorAll("table td:nth-child(2n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML); })
-document.querySelectorAll("table td:nth-child(3n)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML, "domain"); })
 
-// LASTLY: expand only one category/set of links if URL parameter search is populated
+// LASTLY: expand only one category/set of links if URL parameter .search is populated
 if (oGetAllParameters_CLIENT().search) {
     $$$("td:first-child").forEach(o=>{
         if (o.innerText.match(new RegExp(oGetAllParameters_CLIENT().search, "i"))){
             var oTR = o.parentNode;
             setTimeout(() => { 
-                document.body.innerHTML = oTR.children[2].innerHTML + "<br /><br />" + oTR.children[1].innerHTML + "<br /><br />" + oTR.children[0].innerHTML
+                document.body.innerHTML = oTR.children[2].innerHTML + "<br><br>" + oTR.children[1].innerHTML + "<br><br>" + oTR.children[0].innerHTML
             }, 1500)
         }
     })
@@ -270,9 +265,14 @@ $$$a(".submultireddit").map(o=>o.$$$$("a")).forEach(o=>{
 
 }
 
-setTimeout(redditfy, 500);
-setTimeout(subMultiredditfy, 800);
-
+setTimeout(redditfy, 400);
+setTimeout(subMultiredditfy, 500);
+// FINALLY DO domscripts_linkify() on 2nd and 3rd columns
+// OLD document.querySelectorAll("table")[0].innerHTML = domscripts_linkify(document.querySelectorAll("table")[0].innerHTML);
+setTimeout(function() {
+    document.querySelectorAll("table td:nth-child(2)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML, "link_index"); })
+    document.querySelectorAll("table td:nth-child(3)").forEach(o=>{ o.innerHTML = domscripts_linkify(o.innerHTML, "domain"); })
+}, 600);
 
 </script>
   
