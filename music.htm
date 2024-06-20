@@ -108,13 +108,16 @@ oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{ a[e.split(" - ")
               if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
                 sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(sArtistSongText)}&btnI=I%27m+Feeling+Lucky`; // from google bard
                 aHrefYoutube = `https://www.youtube.com/results?search_query=${superencode(sArtistSongText)}`; // youtube &loop=0
-                aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode("youtube " + sArtistSongText)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
+                aHrefDuck = `https://duckduckgo.com/?q=%5C${superencode(sArtistSongText)}`; // duckduckgo I'm feeling lucky, The %5c code above is the indicator for loading the page directly without search results (similar to the BtnI of Google)
                 aHrefSearchTree = `https://theoryoftheory.github.io/searchtree.htm?search=${superencode(sArtistSongText)}`; // searchtree
                 if (o.length>0) {
                      return a + `<div>
                      <span class='artistsong' data-artistsong='${superencode(sArtistSong)}'>
                      <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;
-                     <a target='_blank' href='${aHrefDuck}'>🦆</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;
+                     <a target='_blank' href='${aHrefDuck}%20youtube'>🦆</a>&nbsp;&nbsp;&nbsp;
+                     <a target='_blank' href='${aHrefDuck}%20lyrics'>📜</a>&nbsp;&nbsp;&nbsp;
+                     <a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;
+                     
                      <span style="font-size:7px;">${superurlify(sTextSansCommentTags).href}</span><span class='sCommentTags'>${sArtistSongText + sCommentTags}</span>
                      <span class='sCommentComments' style='font-size:6px;'>${sCommentComments}</span>
                      </div>`; //        
@@ -294,6 +297,8 @@ find that song with the rainbows and singer dancing and running away from homele
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Christian Scott aTunde Adjuah - Sunrise in Beijing (feat Elena Pinderhughes) // sun // sun?
+Sparks - Music That You Can Dance To // catchy
 G-Eazy - Fried Rice // nonenglish funny // sounds vaguely racist? wat
 Blue Scholars - Fire for the People // rap
 Medeski, Martin & Wood - Shine It // funk 70sish instrumental // got that beat
