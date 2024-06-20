@@ -15,6 +15,7 @@ TAG guide - here are all the possible tags
 
 
 googlesheet_2021 - original data from googlesheet that prompted the creation of music.htm 
+college - college songs
 
 redscare - RedScarePodMusic!!https://old.reddit.com/r/RedScarePodMusic/
 
@@ -26,8 +27,7 @@ Charleston - ???
 chicochico - vs chico!!https://theoryoftheory.github.io/music.htm?tag=chico , but aka mariposa
 chico - vs chicochico!!https://theoryoftheory.github.io/music.htm?tag=chicochico
 soundslike - aka remindsme, vs sampled
-glitch - vs discordian!!https://theoryoftheory.github.io/music.htm?tag=discordian vs chaotic!!https://theoryoftheory.github.io/music.htm?tag=chaotic
-discordian - vs glitch!!https://theoryoftheory.github.io/music.htm?tag=glitch vs chaotic!!https://theoryoftheory.github.io/music.htm?tag=chaotic
+
 arabic - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=arabic lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=arabic
 german - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=german lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=german
 spanish - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=spanish lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=spanish and espanol_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=españ1ol paises_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=paises
@@ -45,7 +45,8 @@ space - vs sun!!https://theoryoftheory.github.io/music.htm?tag=sun
 
 rap - reddit_htm_rap!!https://theoryoftheory.github.io/reddit.htm?search=rap
 funk - https://old.reddit.com/r/ArabFunk+DancandoFunk+DancarinasDoFunk+DeepFunk+FunkCarioca+FunkStyle+JapaneseFunk+NeuroFunk+NuFunk+Trans_Funk_pelada+Vinyl_Funk+bailefunk+funk+funk_adjacent+futurefunk/
-chaotic - James Gleick's Chaos Guattari (Chaosmosis) vs Delanda's ??? vs 's 1987 Chaos vs Dugin's chaos star, discordian!!https://theoryoftheory.github.io/music.htm?tag=discordian vs glitch!!https://theoryoftheory.github.io/music.htm?tag=glitch
+chaotic, glitch, discordian, violent - James Gleick's Chaos Guattari (Chaosmosis) vs Delanda's ??? vs 's 1987 Chaos vs Dugin's chaos star
+raspy, whispy - ???
 catchy - tiktok publication and sampleable?
 
 
@@ -61,7 +62,8 @@ theory - theory
 
 
 `;
-oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{ a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
+// oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
+oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
 </script>
 
 <script>window.addEventListener('load', function() {
