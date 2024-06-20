@@ -14,30 +14,30 @@ var sTags_global = `
 TAG guide - here are all the possible tags
 
 
-Miami - MiamiMusicScene!!https://old.reddit.com/r/MiamiMusicScene/
-Boston - https://old.reddit.com/r/BostonMusic+Bostonology+BostonLocalMusic+BostonCalling 
+Miami - MiamiMusicScene!!https://old.reddit.com/r/MiamiMusicScene/ , vs Boston!!https://theoryoftheory.github.io/music.htm?tag=boston
+Boston - https://old.reddit.com/r/BostonMusic+Bostonology+BostonLocalMusic+BostonCalling vs Miami!!https://theoryoftheory.github.io/music.htm?tag=miami
 WashingtonDC - ???
 Charleston - ???
 
-chicochico - vs chico, but aka mariposa
-chico - vs chicochico
+chicochico - vs chico!!https://theoryoftheory.github.io/music.htm?tag=chico , but aka mariposa
+chico - vs chicochico!!https://theoryoftheory.github.io/music.htm?tag=chicochico
 soundslike - aka remindsme, vs sampled
-glitch - vs discordian?
-discordian - vs glitch?
-arabic - links https://theoryoftheory.github.io/reddit.htm?search=arabic https://theoryoftheory.github.io/lenguas.htm https://theoryoftheory.github.io/profilicities.htm?search=arabic
-german - links https://theoryoftheory.github.io/reddit.htm?search=german https://theoryoftheory.github.io/lenguas.htm https://theoryoftheory.github.io/profilicities.htm?search=german
-spanish - links https://theoryoftheory.github.io/reddit.htm?search=spanish https://theoryoftheory.github.io/lenguas.htm https://theoryoftheory.github.io/profilicities.htm?search=spanish and espanol https://theoryoftheory.github.io/reddit.htm?search=espa%C3%B1ol paises https://theoryoftheory.github.io/reddit.htm?search=paises
+glitch - vs discordian!!https://theoryoftheory.github.io/music.htm?tag=discordian
+discordian - vs glitch!!https://theoryoftheory.github.io/music.htm?tag=glitch
+arabic - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=arabic lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=arabic
+german - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=german lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=german
+spanish - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=spanish lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=spanish and espanol_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=españ1ol paises_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=paises
 nonenglish - nonenglish AND nonspanish - ie french, german, haitian, maori
 
-ddb - David Dean Burkhart https://www.youtube.com/@daviddeanburkhart
-VisionApes - https://x.com/Prime8DaApe https://www.youtube.com/@VisionApesRecComedy/shorts https://www.youtube.com/shorts/F0If8tPRnRA 
-TheRoar - listen to theRoar 88.1 now https://panthernow.com/theroar/ shoegaze_dreampop https://old.reddit.com/r/shoegaze+dreampop alt punk trance
-shoegaze - aot TheRoar, dreampop?
-dreampop - aot shoegaze, TheRoar?
-starbucks - music from starbucks criticism https://old.reddit.com/r/starbucks/comments/189i98k/whoever_makes_the_starbucks_music_playlist_needs/ search https://old.reddit.com/r/starbucks/search/?q=music&include_over_18=on&restrict_sr=on&t=all&sort=new
+ddb - David Dean Burkhart youtube!!https://www.youtube.com/@daviddeanburkhart
+VisionApes - x!!https://x.com/Prime8DaApe youtube!!https://www.youtube.com/@VisionApesRecComedy/shorts omg!!https://www.youtube.com/shorts/F0If8tPRnRA 
+TheRoar - listen to theRoar 88.1 now https://panthernow.com/theroar/ shoegaze_dreampop!!https://old.reddit.com/r/shoegaze+dreampop alt punk trance
+shoegaze - aot TheRoar, dreampop ;;; shoegaze_dreampop!!https://old.reddit.com/r/shoegaze+dreampop
+dreampop - aot shoegaze, TheRoar ;;; shoegaze_dreampop!!https://old.reddit.com/r/shoegaze+dreampop
+starbucks - music from starbucks criticism!!https://old.reddit.com/r/starbucks/comments/189i98k/whoever_makes_the_starbucks_music_playlist_needs/ search!!https://old.reddit.com/r/starbucks/search/?q=music&include_over_18=on&restrict_sr=on&t=all&sort=new
 
-sun - vs space? ;;; Georges Bataille: The Potlatch with the Sun https://academic.oup.com/columbia-scholarship-online/book/23458/chapter-abstract/184536720 
-space - vs sun?
+sun - vs space? ;;; Georges Bataille: [The Potlatch with the Sun](https://academic.oup.com/columbia-scholarship-online/book/23458/chapter-abstract/184536720) 
+space - vs sun!!https://theoryoftheory.github.io/music.htm?tag=sun
 
 rap - reddit_htm_rap https://theoryoftheory.github.io/reddit.htm?search=rap
 funk - https://old.reddit.com/r/ArabFunk+DancandoFunk+DancarinasDoFunk+DeepFunk+FunkCarioca+FunkStyle+JapaneseFunk+NeuroFunk+NuFunk+Trans_Funk_pelada+Vinyl_Funk+bailefunk+funk+funk_adjacent+futurefunk/
@@ -173,7 +173,7 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
 }
 
 function filtertags(oTag) {
-    if (typeof(oTag) == "string") { sTag = oTag; } else { sTag = oTag.innerText; }
+    if (typeof(oTag) == "string") { sTag = oTag.toLowerCase(); } else { sTag = oTag?.innerText.toLowerCase(); }
 
     sTag = sTag.replaceAll(",", "").toLowerCase(); // remove extraneous comma
     
@@ -266,8 +266,13 @@ function filterString(sString) {
 if (oGetAllParameters_CLIENT().q) {
     filterString(oGetAllParameters_CLIENT().q);
 }
+if (oGetAllParameters_CLIENT().tag) {
+    filtertags(oGetAllParameters_CLIENT().tag);
+}
 
-}, "2000"); }); </script>
+
+
+}, "1500"); }); </script>
 <style>
 .sCommentComments  {
   height: 30px;
