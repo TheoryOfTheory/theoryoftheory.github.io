@@ -13,6 +13,10 @@
 var sTags_global = `
 TAG guide - here are all the possible tags
 
+wat rare britney testing - ?????
+
+synth metal guitar - ???
+
 50sish, 60sish, 70sish, 80sish, 90sish - music that sounds like its from a specific decade but its not (AOT XXs eg 80s!!https://theoryoftheory.github.io/music.htm?tag=80s )
 50s, 60s, 70s, 80s, 90s, 00s, 10s, classic - music from a specific decade (AOT XXsish eg 80sish!!https://theoryoftheory.github.io/music.htm?tag=80sish )
 
@@ -65,11 +69,13 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
     sKey = e.split(" - ")[0].toLowerCase();
     aKeys = sKey.split(",").map(ooo=>ooo.trim());
     // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
-    sKeysTagLinks = aKeys.map(ooo=>`${ooo}!!https://theoryoftheory.github.io/music.htm?tag=${ooo}`).join(" ");
-    aKeys.forEach(ssKey=>{
-        sValue = sKeysTagLinks + " " + e.split(" - ")[1];
+    sKeysTagLinks = aKeys.map(ssTag=>`${ssTag}!!https://theoryoftheory.github.io/music.htm?tag=${ssTag}`).join(" ");
+    aKeys.forEach(ssTag=>{
+        var sValue = "";
+        if (a[ssTag]) { sValue = "<span style='font-color:red'>" + a[ssTag] + "</span>"; } // make any existing key red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
+        sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
         // a[sKey] = sValue;
-        a[ssKey] = sValue;
+        a[ssTag] = sValue;
     })
     return a;
 }, {});
