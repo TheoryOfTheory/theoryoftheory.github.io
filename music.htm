@@ -142,8 +142,8 @@ setTimeout( function() { if (oGetAllParameters_CLIENT().q) { document.getElement
     // make comments clickable and in a wordcloud
     aTags = $$$a(".sCommentTags").map(o=>o.innerText.split(" // ")[1]?.replaceAll(",", "").split(" "))
         .reduce((a,e,i, aArray)=>{if(e) {a.push(e.slice(0, e.length-1))}; return a;}, []) // now push all tags except the last one (ie, the section title) onto the tag list
-        .reduce((aa,ee,ii)=>{ ee.forEach((eee)=>{ if (true) { aa.push(eee); } }); return aa; }, []);
-    dom_WordCloudify(aTags, document.querySelector("canvas"), (sTag) => { filtertags(sTag); } )
+        .reduce((aa,ee,ii)=>{ ee.forEach((eee)=>{ if (true) { aa.push( eee.toLowerCase() ); } }); return aa; }, []);
+    dom_WordCloudify(aTags, document.querySelector("canvas"), (sTag) => { filtertags(sTag.toLowerCase() ); } )
     
 
     
