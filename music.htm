@@ -63,7 +63,22 @@ theory - theory
 
 `;
 // oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
-oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
+// oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
+var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
+    sKey = e.split(" - ")[0].toLowerCase();
+    aKeys = sKey.split(",").map(ooo=>ooo.trim());
+    // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
+    sKeysTagLinks = aKeys.map(ooo=>`${ooo}!!https://theoryoftheory.github.io/music.htm?tag=${ooo}`).join(" ");
+    aKeys.forEach(ssKey=>{
+        sValue = sKeysTagLinks + " " + e.split(" - ")[1];
+        // a[sKey] = sValue;
+        a[ssKey] = sValue;
+    })
+    return a;
+}, {});
+
+
+
 </script>
 
 <script>window.addEventListener('load', function() {
