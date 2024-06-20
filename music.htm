@@ -119,8 +119,9 @@ oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{ a[e.split(" - ")
 
     // make secondary comments' links clickable and condense by making link titles the index
     $$$a(".sCommentComments").forEach(o=>{o.innerHTML = domscripts_linkify(o.innerHTML, "index") })
-    
-document.body.prependHTML("<canvas width='800' height='200'></canvas>");
+
+sSearchButton = `<div><input id="input_search" value="shoegaze"><button onclick='window.open("https://theoryoftheory.github.io/music.htm?q=" + document.querySelector("#input_search").value, "_self")'>search</button></div>`;
+document.body.prependHTML(sSearchButton + "<br><canvas width='800' height='200'></canvas>");
 
 
 }, false )</script>
