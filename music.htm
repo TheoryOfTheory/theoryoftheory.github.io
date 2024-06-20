@@ -69,10 +69,10 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
     sKey = e.split(" - ")[0].toLowerCase();
     aKeys = sKey.split(",").map(ooo=>ooo.trim());
     // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
-    sKeysTagLinks = aKeys.map(ssTag=>`${ssTag}!!https://theoryoftheory.github.io/music.htm?tag=${ssTag}`).join(" ");
+    sKeysTagLinks = aKeys.map(ssTag=>` ${ssTag}!!https://theoryoftheory.github.io/music.htm?tag=${ssTag} `).join(" ");
     aKeys.forEach(ssTag=>{
         var sValue = "";
-        if (a[ssTag]) { sValue = "<span style='color:red !important'>DOUBLED TAG</span> " + a[ssTag] + " "; } // make any existing key red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
+        if (a[ssTag]) { sValue = " <span style='color:red !important'>DOUBLED TAG</span> " + a[ssTag] + " "; } // make any existing key red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
         sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
         // a[sKey] = sValue;
         a[ssTag] = sValue;
