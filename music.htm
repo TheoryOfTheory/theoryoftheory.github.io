@@ -60,7 +60,7 @@ soundslike=remindsme, sampled - sampled
 googlesheet_2021 - original data from googlesheet that prompted the creation of music.htm 
 college - college songs
 redscare - RedScarePodMusic!!https://old.reddit.com/r/RedScarePodMusic/
-wat rare britney testing - ?????
+wat=rare=britney=testing=wtf=todo - pendiente
 ad - this is for songs that were featured in an advertisement and thus i associate them with ads
 overnight=clubmix, sun - working overnight, sunrise
 summer, spring, fall=autumn, winter - seasons
@@ -89,7 +89,8 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 oTagsSynonymsGlobal[ooo.split("=")[iiii+1]] = ooo.split("=")[0]
             })
         }
-        return ooo.split("=")[0]
+        //return ooo.split("=")[0]
+        return ooo; // .split("=")[0]
     })
     // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
     sKeysTagLinks = aKeys.map(ssTag=>` ${ssTag}!!https://theoryoftheory.github.io/music.htm?tag=${ssTag} `).join(" ");
@@ -350,6 +351,8 @@ find that song with the rainbows and singer dancing and running away from homele
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Para One - Wake Me Up // glitch
+Forever Midnight Feat. Beya Likhari - Just // ad
 Jon Casey - TV Room // glitch
 Jimmy Rodgers - Waiting For a Train // 50s
 George Fitzgerald - Lights Out // clubmix
