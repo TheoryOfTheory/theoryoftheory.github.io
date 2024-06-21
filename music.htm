@@ -226,6 +226,8 @@ function filtertags(oTag) {
     if (typeof(oTag) == "string") { sTag = oTag.toLowerCase(); } else { sTag = oTag?.innerText.toLowerCase(); }
 
     sTag = sTag.replaceAll(",", "").toLowerCase(); // remove extraneous comma
+    // replace tag with main synonym
+    if (oTagsSynonymsGlobal[sTag]) { sTag = oTagsSynonymsGlobal[sTag]; }
     
     // causes page to crash for some reason
     // $$$("h2").forEach(o=>o.style.display = "none");
@@ -236,7 +238,10 @@ function filtertags(oTag) {
         if (sCommentTag) {
             sCommentTag = sCommentTag.toLowerCase().replaceAll(",", " ").replaceAll("  ", " "); // remove extra commas and spaces
 
-            aCommentTags = sCommentTag.split(" ");
+            aCommentTags = sCommentTag.split(" ").map(sSingleCommentTag=>{
+                if (oTagsSynonymsGlobal[sSingleCommentTag]) { sSingleCommentTag = oTagsSynonymsGlobal[sSingleCommentTag]; }
+                return sSingleCommentTag;
+            })
         } else { sCommentTag = ""; aCommentTags = []; }
         
         if ((sCommentTag.length == 0) || (aCommentTags.indexOf(sTag) == -1)) {
@@ -252,8 +257,8 @@ function filtertags(oTag) {
     document.querySelectorAll("br").forEach(o=>{o.style.display = "none";});
     // ok now unhide the first h2 and replace its contents with tag.  I originally wanted to just make this first one an <h1> but my dollartreemarkdownify implementation doesn't do h1s and my music notes doesn't do h3s???
     document.querySelectorAll("h2")[0].style.display = "";
-    console.log(sTag);
-    console.log(oTagsGlobal[sTag]);
+    //console.log(sTag);
+    //console.log(oTagsGlobal[sTag]);
 
     document.querySelectorAll("h2")[0].innerHTML = sTag + ( oTagsGlobal[sTag] ? " - " + domscripts_linkify(oTagsGlobal[sTag], "domain") : "" );
     // britney - code here to replace contents of h1 with sTag name
@@ -344,6 +349,16 @@ find that song with the rainbows and singer dancing and running away from homele
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+cupcakKe - Lgbt // ad chicochico
+FISHER - You Little Beauty // chico // looks like Eddie
+Bryan Mattz - Fly Over the Woods
+Hippie Sabotage - ?whichsong? // amazonwork // nene
+Harry Choo Choo Romero - Is This Time Goodbye? (feat Trey Lorenz)
+Feist - One Evening (Kentphon9c Late Night Remix) // clubmix overnight
+Sebastian Ingrosso - Kidsos (Wippenberg Remix) // sampled clubmix
+Tennis - In the Morning I'll Be Better // ad // "this is elena"
+Alex Ground - Jim 1970 (Original Mix) // clubmix
+John Carpenter - Dark Blues // instrumental guitar
 Die Antwood - Enter the Ninja
 L.O.E. - Can I Live // wat // this mahve been a mishear from Shazam
 Actress - X22RME
@@ -394,7 +409,6 @@ The Internet - Special Affair // chill // there's a part that kinda has a pink-p
 AbJo - Alma Do Sol (Introduçāo) // production catchy nonenglish // I like how that background music with the ?pipe?
 UMI - Midnight Blues // rnb
 Christian Scott aTunde Adjuah - Sunrise in Beijing (feat Elena Pinderhughes) // sun // sun?
-Sparks - Music That You Can Dance To // catchy
 G-Eazy - Fried Rice // nonenglish funny // sounds vaguely racist? wat
 Blue Scholars - Fire for the People // rap
 Medeski, Martin & Wood - Shine It // funk 70sish instrumental // got that beat
@@ -1399,7 +1413,7 @@ Maceo Plex - Can't Leave You
 Night Tempo - Reversible Love
 Maetrik - The Poem
 SOPHIE - Bipp
-Sparks _ Music That You Can Dance To
+Sparks - Music That You Can Dance To // ad catchy dance // dance?
 Dub Lemon - Ningmeng Zhang *Drum & Bass Remix)
 ÆTERNA - Open Eyes From Slumber
 Fanny Lu - Celos
@@ -1409,7 +1423,7 @@ The Marías - Cariño
 Remember Sports - Out Loud
 Rosie Tucker - Habanero
 7eventh Time Down - God Is on the Move
-Yamantaka // wtf
+Yamantaka // britney
 Sonic Titan - Yandere
 Ken Boothe - Now You Can See Me Again
 Kings of Convenience - Stay Out of Trouble
