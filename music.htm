@@ -42,13 +42,13 @@ nonenglish=french=hebrew=haitian=maori=russian - nonenglish (AND nonspanish/nong
 // curators
 ddb - David Dean Burkhart youtube!!https://www.youtube.com/@daviddeanburkhart
 VisionApes - x!!https://x.com/Prime8DaApe youtube!!https://www.youtube.com/@VisionApesRecComedy/shorts omg!!https://www.youtube.com/shorts/F0If8tPRnRA 
-TheRoar, alt, punk, trance, indie=chill=lofi - listen to theRoar 88.1 now https://panthernow.com/theroar/ shoegaze_dreampop!!https://old.reddit.com/r/shoegaze+dreampop alt punk trance
-shoegaze, dreampop - aot TheRoar ;;; shoegaze_dreampop!!https://old.reddit.com/r/shoegaze+dreampop
+TheRoar, punk, trance, alt=indie=chill=lofi - listen to theRoar 88.1 now https://panthernow.com/theroar/ /r/shoegaze+dreampop!!https://old.reddit.com/r/shoegaze+dreampop
+shoegaze=dreampop - aot TheRoar ;;; shoegaze_dreampop!!https://old.reddit.com/r/shoegaze+dreampop
 starbucks - music from starbucks criticism!!https://old.reddit.com/r/starbucks/comments/189i98k/whoever_makes_the_starbucks_music_playlist_needs/ search!!https://old.reddit.com/r/starbucks/search/?q=music&include_over_18=on&restrict_sr=on&t=all&sort=new
 
 // themed
 sun, space - Georges Bataille: [The Potlatch with the Sun](https://academic.oup.com/columbia-scholarship-online/book/23458/chapter-abstract/184536720) 
-favs - music_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=music jimmypop!!https://x.com/jimmypop
+favs - reddit.htm?music!!https://theoryoftheory.github.io/reddit.htm?search=music jimmypop!!https://x.com/jimmypop
 vocalization - nonword vocalization of sounds like trill, zzzz, yaaa, etc
 double=triple=quadruple - shazamed multiple times ("must be important"?) or shazamed 3 times...why lol
 nickland=jungle, theory - lemur playlist (Nick Land) mandys1505!!https://www.youtube.com/@mandys1505 [Mandy's Playlist](https://www.youtube.com/playlist?list=PLBUEYfio8hoCkDtD_c92wMU0s6ko0EfsW) https://www.youtube.com/watch?v=RIW_PnkomYs
@@ -96,7 +96,7 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
     sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false).replaceAll("a> = <a", "a>=<a"); // the last hack allows me to get rid of extraneous spaces
     aKeys.forEach(ssTag=>{
         var sValue = "";
-        if (a[ssTag]) { sValue = " <span style='color:red !important'>||</span> " + a[ssTag] + " "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
+        if (a[ssTag]) { sValue = " " + a[ssTag] + " <span style='color:red !important'>||</span> "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
         sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
         // a[sKey] = sValue;
         // a[ssTag] = sValue;
@@ -351,6 +351,8 @@ find that song with the rainbows and singer dancing and running away from homele
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Daft Punk - Robot Rock
+deadmau5 - Right This Second
 Lorde - Tennis Court
 Com Truise - Closed
 Flying Lotus - Satelllliiiiiiiiteee // chill instrumental repetition
