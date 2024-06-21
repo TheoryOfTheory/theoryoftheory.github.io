@@ -11,7 +11,7 @@
 <script>
 // hacky tags - just add to the list
 var sTags_global = `
-TAG guide - here are all the possible tags
+// TAG guide - here are all the possible tags in this format: "exampletag exampletag2 exampletag3=exampletag3synonym=exampletag3synonym exampletag4 - description blah blah"
 
 // era/period
 50sish, 60sish, 70sish, 80sish, 90sish - music that sounds like its from a specific decade but its not (AOT XXs eg 80s!!https://theoryoftheory.github.io/music.htm?tag=80s )
@@ -36,7 +36,7 @@ Charleston - ???
 // languages
 arabic - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=arabic lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=arabic
 german - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=german lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=german
-spanish, español - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=spanish lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=spanish and espanol_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=españ1ol paises_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=paises
+spanish=español=espanol - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=spanish lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=spanish and espanol_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=españ1ol paises_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=paises
 nonenglish=french=hebrew=haitian=maori=russian - nonenglish (AND nonspanish/nongerman/nonarabic since those three are my priorities?  rename nonenglish to nonprioritylanguages? boutiquelanguages? )
 
 // curators
@@ -50,7 +50,7 @@ starbucks - music from starbucks criticism!!https://old.reddit.com/r/starbucks/c
 sun, space - Georges Bataille: [The Potlatch with the Sun](https://academic.oup.com/columbia-scholarship-online/book/23458/chapter-abstract/184536720) 
 favs - music_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=music jimmypop!!https://x.com/jimmypop
 vocalization - nonword vocalization of sounds like trill, zzzz, yaaa, etc
-double, triple - shazamed multiple times ("must be important"?) or shazamed 3 times...why lol
+double=triple=quadruple - shazamed multiple times ("must be important"?) or shazamed 3 times...why lol
 nickland, theory - lemur playlist (Nick Land) mandys1505!!https://www.youtube.com/@mandys1505 [Mandy's Playlist](https://www.youtube.com/playlist?list=PLBUEYfio8hoCkDtD_c92wMU0s6ko0EfsW) https://www.youtube.com/watch?v=RIW_PnkomYs
 harmony, vocalization, instrumental - ???
 wat, rare, why, britney, todo - todo?
@@ -61,7 +61,7 @@ googlesheet_2021 - original data from googlesheet that prompted the creation of 
 college - college songs
 redscare - RedScarePodMusic!!https://old.reddit.com/r/RedScarePodMusic/
 wat rare britney testing - ?????
-ad - this is for songs that were featured in an advertisement and thus i associate them with ad
+ad - this is for songs that were featured in an advertisement and thus i associate them with ads
 overnight, sun - working overnight, sunrise
 summer, spring, fall=autumn, winter
 geometry - [Geometry & the Interior Life.pdf by Anthony Vincent Morley](https://theoryoftheory.github.io/searchtree.htm?search=Geometry%20%26%20the%20Interior%20Life)
@@ -80,22 +80,29 @@ catchy, production, sampled - tiktok publication-able or sample-able? production
 `;
 // oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
 // oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
+var oTagsSynonymsGlobal = {};
 var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
     sKey = e.split(" - ")[0].toLowerCase();
-    aKeys = sKey.split(",").map(ooo=>ooo.trim());
+    aKeys = sKey.split(",").map(ooo=>ooo.trim()).map(ooo=>{
+        if (ooo.indexOf("=") > -1) { console.log(ooo);
+            ooo.split("=").slice(1,).forEach((oooo,iiii)=>{
+                oTagsSynonymsGlobal[ooo.split("=")[iiii+1]] = ooo.split("=")[0]
+            })
+        }
+        return ooo.split("=")[0]
+    })
     // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
     sKeysTagLinks = aKeys.map(ssTag=>` ${ssTag}!!https://theoryoftheory.github.io/music.htm?tag=${ssTag} `).join(" ");
     sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false);
     aKeys.forEach(ssTag=>{
         var sValue = "";
-        if (a[ssTag]) { sValue = " <span style='color:red !important'>DOUBLED TAG</span> " + a[ssTag] + " "; } // make any existing key red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
+        if (a[ssTag]) { sValue = " <span style='color:red !important'>DOUBLED_TAG</span> " + a[ssTag] + " "; } // make any existing key red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
         sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
         // a[sKey] = sValue;
         a[ssTag] = sValue;
     })
     return a;
 }, {});
-
 
 
 </script>
@@ -337,6 +344,7 @@ find that song with the rainbows and singer dancing and running away from homele
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Gesaffelstein - Nameless // haunting glitch favs discordant
 Усталость от безделья (Remastered) - Буерак // ad russian
 Robin S. - Luv 4 Luv (Stonebridge Club Mix) // clubmix
 Breakbot - "Baby I'm Yours" (Trumpet Cover) https://old.reddit.com/r/Breakbot/comments/1dhfk4j/baby_im_yours_breakbot_trumpet_cover/
