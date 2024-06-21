@@ -193,6 +193,7 @@ setTimeout( function() { if (oGetAllParameters_CLIENT().q) { document.getElement
     aTags = $$$a(".sCommentTags").map(o=>o.innerText.split(" // ")[1]?.replaceAll(",", "").split(" "))
         .reduce((a,e,i, aArray)=>{if(e) {a.push(e.slice(0, e.length-1))}; return a;}, []) // now push all tags except the last one (ie, the section title) onto the tag list
         .reduce((aa,ee,ii)=>{ ee.forEach((eee)=>{ if (true) { aa.push( eee.toLowerCase() ); } }); return aa; }, []);
+    aTags = aTags.map(sSingleTag=>{  if (oTagsSynonymsGlobal[sSingleTag]) { sSingleTag = oTagsSynonymsGlobal[sSingleTag]; } })
     dom_WordCloudify(aTags, document.querySelector("canvas"), (sTag) => { filtertags(sTag.toLowerCase() ); } )
     
 
@@ -349,6 +350,9 @@ find that song with the rainbows and singer dancing and running away from homele
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Macel Plex - Falling // clubmix
+Vince Staples - Norf Norf // ad rap
+Leftwing & Kody - Lost (feat. Groove Addix)
 cupcakKe - Lgbt // ad chicochico
 FISHER - You Little Beauty // chico // looks like Eddie
 Bryan Mattz - Fly Over the Woods
