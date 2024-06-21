@@ -100,7 +100,8 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
         if (a[ssTag]) { sValue = " <span style='color:red !important'>DOUBLED_TAG</span> " + a[ssTag] + " "; } // make any existing key red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
         sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
         // a[sKey] = sValue;
-        a[ssTag] = sValue;
+        // a[ssTag] = sValue;
+        a[ssTag.split("=")[0]] = sValue;
     })
     return a;
 }, {});
@@ -351,6 +352,10 @@ find that song with the rainbows and singer dancing and running away from homele
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Daniel Avery - Spring 27 // instrumental
+David Guetta - Titanium (feat. Sia) // clubmix
+Andy Finn & Nick Sunchild - Desert H20 // clubmix
+Ra.Pu, Nekow & Nickey - Studio 129 // clubmix
 Para One - Wake Me Up // glitch
 Forever Midnight Feat. Beya Likhari - Just // ad
 Jon Casey - TV Room // glitch
