@@ -93,11 +93,11 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
         return ooo; // .split("=")[0]
     })
     // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
-    sKeysTagLinks = aKeys.map(ssTag=>` ${ssTag}!!https://theoryoftheory.github.io/music.htm?tag=${ssTag} `).join(" ");
-    sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false);
+    sKeysTagLinks = aKeys.map(ssTag=>{return ssTag.split("=").map(ssTagINCEPTIONS=>{return ` ${ssTagINCEPTIONS}!!https://theoryoftheory.github.io/music.htm?tag=${ssTagINCEPTIONS} `}).join("=");}).join(" ");
+    sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false).replaceAll("a> = <a", "a>=<a"); // the last hack allows me to get rid of extraneous spaces
     aKeys.forEach(ssTag=>{
         var sValue = "";
-        if (a[ssTag]) { sValue = " <span style='color:red !important'>DOUBLED_TAG</span> " + a[ssTag] + " "; } // make any existing key red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
+        if (a[ssTag]) { sValue = " <span style='color:red !important'>||</span> " + a[ssTag] + " "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
         sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
         // a[sKey] = sValue;
         // a[ssTag] = sValue;
@@ -352,6 +352,9 @@ find that song with the rainbows and singer dancing and running away from homele
 Nada Aun - Espero que tengo un nuevo trabajo y tengo hielo!
 
 # Junio 2024
+Champagne Drip & Crystalline - Kaleidoscope (Feat. Crystalline) // britney // dubsteppy? idk
+Flying Lotus - Tiny Tortues // instrumental
+Moby - Honey // ad
 Daniel Avery - Spring 27 // instrumental
 David Guetta - Titanium (feat. Sia) // clubmix
 Andy Finn & Nick Sunchild - Desert H20 // clubmix
