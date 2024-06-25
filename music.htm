@@ -129,7 +129,7 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
         document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
             if (o.match(/^\# /g)) {
                 sCurrentTitleInIteration = o;
-                o = o.replace(/^\# /g, "<h2>") + "</h2>"; return a + o.split(" - ")[0];
+                o = o.replace(/^\# /g, "<h2>") + "</h2>"; return a + o;
             } else if (o.match(/^\## /g)) {
                 o = o.replace(/^\## /g, "<h3>") + "</h3>"; return a + o;
             } else if (o.match(/^\### /g)) {
@@ -353,12 +353,15 @@ if (oGetAllParameters_CLIENT().tag) {
 # 🎵MUSIC
 um
 
+
+
 # letitout - radioshack compilation in 2010s i found in bookmarks bar?
 The Guy Who Didn't Like Musicals Cast - Let It Out
 Nick Hakim - LET IT OUT https://www.youtube.com/watch?v=IcLUq7SHWXE
 Sister Sledge - Let It Out // rnb
 Memory Spells - Can't Hold Me Down https://www.youtube.com/watch?v=jDcFpogS8ws // why // "give it up let go"
 Lisa Stansfield - You Can't Deny It // 80s // LETTTT IT OUT
+
 
 # 2010s BOSTON
 Poppy - Computer Boy // boston
