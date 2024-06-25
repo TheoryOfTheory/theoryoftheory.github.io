@@ -128,11 +128,12 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
         var sCommentComments = "";
         document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
             if (o.match(/^\# /g)) {
-                var sTag = o.split(" - ")[0];
+                var sTag = o.split(" - ")[0].replace(/^\# /g, "");
                 var sValue = o.split(" - ").slice(1,).join(" - ");
+                if (sValue) {} else { sValue = "???"; }
                 sTag.split("=").forEach(ssTag=>{
                     o = ssTag;
-                    if (oTagsGlobal[ssTag]) { } else { oTagsGlobal[sTag] = sValue; }
+                    if (oTagsGlobal[ssTag]) { oTagsGlobal[ssTag] = oTagsGlobal[ssTag] + " ;;; " + sValue; } else { oTagsGlobal[ssTag] = sValue; }
                 })
                 
                 sCurrentTitleInIteration = o;
