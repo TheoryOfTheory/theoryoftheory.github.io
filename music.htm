@@ -45,7 +45,7 @@ Spain - trujillo, lisbon, madrid
 arabe=arabic - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=arabic lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=arabic
 deutsch=german - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=german lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=german
 español=espanol=spanish - links reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=spanish lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=spanish and espanol_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=españ1ol paises_reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=paises
-nonenglish=japanese=jamaican=french=hebrew=haitian=maori=hawaiian=russian - nonenglish (AND nonspanish/nongerman/nonarabic since those three are my priorities?  rename nonenglish to nonprioritylanguages? boutiquelanguages? )
+nonenglish=japanese=jamaican=french=hebrew=haitian=creole=maori=hawaiian=icelandic=russian - nonenglish (AND nonspanish/nongerman/nonarabic since those three are my priorities?  rename nonenglish to nonprioritylanguages? boutiquelanguages? )
 
 // curators
 ddb - David Dean Burkhart youtube!!https://www.youtube.com/@daviddeanburkhart
@@ -128,6 +128,7 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
         var sCommentComments = "";
         document.body.innerHTML = sBody.split("\n").reduce((a, o, i, e)=>{
             if (o.match(/^\# /g)) {
+                o = o.split(" - ")[0]; // britney
                 sCurrentTitleInIteration = o;
                 o = o.replace(/^\# /g, "<h2>") + "</h2>"; return a + o;
             } else if (o.match(/^\## /g)) {
