@@ -132,7 +132,7 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 var sValue = o.split(" - ").slice(1,).join(" - ");
                 if (sValue) {} else { sValue = "???"; }
                 sTag.split("=").forEach(ssTag=>{
-                    o = ssTag;
+                    //o = ssTag;
                     if (oTagsGlobal[ssTag]) { oTagsGlobal[ssTag] = oTagsGlobal[ssTag] + " ;;; " + sValue; } else { oTagsGlobal[ssTag] = sValue; }
                 })
                 
