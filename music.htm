@@ -162,7 +162,8 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 sCommentTags = (sCommentTags + " " + sCurrentTitleInIterationTag).trim();
                 sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
               } else {
-                sCommentTags = "";
+                // sCommentTags = "";
+                sCommentTags = sCurrentTitleInIterationTag;
               }// extract tags/comment 
               // now add onclick to tags
     
@@ -176,10 +177,10 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 if (o.length>0) {
                      return a + `<div>
                      <span class='artistsong' data-artistsong='${superencode(sArtistSong)}'>
-                     <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;&nbsp;
-                     <a target='_blank' href='${aHrefDuck}%20youtube'>🦆</a>&nbsp;&nbsp;&nbsp;
-                     <a target='_blank' href='${aHrefDuck}%20lyrics'>📜</a>&nbsp;&nbsp;&nbsp;
-                     <a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;&nbsp;
+                     <a target='_blank' href='${sHrefImFeelingLucky}'>🍀</a>&nbsp;&nbsp;<a target='_blank' href='${aHrefYoutube}'>▶️</a>&nbsp;&nbsp;
+                     <a target='_blank' href='${aHrefDuck}%20youtube'>🦆</a>&nbsp;&nbsp;
+                     <a target='_blank' href='${aHrefDuck}%20lyrics'>📜</a>&nbsp;&nbsp;
+                     <a target='_blank' href='${aHrefSearchTree}'>𓀂</a>&nbsp;&nbsp;
                      
                      <span style="font-size:7px;">${superurlify(sTextSansCommentTags).href}</span><span class='sCommentTags'>${sArtistSongText + sCommentTags}</span>
                      <span class='sCommentComments' style='font-size:6px;'>${sCommentComments}</span>
