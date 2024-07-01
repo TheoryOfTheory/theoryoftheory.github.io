@@ -162,14 +162,14 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
               if (sSansHrefText.split(" // ")[1]) { // eg "favs arabic sad"
                 // console.log(sSansHrefText);
                 sCommentTags = sSansHrefText.split(" // ")[1].trim();
-                sCommentTags = (sCommentTags + " " + sCurrentTitleInIterationTag).trim();
+                // sCommentTags = (sCommentTags + " " + sCurrentTitleInIterationTag).trim();
                 sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
               } else {
                 // sCommentTags = "";
                 sCommentTags = " // "; // sCurrentTitleInIterationTag;
               }// extract tags/comment 
               // now add onclick to tags
-              sCommentTags = sCommentTags + "<span style='display=none;' onclick='filtertags(this);'>" + sCurrentTitleInIterationTag + "</span>";
+              sCommentTags = sCommentTags + "<span style='display:none;' onclick='filtertags(this);'>" + sCurrentTitleInIterationTag + "</span>";
               
               var sArtistSongText = superurlify(sArtistSong).text;
               // but for now just dollarstore'ing this:
@@ -373,6 +373,7 @@ if (oGetAllParameters_CLIENT().tag) {
 
 
 # 2024 Julyish
+The Paper Kites - In Reverie // chill remindsme // sounds like a cranberries song i think
 Butch Walker and the Black Widows - In Bloom
 Ginger Root - Better Than Monday // ddb catchy
 Man Man - Mayan Nights // deleteme
