@@ -257,8 +257,9 @@ function filtertags(oTag) {
     // $$$("h2").forEach(o=>o.style.display = "none");
 
     $$$a(".artistsong").forEach(oArtistSong=>{
-        sCommentTag = oArtistSong.innerText.split("//")[1]?.trim();
-        
+        //sCommentTag = oArtistSong.innerText.split("//")[1]?.trim();
+        sCommentTag = oArtistSong.$$$$(".sCommentTags").$$$a("span").map(o=>o.innerText).join(" ");
+
         if (sCommentTag) {
             sCommentTag = sCommentTag.toLowerCase().replaceAll(",", " ").replaceAll("  ", " "); // remove extra commas and spaces
 
@@ -381,6 +382,13 @@ if (oGetAllParameters_CLIENT().tag) {
 
 
 # 2024 Julyish
+Mac DeMarco - Freaking Out the Neighborhood // chill vocalization
+THA BLUE HERB - COAST 2 COAST // nonenglish soundslike // sounds like that soundtrack from the greasy strangler
+Buffalo Tales - Blood & Bone (feat. Baskery and the Falls)
+Delroy Wilson - Together
+Human - Daughter // ad
+Metronomy - A Thing For Me
+Audiobaton - Alone for You
 LSD and the search for God - Sunshine // psychedelic
 Crumb - Amama // favs soundslike // voice sounds like Foster the People at some moments?
 Ayleen Valentine - oxygen thief
