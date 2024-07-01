@@ -213,9 +213,9 @@ setTimeout( function() { if (oGetAllParameters_CLIENT().q) { document.getElement
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => {
 
     // make comments clickable and in a wordcloud
-    aTags = $$$a(".sCommentTags").map(o=>o.innerText.split(" // ")[1]?.replaceAll(",", "").split(" "))
+    aTags = $$$a(".sCommentTags").map(o=>o.$$$a('span'))
         .reduce((a,e,i, aArray)=>{if(e) {a.push(e.slice(0, e.length-1))}; return a;}, []) // now push all tags except the last one (ie, the section title) onto the tag list
-        .reduce((aa,ee,ii)=>{ ee.forEach((eee)=>{ if (true) { aa.push( eee.toLowerCase() ); } }); return aa; }, []);
+        .reduce((aa,ee,ii)=>{ ee.forEach((eee)=>{ if (true) { aa.push( eee.innerText.toLowerCase() ); } }); return aa; }, []);
     aTags = aTags.map(sSingleTag=>{  if (oTagsSynonymsGlobal[sSingleTag]) { sSingleTag = oTagsSynonymsGlobal[sSingleTag]; } return sSingleTag; })
     dom_WordCloudify(aTags, document.querySelector("canvas"), (sTag) => { filtertags(sTag.toLowerCase() ); } )
     
@@ -382,6 +382,11 @@ if (oGetAllParameters_CLIENT().tag) {
 
 
 # 2024 Julyish
+Buffalo Tales - Crazy Heart (feat Rachel Sermanni)
+Junior Byles - King of Babylong
+Crumb - Nina
+Benny More - Como Fue
+Current Joys - Televisions
 Mac DeMarco - Freaking Out the Neighborhood // chill vocalization
 THA BLUE HERB - COAST 2 COAST // nonenglish soundslike // sounds like that soundtrack from the greasy strangler
 Buffalo Tales - Blood & Bone (feat. Baskery and the Falls)
