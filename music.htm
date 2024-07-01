@@ -166,10 +166,11 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 sCommentTags = " // " + sCommentTags.split(" ").map(oo=>"<span onclick='filtertags(this);'>" + oo + "</span>").join(" ");
               } else {
                 // sCommentTags = "";
-                sCommentTags = sCurrentTitleInIterationTag;
+                sCommentTags = " // "; // sCurrentTitleInIterationTag;
               }// extract tags/comment 
               // now add onclick to tags
-    
+              sCommentTags = sCommentTags + "<span style='display=none;' onclick='filtertags(this);'>" + sCurrentTitleInIterationTag + "</span>";
+              
               var sArtistSongText = superurlify(sArtistSong).text;
               // but for now just dollarstore'ing this:
               if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
@@ -372,7 +373,11 @@ if (oGetAllParameters_CLIENT().tag) {
 
 
 # 2024 Julyish
+Ginger Root - Better Than Monday // ddb catchy
 Feist - The LImit To Your Love // violin // or some instrument sounds beautiful
+Junior Byles - Fun and Games / Motion Dub // favs
+Mild High Club - Skiptracing // 60sish
+Sylvan Esso - Could I Be // soundslike // idk but sond reminds me of Metronomy and her voice sounds familiar too
 Hookworms - Form and Function // soundslike // kinda sounds like the Doors' 'cmon baby light my fire'
 bdrmm - The Way I Want // ad chill
 Mini Mansions - Vertigo (feat Alex Turner) // haunting Halloween
