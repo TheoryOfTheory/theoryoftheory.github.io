@@ -320,7 +320,7 @@ function filtertags(oTag) {
     //console.log(sTag);
     //console.log(oTagsGlobal[sTag]);
 
-    document.querySelectorAll("h2")[0].innerHTML = '<a href="https://theoryoftheory.github.io/music.htm?tag=' + sTag + '"' + sTag + '</a>' + ( oTagsGlobal[sTag] ? " - " + domscripts_linkify(oTagsGlobal[sTag], "domain") : "" );
+    document.querySelectorAll("h2")[0].innerHTML = '<a href="https://theoryoftheory.github.io/music.htm?tag=' + sTag + '">' + sTag + '</a>' + ( oTagsGlobal[sTag] ? " - " + domscripts_linkify(oTagsGlobal[sTag], "domain") : "" );
     // britney - code here to replace contents of h1 with sTag name
     // dom_ahrefenumeratize(); //  ahrefenumeratizes the <ahrefenumerate> tag
 }
