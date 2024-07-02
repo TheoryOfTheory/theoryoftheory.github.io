@@ -146,8 +146,9 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
             if (o.match(/^\# /g)) {
                 var sTag = o.split(" - ")[0].replace(/^\# /g, "");
                 var sValue = o.split(" - ").slice(1,).join(" - ");
-                if (sValue) {} else { sValue = "???"; }
+                if (sValue) {} else { sValue = "fillervalue"; }
                 sTag.split("=").forEach(ssTag=>{
+                    ssTag = ssTag.trim();
                     //o = ssTag;
                     if (oTagsGlobal[ssTag]) { oTagsGlobal[ssTag] = oTagsGlobal[ssTag] + " ;;; " + sValue; } else { oTagsGlobal[ssTag] = sValue; }
                 })
