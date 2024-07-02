@@ -89,8 +89,7 @@ catchy, production, sampled - tiktok publication-able or sample-able? production
 `;
 
 var oTagsSynonymsGlobal = {};
-var oTagsGlobal = {};
-oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
+var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
     e = e.trim();
     if (!(e.startsWith("#") || e.startsWith("//") || e=="")) {
         sKey = e.split(" - ")[0].toLowerCase();
@@ -135,10 +134,10 @@ oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 } else { // if "slave" signifiers exist, they will be deleted from oTagsGlobal's reference to it and appended into its master signifier value
                     var ssCurrentSlaveSignifier = oooo.trim(); // ssTag.split("=")[iiii]?.trim();
 
-                    if(oTagsGlobal[ssCurrentSlaveSignifier]) {
+                    if(a[ssCurrentSlaveSignifier]) {
                         
                         a[ssMasterSignifier] = a[ssMasterSignifier] + " ;;;; " +  oTagsGlobal[ssCurrentSlaveSignifier];    
-                        delete oTagsGlobal[ssCurrentSlaveSignifier];
+                        delete a[ssCurrentSlaveSignifier];
                     }
                 }
                 
