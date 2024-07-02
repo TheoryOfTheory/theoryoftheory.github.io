@@ -109,9 +109,11 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((oTagsGlobalAgg,e,i)=>{
         // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
         sKeysTagLinks = aKeys.map(ssTag=>{return ssTag.split("=")
             .map(ssTagINCEPTIONS=>{
-                return ` ${ssTagINCEPTIONS}!!https://theoryoftheory.github.io/music.htm?tag=${ssTagINCEPTIONS} `
+                // return ` ${ssTagINCEPTIONS}!!https://theoryoftheory.github.io/music.htm?tag=${ssTagINCEPTIONS} `
+                return `<span style='color:blue;' onclick='filtertags(this)'>${ssTagINCEPTIONS}</span>`
+            // }).join("=");}).join(" ");
             }).join("=");}).join(" ");
-        sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false).replaceAll("a> = <a", "a>=<a"); // the last hack allows me to get rid of extraneous spaces
+        // sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false).replaceAll("a> = <a", "a>=<a"); // the last hack allows me to get rid of extraneous spaces
         
         // ok now build out the 
         aKeys.forEach(ssTag=>{
@@ -318,7 +320,7 @@ function filtertags(oTag) {
     //console.log(sTag);
     //console.log(oTagsGlobal[sTag]);
 
-    document.querySelectorAll("h2")[0].innerHTML = sTag + ( oTagsGlobal[sTag] ? " - " + domscripts_linkify(oTagsGlobal[sTag], "domain") : "" );
+    document.querySelectorAll("h2")[0].innerHTML = '<span onclick="filtertags(this)">' + sTag + '</span>' + ( oTagsGlobal[sTag] ? " - " + domscripts_linkify(oTagsGlobal[sTag], "domain") : "" );
     // britney - code here to replace contents of h1 with sTag name
     // dom_ahrefenumeratize(); //  ahrefenumeratizes the <ahrefenumerate> tag
 }
@@ -338,7 +340,7 @@ function unfiltertags() { // restore visibility of all artist/songs
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
     
     setTimeout(() => {
-      document.querySelectorAll("h2")[0].onclick = unfiltertags;
+      // document.querySelectorAll("h2")[0].onclick = unfiltertags;
       document.querySelectorAll(".artistsong").forEach(o=>{o.onclick=(oThis)=>{oThis.target.style.backgroundColor="pink"; }})
     }, "3000"); // wait three seconds to set onclick for h2 because doing it instantly on DOMContentLoaded says that unfiltertags is undefined?
     
