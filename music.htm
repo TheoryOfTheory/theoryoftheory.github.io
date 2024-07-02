@@ -89,7 +89,8 @@ catchy, production, sampled - tiktok publication-able or sample-able? production
 `;
 
 var oTagsSynonymsGlobal = {};
-var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
+var oTagsGlobal = {};
+oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
     e = e.trim();
     if (!(e.startsWith("#") || e.startsWith("//") || e=="")) {
         sKey = e.split(" - ")[0].toLowerCase();
@@ -103,7 +104,7 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 }
                 aaa.push(ooo);
                 return aaa;
-        }, []); console.log(aKeys);
+        }, []); // console.log(aKeys);
 
         // ok now build out the ????
         // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
@@ -117,18 +118,23 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
         aKeys.forEach(ssTag=>{
             ssTag = ssTag.trim();
             var sValue = "";
-            if (a[ssTag]) { sValue = " " + a[ssTag] + " <span style='color:red !important'>||</span> "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
-            sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
             
             // a[ssTag.split("=")[0]] = sValue;
             ///*
             ssTag.split("=").forEach((oooo,iiii)=>{
+                // console.log(oTagsGlobal);
+
                 var ssMasterSignifier = ssTag.split("=")[0].trim();
+
+                if (a[ssTag]) { sValue = " " + a[ssTag] + " <span style='color:red !important'>||</span> "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
+                sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
+
+                
                 if(iiii == 0) { // collapse all synonyms into master signifier
                     a[ssMasterSignifier] = sValue;
                 } else { // if "slave" signifiers exist, they will be deleted from oTagsGlobal's reference to it and appended into its master signifier value
                     var ssCurrentSlaveSignifier = oooo.trim(); // ssTag.split("=")[iiii]?.trim();
-                    console.log("ssCurrentSlaveSignifier - " + JSON.stringify(ssCurrentSlaveSignifier));
+
                     if(oTagsGlobal[ssCurrentSlaveSignifier]) {
                         
                         a[ssMasterSignifier] = a[ssMasterSignifier] + " ;;;; " +  oTagsGlobal[ssCurrentSlaveSignifier];    
@@ -142,8 +148,6 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
     return a;
     
 }, {});
-
-
 
 </script>
 
