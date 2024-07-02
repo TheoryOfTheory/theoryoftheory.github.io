@@ -87,8 +87,7 @@ catchy, production, sampled - tiktok publication-able or sample-able? production
 
 
 `;
-// oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
-// oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
+
 var oTagsSynonymsGlobal = {};
 var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
     e = e.trim();
@@ -113,20 +112,36 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 return ` ${ssTagINCEPTIONS}!!https://theoryoftheory.github.io/music.htm?tag=${ssTagINCEPTIONS} `
             }).join("=");}).join(" ");
         sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false).replaceAll("a> = <a", "a>=<a"); // the last hack allows me to get rid of extraneous spaces
+        
+        // ok now build out the 
         aKeys.forEach(ssTag=>{
             ssTag = ssTag.trim();
             var sValue = "";
             if (a[ssTag]) { sValue = " " + a[ssTag] + " <span style='color:red !important'>||</span> "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
             sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
-            // a[sKey] = sValue;
-            // a[ssTag] = sValue;
             
-            a[ssTag.split("=")[0]] = sValue;
+            // a[ssTag.split("=")[0]] = sValue;
+            ssTag.split("=").forEach((oooo,iiii)=>{
+                if(iiii == 0) { // collapse all synonyms into master signifier
+                    a[oooo.trim()] = sValue;
+                } else { // if "slave" signifiers exist, it will be deleted from oTagsGlobal and appended into master signifier
+                    if(oTagsGlobal[ssTag.split("=")[0].trim()]) {
+                        console.log(oTagsGlobal["sun"]);
+                        console.log(ssTag.split("=")[iiii].trim());
+                        console.log(oTagsGlobal["sun"]);
+
+                        a[ssTag.split("=")[0].trim()] = a[ssTag.split("=")[0]] + " ;;;; " +  oTagsGlobal[ssTag.split("=")[iiii].trim()];    
+                        delete oTagsGlobal[ssTag.split("=")[iiii].trim()];
+                    }
+                }
+                
+            })
         })
     }
     return a;
     
 }, {});
+
 
 
 </script>
