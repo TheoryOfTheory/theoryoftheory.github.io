@@ -122,15 +122,12 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
             
             // a[ssTag.split("=")[0]] = sValue;
             ssTag.split("=").forEach((oooo,iiii)=>{
+                var ssMasterSignifier = ssTag.split("=")[0]?.trim();
                 if(iiii == 0) { // collapse all synonyms into master signifier
                     a[oooo.trim()] = sValue;
                 } else { // if "slave" signifiers exist, it will be deleted from oTagsGlobal and appended into master signifier
-                    if(oTagsGlobal[ssTag.split("=")[0].trim()]) {
-                        console.log(oTagsGlobal["sun"]);
-                        console.log(ssTag.split("=")[iiii].trim());
-                        console.log(oTagsGlobal["sun"]);
-
-                        a[ssTag.split("=")[0].trim()] = a[ssTag.split("=")[0]] + " ;;;; " +  oTagsGlobal[ssTag.split("=")[iiii].trim()];    
+                    if(oTagsGlobal[ssTag.split("=")[0]?.trim()]) {
+                        a[ssMasterSignifier] = a[ssMasterSignifier] + " ;;;; " +  oTagsGlobal[ssTag.split("=")[iiii].trim()];    
                         delete oTagsGlobal[ssTag.split("=")[iiii].trim()];
                     }
                 }
