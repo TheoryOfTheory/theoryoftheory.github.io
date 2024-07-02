@@ -125,10 +125,11 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
                 var ssMasterSignifier = ssTag.split("=")[0]?.trim();
                 if(iiii == 0) { // collapse all synonyms into master signifier
                     a[oooo.trim()] = sValue;
-                } else { // if "slave" signifiers exist, it will be deleted from oTagsGlobal and appended into master signifier
-                    if(oTagsGlobal[ssTag.split("=")[0]?.trim()]) {
-                        a[ssMasterSignifier] = a[ssMasterSignifier] + " ;;;; " +  oTagsGlobal[ssTag.split("=")[iiii].trim()];    
-                        delete oTagsGlobal[ssTag.split("=")[iiii].trim()];
+                } else { // if "slave" signifiers exist, they will be deleted from oTagsGlobal's reference to it and appended into its master signifier value
+                    var ssCurrentSlaveSignifier = ssTag.split("=")[iiii]?.trim();
+                    if(oTagsGlobal[ssCurrentSlaveSignifier]) {
+                        a[ssMasterSignifier] = a[ssMasterSignifier] + " ;;;; " +  oTagsGlobal[ssCurrentSlaveSignifier];    
+                        delete oTagsGlobal[ssCurrentSlaveSignifier];
                     }
                 }
                 
