@@ -91,28 +91,41 @@ catchy, production, sampled - tiktok publication-able or sample-able? production
 // oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{a[e.split(" - ")[0].toLowerCase()] = e.split(" - ")[1]; return a; }, {});
 var oTagsSynonymsGlobal = {};
 var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
-    sKey = e.split(" - ")[0].toLowerCase();
-    aKeys = sKey.split(",").map(ooo=>ooo.trim()).map(ooo=>{
-        if (ooo.indexOf("=") > -1) { console.log(ooo);
-            ooo.split("=").slice(1,).forEach((oooo,iiii)=>{
-                oTagsSynonymsGlobal[ooo.split("=")[iiii+1]] = ooo.split("=")[0]
-            })
-        }
-        //return ooo.split("=")[0]
-        return ooo; // .split("=")[0]
-    })
-    // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
-    sKeysTagLinks = aKeys.map(ssTag=>{return ssTag.split("=").map(ssTagINCEPTIONS=>{return ` ${ssTagINCEPTIONS}!!https://theoryoftheory.github.io/music.htm?tag=${ssTagINCEPTIONS} `}).join("=");}).join(" ");
-    sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false).replaceAll("a> = <a", "a>=<a"); // the last hack allows me to get rid of extraneous spaces
-    aKeys.forEach(ssTag=>{
-        var sValue = "";
-        if (a[ssTag]) { sValue = " " + a[ssTag] + " <span style='color:red !important'>||</span> "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
-        sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
-        // a[sKey] = sValue;
-        // a[ssTag] = sValue;
-        a[ssTag.split("=")[0]] = sValue;
-    })
+    e = e.trim();
+    if (!(e.startsWith("#") || e.startsWith("//") || e=="")) {
+        sKey = e.split(" - ")[0].toLowerCase();
+        aKeys = sKey.split(",")
+            .map(ooo=>ooo.trim())
+            .reduce((aaa,ooo,iii)=>{
+                if (ooo.indexOf("=") > -1) { // console.log(ooo);
+                    ooo.split("=").slice(1,).forEach((oooo,iiii)=>{
+                        oTagsSynonymsGlobal[ooo.split("=")[iiii+1]] = ooo.split("=")[0];
+                    })
+                }
+                aaa.push(ooo);
+                return aaa;
+        }, []); console.log(aKeys);
+
+        // ok now build out the ????
+        // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
+        sKeysTagLinks = aKeys.map(ssTag=>{return ssTag.split("=")
+            .map(ssTagINCEPTIONS=>{
+                return ` ${ssTagINCEPTIONS}!!https://theoryoftheory.github.io/music.htm?tag=${ssTagINCEPTIONS} `
+            }).join("=");}).join(" ");
+        sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false).replaceAll("a> = <a", "a>=<a"); // the last hack allows me to get rid of extraneous spaces
+        aKeys.forEach(ssTag=>{
+            ssTag = ssTag.trim();
+            var sValue = "";
+            if (a[ssTag]) { sValue = " " + a[ssTag] + " <span style='color:red !important'>||</span> "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
+            sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
+            // a[sKey] = sValue;
+            // a[ssTag] = sValue;
+            
+            a[ssTag.split("=")[0]] = sValue;
+        })
+    }
     return a;
+    
 }, {});
 
 
