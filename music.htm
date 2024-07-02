@@ -121,19 +121,22 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((a,e,i)=>{
             sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
             
             // a[ssTag.split("=")[0]] = sValue;
+            ///*
             ssTag.split("=").forEach((oooo,iiii)=>{
                 var ssMasterSignifier = ssTag.split("=")[0]?.trim();
                 if(iiii == 0) { // collapse all synonyms into master signifier
                     a[oooo.trim()] = sValue;
                 } else { // if "slave" signifiers exist, they will be deleted from oTagsGlobal's reference to it and appended into its master signifier value
                     var ssCurrentSlaveSignifier = ssTag.split("=")[iiii]?.trim();
+                    console.log(ssCurrentSlaveSignifier);
                     if(oTagsGlobal[ssCurrentSlaveSignifier]) {
+                        
                         a[ssMasterSignifier] = a[ssMasterSignifier] + " ;;;; " +  oTagsGlobal[ssCurrentSlaveSignifier];    
                         delete oTagsGlobal[ssCurrentSlaveSignifier];
                     }
                 }
                 
-            })
+            }) //*/
         })
     }
     return a;
