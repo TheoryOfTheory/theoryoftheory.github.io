@@ -89,10 +89,13 @@ catchy, production, sampled - tiktok publication-able or sample-able? production
 `;
 
 var oTagsSynonymsGlobal = {};
-var oTagsGlobal = sTags_global.trim().split("\n").reduce((oTagsGlobalAgg,e,i)=>{
+// iterate through each line in the sTags_global string and build out the oTagsGlobal (and oTagsSynonymsGlobal) objects
+var oTagsGlobal = sTags_global.trim().split("\n").reduce((oTagsAgg,e,i)=>{
     e = e.trim();
     if (!(e.startsWith("#") || e.startsWith("//") || e=="")) {
         sKey = e.split(" - ")[0].toLowerCase();
+        
+        // first split by "," (related tags) before splitting by "=" (synonym tags)
         aKeys = sKey.split(",")
             .map(ooo=>ooo.trim())
             .reduce((aaa,ooo,iii)=>{
@@ -103,50 +106,50 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((oTagsGlobalAgg,e,i)=>{
                 }
                 aaa.push(ooo);
                 return aaa;
-        }, []); // console.log(aKeys);
+        }, []);
 
-        // ok now build out the ????
-        // sKeysTagLinks = aKeys.map(ooo=>`<a href='https://theoryoftheory.github.io/music.htm?tag=${ooo}'>${ooo}</a>`).join(" ");
+        // ok now build out the clickable links
         sKeysTagLinks = aKeys.map(ssTag=>{return ssTag.split("=")
             .map(ssTagINCEPTIONS=>{
                 // return ` ${ssTagINCEPTIONS}!!https://theoryoftheory.github.io/music.htm?tag=${ssTagINCEPTIONS} `
-                return `<span style='color:blue;' onclick='filtertags(this)'>${ssTagINCEPTIONS}</span>`
+                return `<span style='color:#ADD8E6;' onclick='filtertags(this)'>${ssTagINCEPTIONS}</span>`
             // }).join("=");}).join(" ");
             }).join("=");}).join(" ");
         // sKeysTagLinks = domscripts_linkify(sKeysTagLinks, undefined, false).replaceAll("a> = <a", "a>=<a"); // the last hack allows me to get rid of extraneous spaces
         
-        // ok now build out the 
+        // ok lastly build out the oTagsAgg object that then becomes the oTagsGlobal object
         aKeys.forEach(ssTag=>{
             ssTag = ssTag.trim();
             var sValue = "";
             
+            // ok now account for synonyms "="
             // a[ssTag.split("=")[0]] = sValue;
-            ///*
             ssTag.split("=").forEach((oooo,iiii)=>{
                 // console.log(oTagsGlobal);
 
                 var ssMasterSignifier = ssTag.split("=")[0].trim();
 
-                if (oTagsGlobalAgg[ssTag]) { sValue = " " + oTagsGlobalAgg[ssTag] + " <span style='color:red !important'>||</span> "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
-                sValue = sValue + sKeysTagLinks + " " + e.split(" - ")[1];
+                if (oTagsAgg[ssTag]) { sValue = " " + oTagsAgg[ssTag] + " <span style='color:red !important'>||</span> "; } // make any existing key delimited red so that I can see I doubled the tag in the sTag variable data above (and so I don't lose info)
+                sValue = sValue + sKeysTagLinks + " " + e.split(" - ").slice(1,).join(" - ");
 
-                
-                if(iiii == 0) { // collapse all synonyms into master signifier
-                    oTagsGlobalAgg[ssMasterSignifier] = sValue;
+                // collapse all "slave" synonyms into master signifier which is assumed to be the first token
+                if(iiii == 0) { 
+                    oTagsAgg[ssMasterSignifier] = sValue;
                 } else { // if "slave" signifiers exist, they will be deleted from oTagsGlobal's reference to it and appended into its master signifier value
                     var ssCurrentSlaveSignifier = oooo.trim(); // ssTag.split("=")[iiii]?.trim();
 
-                    if(oTagsGlobalAgg[ssCurrentSlaveSignifier]) {
+                    if(oTagsAgg[ssCurrentSlaveSignifier]) {
                         
-                        oTagsGlobalAgg[ssMasterSignifier] = oTagsGlobalAgg[ssMasterSignifier] + " ;;;; " +  oTagsGlobalAgg[ssCurrentSlaveSignifier];    
-                        delete oTagsGlobalAgg[ssCurrentSlaveSignifier];
+                        oTagsAgg[ssMasterSignifier] = oTagsAgg[ssMasterSignifier] + " ;;;; " +  oTagsAgg[ssCurrentSlaveSignifier];    
+                        delete oTagsAgg[ssCurrentSlaveSignifier];
                     }
                 }
                 
             }) //*/
         })
+        
     }
-    return oTagsGlobalAgg;
+    return oTagsAgg;
     
 }, {});
 
