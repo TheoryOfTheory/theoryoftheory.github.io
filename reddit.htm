@@ -17,13 +17,12 @@ white-space: pre;
 <script>
 function redditverse_ify(oObject, sMultiredditLink) {
     try { var sTitle = oObject?.querySelectorAll("td")[0]?.innerText.split("#")[1].split(" ")[0].trim().toLowerCase(); } catch(e) { var sTitle = "notitle"; }
-    console.log("the title is - " + sTitle);
     return           `<span style='font-size:20px;'><a target='_blank' href='https://theoryoftheory.github.io/reddit.htm?search=${sTitle}'>🔗️</a></span>` +
     "&nbsp;&nbsp;" + `<span style='font-size:20px;'><a target='_blank' href='https://saidit.net/s/${sMultiredditLink}'>🗣️</a></span>`+
     "&nbsp;&nbsp;" + `<span style='font-size:20px;'><a target='_blank' href='https://old.reddit.com/r/${sMultiredditLink}'>👽</a></span>`+
     "&nbsp;&nbsp;" + `<span style='font-size:20px;'><a target='_blank' href='https://raddle.me/f/${sMultiredditLink}'>🐍</a></span>&nbsp;&nbsp;` + 
     `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "&nbsp;&nbsp;&nbsp;<br>" + 
-    oObject?.querySelectorAll("td")[0]?.innerHTML;
+    "<pre>" + oObject?.querySelectorAll("td")[0]?.innerText + "</pre>";
 }
 
 function renderSpan(oThis) {
@@ -129,9 +128,6 @@ if (oGetAllParameters_CLIENT().search) {
 sTableAndTDStyle = domGenerateTableAndTDWidth(900, [20, 50, 30], null, 25, 30);
 domLoadStyles_CSS(sTableAndTDStyle);
 
-
-
-// lastly lastly lastly - redditfy links
 function redditfyHTMLLinks(sTextFULL) {
   /*
   var sTextFULL = `tryhackme+vulnhub+hackthebox // https://www.facebook.com/groups/1904685786212833
@@ -169,20 +165,10 @@ function redditfyHTMLLinks(sTextFULL) {
 
 
   // possible dupes?  SecurityAnalysis+InfoSec+Information_Security+InfoSecNews+PenTest+NetSec+AskNetSec+NetSecStudents+GRC+Compliance.`;
-  */
-  /*
+
   aTexts = sTextFULL.split("\n");
 
-  document.body.innerHTML = ((aTexts.map(text => {
-    sText = text.split("#")[0].split("//")[0].trim();
-    if (sText.length != 0) {
-      text = text.replace(sText, `<a target='_blank' href='${"http://old.reddit.com/r/" + sText}'>${sText}</a>`);
-
-      return text;
-    } else { return text; }
-
-    // console.log(sText);
-  })).join("<br>"));
+  document.body.innerHTML = redditfyHTMLLinks(sTextFULL);
   */
       aTexts = sTextFULL.split("\n");
 
@@ -215,57 +201,41 @@ function redditfy() {
 }
 
 function subMultiredditfy() {
+    // "SubMultireddit-ifier" - creates sub-multireddits based on each subsection (ie, ".segment" in the text.  very hack-y
+    document.querySelectorAll("table")[0].querySelectorAll("tr").forEach(o => {
+        oRedditTD = o.querySelectorAll("td")[1];
+        oRedditTD.innerHTML = (oRedditTD.innerHTML).split("<br><br>").map(o => `<span class='segment'>${o}</span>`).join("<br><br>");
+        aSegments = oRedditTD.$$$a(".segment");
+        aSegments.forEach((e, i) => {
 
-// "SubMultireddit-ifier" - creates sub-multireddits based on each subsection (ie, ".segment" in the text.  very hack-y
-
-
-  document.querySelectorAll("table")[0].querySelectorAll("tr").forEach(o=>{
-      
-      oRedditTD = o.querySelectorAll("td")[1];
-
-      oRedditTD.innerHTML = (oRedditTD.innerHTML).split("<br><br>").map(o=>`<span class='segment'>${o}</span>`).join("<br><br>");
-
-      //console.log(oRedditTD);
-aSegments = oRedditTD.$$$a(".segment");
-      // console.log(aSegments);
-aSegments.forEach((e,i)=>{
-    // console.log(i);
-    // if (e.$$$$(".submultireddit")) {
-    // if .submultireddit exists then
-    // if aSegments[i]?.$$$a("a") exists
-    sSubMultiredditURL = (e.$$$a("a").map(o=>{
-        if (o.href.match(/.*\/([a-zA-Z0-9\+]+)$/)) {
-            return o.href.match(/.*\/([a-zA-Z0-9\+]+)$/)[1];
-        } else {
-            return "";
-        }
-        // return ( ? o.href.match(/\/([^\/\W]+)$/)[1]).join("+") : "" )
-        }).reduce((aa,ee,ii)=>{
-            if (ee) {
-                return aa + (ii>0 ? "+" : "") + ee;
-            } else {
-                return aa;
+            sSubMultiredditURL = (e.$$$a("a").map(o => {
+                if (o.href.match(/.*\/([a-zA-Z0-9\+]+)$/)) {
+                    return o.href.match(/.*\/([a-zA-Z0-9\+]+)$/)[1];
+                } else {
+                    return "";
+                }
+            }).reduce((aa, ee, ii) => {
+                if (ee) {
+                    return aa + (ii > 0 ? "+" : "") + ee;
+                } else {
+                    return aa;
+                }
+            }, ""))
+            if (sSubMultiredditURL) {
+                if (e.$$$$(".submultireddit")) {
+                    e.$$$$(".submultireddit").innerHTML = `<a target="_blank" href='https://old.reddit.com/r/${sSubMultiredditURL}'>${e.$$$$(".submultireddit").innerText}</a>`;
+                }
             }
-            // return 
-        }, ""))
-        // console.log(sSubMultiredditURL);
-        if (sSubMultiredditURL) {
-            if (e.$$$$(".submultireddit")) {
-                e.$$$$(".submultireddit").innerHTML = `<a target="_blank" href='https://old.reddit.com/r/${sSubMultiredditURL}'>${e.$$$$(".submultireddit").innerText}</a>`;
-            }
+        })
 
+    })
+
+    // turn section titles red
+    $$$a(".submultireddit").map(o => o.$$$$("a")).forEach(o => {
+        if (o) {
+            o.style.color = "red";
         }
-    // sSubMultiredditURL = "https://old.reddit.com/r/" + aSegments[i]?.$$$a("a").map(o=>o.href.match(/\/([^\/\W]+)$/)[1]).join("+")
-    
-    // console.log(sSubMultiredditURL)
-})
-      
-  })
-
-// turn red
-$$$a(".submultireddit").map(o=>o.$$$$("a")).forEach(o=>{
-    if (o) { o.style.color = "red"; }
-})
+    })
 
 }
 
