@@ -241,7 +241,7 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((oTagsAgg,e,i)=>{
 
     // make secondary comments' links clickable and condense by making link titles the index
     $$$a(".sCommentComments").forEach(o=>{o.innerHTML = domscripts_linkify(o.innerHTML, "index") })
-    $$$("img.domscripts_linkify").forEach(o=>o.outerHTML = `<a target="_blank" href='${o.src}'>${o.outerHTML}</a>`;);
+    $$$("img.domscripts_linkify").forEach(o=>o.outerHTML = `<a target="_blank" href='${o.src}'>${o.outerHTML}</a>`);
 
 
 sSearchButton = `<div><input id="input_search" value="shoegaze"><button onclick='window.open("https://theoryoftheory.github.io/music.htm?q=" + document.querySelector("#input_search").value, "_self")'>search</button></div>`;
@@ -327,7 +327,7 @@ function filtertags(oTag) {
     //console.log(oTagsGlobal[sTag]);
 
     document.querySelectorAll("h2")[0].innerHTML = '<a href="https://theoryoftheory.github.io/music.htm?tag=' + sTag + '">' + sTag + '</a>' + ( oTagsGlobal[sTag] ? " - " + domscripts_linkify(oTagsGlobal[sTag], "domain") : "" );
-    document.querySelectorAll("img.domscripts_linkify").forEach(o=>o.outerHTML = `<a target="_blank" href='${o.src}'>${o.outerHTML}</a>`;);
+    document.querySelectorAll("img.domscripts_linkify").forEach(o=>o.outerHTML = `<a target="_blank" href='${o.src}'>${o.outerHTML}</a>`);
 
     // britney - code here to replace contents of h1 with sTag name
     // dom_ahrefenumeratize(); //  ahrefenumeratizes the <ahrefenumerate> tag
