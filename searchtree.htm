@@ -26,8 +26,9 @@
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => { 
   domLoadScripts(["https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"]);
   addELClick(document.querySelector("input#search"), 5, ()=>{
-      document.querySelector("#hiddenbuttons").style.display = "";
-      document.querySelector("#hiddenbuttons").innerHTML = CryptoJS.AES.decrypt(document.querySelector("#hiddenbuttons").dataset.info, prompt("Theravada's four sublime states: Love or Loving-kindness (metta) Compassion (karuna) Sympathetic Joy (mudita) Equanimity (upekkha)") ).toString(CryptoJS.enc.Utf8)
+      document.querySelector("input#search").value = "𝓣" + document.querySelector("input#search").value + "𝓣";
+      //document.querySelector("#hiddenbuttons").style.display = "";
+      //document.querySelector("#hiddenbuttons").innerHTML = CryptoJS.AES.decrypt(document.querySelector("#hiddenbuttons").dataset.info, prompt("Theravada's four sublime states: Love or Loving-kindness (metta) Compassion (karuna) Sympathetic Joy (mudita) Equanimity (upekkha)") ).toString(CryptoJS.enc.Utf8)
   } );
   addELClick(document.querySelector("span#praetorian"), 1, ()=>{
       document.querySelector("#hiddenbuttons").style.display = "";
@@ -263,8 +264,6 @@ button:hover {
 <button onclick="openMe(this);" data-url="`https://theoryoftheory.github.io/lenguas.htm?q=${sValue.replaceAll('\+', ' ')}`">𝕋o𝕋 Sprachen</button>
 <button onclick="openMe(this);" data-url="`https://theoryoftheory.github.io/profilicities.htm?q=${sValue.replaceAll('\+', ' ')}`">𝕋𝕆𝕋 Prophilizitäten</button>
 <br>
-<button onclick="openMeCopy(this);" data-url="`https://sci-hub.st/?search=${sValue}`">scihub</button>
-<br>
 
 <div 
    id="hiddenbuttons"
@@ -289,6 +288,10 @@ button:hover {
 <button onclick="openMe(this);" data-url="`https://archive.is/${sValue}`">archive.ph</button>
 <button onclick="openMe(this);" data-url="`https://web.archive.org/web/${sValue}`">web.archive.org</button>
 <br>
+<br>
+<button onclick="openMeCopy(this);" data-url="`https://sci-hub.st/?search=${sValue}`">scihub</button>
+<br>
+
 <h2>reddit undelete</h2>
 <button onclick="openMe(this);" data-url="`https://undelete.pullpush.io/${removeRedditDomainREGEX(sValue)}`">undelete.pullpush.io</button>
 <button onclick="openMe(this);" data-url="`https://old.reddit.com/domain/${sValue}/new`">redditd</button>
