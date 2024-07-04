@@ -241,6 +241,8 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((oTagsAgg,e,i)=>{
 
     // make secondary comments' links clickable and condense by making link titles the index
     $$$a(".sCommentComments").forEach(o=>{o.innerHTML = domscripts_linkify(o.innerHTML, "index") })
+    $$$("img.domscripts_linkify").forEach(o=>o.outerHTML = `<a target="_blank" href='${o.src}'>${o.outerHTML}</a>`;);
+
 
 sSearchButton = `<div><input id="input_search" value="shoegaze"><button onclick='window.open("https://theoryoftheory.github.io/music.htm?q=" + document.querySelector("#input_search").value, "_self")'>search</button></div>`;
 document.body.prependHTML(sSearchButton + "<br><canvas width='800' height='200'></canvas>");
@@ -325,6 +327,8 @@ function filtertags(oTag) {
     //console.log(oTagsGlobal[sTag]);
 
     document.querySelectorAll("h2")[0].innerHTML = '<a href="https://theoryoftheory.github.io/music.htm?tag=' + sTag + '">' + sTag + '</a>' + ( oTagsGlobal[sTag] ? " - " + domscripts_linkify(oTagsGlobal[sTag], "domain") : "" );
+    document.querySelectorAll("img.domscripts_linkify").forEach(o=>o.outerHTML = `<a target="_blank" href='${o.src}'>${o.outerHTML}</a>`;);
+
     // britney - code here to replace contents of h1 with sTag name
     // dom_ahrefenumeratize(); //  ahrefenumeratizes the <ahrefenumerate> tag
 }
@@ -2485,6 +2489,7 @@ Un Paso Adelante - Baila Morena
 
 
 # stratford=highschool
+Pizzicato Five - Baby Love Child
 Hubert Kah - C'est La Vie // innovawork
 Weezer - Island In The Sun // sun favs
 TLC - Waterfalls // amazonwork
