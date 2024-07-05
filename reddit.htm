@@ -83,7 +83,7 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
     // console.log(sMultiredditName + " - " + sString);
     // try {  } catch(e) {
       try { // javascript code not embedded in cell, therefore run the code here to generate href
-        var sString = oTR.querySelectorAll("td")[1].querySelector("pre").innerText;
+        var sString = oTR.querySelectorAll("td")[1].innerText;
         // OLD (js embedded in cell) - var sMultiredditLink = eval(superHtmlDecode(oTR.querySelectorAll("td")[1].innerHTML.trim().replaceAll("<br>", "\n").replace("copy(", "(")));
         
         sMultiredditLink = "" + sString.split("\n")
