@@ -228,6 +228,20 @@ button:hover {
 
 </style>
 
+<script>
+// now do logic for multiple piped search queries
+if (document.querySelector("#search").value.indexOf(" || ") > -1) {
+  	document.querySelector("#search").style.backgroundColor = "yellow"
+  
+    setTimeout(() => {
+        aTokens = document.querySelector("#search").value.split(" || ");
+        document.querySelector("#search").value = aTokens[getRandomInt(0, aTokens.length-1)]
+    }, 5000)
+  
+	setTimeout(() => { document.querySelector("#search").style.backgroundColor = "lime" }, 8000)
+}    
+</script>
+
 
 </head><body><!-- MAIN SEARCHBAR -->
 <input id="search" style="height:50px; width: 70%; font-size:40px" value="fetch node" ">
