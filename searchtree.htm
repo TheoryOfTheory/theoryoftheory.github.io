@@ -230,16 +230,19 @@ button:hover {
 
 <script>
 // now do logic for multiple piped search queries
-if (document.querySelector("#search").value.indexOf(" || ") > -1) {
-  	document.querySelector("#search").style.backgroundColor = "yellow"
-  
-    setTimeout(() => {
-        aTokens = document.querySelector("#search").value.split(" || ");
-        document.querySelector("#search").value = aTokens[getRandomInt(0, aTokens.length-1)]
-    }, 5000)
-  
-	setTimeout(() => { document.querySelector("#search").style.backgroundColor = "lime" }, 8000)
-}    
+setTimeout(() => {
+    if (document.querySelector("#search").value.indexOf(" || ") > -1) {
+              document.querySelector("#search").style.backgroundColor = "yellow"
+      
+        setTimeout(() => {
+            aTokens = document.querySelector("#search").value.split(" || ");
+            document.querySelector("#search").value = aTokens[getRandomInt(0, aTokens.length-1)]
+        }, 4000)
+      
+            setTimeout(() => { document.querySelector("#search").style.backgroundColor = "lime" }, 7000)
+    }    
+}, 1000)
+
 </script>
 
 
