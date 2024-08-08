@@ -243,6 +243,7 @@ setTimeout(() => {
             g_aTokens = document.querySelector("#search").value.split(" || ");
             g_iRandomInt = getRandomInt(0, g_aTokens.length-1);
             document.querySelector("#search").value = g_aTokens[g_iRandomInt];
+            document.querySelector("#fmovenotes").innerText = (g_iRandomInt + 1) + " of " + g_aTokens.length;
         }, 2000)
       
         setTimeout(() => { document.querySelector("#search").style.backgroundColor = "lime" }, 3000)
