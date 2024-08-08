@@ -253,11 +253,14 @@ function fmoveleft() {
     g_iRandomInt = (g_iRandomInt - 1) % g_aTokens.length;
     if (g_iRandomInt == -1) { g_iRandomInt = g_aTokens.length - 1; }
     document.querySelector("#search").value = g_aTokens[g_iRandomInt];
+    document.querySelector("#fmovenotes").innerText = (g_iRandomInt + 1) + " of " + g_aTokens.length;
 }
 function fmoveright() {
     g_iRandomInt = (g_iRandomInt + 1) % g_aTokens.length;
     document.querySelector("#search").value = g_aTokens[g_iRandomInt];
+    document.querySelector("#fmovenotes").innerText = (g_iRandomInt + 1) + " of " + g_aTokens.length;
 }
+
 
 
 </script>
@@ -268,7 +271,7 @@ function fmoveright() {
 <span style="color:blue" id="praetorian">ℼ</span>
 <button style="height:50px;" onclick="on_search_input();">refresh</button> 
 
-<div id="fmove" style="display:none;"><button onclick="fmoveleft();">left</button><button onclick="fmoveright();">right</button></div>
+<div id="fmove" style="display:none;"><button onclick="fmoveleft();">left</button><button onclick="fmoveright();">right</button><span style="color:white" id="fmovenotes"></span></div>
 
 <!-- porque oninput="on_search_input(); no funciona??" -->
 
