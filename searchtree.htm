@@ -250,11 +250,15 @@ setTimeout(() => {
 }, 100)
 
 function fmoveleft() {
-    
+    g_iRandomInt = (g_iRandomInt - 1) % g_aTokens.length;
+    if (g_iRandomInt == -1) { g_iRandomInt = g_aTokens.length - 1; }
+    document.querySelector("#search").value = g_aTokens[g_iRandomInt];
 }
 function fmoveright() {
-    
+    g_iRandomInt = (g_iRandomInt + 1) % g_aTokens.length;
+    document.querySelector("#search").value = g_aTokens[g_iRandomInt];
 }
+
 
 </script>
 
