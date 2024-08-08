@@ -298,7 +298,9 @@ function fmoveright() {
 <h6>my top searches</h6>
 <button onclick="openMe(this);" data-url="`https://www.meneame.net/search?q=${sValue}`">meneame</button>
 <button onclick="openMe(this);" data-url="`https://old.reddit.com/search/?sort=new&q=${sValue}`">reddit</button>
+<button onclick="openMe(this);" data-url="`https://old.reddit.com/domain/${sValue}/new`">redditd</button>
 <button onclick="openMe(this);" data-url="`https://twitter.com/search?vertical=news&src=typd&f=live&q=${sValue}`">twitter</button>
+<button onclick="openMe(this);" data-url="`https://universeodon.com/tags/${sValue}`">mastadon?</button>
 <br>
 <button onclick="openMe(this);" data-url="`https://arxiv.org/search/?query=${sValue}&searchtype=all&abstracts=show&order=-announced_date_first&size=100`">arxiv.org</button>
 <button onclick="openMe(this);" data-url="`https://www.google.com/search?q=${sValue}%20site%3Aycombinator.com`">ycombinator.org</button>
@@ -336,7 +338,6 @@ function fmoveright() {
 
 <h2>reddit undelete</h2>
 <button onclick="openMe(this);" data-url="`https://undelete.pullpush.io/${removeRedditDomainREGEX(sValue)}`">undelete.pullpush.io</button>
-<button onclick="openMe(this);" data-url="`https://old.reddit.com/domain/${sValue}/new`">redditd</button>
 <br><br><br><br>
 </div>
 
