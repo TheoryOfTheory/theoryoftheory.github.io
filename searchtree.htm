@@ -230,18 +230,31 @@ button:hover {
 
 <script>
 // now do logic for multiple piped search queries
+// <div><button onclick="fmoveleft();">left</button><button onclick="fmoveright();">right</button></div>
+var g_aTokens;
+var g_iRandomInt;
+
 setTimeout(() => {
     if (document.querySelector("#search").value.indexOf(" || ") > -1) {
-              document.querySelector("#search").style.backgroundColor = "yellow"
+        document.querySelector("#search").style.backgroundColor = "yellow";
+        document.querySelector("#fmove").style.display = "";
       
         setTimeout(() => {
-            aTokens = document.querySelector("#search").value.split(" || ");
-            document.querySelector("#search").value = aTokens[getRandomInt(0, aTokens.length-1)]
-        }, 4000)
+            g_aTokens = document.querySelector("#search").value.split(" || ");
+            g_iRandomInt = getRandomInt(0, g_aTokens.length-1);
+            document.querySelector("#search").value = g_aTokens[g_iRandomInt];
+        }, 2000)
       
-            setTimeout(() => { document.querySelector("#search").style.backgroundColor = "lime" }, 7000)
+        setTimeout(() => { document.querySelector("#search").style.backgroundColor = "lime" }, 3000)
     }    
 }, 100)
+
+function fmoveleft() {
+    
+}
+function fmoveright() {
+    
+}
 
 </script>
 
@@ -249,7 +262,11 @@ setTimeout(() => {
 </head><body><!-- MAIN SEARCHBAR -->
 <input id="search" style="height:50px; width: 70%; font-size:40px" value="fetch node" ">
 <span style="color:blue" id="praetorian">ℼ</span>
-<button style="height:50px;" onclick="on_search_input();">refresh</button> <!-- porque oninput="on_search_input(); no funciona??" -->
+<button style="height:50px;" onclick="on_search_input();">refresh</button> 
+
+<div id="fmove" style="display:none;"><button onclick="fmoveleft();">left</button><button onclick="fmoveright();">right</button></div>
+
+<!-- porque oninput="on_search_input(); no funciona??" -->
 
 <br>
 <span style="color:white">excel formula (click to copy):&nbsp;</span><input id="formulalink" onclick="copy_formulalink();" >
