@@ -272,7 +272,24 @@ function fmoveright() {
 <span style="color:blue" id="praetorian">ℼ</span>
 <button style="height:50px;" onclick="on_search_input();">refresh</button> 
 
-<div id="fmove" style="display:none;"><button onclick="fmoveleft();">left</button><button onclick="fmoveright();">right</button><span style="color:white" id="fmovenotes"></span></div>
+<div id="fmove" style="display:none;">
+<button onclick="fmoveleft();">left</button>
+<button id="faddquotes" onclick="faddquotes();">  "  </button>
+<script>
+function faddquotes() {
+    if (document.querySelector("#faddquotes").innerText != '"') {
+        document.querySelector("#faddquotes").innerText = '  "  ';
+        g_aTokens = g_aTokens.map(o=>{ if (o[0] == '"') { return o.replaceAll('"', ''); } else { return o.replaceAll('"', '');} })
+    } else {
+        document.querySelector("#faddquotes").innerHTML = '&nbsp;';
+        g_aTokens = g_aTokens.map(o=>{ if (o[0] == '"') { return o; } else { return `"${o}"`;} })
+    }
+    
+    document.querySelector("#faddquotes").innerText
+}
+</script>
+<button onclick="fmoveright();">right</button><span style="color:white" id="fmovenotes"></span>
+</div>
 
 <!-- porque oninput="on_search_input(); no funciona??" -->
 
