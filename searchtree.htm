@@ -235,6 +235,9 @@ var g_aTokens;
 var g_iRandomInt;
 
 setTimeout(() => {
+    
+    document.querySelector("#search").value = document.querySelector("#search").value.replaceAll("“", '"').replaceAll("”", '"');
+    
     if (document.querySelector("#search").value.indexOf(" || ") > -1) {
         document.querySelector("#search").style.backgroundColor = "yellow";
         document.querySelector("#fmove").style.display = "";
