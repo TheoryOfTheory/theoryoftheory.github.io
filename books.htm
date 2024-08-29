@@ -210,6 +210,7 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((oTagsAgg,e,i)=>{
               sCommentTags = sCommentTags + "<span style='display:none;' onclick='filtertags(this);'>" + sCurrentTitleInIterationTag + "</span>";
               
               var sArtistSongText = superurlify(sArtistSong).text;
+              sArtistSongText = sArtistSongText.replace(/^\* /, "");
               // but for now just dollarstore'ing this:
               if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
                 sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(sArtistSongText)}&btnI=I%27m+Feeling+Lucky`; // from google bard
@@ -406,12 +407,15 @@ if (oGetAllParameters_CLIENT().tag) {
 </style>
 
 
-<pre># August 2024
+<pre> # August 2024
 aaa
 bbb
 bbb
 bbb
-Alfred Korzybski "Science and Sanity" https://www.youtube.com/watch?v=fE0WZT6-fII&t=768s
+bbb
+bbb
+Saving the Appearances // theory // https://old.reddit.com/r/Anthroposophy/comments/166om93/owen_barfield/
+Alfred Korzybski "Science and Sanity: An Introduction to Non-Aristotelian Systems and General Semantics" https://www.youtube.com/watch?v=fE0WZT6-fII&t=768s
 The Language Instinct by Steven Pinker || The User Illusion by Tor Norretranders || Elements of Eloquence by Mark Forsyth || Word Power Made Easy by Norman Lewis || Stolen Focus by Johann Hari || The Well-Spoken Thesauras by Thomas Heeler // selfimprovement // 𝓣connotation || avoid bluesky language || whisper drafting || ask for more time || cognitive priming𝓣 https://www.youtube.com/watch?v=TGulVSE_5FY
 How to Make Our Ideas Clear
 Michael Potter - The Rise of Analytic Philosopy (also some book by Calum Neil, Cadell Last, Kierkegaard, and Graham Priest) https://www.facebook.com/photo/?fbid=10228888889799156&set=a.10208244760988838
@@ -432,18 +436,12 @@ Holes (ya novel) https://old.reddit.com/r/redscarepod/comments/1e06szu/who_remem
 
 
 
-
-
-.
-
-# Denmark Vesey
+.# Denmark Vesey
 * [Denmark Vesey](https://theoryoftheory.github.io/denmarkvesey.htm)
 
 
 
 # 📚📖📕📓📔 BOOKS TO WRITE
-
-
 
 ## BOOKS TO READ / bookstoread to read / BOOKS donated
 
@@ -563,6 +561,4 @@ Gundrisse
 Being and Time
 Science of Logic
 Phenomenology of Spirit
-
-
 </pre>
