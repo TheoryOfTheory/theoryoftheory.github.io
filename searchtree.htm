@@ -22,7 +22,7 @@
 <script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
 <link rel="stylesheet" href="https://yayinternets.github.io/datacss.css">
-
+// 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => { 
   domLoadScripts(["https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"]);
   addELClick(document.querySelector("input#search"), 5, ()=>{
@@ -237,6 +237,7 @@ var g_iRandomInt;
 setTimeout(() => {
     
     document.querySelector("#search").value = document.querySelector("#search").value.replaceAll("“", '"').replaceAll("”", '"');
+    document.querySelector("#search").value = document.querySelector("#search").value.replaceAll(" & ", " and ").replaceAll(", and ", " || ").replaceAll(", ", " || ");
     
     if (document.querySelector("#search").value.indexOf(" || ") > -1) {
         document.querySelector("#search").style.backgroundColor = "yellow";
