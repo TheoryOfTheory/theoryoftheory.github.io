@@ -237,7 +237,7 @@ var g_iRandomInt;
 setTimeout(() => {
     
     document.querySelector("#search").value = document.querySelector("#search").value.replaceAll("“", '"').replaceAll("”", '"');
-    document.querySelector("#search").value = document.querySelector("#search").value.replaceAll(" & ", " and ").replaceAll(", and ", " || ").replaceAll(", ", " || ");
+    document.querySelector("#search").value = document.querySelector("#search").value.replaceAll(" to ", " || ").replaceAll(" & ", " and ").replaceAll(", and ", " || ").replaceAll(" and ", " || ").replaceAll(", ", " || ");
     
     if (document.querySelector("#search").value.indexOf(" || ") > -1) {
         document.querySelector("#search").style.backgroundColor = "yellow";
