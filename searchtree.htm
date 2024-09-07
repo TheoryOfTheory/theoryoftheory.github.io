@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +20,8 @@
     <meta name="twitter:title" content="SearchTree🍃">
     <meta name="twitter:description" content="SearchTree - search the entire web">
     <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
+
+
 
 <script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
@@ -229,6 +233,11 @@ button:hover {
 </style>
 
 <script>
+function fmultiredditify() {
+    sMultireddit = g_aTokens.map(o=>o.replace(/[^a-zA-Z0-9]+/g, "")).reduce((a,o)=>{if(o) {a.push(o)}; return a;}, []).join("+"); window.open("http://old.reddit.com/r/" + sMultireddit)
+}
+</script>
+<script>
 // now do logic for multiple piped search queries
 // <div><button onclick="fmoveleft();">left</button><button onclick="fmoveright();">right</button></div>
 var g_aTokens;
@@ -271,7 +280,9 @@ function fmoveright() {
 </script>
 
 
-</head><body><!-- MAIN SEARCHBAR -->
+</head><body>
+
+<!-- MAIN SEARCHBAR -->
 <input id="search" style="height:50px; width: 70%; font-size:40px" value="fetch node" ">
 <span style="color:blue" id="praetorian">ℼ</span>
 <button style="height:50px;" onclick="on_search_input();">refresh</button> 
@@ -280,6 +291,7 @@ function fmoveright() {
 <div id="fmove" style="display:none;">
 <button onclick="fmoveleft();">left</button>
 <button id="faddquotes" onclick="faddquotes();">  "  </button>
+<button id="fmultiredditify" onclick="fmultiredditify();">multiredditify</button>
 <script>
 function faddquotes() {
     if (document.querySelector("#faddquotes").innerText != '"') {
@@ -573,4 +585,6 @@ search codepen
 local tech jobs
 geopolitics
 
-</pre></body></html>
+</pre>
+
+</body></html>
