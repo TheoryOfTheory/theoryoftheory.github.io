@@ -17,6 +17,7 @@ var sTags_global = `
 // TAG guide - here are all the possible tags in this format: "exampletag exampletag2 exampletag3=exampletag3synonym=exampletag3synonym exampletag4 - description blah blah"
 // and 96.1, and 95SX, and Kiss 95 too?  remember?
 
+esoteric=esotericism=occultism=mysticism=mystical
 rare - could be deleted from internet at anytime?  backup?
 findme - find me?
 misheard - misheard lyrics that are noteworthy
@@ -211,6 +212,7 @@ var oTagsGlobal = sTags_global.trim().split("\n").reduce((oTagsAgg,e,i)=>{
               sCommentTags = sCommentTags + "<span style='display:none;' onclick='filtertags(this);'>" + sCurrentTitleInIterationTag + "</span>";
               
               var sArtistSongText = superurlify(sArtistSong).text;
+              sArtistSongText = sArtistSongText.replace(/^\* /, "");
               // but for now just dollarstore'ing this:
               if (bIncludeAHrefs) { // bIncludeAHrefs = just searchtree-ify whatever is on the line?  or introduce a notation?
                 sHrefImFeelingLucky = `https://www.google.com/search?q=${superencode(sArtistSongText)}&btnI=I%27m+Feeling+Lucky`; // from google bard
@@ -417,6 +419,11 @@ if (oGetAllParameters_CLIENT().tag) {
 
 
 
+
+# 2024 Sept
+deadmau5 - Polaris https://x.com/aufgehenderRest/status/1829785311594885178 // theory
+Kegels for Hegel ft el Klotz - Love Song to Georges Bataille https://www.youtube.com/watch?v=KEuRrnCvkYw https://x.com/overlookedpics/status/1828638079877271738 // theory
+狼戈 song // chinese // https://x.com/CarlZha/status/1830562498115956929
 
 # 2024 August
 Sopa de Caracol // amazon // "wepa"? -  see dm5!!https://www.instagram.com/p/C9sao6iR4-2/?hl=en
