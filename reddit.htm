@@ -116,10 +116,23 @@ var aRedditMultireddits = Array.from(document.querySelectorAll("tr"))
 // LASTLY: expand only one category/set of links if URL parameter .search is populated
 if (oGetAllParameters_CLIENT().search) {
     $$$("td:first-child").forEach(o=>{
-        if (o.innerText.match(new RegExp(oGetAllParameters_CLIENT().search, "i"))){
+        if (o.innerText.match(new RegExp(oGetAllParameters_CLIENT().search.split(".")[0], "i"))){
+            var sSubSearch = oGetAllParameters_CLIENT().search.split(".")[1];
+            // alert(sSubSearch);
             var oTR = o.parentNode;
             setTimeout(() => { 
                 document.body.innerHTML = oTR.children[2].innerHTML + "<br><br>" + oTR.children[1].innerHTML + "<br><br>" + oTR.children[0].innerHTML
+                
+                if (sSubSearch) {
+                    var bNoMatch = true; // a little hack to make sure first match is honored
+                    document.querySelectorAll(".submultireddit").forEach(o=>{if (o.innerText.toLowerCase().indexOf(sSubSearch) > -1) {
+                        if (o.querySelectorAll("a")[0]?.href && bNoMatch) {
+                            bNoMatch = false;
+                            window.location = o.querySelectorAll("a")[0]?.href;
+                        }
+                    } })   
+                }
+                
             }, 1500)
         }
     })
