@@ -124,9 +124,12 @@ if (oGetAllParameters_CLIENT().search) {
                 document.body.innerHTML = oTR.children[2].innerHTML + "<br><br>" + oTR.children[1].innerHTML + "<br><br>" + oTR.children[0].innerHTML
                 
                 if (sSubSearch) {
+                    sSubSearch = sSubSearch.toLowerCase();
                     var bNoMatch = true; // a little hack to make sure first match is honored
                     if (document.getElementByInnerText(sSubSearch)?.href) {
+                        bNoMatch = false;
                         window.location = document.getElementByInnerText(sSubSearch)?.href;
+                        
                     } else {
                         document.querySelectorAll(".submultireddit").forEach(o=>{if (o.innerText.toLowerCase().indexOf(sSubSearch) > -1) {
                             if (o.querySelectorAll("a")[0]?.href && bNoMatch) {
@@ -134,6 +137,14 @@ if (oGetAllParameters_CLIENT().search) {
                                 window.location = o.querySelectorAll("a")[0]?.href;
                             }
                         } })
+                    }
+                    if (bNoMatch) {
+                        document.querySelectorAll("a").forEach(o=>{
+                            if (bNoMatch && ((o.innerText.toLowerCase() + o.href.toLowerCase()).indexOf(sSubSearch) > -1)) {
+                                bNoMatch = false;
+                                window.location = o.href;
+                            };
+                        })
                     }
                 }
                 
