@@ -125,12 +125,16 @@ if (oGetAllParameters_CLIENT().search) {
                 
                 if (sSubSearch) {
                     var bNoMatch = true; // a little hack to make sure first match is honored
-                    document.querySelectorAll(".submultireddit").forEach(o=>{if (o.innerText.toLowerCase().indexOf(sSubSearch) > -1) {
-                        if (o.querySelectorAll("a")[0]?.href && bNoMatch) {
-                            bNoMatch = false;
-                            window.location = o.querySelectorAll("a")[0]?.href;
-                        }
-                    } })   
+                    if (document.getElementByInnerText(sSubSearch)?.href) {
+                        window.location = document.getElementByInnerText(sSubSearch)?.href;
+                    } else {
+                        document.querySelectorAll(".submultireddit").forEach(o=>{if (o.innerText.toLowerCase().indexOf(sSubSearch) > -1) {
+                            if (o.querySelectorAll("a")[0]?.href && bNoMatch) {
+                                bNoMatch = false;
+                                window.location = o.querySelectorAll("a")[0]?.href;
+                            }
+                        } })
+                    }
                 }
                 
             }, 1500)
