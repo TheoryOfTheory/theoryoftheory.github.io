@@ -259,26 +259,52 @@ setTimeout(() => {
             g_iRandomInt = getRandomInt(0, g_aTokens.length-1);
             document.querySelector("#search").value = g_aTokens[g_iRandomInt];
             document.querySelector("#fmovenotes").innerText = (g_iRandomInt + 1) + " of " + g_aTokens.length;
+            
+            slashLogic();
+            $$$$("input#search").onclick = function () { if (gIntervalID) { clearInterval(gIntervalID); gIntervalID = undefined; } }
+
         }, 2000)
       
+        
+
         setTimeout(() => { document.querySelector("#search").style.backgroundColor = "lime" }, 3000)
     }    
 }, 100)
 
+
+var gIntervalID; // for setInterval()
+function slashLogic(iTime) {
+    if (iTime) {} else {iTime = 100;}
+    if ($$$$("input#search").value.indexOf("/") > -1) {
+        var i=0;
+        var aTemp = $$$$("input#search").value.split("/");
+    
+        gIntervalID = setInterval(()=> {
+            $$$$("input#search").value = aTemp[i%aTemp.length].trim();
+            console.log("blah");
+            i++;
+        }, iTime)
+        // clearInterval(gIntervalID)
+        // $$$$("input#search").value = aTemp.join(" / ");
+    }
+}
+
 function fmoveleft() {
+    if (gIntervalID) { clearInterval(gIntervalID); gIntervalID = undefined; }
     g_iRandomInt = (g_iRandomInt - 1) % g_aTokens.length;
     if (g_iRandomInt == -1) { g_iRandomInt = g_aTokens.length - 1; }
     document.querySelector("#search").value = g_aTokens[g_iRandomInt];
     document.querySelector("#fmovenotes").innerText = (g_iRandomInt + 1) + " of " + g_aTokens.length;
+    slashLogic();
 }
+
 function fmoveright() {
+    if (gIntervalID) { clearInterval(gIntervalID); gIntervalID = undefined; }
     g_iRandomInt = (g_iRandomInt + 1) % g_aTokens.length;
     document.querySelector("#search").value = g_aTokens[g_iRandomInt];
     document.querySelector("#fmovenotes").innerText = (g_iRandomInt + 1) + " of " + g_aTokens.length;
+    slashLogic();
 }
-
-
-
 </script>
 
 
