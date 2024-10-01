@@ -261,7 +261,7 @@ setTimeout(() => {
             document.querySelector("#fmovenotes").innerText = (g_iRandomInt + 1) + " of " + g_aTokens.length;
             
             slashLogic();
-            $$$$("input#search").onclick = function () { if (gIntervalID) { clearInterval(gIntervalID); gIntervalID = undefined; } }
+            $$$$("input#search").onclick = function () { if (gIntervalID) { b_slashLogic_paused = true; } else { } }
 
         }, 2000)
       
@@ -273,6 +273,7 @@ setTimeout(() => {
 
 
 var gIntervalID; // for setInterval()
+var b_slashLogic_paused = false;
 function slashLogic(iTime) {
     if (iTime) {} else {iTime = 100;}
     if ($$$$("input#search").value.indexOf("/") > -1) {
@@ -280,8 +281,10 @@ function slashLogic(iTime) {
         var aTemp = $$$$("input#search").value.split("/");
     
         gIntervalID = setInterval(()=> {
-            $$$$("input#search").value = aTemp[i%aTemp.length].trim();
-            console.log("blah");
+            if (!b_slashLogic_paused) {
+                $$$$("input#search").value = aTemp[i%aTemp.length].trim();
+            }
+            // console.log("blah");
             i++;
         }, iTime)
         // clearInterval(gIntervalID)
