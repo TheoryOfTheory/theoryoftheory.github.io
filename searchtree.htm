@@ -261,7 +261,7 @@ setTimeout(() => {
             document.querySelector("#fmovenotes").innerText = (g_iRandomInt + 1) + " of " + g_aTokens.length;
             
             slashLogic();
-            $$$$("input#search").onclick = function () { if (gIntervalID) { b_slashLogic_paused = true; } else { } }
+            $$$$("input#search").onclick = function () { if (gIntervalID) { b_slashLogic_paused = !b_slashLogic_paused; } else { } }
 
         }, 2000)
       
