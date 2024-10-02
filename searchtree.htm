@@ -250,6 +250,7 @@ setTimeout(() => {
         document.querySelector("#search").value = document.querySelector("#search").value.split(" || ").map(o=>{ return sDisperse + " " + o; }).join(" || ")
     }
     
+    document.querySelector("#search").value = document.querySelector("#search").value.replace(/⬅️/g, "<<").replace(/←️/g, "<<");
     if (document.querySelector("#search").value.indexOf(" << ") > -1) {
         sDisperse = document.querySelector("#search").value.split(" << ")[1];
         document.querySelector("#search").value = document.querySelector("#search").value.split(" << ")[0];
