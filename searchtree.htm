@@ -250,6 +250,12 @@ setTimeout(() => {
         document.querySelector("#search").value = document.querySelector("#search").value.split(" || ").map(o=>{ return sDisperse + " " + o; }).join(" || ")
     }
     
+    if (document.querySelector("#search").value.indexOf(" << ") > -1) {
+        sDisperse = document.querySelector("#search").value.split(" << ")[1];
+        document.querySelector("#search").value = document.querySelector("#search").value.split(" >> ")[0]
+        document.querySelector("#search").value = document.querySelector("#search").value.split(" || ").map(o=>{ return o + " " + sDisperse; }).join(" || ")
+    }
+    
     if (document.querySelector("#search").value.indexOf(" || ") > -1) {
         document.querySelector("#search").style.backgroundColor = "yellow";
         document.querySelector("#fmove").style.display = "";
