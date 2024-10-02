@@ -341,10 +341,12 @@ function faddquotes() {
     } else {
         document.querySelector("#faddquotes").innerHTML = '&nbsp;';
         g_aTokens = g_aTokens.map(o=>{ if (o[0] == '"') { return o; } else { return `"${o}"`;} })
+        $$$$("input#search").value = "\"" + $$$$("input#search").value.trim() + "\"";
     }
     
     document.querySelector("#faddquotes").innerText
 }
+
 </script>
 <button onclick="fmoveright();">right</button><span style="color:white" id="fmovenotes"></span>
 </div>
