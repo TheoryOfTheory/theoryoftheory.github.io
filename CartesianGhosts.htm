@@ -7,6 +7,15 @@
    dom_makeImgAltsHoverableText("white", "grey", 3, 5)
 }, false )</script>
 
+
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
+
+// linkify the links inside the googlesheets table
+Array.from(document.querySelectorAll("google-sheets-html-origin td")).forEach(o=>{o.innerHTML = domscripts_linkify(o.innerHTML); })
+
+}); </script>
+
+
 <style>img { height: 50px; width: 50px; }</style>
 <title>The Cartesian Mind TheCartesianMind vs Cartesian Coordinates?</title>
 <style>
