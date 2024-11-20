@@ -236,6 +236,71 @@ function fmultiredditify() {
 <script>
 // now do logic for multiple piped search queries
 // <div><button onclick="fmoveleft();">left</button><button onclick="fmoveright();">right</button></div>
+function normalizeDoubleArrows(sSearch) { // = double arrow and pipe/slash embuing logic
+/*
+if >> is before any || or /, then it embues itself onto all 
+if >> is after a ||, then it only embues itself within that || token 
+if >> is after a /? this is nonsensical use case (eg "a / b / c >> d || e / f ") and I dont need to program for it
+
+    // sSearch = "error categórico || Falacia >> de reificación / patética / antropomórfica / de misplaced concreteness / de hypostatization || error tipo >> i / ii / iii / iv"; normalizeDoubleArrows(sSearch);
+    // sSearch = "a >> b || c || d";
+    // sSearch = "a >> b / c / d";
+    // sSearch = "a || b || c << d"
+    // sSearch = "a / b / c << d"
+    // sSearch = "a / b >> c || d || e || g"; // impossible scenario, meaningless?  code does it anyways 
+    // sSearch = "a || b >> c / d / e || f >> g / h / i" // => "a || b c / b d / b e || f g / f h / f i";
+    sSearch = "a >> b || c || d / e || f || g / h / i" // => "a b || a c || a d / a e || a f || a g || a h || a i";
+    */
+    if (sSearch.indexOf(" >> ") > -1) {
+        // aSearch = sSearch.split(" >> ");
+    
+        // Are the >>(s) AFTER the slashes and pipes? - more complex, but interestingly pipes always precede slashes due to my logic so I only need to program for one use case
+        if (sSearch.indexOf(" >> ") > sSearch.indexOf(" || ") || sSearch.indexOf(" >> ") > sSearch.indexOf(" || ")) { // eg "a || b >> c / d || e"
+    
+                sSearch = sSearch.split(" || ").map((o,i)=>{
+                // elEmbutidor vs elEmbuido comes from imbuer and imbued, to replace sMaster and sSlave variables
+                if (o.indexOf(" >> ")==-1) {
+                    return o;
+                } else {
+                    return (o.split(" >> ")[1].split(" / ").map(oo=>{return o.split(" >> ")[0].trim() + " " + oo }).join(" / ")) // .join(" || "); // o.split(" / ")
+                    /*
+                if (o.indexOf(" / ") == -1 || o.indexOf(" || ") == -1 ) {
+                    if (o.indexOf(" || ")) {
+                        sElEmbutidor = o.split(" || ")[o.split(" || ").length-1];
+                    } else {
+                        sElEmbutidor = o.split(" / ")[o.split(" / ").length-1];        
+                    }
+                } else {
+                    sElEmbutidor = o;
+                }
+                */
+
+                  
+                }
+                // if i==last element, then sMaster is null cuz I'm in the last token
+                //console.log(sElEmbutidor + " imbues itself into " + sElEmbuido);
+            }).join(" || ")
+        } else if (sSearch.indexOf(" >> ") < sSearch.indexOf(" || ") || sSearch.indexOf(" >> ") < sSearch.indexOf(" || ")) { // Is the >> BEFORE the slashes and pipes? - eg "a >> b / c / d", only one >>
+            //console.log(aSearch[0]);
+            //aSearch[1] = aSearch[1].split(" || ").map(o=>o.split(" / ")).join(aSearch[0] + " || ")
+            //console.log(aSearch[1])
+            // var input = "a >> b || c || d / e || f || g / h / i";
+            var [sPrefix, ...aRest] = sSearch.split(" >> ");
+            sSearch = aRest.join(" / ").split(" / ").map(sPart => sPart.split(" || ").map(sSub => `${sPrefix} ${sSub}`).join(" || ")).join(" / ");
+    
+        }
+    }
+    sSearch = sSearch.replace(/⬅️/g, "<<").replace(/←️/g, "<<"); // hack since the << notation isn't rendering properly
+    if (sSearch.indexOf(" << ") > -1) {
+            var sDisperse = sSearch.split(" << ")[1];
+            var ssSearch = sSearch.split(" << ")[0];
+            sSearch = ssSearch.split(" || ").map(o=>{ return o + " " + sDisperse; }).join(" || ")        
+    }
+
+
+        return sSearch;
+}
+
 var g_aTokens;
 var g_iRandomInt;
 
@@ -244,18 +309,9 @@ setTimeout(() => {
     document.querySelector("#search").value = document.querySelector("#search").value.replaceAll("“", '"').replaceAll("”", '"');
     document.querySelector("#search").value = document.querySelector("#search").value.replaceAll(" to ", " || ").replaceAll(" versus ", " vs ").replaceAll(" vs. ", " vs ").replaceAll(" vs ", " || ").replaceAll(" & ", " and ").replaceAll(", and ", " || ").replaceAll(" and ", " || ").replaceAll(", ", " || ");
     
-    if (document.querySelector("#search").value.indexOf(" >> ") > -1) {
-        sDisperse = document.querySelector("#search").value.split(" >> ")[0];
-        document.querySelector("#search").value = document.querySelector("#search").value.split(" >> ")[1];
-        document.querySelector("#search").value = document.querySelector("#search").value.split(" || ").map(o=>{ return sDisperse + " " + o; }).join(" || ")
-    }
+    document.querySelector("#search").value = normalizeDoubleArrows(document.querySelector("#search").value);
     
-    document.querySelector("#search").value = document.querySelector("#search").value.replace(/⬅️/g, "<<").replace(/←️/g, "<<");
-    if (document.querySelector("#search").value.indexOf(" << ") > -1) {
-        sDisperse = document.querySelector("#search").value.split(" << ")[1];
-        document.querySelector("#search").value = document.querySelector("#search").value.split(" << ")[0];
-        document.querySelector("#search").value = document.querySelector("#search").value.split(" || ").map(o=>{ return o + " " + sDisperse; }).join(" || ")
-    }
+
     
     if (document.querySelector("#search").value.indexOf(" || ") > -1) {
         document.querySelector("#search").style.backgroundColor = "yellow";
