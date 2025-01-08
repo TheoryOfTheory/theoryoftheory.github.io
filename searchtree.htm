@@ -374,6 +374,20 @@ function fmoveright() {
 </script>
 
 
+<!-- convert mediasearches to buttons (these urls change so much) -->
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { 
+document.querySelector("#mediasearches").outerHTML = document.querySelector("#mediasearches").value.split("\n").reduce((a,e,i)=>{
+    console.log(e);
+    if (e.substring(0,1) == "#") {
+        a = a + `<h6 style="color:white">${e}</h6>`;
+    } else if (e == "") {
+        a = a + "<br>";
+    } else {
+        a = a + `<button onclick="openMe(this);" data-url="${e.split(" // ")[1]}">${e.split(" // ")[0]}</button>`
+    }
+    return a;
+}, "")  
+}); </script>
 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { setTimeout(() => { 
 // BEGIN redirect scripts
@@ -622,7 +636,7 @@ from:&nbsp;&nbsp;<input id="datefrom" type="date" value="2016-01-01">&nbsp;to:&n
 <h6 style="color:white">media searches</h6>
 <!-- attackertv-like streaming sites -->
 <textarea id="mediasearches">
-    # attackertv-like (ie need to convert spaces to dashes for attackertv)
+# attackertv-like (ie need to convert spaces to dashes for attackertv)
 attackertv // `https://attackertv.so/search/${sValue.replaceAll(' ', '-')}`
 sflix // `https://sflix.to/search/${sValue.replaceAll(' ', '-')}``
 moviesjoy // `https://moviesjoy.plus/search/${sValue.replaceAll(' ', '-')}`
@@ -646,7 +660,7 @@ putlockers // `https://ww2.putlockers.io/?s=${sValue}`
 watchseries // `https://watchseries.bar/?s=${sValue}`
 
 # idk
-watchcartoonsonline `https://www.wcofun.net/dubbed-anime-list/?s=${sValue}`
+watchcartoonsonline // `https://www.wcofun.net/dubbed-anime-list/?s=${sValue}`
 
 # non-streaming 
 tpb // `https://pirateproxy.wtf/?search=${sValue}` // https://old.reddit.com/r/WatchCartoonOnline/comments/cti0zp/this_is_the_offical_websites_of_wco_stay_away/
