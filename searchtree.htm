@@ -621,25 +621,37 @@ from:&nbsp;&nbsp;<input id="datefrom" type="date" value="2016-01-01">&nbsp;to:&n
 
 <h6 style="color:white">media searches</h6>
 <!-- attackertv-like streaming sites -->
-<button onclick="openMe(this);" data-url="`https://attackertv.so/search/${sValue.replaceAll(' ', '-')}`">attackertv</button> <!-- need to convert spaces to dashes for attackertv -->
-<button onclick="openMe(this);" data-url="`https://moviesjoy.plus/search/${sValue.replaceAll(' ', '-')}`">moviesjoy</button> <!-- need to convert spaces to dashes for this -->
-<button onclick="openMe(this);" data-url="`https://theflixertv.to/search/${sValue.replaceAll(' ', '-')}`">theflixertv</button> <!-- need to convert spaces to dashes for this https://theflixertv.to/search/obsessed-to-death-  -->
-<br> <!-- other streaming sites -->
-<button onclick="openMe(this);" data-url="`https://fmoviesz.to/filter?keyword=${sValue}`">fmoviesz</button> <!-- vs www.fmovies.to? -->
-<button onclick="openMe(this);" data-url="`https://ww21.soap2day.day/?s=${sValue}`">soap2day</button> <!-- ? -->
-<button onclick="openMe(this);" data-url="`https://bflix.to/filter?keyword=${sValue}`">bflix</button> <!-- ? -->
-<button onclick="openMe(this);" data-url="`https://moviestowatch.id/filter?keyword=${sValue}`">moviestowatch</button> <!-- ? -->
-<br> <!-- non-functioning streaming sites -->
-<button onclick="openMe(this);" data-url="`https://flixtor.to/s=${sValue}`">flixtor</button> <!-- nonfunctioning?? via https://old.reddit.com/r/technology/comments/1ctrulb/the_dream_of_streaming_is_dead_bundles_are_back/l4ehy3y/ -->
-<button onclick="openMe(this);" data-url="`https://ww2.putlockers.io/?s=${sValue}`">putlockers</button> <!-- nonfunctioning?? via https://www.google.com/search?q=putlocker+%26+watchseries&oq=putlocker+%26+watchseries -->
-<button onclick="openMe(this);" data-url="`https://watchseries.bar/?s=${sValue}`">watchseries</button> <!-- nonfunctioning?? -->
-<br> <!-- search is not GET but POST only, therefore copy the search into clipboard? -->
-<button onclick="openMeCopy(this);" data-url="`https://www.wcofun.net/dubbed-anime-list/?s=${sValue}`">watchcartoonsonline / wcofun (anime mostly)</button> <!-- https://old.reddit.com/r/WatchCartoonOnline/comments/cti0zp/this_is_the_offical_websites_of_wco_stay_away/  -->
-<br> <!-- non-streaming sites -->
-<button onclick="openMe(this);" data-url="`https://pirateproxy.wtf/?search=${sValue}`">tpb</button>
-<button onclick="openMe(this);" data-url="`https://www.1377x.to/search/${sValue}/1/`">1377x</button> <!-- https://old.reddit.com/r/technology/comments/1ctrulb/the_dream_of_streaming_is_dead_bundles_are_back/l4fgsr6/?context=3 -->
+<textarea id="mediasearches">
+    # attackertv-like (ie need to convert spaces to dashes for attackertv)
+attackertv // `https://attackertv.so/search/${sValue.replaceAll(' ', '-')}`
+sflix // `https://sflix.to/search/${sValue.replaceAll(' ', '-')}``
+moviesjoy // `https://moviesjoy.plus/search/${sValue.replaceAll(' ', '-')}`
+theflickertv // `https://theflixertv.to/search/${sValue.replaceAll(' ', '-')}`
 
+# other 
+fmoviesz // `https://fmoviesz.to/filter?keyword=${sValue}`
+bflix // `https://bflix.to/filter?keyword=${sValue}`
+soap2day // `https://ww21.soap2day.day/?s=${sValue}`
+moviestowatch // https://moviestowatch.id/filter?keyword=${sValue}
 
+# hindi
+hdhub4u // `https://hdhub4u.esq/?s=${sValue}`
+
+# nonsearchable
+vegamovies // vegamovies.sc // no search function, mainly indian?
+
+# nonfunctioning-streaming 
+flixtor // `https://flixtor.to/s=${sValue}` // nonfunctioning?? via https://old.reddit.com/r/technology/comments/1ctrulb/the_dream_of_streaming_is_dead_bundles_are_back/l4ehy3y/ 
+putlockers // `https://ww2.putlockers.io/?s=${sValue}`
+watchseries // `https://watchseries.bar/?s=${sValue}`
+
+# idk
+watchcartoonsonline `https://www.wcofun.net/dubbed-anime-list/?s=${sValue}`
+
+# non-streaming 
+tpb // `https://pirateproxy.wtf/?search=${sValue}` // https://old.reddit.com/r/WatchCartoonOnline/comments/cti0zp/this_is_the_offical_websites_of_wco_stay_away/
+1377x // `https://www.1377x.to/search/${sValue}/1/` // https://old.reddit.com/r/technology/comments/1ctrulb/the_dream_of_streaming_is_dead_bundles_are_back/l4fgsr6/?context=3
+</textarea>
 
 
 <br><br><br>
