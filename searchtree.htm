@@ -379,7 +379,7 @@ function fmoveright() {
 document.querySelector("#mediasearches").outerHTML = document.querySelector("#mediasearches").value.split("\n").reduce((a,e,i)=>{
     console.log(e);
     if (e.substring(0,1) == "#") {
-        a = a + `<h6 style="color:white">${e}</h6>`;
+        a = a + `<h6 style="color:white">${e.replace("# ", "")}</h6>`;
     } else if (e == "") {
         a = a + "<br>";
     } else {
@@ -636,19 +636,19 @@ from:&nbsp;&nbsp;<input id="datefrom" type="date" value="2016-01-01">&nbsp;to:&n
 <h6 style="color:white">media searches</h6>
 <!-- attackertv-like streaming sites -->
 <textarea id="mediasearches">
-# attackertv-like (ie need to convert spaces to dashes for attackertv)
+# path-based searches
 attackertv // `https://attackertv.so/search/${sValue.replaceAll(' ', '-')}`
-sflix // `https://sflix.to/search/${sValue.replaceAll(' ', '-')}``
+sflix // `https://sflix.to/search/${sValue.replaceAll(' ', '-')}`
 moviesjoy // `https://moviesjoy.plus/search/${sValue.replaceAll(' ', '-')}`
 theflickertv // `https://theflixertv.to/search/${sValue.replaceAll(' ', '-')}`
 
-# other 
+# parameter-based searches 
 fmoviesz // `https://fmoviesz.to/filter?keyword=${sValue}`
 bflix // `https://bflix.to/filter?keyword=${sValue}`
 soap2day // `https://ww21.soap2day.day/?s=${sValue}`
 moviestowatch // https://moviestowatch.id/filter?keyword=${sValue}
 
-# hindi
+# hindi parameter-based searches
 hdhub4u // `https://hdhub4u.esq/?s=${sValue}`
 
 # nonsearchable
