@@ -277,6 +277,7 @@ setTimeout(subMultiredditfy, 500);
 setTimeout(function() { // #britney - need to combine domscripts_unorderedListify with the dollarstore dollartree mardownify?
     document.querySelectorAll("table td:nth-child(2)").forEach(o=>{ o.innerHTML = domscripts_linkify((o.innerHTML), "link_index"); })
     document.querySelectorAll("table td:nth-child(3)").forEach(o=>{ o.innerHTML = o.innerHTML.replace(/ /g, "&nbsp;"); o.innerHTML = domscripts_unorderedListify(domscripts_linkify(o.innerText), "domainindex"); })
+    setTimeout(() => { dom_add_longpressevent_onto_ToT_ahrefs(); }, 1000);
 }, 600);
 
 </script>
