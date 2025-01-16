@@ -310,6 +310,7 @@ setTimeout(() => {
     document.querySelector("#search").value = document.querySelector("#search").value.replaceAll(" to ", " || ").replaceAll(" versus ", " vs ").replaceAll(" vs. ", " vs ").replaceAll(" vs ", " || ").replaceAll(" & ", " and ").replaceAll(", and ", " || ").replaceAll(" and ", " || ").replaceAll(", ", " || ");
     
     document.querySelector("#search").value = normalizeDoubleArrows(document.querySelector("#search").value);
+    document.querySelector("#search").value = document.querySelector("#search").value.replaceAll(String.fromCharCode(160), ' '); // replace the nbsp; character which is 160
     
 
     
