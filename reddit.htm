@@ -274,9 +274,9 @@ function subMultiredditfy() {
 setTimeout(redditfy, 400);
 setTimeout(subMultiredditfy, 500);
 // FINALLY DO domscripts_linkify() on 2nd and 3rd columns
-setTimeout(function() { // brittney
+setTimeout(function() { // #britney - need to combine domscripts_unorderedListify with the dollarstore dollartree mardownify?
     document.querySelectorAll("table td:nth-child(2)").forEach(o=>{ o.innerHTML = domscripts_linkify((o.innerHTML), "link_index"); })
-    document.querySelectorAll("table td:nth-child(3)").forEach(o=>{ o.innerHTML = domscripts_unorderedListify(domscripts_linkify(o.innerText), "domainindex"); })
+    document.querySelectorAll("table td:nth-child(3)").forEach(o=>{ o.innerHTML = o.innerHTML.replace(/ /g, "&nbsp;"); o.innerHTML = domscripts_unorderedListify(domscripts_linkify(o.innerText), "domainindex"); })
 }, 600);
 
 </script>
