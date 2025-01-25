@@ -240,8 +240,8 @@ function subMultiredditfy() {
         aSegments.forEach((e, i) => {
 
             sSubMultiredditURL = (e.$$$a("a").map(o => {
-                if (o.href.match(/.*\/([a-zA-Z0-9\+]+)$/)) {
-                    return o.href.match(/.*\/([a-zA-Z0-9\+]+)$/)[1];
+                if (o.href.match(/.*\/([_a-zA-Z0-9\+]+)$/)) {
+                    return o.href.match(/.*\/([_a-zA-Z0-9\+]+)$/)[1];
                 } else {
                     return "";
                 }
