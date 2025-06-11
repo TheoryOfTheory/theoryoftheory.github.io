@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <html><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +18,6 @@
     <meta name="twitter:title" content="SearchTree🍃">
     <meta name="twitter:description" content="SearchTree - search the entire web">
     <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
-
-
 
 <script src="https://yayinternets.github.io/datascripts.js"></script>
 <script src="https://yayinternets.github.io/domscripts.js"></script>
@@ -410,9 +406,7 @@ if (document.querySelector("#search").value.match(/reddit\.com/)) {
 // END redirect scripts    
 }, "1000"); }); </script>
 
-</head><body>
-
-<!-- MAIN SEARCHBAR -->
+</head><body><!-- MAIN SEARCHBAR -->
 <input id="search" style="height:50px; width: 70%; font-size:40px" value="fetch node" ">
 <span style="color:blue" id="praetorian">ℼ</span>
 <button style="height:50px;" onclick="on_search_input();">refresh</button> 
@@ -618,10 +612,16 @@ from:&nbsp;&nbsp;<input id="datefrom" type="date" value="2016-01-01">&nbsp;to:&n
 <button onclick="openMe(this);" data-url="`https://rumble.com/search/video?q=${sValue}`">rumble</button>
 <br><br><br>
 
-<h6 style="color:white">mandarin searches</h6>
-<button onclick="openMe(this);" data-url="`https://search.bilibili.com/all?keyword=${sValue}`">search 哔哩哔哩 bilibili</button>
-<button onclick="openMe(this);" data-url="`https://s.weibo.com/weibo?q=${sValue}`">search 新浪微博 weibo</button>
-<button onclick="openMe(this);" data-url="`https://www.douyin.com/search/${sValue}`">search 抖音 douyin</button>
+<h6 style="color:white">中文 searches</h6>
+
+<button onclick="openMe(this);" data-url="`https://baike.baidu.com/search/none?word=${sValue}`">search 百度百科=Bǎidù-Bǎikē=hundred-degrees-all-topics=deepsearch-encyclopedia</button>
+<button onclick="openMe(this);" data-url="`https://www.cnki.net/index/${sValue}`">search 中国知网=Zhōngguó-Zhīwǎng=middle-country-knowledge-net≈CNKI=China National Knowledge Infrastructure</button>
+<br>
+<button onclick="openMe(this);" data-url="`https://search.bilibili.com/all?keyword=${sValue}`">search 哔哩哔哩=bìlībìlī='beep-beep'</button>
+<button onclick="openMe(this);" data-url="`https://s.weibo.com/weibo?q=${sValue}`">search 新浪微博=Weibo=xīnlàng-wēibó=new-wave-micro-blog</button>
+<button onclick="openMe(this);" data-url="`https://www.douyin.com/search/${sValue}`">search 抖音=dǒuyīn=shake-sound</button>
+<button onclick="openMe(this);" data-url="`https://www.xiaohongshu.com/explore${sValue}`">search 小红书=xiǎo-hóng-shū=little-red-book</button>
+
 <br><br><br>
 
 <h6 style="color:white">book searches</h6>
@@ -751,6 +751,4 @@ search codepen
 local tech jobs
 geopolitics
 
-</pre>
-
-</body></html>
+</pre></body></html>
