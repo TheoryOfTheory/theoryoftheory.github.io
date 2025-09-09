@@ -372,7 +372,6 @@ function filtertags(oTag) {
     // britney - code here to replace contents of h1 with sTag name
     // dom_ahrefenumeratize(); //  ahrefenumeratizes the <ahrefenumerate> tag
 }
-*/
 
 function unfiltertags() { // restore visibility of all artist/songs
     $$$a(".artistsong").forEach(oArtistSong=>{
@@ -383,6 +382,28 @@ function unfiltertags() { // restore visibility of all artist/songs
     document.querySelectorAll("h2")[0].innerText = "�̵̰̓�̴̣̓M̷͈̂U̷̽͜S̸̰͝Ì̷͚C̸̦̀#̶͈́ ̶̭́n̴̗̔o̶̅͜t̷͔̿ë̶͇́;";
     // glitch effect - testing 
 }
+
+*/
+
+function unfiltertags(){ // restore visibility of all artist/songs
+    const songs=$$$a(".artistsong");
+    const h2s=document.querySelectorAll("h2");
+    const brs=document.querySelectorAll("br");
+
+    let i=0,chunk=200;
+    (function next(){
+        const end=Math.min(i+chunk,songs.length);
+        for(;i<end;i++) songs[i].style.display="";
+        if(i<songs.length) setTimeout(next,0);
+    })();
+
+    h2s.forEach(o=>o.style.display="");
+    brs.forEach(o=>o.style.display="");
+    if(h2s[0]) h2s[0].innerText="�̵̰̓�̴̣̓M̷͈̂U̷̽͜S̸̰͝Ì̷͚C̸̦̀#̶͈́ ̶̭́n̴̗̔o̶̅͜t̷͔̿ë̶͇́;";
+}
+
+
+
 </script>
 
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) { dom_changeTitleAndFavicon("موسيقى", "♬🎼" ); }); </script>
