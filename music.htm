@@ -52,8 +52,8 @@ Spain - trujillo, lisbon, madrid
 العربية=arabic - reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=arabic lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=arabic
 deutsch=german - reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=german lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=german
 español=espanol=spanish - reddit.htm!!https://theoryoftheory.github.io/reddit.htm?search=spanish lenguas.htm!!https://theoryoftheory.github.io/lenguas.htm profilicities.htm!!https://theoryoftheory.github.io/profilicities.htm?search=spanish and reddit.htm?español!!https://theoryoftheory.github.io/reddit.htm?search=español reddit.htm?paises!!https://theoryoftheory.github.io/reddit.htm?search=paises
-ayisyen=haitiano=haitian=creole=kreyòl - https://theoryoftheory.github.io/reddit.htm?search=ayisyen 
-nonenglish=japanese=jamaican=jamaica=portuguese=french=italian=hebrew=maori=hawaiian=icelandic=russian - nonenglish (AND nonspanish/nongerman/nonarabic since those three are my priorities?  rename nonenglish to nonprioritylanguages? boutiquelanguages? )
+AyisyenKreyòl=haiti=haitiano=haitian=creole=criollo=kreyol, french - https://theoryoftheory.github.io/reddit.htm?search=ayisyen 
+nonenglish=japanese=jamaican=jamaica=portuguese=italian=hebrew=maori=hawaiian=icelandic=russian - nonenglish (AND nonspanish/nongerman/nonayisyen/nonarabic since those four are my priorities?  rename nonenglish to nonprioritylanguages? boutiquelanguages? )
 
 // curators
 ddb - @daviddeanburkhart!!https://www.youtube.com/@daviddeanburkhart
@@ -63,7 +63,7 @@ shoegaze=dreampop, TheRoar - /r/shoegaze+dreampop!!https://old.reddit.com/r/shoe
 starbucks - music from starbucks criticism!!https://old.reddit.com/r/starbucks/comments/189i98k/whoever_makes_the_starbucks_music_playlist_needs/ search!!https://old.reddit.com/r/starbucks/search/?q=music&include_over_18=on&restrict_sr=on&t=all&sort=new
 
 // themed
-sun=bataille, space - Georges Bataille: [The Potlatch with the Sun](https://academic.oup.com/columbia-scholarship-online/book/23458/chapter-abstract/184536720) Victor Pelevin's The Invincible Sun/Sol Invictus, which depicts Elagabalus as a key unrecognized spiritual figure https://en.wikipedia.org/wiki/Victor_Pelevin https://en.wikipedia.org/wiki/Elagabalus ![Nepobedimoe Solntse](https://m.media-amazon.com/images/I/81G2eI0ilQL._SL1500_.jpg) [the sun is boring and plain, there is nothing mysterious about it de chirico: not so fast](https://old.reddit.com/r/redscarepod/comments/1lixdu4/me_the_sun_is_boring_and_plain_there_is_nothing/)
+sun=bataille=tumescence, space - Georges Bataille: [The Potlatch with the Sun](https://academic.oup.com/columbia-scholarship-online/book/23458/chapter-abstract/184536720) Victor Pelevin's The Invincible Sun/Sol Invictus, which depicts Elagabalus as a key unrecognized spiritual figure https://en.wikipedia.org/wiki/Victor_Pelevin https://en.wikipedia.org/wiki/Elagabalus ![Nepobedimoe Solntse](https://m.media-amazon.com/images/I/81G2eI0ilQL._SL1500_.jpg) [the sun is boring and plain, there is nothing mysterious about it de chirico: not so fast](https://old.reddit.com/r/redscarepod/comments/1lixdu4/me_the_sun_is_boring_and_plain_there_is_nothing/)
 fav=favs=favoritas=favsnew - reddit.htm?music!!https://theoryoftheory.github.io/reddit.htm?search=music jimmypop!!https://x.com/jimmypop
 vocals=vocalization - nonword vocalization of sounds like trill, zzzz, yaaa, etc
 double=triple=quadruple=quintuple=sextuple - shazamed multiple times ("must be important"?) or shazamed 3 times...why lol
@@ -291,6 +291,42 @@ function superurlify(text) { // converts text to {text: t, href, url } object to
     return oReturn;
 }
 
+// new filtertags logic from chatgpt (!!!)
+function filtertags(oTag) {
+    let sTag = typeof(oTag)=="string" ? oTag.toLowerCase() : oTag?.textContent.toLowerCase();
+    sTag = sTag.replaceAll(",",""); 
+    if (oTagsSynonymsGlobal[sTag]) sTag = oTagsSynonymsGlobal[sTag];
+
+    const h2s = document.querySelectorAll("h2");
+    const brs = document.querySelectorAll("br");
+    const songs = $$$a(".artistsong");
+
+    let i=0, chunk=200;
+    (function next(){
+        const end=Math.min(i+chunk,songs.length);
+        for(;i<end;i++){
+            const oArtistSong=songs[i];
+            let sCommentTag=oArtistSong.$$$$(".sCommentTags").$$$a("span").map(o=>o.textContent).join(" ");
+            let aCommentTags=[];
+            if(sCommentTag){
+                sCommentTag=sCommentTag.toLowerCase().replaceAll(","," ").replaceAll("  "," ");
+                aCommentTags=sCommentTag.split(" ").map(t=>oTagsSynonymsGlobal[t]||t);
+            }
+            oArtistSong.style.display=(sCommentTag && aCommentTags.indexOf(sTag)>-1)?"":"none";
+        }
+        if(i<songs.length) setTimeout(next,0);
+    })();
+
+    h2s.forEach(o=>o.style.display="none");
+    brs.forEach(o=>o.style.display="none");
+    if(h2s[0]){
+        h2s[0].style.display="";
+        h2s[0].innerHTML='<a href="https://theoryoftheory.github.io/music.htm?tag='+sTag+'">'+sTag+'</a>'+(oTagsGlobal[sTag]?" - "+domscripts_linkify(oTagsGlobal[sTag],"domain"):"");
+    }
+    document.querySelectorAll("img.domscripts_linkify").forEach(o=>o.outerHTML=`<a target="_blank" href='${o.src}'>${o.outerHTML}</a>`);
+}
+
+/* old oldfiltertags
 function filtertags(oTag) {
     if (typeof(oTag) == "string") { sTag = oTag.toLowerCase(); } else { sTag = oTag?.innerText.toLowerCase(); }
 
@@ -336,6 +372,7 @@ function filtertags(oTag) {
     // britney - code here to replace contents of h1 with sTag name
     // dom_ahrefenumeratize(); //  ahrefenumeratizes the <ahrefenumerate> tag
 }
+*/
 
 function unfiltertags() { // restore visibility of all artist/songs
     $$$a(".artistsong").forEach(oArtistSong=>{
