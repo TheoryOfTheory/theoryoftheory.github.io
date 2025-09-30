@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dot Counting Game</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+  body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+  #dot-container { margin: 20px auto; width: 300px; height: 300px; position: relative; border: 1px solid #ccc; }
+  .dot { width: 20px; height: 20px; border-radius: 50%; background-color: #333; position: absolute; }
+  button { margin: 5px; padding: 10px 20px; font-size: 16px; }
+</style>
+</head>
+<body>
+
+<h1>Finger Gnosis - How many dots?</h1>
+<div>
+
+Subitizing is the rapid, accurate, and effortless ability to perceive small quantities of items in a set, typically when there are four or fewer items, without relying on linguistic or arithmetic processes.
+<li>
+<ul><a href="https://en.wikipedia.org/wiki/Subitizing">Subitizing</a></ul>
+<ul><a href="https://escholarship.org/content/qt4vv725r4/qt4vv725r4_noSplash_9d280639798c6c1616f99399c42ac43a.pdf">Subitizing and Finger Gnosis Predict Calculation Fluency in Adults</a></ul>
+
+</li>
+</div>
+<div id="dot-container"></div>
+<div id="buttons"></div>
+<p id="result"></p>
+
+<script>
+// Get the 'dots' parameter from URL, default to 9
+const urlParams = new URLSearchParams(window.location.search);
+const baseDots = parseInt(urlParams.get('dots')) || 9;
+
+const dotContainer = document.getElementById('dot-container');
+const buttonsDiv = document.getElementById('buttons');
+const result = document.getElementById('result');
+
+let actualNumber = baseDots;
+
+// Generate buttons dynamically
+function generateButtons() {
+  buttonsDiv.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const btnNumber = baseDots + i;
+    const btn = document.createElement('button');
+    btn.dataset.number = btnNumber;
+    btn.textContent = `${btnNumber} dots?`;
+    btn.addEventListener('click', () => checkAnswer(btn, btnNumber));
+    buttonsDiv.appendChild(btn);
+  }
+}
+
+// Generate dots visually
+function generateDots() {
+  dotContainer.innerHTML = '';
+  for (let i = 0; i < actualNumber; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    dot.style.left = Math.random() * (dotContainer.clientWidth - 20) + 'px';
+    dot.style.top = Math.random() * (dotContainer.clientHeight - 20) + 'px';
+    dotContainer.appendChild(dot);
+  }
+}
+
+// Shake animation helper
+function animateShake(element, callback) {
+  element.classList.add('animate__animated', 'animate__shakeX');
+  element.addEventListener('animationend', function handler() {
+    element.classList.remove('animate__animated', 'animate__shakeX');
+    element.removeEventListener('animationend', handler);
+    if (callback) callback();
+  });
+}
+
+// Check user guess
+function checkAnswer(btn, guess) {
+  if (guess === actualNumber) {
+    result.textContent = `Correct! There were ${actualNumber} dots.`;
+    btn.style.backgroundColor = 'green';
+  } else {
+    result.textContent = `Wrong! There were ${actualNumber} dots.`;
+    btn.style.backgroundColor = 'red';
+  }
+  animateShake(btn);
+
+  // Regenerate for next round
+  setTimeout(() => {
+    btn.style.backgroundColor = ''; // reset button color
+    actualNumber = Math.floor(Math.random() * 4) + baseDots; // random in baseDots → baseDots+3
+    generateDots();
+    // Shake all dots on reset
+    dotContainer.childNodes.forEach(dot => animateShake(dot));
+  }, 1000);
+}
+
+// Initial setup
+generateButtons();
+generateDots();
+
+</script>
+
+</body>
+</html>
