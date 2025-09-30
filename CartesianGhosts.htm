@@ -16,53 +16,64 @@
 <h1>How many dots?</h1>
 <div id="dot-container"></div>
 
-<div id="buttons">
-  <button data-number="9">9 dots?</button>
-  <button data-number="10">10 dots?</button>
-  <button data-number="11">11 dots?</button>
-  <button data-number="12">12 dots?</button>
-</div>
+<div id="buttons"></div>
 
 <p id="result"></p>
 
 <script>
+// Get the 'dots' parameter from URL, default to 9
+const urlParams = new URLSearchParams(window.location.search);
+const baseDots = parseInt(urlParams.get('dots')) || 9;
+
 const dotContainer = document.getElementById('dot-container');
-const buttons = document.querySelectorAll('#buttons button');
+const buttonsDiv = document.getElementById('buttons');
 const result = document.getElementById('result');
 
-let actualNumber = 0;
+let actualNumber = baseDots;
 
+// Generate buttons dynamically: dot, dot+1, dot+2, dot+3
+function generateButtons() {
+  buttonsDiv.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const btnNumber = baseDots + i;
+    const btn = document.createElement('button');
+    btn.dataset.number = btnNumber;
+    btn.textContent = `${btnNumber} dots?`;
+    btn.addEventListener('click', () => checkAnswer(btnNumber));
+    buttonsDiv.appendChild(btn);
+  }
+}
+
+// Generate dots visually
 function generateDots() {
-  // Clear previous dots
   dotContainer.innerHTML = '';
-  // Random number between 9 and 12
-  actualNumber = Math.floor(Math.random() * 4) + 9;
-
   for (let i = 0; i < actualNumber; i++) {
     const dot = document.createElement('div');
     dot.classList.add('dot');
-    // Random position inside container
     dot.style.left = Math.random() * (dotContainer.clientWidth - 20) + 'px';
     dot.style.top = Math.random() * (dotContainer.clientHeight - 20) + 'px';
     dotContainer.appendChild(dot);
   }
 }
 
-buttons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const guess = parseInt(btn.dataset.number);
-    if (guess === actualNumber) {
-      result.textContent = `Correct! There were ${actualNumber} dots.`;
-    } else {
-      result.textContent = `Wrong! There were ${actualNumber} dots.`;
-    }
-    // Generate new dots for next round
-    setTimeout(generateDots, 1000);
-  });
-});
+// Check user guess
+function checkAnswer(guess) {
+  if (guess === actualNumber) {
+    result.textContent = `Correct! There were ${actualNumber} dots.`;
+  } else {
+    result.textContent = `Wrong! There were ${actualNumber} dots.`;
+  }
+  // Regenerate for next round with same baseDots logic
+  setTimeout(() => {
+    actualNumber = Math.floor(Math.random() * 4) + baseDots; // random in baseDots → baseDots+3
+    generateDots();
+  }, 1000);
+}
 
-// Initial dots
+// Initial setup
+generateButtons();
 generateDots();
+
 </script>
 
 </body>
