@@ -21,7 +21,8 @@ Subitizing is the rapid, accurate, and effortless ability to perceive small quan
 <li>
 <ul><a href="https://en.wikipedia.org/wiki/Subitizing">Subitizing on wikipedia</a></ul>
 <ul><a href="https://escholarship.org/content/qt4vv725r4/qt4vv725r4_noSplash_9d280639798c6c1616f99399c42ac43a.pdf">Subitizing and Finger Gnosis Predict Calculation Fluency in Adults</a></ul>
-<ul><a href="https://theoryoftheory.github.io/subitize.htm?dots=5">try subitizing 5 thru 8</a></ul>
+<ul><a href="https://theoryoftheory.github.io/subitize.htm?dots=5">too easy? try subitizing 7 thru 10..</a></ul>
+<ul><a href="https://theoryoftheory.github.io/subitize.htm?dots=5">too hard? try subitizing 4 thru 7..</a></ul>
 
 </li>
 </div>
@@ -30,9 +31,9 @@ Subitizing is the rapid, accurate, and effortless ability to perceive small quan
 <p id="result"></p>
 
 <script>
-// Get the 'dots' parameter from URL, default to 9
+// Get the 'dots' parameter from URL, default to 5
 const urlParams = new URLSearchParams(window.location.search);
-const baseDots = parseInt(urlParams.get('dots')) || 9;
+const baseDots = parseInt(urlParams.get('dots')) || 5;
 
 const dotContainer = document.getElementById('dot-container');
 const buttonsDiv = document.getElementById('buttons');
@@ -67,9 +68,9 @@ function generateDots() {
 
 // Shake animation helper
 function animateShake(element, callback) {
-  element.classList.add('animate__animated', 'animate__shakeX');
+  element.classList.add('animate__animated', 'animate__rubberBand');
   element.addEventListener('animationend', function handler() {
-    element.classList.remove('animate__animated', 'animate__shakeX');
+    element.classList.remove('animate__animated', 'animate__rubberBand');
     element.removeEventListener('animationend', handler);
     if (callback) callback();
   });
