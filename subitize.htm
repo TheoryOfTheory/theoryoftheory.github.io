@@ -21,8 +21,8 @@ Subitizing is the rapid, accurate, and effortless ability to perceive small quan
 <li>
 <ul><a href="https://en.wikipedia.org/wiki/Subitizing">Subitizing on wikipedia</a></ul>
 <ul><a href="https://escholarship.org/content/qt4vv725r4/qt4vv725r4_noSplash_9d280639798c6c1616f99399c42ac43a.pdf">Subitizing and Finger Gnosis Predict Calculation Fluency in Adults</a></ul>
-<ul><a href="https://theoryoftheory.github.io/subitize.htm?dots=5">too easy? try subitizing 7 thru 10..</a></ul>
-<ul><a href="https://theoryoftheory.github.io/subitize.htm?dots=5">too hard? try subitizing 4 thru 7..</a></ul>
+<ul>too easy? try <a id="subitizeharder" href="https://theoryoftheory.github.io/subitize.htm?dots=7">subitizing 7 thru 10..</a></ul>
+<ul>too hard? try <a id="subitizeeasier" href="https://theoryoftheory.github.io/subitize.htm?dots=3">subitizing 3 thru 6..</a></ul>
 
 </li>
 </div>
@@ -38,6 +38,11 @@ const baseDots = parseInt(urlParams.get('dots')) || 5;
 const dotContainer = document.getElementById('dot-container');
 const buttonsDiv = document.getElementById('buttons');
 const result = document.getElementById('result');
+document.getElementById("subitizeharder").innerText = `subitizing ${baseDots+2} thru ${baseDots+5}..`;
+document.getElementById("subitizeharder").href = `https://theoryoftheory.github.io/subitize.htm?dots=${baseDots+2}`;
+
+document.getElementById("subitizeeasier").innerText = `subitizing ${baseDots-2} thru ${baseDots+1}..`;
+document.getElementById("subitizeeasier").href = `https://theoryoftheory.github.io/subitize.htm?dots=${baseDots-2}`;
 
 let actualNumber = baseDots;
 
