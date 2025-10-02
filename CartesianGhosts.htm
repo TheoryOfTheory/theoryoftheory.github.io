@@ -24,6 +24,46 @@ Array.from(document.querySelectorAll("google-sheets-html-origin td")).forEach(o=
    google-sheets-html-origin table td { vertical-align: top !important } 
     
 </style>
+
+<script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
+
+// 0. This is ChatGPT's suggestion to make the cells Googlesheets-like.  It's fine for now but obviously I need to redo a lot of styling for Googlesheets clone
+// 1. Recorremos todas las celdas
+document.querySelectorAll('td').forEach(td => {
+    // Crear un div interno
+    const wrapper = document.createElement('div');
+    wrapper.className = 'cell-content';
+    
+    // Mover el contenido de la celda al div
+    while (td.firstChild) {
+        wrapper.appendChild(td.firstChild);
+    }
+    td.appendChild(wrapper);
+});
+
+// 2. Agregar estilo dinámico a los divs (puedes ponerlo en CSS también)
+const style = document.createElement('style');
+style.textContent = `
+.cell-content {
+  max-height: 60px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  cursor: pointer;
+}
+.cell-content.expanded {
+  max-height: 200px;
+  overflow: auto;
+}
+`;
+document.head.appendChild(style);
+
+// 3. Doble click para expandir/collapse
+document.querySelectorAll('.cell-content').forEach(div => {
+    div.addEventListener('click', () => div.classList.toggle('expanded'));
+});
+}); </script>
+
+
 </head><body><p><a href="https://markdowntohtml.com/">https://markdowntohtml.com/</a>  </p>
 <h1 id="be-careful-with-these-matrixes-matricies-">Be careful with these Matrixes (Matricies?)</h1>
 <ul>
