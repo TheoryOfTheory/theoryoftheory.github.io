@@ -20,7 +20,7 @@ function dom_Googlesheetsify(sTable) {
         }
     });
 
-    // 2. Add the style to make cells look collapsed like Google Sheets
+    // 2. Add style
     const style = document.createElement('style');
     style.textContent = `
     .cell-content {
@@ -81,22 +81,46 @@ function dom_Googlesheetsify(sTable) {
                 const btn = document.createElement('button');
                 btn.textContent = mode;
                 if (mode === currentMode) btn.style.fontWeight = 'bold';
-                btn.addEventListener('click', (ev) => {
-                    ev.stopPropagation();
-                    currentMode = mode;
-                    modeButtons.forEach(b => b.style.fontWeight = 'normal');
-                    btn.style.fontWeight = 'bold';
 
-                    if (mode === 'HTML') {
-                        content.innerHTML = div.innerHTML;
-                    } else if (mode === 'MD') {
-                        const turndownService = new TurndownService();
-                        const md = turndownService.turndown(div.innerHTML);
-                        content.textContent = md;
-                    } else if (mode === 'Raw') {
-                        content.textContent = div.innerHTML;
-                    }
-                });
+                if (mode === 'MD') {
+                    // Special dual behavior for MD
+                    let pressTimer;
+                    btn.addEventListener('mousedown', () => {
+                        pressTimer = setTimeout(() => {
+                            // Long press: Markdown → HTML
+                            currentMode = 'HTML';
+                            modeButtons.forEach(b => b.style.fontWeight = 'normal');
+                            btn.style.fontWeight = 'bold';
+                            content.innerHTML = marked.parse(content.textContent || div.textContent);
+                        }, 500); // 500ms long press
+                    });
+                    btn.addEventListener('mouseup', (ev) => {
+                        clearTimeout(pressTimer);
+                        if (ev.detail !== 0) { // normal click
+                            ev.stopPropagation();
+                            currentMode = 'MD';
+                            modeButtons.forEach(b => b.style.fontWeight = 'normal');
+                            btn.style.fontWeight = 'bold';
+                            const turndownService = new TurndownService();
+                            const md = turndownService.turndown(div.innerHTML);
+                            content.textContent = md;
+                        }
+                    });
+                } else {
+                    // Normal click for HTML / Raw
+                    btn.addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        currentMode = mode;
+                        modeButtons.forEach(b => b.style.fontWeight = 'normal');
+                        btn.style.fontWeight = 'bold';
+                        if (mode === 'HTML') {
+                            content.innerHTML = div.innerHTML;
+                        } else if (mode === 'Raw') {
+                            content.textContent = div.innerHTML;
+                        }
+                    });
+                }
+
                 return btn;
             });
 
@@ -139,7 +163,8 @@ function dom_Googlesheetsify(sTable) {
             currentViewer = null;
         }
     });
-}dom_Googlesheetsify();
+}
+dom_Googlesheetsify();
 
 }); </script> 
 
