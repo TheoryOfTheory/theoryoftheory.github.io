@@ -83,31 +83,20 @@ function dom_Googlesheetsify(sTable) {
                 if (mode === currentMode) btn.style.fontWeight = 'bold';
 
                 if (mode === 'MD') {
-                    // Special dual behavior for MD
                     let pressTimer;
-                    btn.addEventListener('mousedown', () => {
+                    btn.addEventListener('pointerdown', (ev) => {
                         pressTimer = setTimeout(() => {
-                            // Long press: Markdown → HTML
                             currentMode = 'HTML';
                             modeButtons.forEach(b => b.style.fontWeight = 'normal');
                             btn.style.fontWeight = 'bold';
                             content.innerHTML = marked.parse(content.textContent || div.textContent);
+                            ev.preventDefault(); // Prevent default click behavior
                         }, 500); // 500ms long press
                     });
-                    btn.addEventListener('mouseup', (ev) => {
+                    btn.addEventListener('pointerup', () => {
                         clearTimeout(pressTimer);
-                        if (ev.detail !== 0) { // normal click
-                            ev.stopPropagation();
-                            currentMode = 'MD';
-                            modeButtons.forEach(b => b.style.fontWeight = 'normal');
-                            btn.style.fontWeight = 'bold';
-                            const turndownService = new TurndownService();
-                            const md = turndownService.turndown(div.innerHTML);
-                            content.textContent = md;
-                        }
                     });
                 } else {
-                    // Normal click for HTML / Raw
                     btn.addEventListener('click', (ev) => {
                         ev.stopPropagation();
                         currentMode = mode;
