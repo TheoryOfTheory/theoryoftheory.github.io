@@ -6,7 +6,6 @@
 
 
 // 0. This is ChatGPT's suggestion to make the cells Googlesheets-like.  It's fine for now but obviously I need to redo a lot of styling for Googlesheets clone
-
 function dom_Googlesheetsify(sTable) {
     // 1. Wrap each td's content in a div
     document.querySelectorAll('td').forEach(td => {
@@ -74,6 +73,14 @@ function dom_Googlesheetsify(sTable) {
 
             const copyBtn = document.createElement('button');
             copyBtn.textContent = 'Copy';
+            copyBtn.addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                let textToCopy;
+                if (currentMode === 'HTML') textToCopy = div.innerHTML;
+                else if (currentMode === 'MD') textToCopy = new TurndownService().turndown(div.innerHTML);
+                else textToCopy = div.innerHTML;
+                navigator.clipboard.writeText(textToCopy);
+            });
 
             const modes = ['HTML', 'MD', 'Raw'];
             let currentMode = 'HTML';
@@ -85,16 +92,23 @@ function dom_Googlesheetsify(sTable) {
                 if (mode === 'MD') {
                     let pressTimer;
                     btn.addEventListener('pointerdown', (ev) => {
+                        ev.stopPropagation();
                         pressTimer = setTimeout(() => {
                             currentMode = 'HTML';
                             modeButtons.forEach(b => b.style.fontWeight = 'normal');
                             btn.style.fontWeight = 'bold';
-                            content.innerHTML = marked.parse(content.textContent || div.textContent);
-                            ev.preventDefault(); // Prevent default click behavior
-                        }, 500); // 500ms long press
+                            content.innerHTML = marked.parse(content.textContent);
+                        }, 500);
                     });
-                    btn.addEventListener('pointerup', () => {
+                    btn.addEventListener('pointerup', (ev) => {
+                        ev.stopPropagation();
                         clearTimeout(pressTimer);
+                        if (pressTimer) { // short click
+                            currentMode = 'MD';
+                            modeButtons.forEach(b => b.style.fontWeight = 'normal');
+                            btn.style.fontWeight = 'bold';
+                            content.textContent = new TurndownService().turndown(div.innerHTML);
+                        }
                     });
                 } else {
                     btn.addEventListener('click', (ev) => {
@@ -102,29 +116,12 @@ function dom_Googlesheetsify(sTable) {
                         currentMode = mode;
                         modeButtons.forEach(b => b.style.fontWeight = 'normal');
                         btn.style.fontWeight = 'bold';
-                        if (mode === 'HTML') {
-                            content.innerHTML = div.innerHTML;
-                        } else if (mode === 'Raw') {
-                            content.textContent = div.innerHTML;
-                        }
+                        if (mode === 'HTML') content.innerHTML = div.innerHTML;
+                        else if (mode === 'Raw') content.textContent = div.innerHTML;
                     });
                 }
 
                 return btn;
-            });
-
-            copyBtn.addEventListener('click', (ev) => {
-                ev.stopPropagation();
-                let textToCopy;
-                if (currentMode === 'HTML') {
-                    textToCopy = div.innerHTML;
-                } else if (currentMode === 'MD') {
-                    const turndownService = new TurndownService();
-                    textToCopy = turndownService.turndown(div.innerHTML);
-                } else {
-                    textToCopy = div.innerHTML;
-                }
-                navigator.clipboard.writeText(textToCopy);
             });
 
             header.appendChild(copyBtn);
@@ -133,6 +130,7 @@ function dom_Googlesheetsify(sTable) {
 
             const content = document.createElement('div');
             content.style.padding = '4px';
+            content.style.whiteSpace = 'pre-wrap';
             content.innerHTML = div.innerHTML;
             viewer.appendChild(content);
 
@@ -142,12 +140,15 @@ function dom_Googlesheetsify(sTable) {
 
             document.body.appendChild(viewer);
             currentViewer = viewer;
+
+            // Prevent closing when clicking inside viewer
+            viewer.addEventListener('click', (ev) => ev.stopPropagation());
         });
     });
 
-    // 4. Close viewer when clicking outside
-    document.addEventListener('click', () => {
-        if (currentViewer) {
+    // 4. Close viewer only when clicking completely outside
+    document.addEventListener('click', (e) => {
+        if (currentViewer && !currentViewer.contains(e.target)) {
             currentViewer.remove();
             currentViewer = null;
         }
