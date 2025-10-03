@@ -4,40 +4,88 @@
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
 
 // 0. This is ChatGPT's suggestion to make the cells Googlesheets-like.  It's fine for now but obviously I need to redo a lot of styling for Googlesheets clone
-// 1. Recorremos todas las celdas
-document.querySelectorAll('td').forEach(td => {
-    // Crear un div interno
-    const wrapper = document.createElement('div');
-    wrapper.className = 'cell-content';
+function dom_Googlesheetsify(sTable) {
+    // Inject floating viewer with toggle + copy into table cells
+    document.querySelectorAll('td').forEach(td => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'cell-content';
     
-    // Mover el contenido de la celda al div
-    while (td.firstChild) {
+      // Move original content
+      while (td.firstChild) {
         wrapper.appendChild(td.firstChild);
-    }
-    td.appendChild(wrapper);
-});
-
-// 2. Agregar estilo dinámico a los divs (puedes ponerlo en CSS también)
-const style = document.createElement('style');
-style.textContent = `
-.cell-content {
-  max-height: 15px;
-  overflow: hidden;
-  white-space: pre-wrap;
-  cursor: pointer;
+      }
+      td.appendChild(wrapper);
+    
+      wrapper.addEventListener('click', (e) => {
+        if (td.querySelector('.floating-viewer')) return; // already open
+    
+        const floating = document.createElement('div');
+        floating.className = 'floating-viewer';
+        floating.style.position = 'absolute';
+        floating.style.background = '#fff';
+        floating.style.border = '1px solid #ccc';
+        floating.style.padding = '5px';
+        floating.style.zIndex = '1000';
+        floating.style.width = '500px';
+        floating.style.height = '300px';
+        floating.style.overflow = 'auto';
+    
+        const rect = td.getBoundingClientRect();
+        floating.style.top = (window.scrollY + rect.top) + 'px';
+        floating.style.left = (window.scrollX + rect.left) + 'px';
+    
+        // Toolbar
+        const toolbar = document.createElement('div');
+        toolbar.style.display = 'flex';
+        toolbar.style.justifyContent = 'space-between';
+        toolbar.style.marginBottom = '5px';
+    
+        const copyBtn = document.createElement('button');
+        copyBtn.textContent = 'Copy';
+        copyBtn.onclick = () => {
+          navigator.clipboard.writeText(contentDiv.textContent);
+        };
+    
+        const modeBtns = document.createElement('div');
+        ['HTML','MD','Raw'].forEach(mode => {
+          const btn = document.createElement('button');
+          btn.textContent = mode;
+          btn.onclick = (ev) => {
+            ev.stopPropagation();
+            if(mode === 'HTML') {
+              contentDiv.innerHTML = wrapper.innerHTML;
+            } else {
+              contentDiv.textContent = wrapper.innerHTML;
+            }
+          };
+          modeBtns.appendChild(btn);
+        });
+    
+        toolbar.appendChild(copyBtn);
+        toolbar.appendChild(modeBtns);
+    
+        const contentDiv = document.createElement('div');
+        contentDiv.style.whiteSpace = 'pre-wrap';
+        contentDiv.innerHTML = wrapper.innerHTML;
+    
+        floating.appendChild(toolbar);
+        floating.appendChild(contentDiv);
+    
+        document.body.appendChild(floating);
+    
+        // Close on outside click
+        const closeHandler = (ev) => {
+          if (!floating.contains(ev.target)) {
+            floating.remove();
+            document.removeEventListener('click', closeHandler);
+          }
+        };
+        setTimeout(() => document.addEventListener('click', closeHandler));
+      });
+    });
 }
-.cell-content.expanded {
-  max-height: 200px;
-  overflow: auto;
-}
-`;
-document.head.appendChild(style);
 
-// 3. Doble click para expandir/collapse
-document.querySelectorAll('.cell-content').forEach(div => {
-    div.addEventListener('click', () => div.classList.toggle('expanded'));
-});
-
+dom_Googlesheetsify();
 
 }); </script> 
 
