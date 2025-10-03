@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://unpkg.com/turndown/dist/turndown.js"></script>
 <script type="text/javascript">document.addEventListener("DOMContentLoaded", function(event) {
 
+
 // 0. This is ChatGPT's suggestion to make the cells Googlesheets-like.  It's fine for now but obviously I need to redo a lot of styling for Googlesheets clone
+
 function dom_Googlesheetsify(sTable) {
     // 1. Wrap each td's content in a div
     document.querySelectorAll('td').forEach(td => {
@@ -83,9 +86,14 @@ function dom_Googlesheetsify(sTable) {
                     currentMode = mode;
                     modeButtons.forEach(b => b.style.fontWeight = 'normal');
                     btn.style.fontWeight = 'bold';
+
                     if (mode === 'HTML') {
                         content.innerHTML = div.innerHTML;
-                    } else {
+                    } else if (mode === 'MD') {
+                        const turndownService = new TurndownService();
+                        const md = turndownService.turndown(div.innerHTML);
+                        content.textContent = md;
+                    } else if (mode === 'Raw') {
                         content.textContent = div.innerHTML;
                     }
                 });
@@ -97,6 +105,9 @@ function dom_Googlesheetsify(sTable) {
                 let textToCopy;
                 if (currentMode === 'HTML') {
                     textToCopy = div.innerHTML;
+                } else if (currentMode === 'MD') {
+                    const turndownService = new TurndownService();
+                    textToCopy = turndownService.turndown(div.innerHTML);
                 } else {
                     textToCopy = div.innerHTML;
                 }
@@ -128,9 +139,7 @@ function dom_Googlesheetsify(sTable) {
             currentViewer = null;
         }
     });
-}
-
-dom_Googlesheetsify();
+}dom_Googlesheetsify();
 
 }); </script> 
 
