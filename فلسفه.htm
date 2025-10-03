@@ -5,83 +5,128 @@
 
 // 0. This is ChatGPT's suggestion to make the cells Googlesheets-like.  It's fine for now but obviously I need to redo a lot of styling for Googlesheets clone
 function dom_Googlesheetsify(sTable) {
-    // Inject floating viewer with toggle + copy into table cells
+    // 1. Wrap each td's content in a div
     document.querySelectorAll('td').forEach(td => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'cell-content';
-    
-      // Move original content
-      while (td.firstChild) {
-        wrapper.appendChild(td.firstChild);
-      }
-      td.appendChild(wrapper);
-    
-      wrapper.addEventListener('click', (e) => {
-        if (td.querySelector('.floating-viewer')) return; // already open
-    
-        const floating = document.createElement('div');
-        floating.className = 'floating-viewer';
-        floating.style.position = 'absolute';
-        floating.style.background = '#fff';
-        floating.style.border = '1px solid #ccc';
-        floating.style.padding = '5px';
-        floating.style.zIndex = '1000';
-        floating.style.width = '500px';
-        floating.style.height = '300px';
-        floating.style.overflow = 'auto';
-    
-        const rect = td.getBoundingClientRect();
-        floating.style.top = (window.scrollY + rect.top) + 'px';
-        floating.style.left = (window.scrollX + rect.left) + 'px';
-    
-        // Toolbar
-        const toolbar = document.createElement('div');
-        toolbar.style.display = 'flex';
-        toolbar.style.justifyContent = 'space-between';
-        toolbar.style.marginBottom = '5px';
-    
-        const copyBtn = document.createElement('button');
-        copyBtn.textContent = 'Copy';
-        copyBtn.onclick = () => {
-          navigator.clipboard.writeText(contentDiv.textContent);
-        };
-    
-        const modeBtns = document.createElement('div');
-        ['HTML','MD','Raw'].forEach(mode => {
-          const btn = document.createElement('button');
-          btn.textContent = mode;
-          btn.onclick = (ev) => {
-            ev.stopPropagation();
-            if(mode === 'HTML') {
-              contentDiv.innerHTML = wrapper.innerHTML;
-            } else {
-              contentDiv.textContent = wrapper.innerHTML;
+        if (!td.querySelector('.cell-content')) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'cell-content';
+            while (td.firstChild) {
+                wrapper.appendChild(td.firstChild);
             }
-          };
-          modeBtns.appendChild(btn);
+            td.appendChild(wrapper);
+        }
+    });
+
+    // 2. Add the style to make cells look collapsed like Google Sheets
+    const style = document.createElement('style');
+    style.textContent = `
+    .cell-content {
+      max-height: 15px;
+      overflow: hidden;
+      white-space: pre;
+      line-height: 15px;
+      cursor: pointer;
+    }
+    .floating-viewer {
+      position: absolute;
+      background: white;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      padding: 4px;
+      width: 500px;
+      height: 300px;
+      overflow: auto;
+      z-index: 9999;
+    }
+    .viewer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f5f5f5;
+      border-bottom: 1px solid #ccc;
+      padding: 2px 4px;
+    }
+    .viewer-header button {
+      margin-left: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    `;
+    document.head.appendChild(style);
+
+    let currentViewer = null;
+
+    // 3. Floating viewer logic
+    document.querySelectorAll('.cell-content').forEach(div => {
+        div.addEventListener('click', (e) => {
+            e.stopPropagation();
+
+            if (currentViewer) currentViewer.remove();
+
+            const viewer = document.createElement('div');
+            viewer.className = 'floating-viewer';
+
+            const header = document.createElement('div');
+            header.className = 'viewer-header';
+
+            const copyBtn = document.createElement('button');
+            copyBtn.textContent = 'Copy';
+
+            const modes = ['HTML', 'MD', 'Raw'];
+            let currentMode = 'HTML';
+            const modeButtons = modes.map(mode => {
+                const btn = document.createElement('button');
+                btn.textContent = mode;
+                if (mode === currentMode) btn.style.fontWeight = 'bold';
+                btn.addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    currentMode = mode;
+                    modeButtons.forEach(b => b.style.fontWeight = 'normal');
+                    btn.style.fontWeight = 'bold';
+                    if (mode === 'HTML') {
+                        content.innerHTML = div.innerHTML;
+                    } else {
+                        content.textContent = div.innerHTML;
+                    }
+                });
+                return btn;
+            });
+
+            copyBtn.addEventListener('click', (ev) => {
+                ev.stopPropagation();
+                let textToCopy;
+                if (currentMode === 'HTML') {
+                    textToCopy = div.innerHTML;
+                } else {
+                    textToCopy = div.innerHTML;
+                }
+                navigator.clipboard.writeText(textToCopy);
+            });
+
+            header.appendChild(copyBtn);
+            modeButtons.forEach(b => header.appendChild(b));
+            viewer.appendChild(header);
+
+            const content = document.createElement('div');
+            content.style.padding = '4px';
+            content.innerHTML = div.innerHTML;
+            viewer.appendChild(content);
+
+            const rect = div.getBoundingClientRect();
+            viewer.style.top = `${rect.bottom + window.scrollY}px`;
+            viewer.style.left = `${rect.left + window.scrollX}px`;
+
+            document.body.appendChild(viewer);
+            currentViewer = viewer;
         });
-    
-        toolbar.appendChild(copyBtn);
-        toolbar.appendChild(modeBtns);
-    
-        const contentDiv = document.createElement('div');
-        contentDiv.style.whiteSpace = 'pre-wrap';
-        contentDiv.innerHTML = wrapper.innerHTML;
-    
-        floating.appendChild(toolbar);
-        floating.appendChild(contentDiv);
-    
-        document.body.appendChild(floating);
-    
-        // Close on outside click
-        const closeHandler = (ev) => {
-          if (!floating.contains(ev.target)) {
-            floating.remove();
-            document.removeEventListener('click', closeHandler);
-          }
-        };
-        setTimeout(() => document.addEventListener('click', closeHandler));
-      });
+    });
+
+    // 4. Close viewer when clicking outside
+    document.addEventListener('click', () => {
+        if (currentViewer) {
+            currentViewer.remove();
+            currentViewer = null;
+        }
     });
 }
 
