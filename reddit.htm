@@ -36,10 +36,7 @@ function redditverse_ify(oObject, sMultiredditLink) {
     "&nbsp;&nbsp;" + `<span style='font-size:20px;'><a target='_blank' href='https://raddle.me/f/${sMultiredditLink}'>🐍</a></span>&nbsp;&nbsp;` + 
     `<a target='_blank' href='https://twitter.com/search?f=live&q=${sMultiredditLink.split("+").map(o=>"\"" + o + "\"").join(" OR ")}'>𝕏</a>` + "&nbsp;&nbsp;&nbsp;<br>" + 
     // "<pre>" + oObject?.querySelectorAll("td")[0]?.innerText + "</pre>";
-    oObject?.querySelectorAll("td")[0]?.innerText.replaceAll("\n", "<br>").replace(
-  /#([\p{L}\p{N}\p{M}\p{S}_'\-’]+)/gu,
-  '<a href="https://theoryoftheory.github.io/reddit.htm?search=$1">#$1</a>'
-);
+    oObject?.querySelectorAll("td")[0]?.innerText.replaceAll("\n", "<br>").replace( /#([^\s#]+)/g, '<a href="https://theoryoftheory.github.io/reddit.htm?search=$1">#$1</a>' );
 
 }
 
